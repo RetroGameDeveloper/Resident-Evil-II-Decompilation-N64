@@ -1,0 +1,4 @@
+extern u8 D_80028DE0_ovl_01[],D_80028EB4_ovl_01[],D_8002D00C_ovl_01[],D_80028F2C_ovl_01[],D_8002907C_ovl_01[]; extern void func_80028DF0_ovl_01(void); typedef struct {s32 x[9];} A; typedef struct {s32 f0; s32 (*alloc)(void*,s32,s32); s32 pad[2]; A *p; u8 rest[0x154]; A *state;} T; s32 func_80028F34_ovl_01(T *a,s32 b){A *obj; s32 (*alloc)(void*,s32,s32); obj=a->p; if(!obj){alloc=a->alloc;obj=(A*)alloc(0,0,0x28);a->p=obj;obj->x[8]=alloc(a,0,0xA000);}obj=a->p;obj->x[2]=(s32)D_80028DE0_ovl_01;obj->x[3]=(s32)func_80028DF0_ovl_01;obj->x[4]=(s32)D_80028EB4_ovl_01;obj->x[5]=(s32)D_8002D00C_ovl_01;obj->x[6]=(s32)D_80028F2C_ovl_01;obj->x[7]=b;obj->x[1]=0;obj->x[0]=0;
+}
+void func_80029010_ovl_01(T *a,s32 b){A *s=a->state;s->x[2]=0;s->x[3]=0;if(!b){if(s->x[14]){a->f0=4;((void(*)(void))*(void**)a)();}s->x[1]=(s32)D_8002907C_ovl_01;}else{a->f0=4;((void(*)(void))*(void**)a)();}}
+void func_8002907C_ovl_01(T *a,s32 b){return;}

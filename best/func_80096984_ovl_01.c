@@ -1,0 +1,104 @@
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
+
+s32 func_800439B8_ovl_01(s32, s32, M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK func_800478E8_ovl_01(s32, s32, s32);        /* extern */
+extern s32 D_800C527C_ovl_01;
+extern M2C_UNK D_800C7650_ovl_01;
+extern M2C_UNK D_800DF650_ovl_01;
+extern M2C_UNK D_8012BF38_ovl_01;
+extern u8 D_8012BF48_ovl_01;
+extern M2C_UNK D_8012F4D0_ovl_01;
+extern M2C_UNK D_80131158_ovl_01;
+extern M2C_UNK D_8013118C_ovl_01;
+
+void func_80096984_ovl_01(void) {
+    s32 sp10;
+    s32 sp14;
+    s32 temp_a1;
+    s32 temp_a1_2;
+    s32 temp_a1_3;
+    s32 temp_a1_4;
+    s32 temp_fp;
+    s32 temp_s7;
+    s32 var_s2;
+    s32 var_s3;
+    u32 var_s4;
+    u32 var_s5;
+    void *var_s0;
+    void *var_s0_2;
+    void *var_s0_3;
+    void *var_s0_4;
+    void *var_s1;
+    void *var_s1_2;
+
+    var_s4 = 0xD;
+    var_s5 = 0xA;
+    var_s0 = &D_80131158_ovl_01 + 0x34;
+    var_s2 = D_800C527C_ovl_01 + 0x3BA28;
+    var_s3 = D_800C527C_ovl_01 + 0x3BB2C;
+    temp_fp = M2C_FIELD(&D_8012BF38_ovl_01, s16 *, 0x3C) - 0x33;
+    sp10 = M2C_FIELD(&D_8012BF38_ovl_01, s16 *, 0x40) + temp_fp;
+    temp_s7 = M2C_FIELD(&D_8012BF38_ovl_01, s16 *, 0x3E) - 0xD;
+    sp14 = M2C_FIELD(&D_8012BF38_ovl_01, s16 *, 0x42) + temp_s7 + 6;
+    do {
+        var_s0 -= 4;
+        var_s4 -= 1;
+        func_800478E8_ovl_01(var_s2, (M2C_FIELD(var_s0, u16 *, 0) + temp_fp) & 0xFFFF, (M2C_FIELD(var_s0, u16 *, 2) + temp_s7) & 0xFFFF);
+        temp_a1 = var_s2;
+        var_s2 += 0x14;
+        M2C_FIELD(&D_800DF650_ovl_01, s32 *, 0x204) = func_800439B8_ovl_01(M2C_FIELD(&D_800DF650_ovl_01, s32 *, 0x204), temp_a1, 0, 0);
+    } while (var_s4 >= 4U);
+    if (D_8012BF48_ovl_01 == 0) {
+        if (M2C_FIELD(&D_800C7650_ovl_01, s32 *, 0x19A5C) & 0x10000000) {
+            var_s0_2 = ((0xA * 4) + &D_8013118C_ovl_01) - 4;
+            do {
+                var_s5 -= 1;
+                func_800478E8_ovl_01(var_s3, (M2C_FIELD(var_s0_2, u16 *, 0) + sp10) & 0xFFFF, (M2C_FIELD(var_s0_2, u16 *, 2) + sp14) & 0xFFFF);
+                temp_a1_2 = var_s3;
+                var_s3 += 0x14;
+                M2C_FIELD(&D_800C7650_ovl_01, s32 *, 0x18204) = func_800439B8_ovl_01(M2C_FIELD(&D_800C7650_ovl_01, s32 *, 0x18204), temp_a1_2, 0, 0);
+                var_s0_2 -= 4;
+            } while (var_s5 >= 3U);
+        }
+    }
+    var_s1 = var_s2 + 0xA;
+    var_s0_3 = (var_s4 * 4) + &D_80131158_ovl_01;
+    do {
+        var_s0_3 -= 4;
+        var_s4 -= 1;
+        func_800478E8_ovl_01(var_s2, (M2C_FIELD(var_s0_3, u16 *, 0) + temp_fp) & 0xFFFF, (M2C_FIELD(var_s0_3, u16 *, 2) + temp_s7) & 0xFFFF);
+        temp_a1_3 = var_s2;
+        M2C_FIELD(var_s1, M2C_UNK **, 2) = &D_8012F4D0_ovl_01;
+        M2C_FIELD(var_s1, s16 *, 0) = 0x400;
+        var_s1 += 0x14;
+        var_s2 += 0x14;
+        M2C_FIELD(&D_800DF650_ovl_01, s32 *, 0x204) = func_800439B8_ovl_01(M2C_FIELD(&D_800DF650_ovl_01, s32 *, 0x204), temp_a1_3, 0, 0);
+    } while (var_s4 != 0);
+    if ((D_8012BF48_ovl_01 == 0) && (M2C_FIELD(&D_800C7650_ovl_01, s32 *, 0x19A5C) & 0x10000000)) {
+        var_s1_2 = var_s3 + 0xA;
+        var_s0_4 = (var_s5 * 4) + &D_8013118C_ovl_01;
+        do {
+            var_s0_4 -= 4;
+            var_s5 -= 1;
+            func_800478E8_ovl_01(var_s3, (M2C_FIELD(var_s0_4, u16 *, 0) + sp10) & 0xFFFF, (M2C_FIELD(var_s0_4, u16 *, 2) + sp14) & 0xFFFF);
+            temp_a1_4 = var_s3;
+            M2C_FIELD(var_s1_2, M2C_UNK **, 2) = &D_8012F4D0_ovl_01;
+            M2C_FIELD(var_s1_2, s16 *, 0) = 0x400;
+            var_s1_2 += 0x14;
+            var_s3 += 0x14;
+            M2C_FIELD(&D_800C7650_ovl_01, s32 *, 0x18204) = func_800439B8_ovl_01(M2C_FIELD(&D_800C7650_ovl_01, s32 *, 0x18204), temp_a1_4, 0, 0);
+        } while (var_s5 != 0);
+    }
+}

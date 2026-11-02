@@ -1,0 +1,1 @@
+extern u8 D_80014F9C; extern u8 D_80014FA0; extern s32 D_80014FDC; void func_80006814(void){u8 *p=&D_80014FA0; s32 i=14; u32 *q=(u32*)(p+56); s32 n; s32 j; u8 b[8];u8 pad[8];do{*q=0;i--;q--;}while(i>=0);n=D_80014F9C;j=0;D_80014FDC=1;b[0]=255;b[1]=1;b[2]=4;b[3]=1;b[4]=255;b[5]=255;b[6]=255;b[7]=255;if(n>0)do{*(u32*)p=*(u32*)b;*(u32*)(p+4)=*(u32*)(b+4);j++;p+=8;}while(j<n);*p=254;}

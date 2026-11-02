@@ -1,0 +1,3 @@
+extern s32 func_80041484_ovl_01(s16,s32*); extern s32 func_8004279C_ovl_01(s32*,s32*,u16*); extern s32 D_800E8FC8_ovl_01; typedef struct {s32 a[8];} A;
+void func_80033A90_ovl_01(void *arg0,s16 arg1,s16 arg2,s32 arg3){s32 sp30;u16 sp34,sp38,sp3c;u8 t; A arr;
+if(arg0 && *(u8*)((u8*)arg0+14)){arr=*(A*)&D_800E8FC8_ovl_01;func_80041484_ovl_01(arg2,arr.a);sp30=*(s16*)arg0;sp34=*(u16*)((u8*)arg0+2);func_8004279C_ovl_01(arr.a,&sp30,&sp38);*(s16*)((u8*)arg0+16)=arg2;*(s16*)((u8*)arg0+10)=arg1;{void *p=*(void**)((u8*)arg0+20);*(s16*)((u8*)arg0+8)=sp38+*(u16*)((u8*)p+2);*(s16*)((u8*)arg0+12)=sp3c+*(u16*)((u8*)p+10);}t=*(u8*)((u8*)arg0+14)|4;*(u8*)((u8*)arg0+14)=t;if(arg3)*(u8*)((u8*)arg0+14)=t&0xfb;}}

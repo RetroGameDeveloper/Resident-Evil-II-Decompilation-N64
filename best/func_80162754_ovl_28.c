@@ -1,0 +1,1 @@
+void func_80162754_ovl_28(void *arg0) { if (*((u8*)arg0+6)==0) { *((s32*)((u8*)arg0+0x1e8))=0x1f00; *((u8*)arg0+6)=1; *((s8*)arg0+0x207)=1; *((s8*)arg0+0x206)=1; *((u8*)arg0+0x25c)&=0xfd; } if (*((u8*)arg0+6)==1) func_80089D34_ovl_01(arg0,0x80); }

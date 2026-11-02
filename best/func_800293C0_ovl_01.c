@@ -1,0 +1,1 @@
+typedef struct {u8 pad[0x118];s32 count;u8 pad2[0x5c];void*list;u8 more[0x5c];} A;extern s32 D_800B6BA0_ovl_01;extern void func_80029A2C_ovl_01(void*,void*,void*);void func_800293C0_ovl_01(A *p){s32 i;void*q;for(i=0;i<p->count;i++){q=*(void**)((u8*)p+0x11c+4*i);if(q&&*(s32*)((u8*)q+0x20)){*(s32*)((u8*)q+0x14)=0x2c;func_80029A2C_ovl_01(p,q,(u8*)p->list+4*i);}}}

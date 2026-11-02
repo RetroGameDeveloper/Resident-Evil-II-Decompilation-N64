@@ -1,0 +1,3 @@
+s32 func_800038F0(s32,s32,s32,s32*,s32*,s32*,s32,void*); s32 func_800042F4(s32,void*); extern s32 D_8001181C,D_80011840,D_800125E4,D_80012660,D_800126DC,D_80012754;
+s32 func_80003F68(s32 a0,s32 a1,s32 a2,s32 a3,s32 a4,s32 *a5,s32 *a6,void *a7){s32 s0; s32 *p,*q; s0=func_800038F0(a2,a0,0x101,&D_800125E4,&D_80012660,a5,a3,a7);if(s0==0)goto second;if(s0==-3){p=&D_8001181C;goto put1;}if(s0==-5){s0=-3;func_800042F4(*a5,a7);p=&D_80011840;put1:*(s32*)((u8*)a7+0x18)=(s32)p;return s0;}return s0;
+second:s0=func_800038F0(a2+a0*4,a1,0,&D_800126DC,&D_80012754,a6,a4,a7);if(s0==0)return 0;if(s0==-3){q=&D_8001181C;goto put2;}if(s0==-5){s0=-3;func_800042F4(*a6,a7);q=&D_80011840;put2:*(s32*)((u8*)a7+0x18)=(s32)q;}func_800042F4(*a5,a7);return s0;}

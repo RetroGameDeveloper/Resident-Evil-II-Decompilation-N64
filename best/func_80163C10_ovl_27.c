@@ -1,0 +1,6 @@
+extern u8 D_80163DE8_ovl_27[],D_80163E54_ovl_27[],D_80163D9C_ovl_27[];
+s32 func_80036038_ovl_01(void*,void*,void*,s32); s32 func_800362C0_ovl_01(void*,void*,void*); void func_800366C4_ovl_01(void*); s32 func_800377B0_ovl_01(s32,s16,s32,s16*);
+void func_80163BC4_ovl_27(void *a,s32 b) { s32 r; r=func_80036038_ovl_01(*(void**)((u8*)a+0x234),D_80163DE8_ovl_27,(void*)0,b); func_80036038_ovl_01(a,*(void**)((u8*)a+0x234),D_80163E54_ovl_27,r); }
+void func_80163C10_ovl_27(void *a) { if (*(u8*)((u8*)a+0x2cc)==0) { void *p; p=*(void**)((u8*)a+0x234); func_800362C0_ovl_01(p,D_80163DE8_ovl_27,0); func_800362C0_ovl_01(a,p,D_80163E54_ovl_27); func_800366C4_ovl_01(a); } }
+void func_80163B38_ovl_27(void *a,s32 b,s32 c) { u8 *rec; s16 out[3]; rec=D_80163D9C_ovl_27+(c&255)*6; out[0]=0;out[1]=0;out[2]=0; func_800377B0_ovl_01(((s32)rec[0]<<24)|((s32)rec[1]<<16)|*(u16*)(rec+4),*(s16*)((u8*)a+0x66),*(s32*)((u8*)a+0x234)+(b&255)*0x178+0x38,out); }
+void func_80163AD0_ovl_27(void *a) { u8 *base; s32 i; base=*(u8**)((u8*)a+0x234); for(i=0;i<3;i++) { u32 v,x,y,z; v=*(u32*)(base+i*0x178+0x60); x=v&0xff; y=v&0xff00; z=v&0xff0000; if(x)x--; if(y)y-=0x100; if(z)z+=0xffff0000; *(u32*)(base+i*0x178+0x60)=z|y|x; } }

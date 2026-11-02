@@ -1,0 +1,4 @@
+typedef struct{u8 p[6];u8 state;u8 r[0x1A4-7];s32 x1A4;u8 q[0x218-0x1A8];s32 x218;u8 t[0x22C-0x21C];s32 x22C;s32 x230;u8 z[0x1E0-0x234+0x200];s16 timer;s16 x1E2;s16 x1E4;u8 end[0x26F-0x1E6];u8 x26f;u8 tail[0x24F];} O;
+void func_80164AB0_ovl_15(O*a){u8 s=a->state;switch(s){case 0:func_80077B0C_ovl_01(0x04020001,(u8*)a+0x28);a->x1A4=0x14000300;a->state=1;a->timer=0x320;a->x1E2=0;a->x1E4=0;*(u8*)((u8*)a+0x26f)|=0x80;*(u8*)((u8*)a+0x25c)|=0x12;func_80032B8C_ovl_01(a,0);a->state+=func_80089D34_ovl_01(a,a->x22C,a->x230,0x400);a->timer-=0x78;if((s16)a->timer<0)a->timer=0;break;
+case 1:a->x1A4=0x11000300;a->state=5;*(u8*)((u8*)a+0x26f)=0;func_80089D34_ovl_01(a,a->x22C,a->x230,0x400);if(func_80089D34_ovl_01(a,a->x22C,a->x230,0x400)){a->state=6;a->x1A4=0x06000300;}break;
+case 2:if(func_80089D34_ovl_01(a,a->x1A4,a->x218,0x10400)){a->x1A4=0x01000000;*(u8*)((u8*)a+0x26f)=0;*(u8*)((u8*)a+0x25c)&=0xED;}break;case 3:break;case 4:break;case 5:break;case 6:break;}}

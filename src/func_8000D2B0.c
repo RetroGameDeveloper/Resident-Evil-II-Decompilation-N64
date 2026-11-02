@@ -1,0 +1,5 @@
+extern u8 D_80011BB0,D_80011BB4,D_80011CA0,D_80011CA4; extern s32 D_80000308,D_A0000000; extern s32 *D_80012960; extern s32 func_8000C620(void*,void*,s32),func_8000D2B0(void),func_8000E800(s32),func_8000EFA0(s32,s32),func_80007320(s32,s32),func_8000E0A0(u64,u32); extern u64 func_8000E100(void*,s32);
+s32 func_8000C940(s32 a0,s32*a1){if(!a1)func_8000C620(&D_80011BB0,&D_80011BB4,0x3d);while(*(volatile u32*)0xa4600010&3){}*a1=*(volatile s32*)(D_80000308|a0|(s32)&D_A0000000);return 0;}
+s32 func_8000CEC0(void*a0,s32 a2,s32 a3,s32 a4,s32 a5,s32 a6,s32 a7){s32*p;u64 r;p=a0;p[0]=0;p[1]=0;p[4]=a2;p[5]=a3;p[2]=a4;p[3]=a5;if(!a2&&!a3){p[4]=a4;p[5]=a5;}p[6]=a6;p[7]=a7;r=func_8000E100(a0,a6);if(*D_80012960==(s32)a0)func_8000E0A0(r,(u32)r);return 0;}
+s32 func_8000D1F0(s32 a0,s32 a1){s32 v;v=-1;if(a1&3)func_8000C620(&D_80011CA0,&D_80011CA4,0x37);if(!func_8000D2B0()){if(a0==1)func_8000EFA0(a1,0x40);*(volatile s32*)0xA4800000=func_8000E800(a1);*(volatile s32*)(a0?0xA4800010:0xA4800004)=0x1fc007c0;v=0;if(!a0){func_80007320(a1,0x40);v=0;}}return v;}
+s32 func_8000D2B0(void){return (*(volatile u32*)0xA4800018&3)!=0;}

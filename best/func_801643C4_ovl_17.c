@@ -1,0 +1,5 @@
+typedef struct {u8 pad[6];u8 state;u8 pad7[0x1dd];u16 f1e4;u8 pad1e6[2];s32 f1e8;u8 pad1ec[8];u16 f1f4;u8 pad1f6[0x96];s32 f28c;u32 f290;u8 pad294[0x3f];u8 f2d3;} Obj;
+s32 func_80033678_ovl_01(Obj*);s32 func_80089D34_ovl_01(Obj*,void*,void*,s32);s32 func_80164568_ovl_17(Obj*);s32 func_80166BF0_ovl_17(Obj*,s16);s16 func_80166F04_ovl_17(Obj*,s32);s32 func_8016716C_ovl_17(Obj*,s32,s16);
+void func_801643C4_ovl_17(Obj*p,void*a1,void*a2){u8 state=p->state;s16 t;u16 remain;s32 mode;
+switch(state){case 0:p->state=1;p->f1f4=0x10;p->f1e8=0x1000300;case 1:t=func_80166F04_ovl_17(p,0x40);func_80166BF0_ovl_17(p,t);if(t){remain=p->f1f4-1;p->f1f4=remain;if((s16)remain!=0)goto draw;}p->state=2;p->f1e8=0xb000300;if(p->f2d3){mode=(p->f290&0x3fffffff)<0xbb8?0x89:0x88;}else{mode=p->f28c<0xbb8?0x89:0x88;}func_8016716C_ovl_17(p,mode,func_80164568_ovl_17(p));draw:func_80089D34_ovl_01(p,a1,a2,0x400);break;case 2:if(func_80089D34_ovl_01(p,a1,a2,0x400)){p->pad[5]=4;p->state=0;*(u8*)((u8*)p+0x2cd)=0;}break;case 3:if(func_80162BAC_ovl_17(p,a1,a2)){p->pad[5]=4;p->state=0;*(u8*)((u8*)p+0x2cd)=0;}break;}
+func_80033678_ovl_01(p);}

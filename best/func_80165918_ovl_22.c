@@ -1,0 +1,1 @@
+void func_80162348_ovl_22(void*,s32,s32);void func_801658AC_ovl_22(void*);typedef void (*Cb)(void*,s32,s32);extern Cb D_8016685C_ovl_22[];void func_80165918_ovl_22(u8*p,s32 a1,s32 a2){u8 v=p[5];if(v!=255){p[0x2c5]=v;func_80162348_ovl_22(p,a1,a2);p[5]=255;func_801658AC_ovl_22(p);}D_8016685C_ovl_22[p[0x26e]](p,a1,a2);}

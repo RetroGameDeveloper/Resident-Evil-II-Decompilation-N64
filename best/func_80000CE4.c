@@ -1,0 +1,2 @@
+typedef struct { void *p; s32 u4,count,base,limit; s32 *items; } X; extern X D_80017730[]; extern s32 D_80017734; extern char D_80012948;
+void func_80000CE4(s32 index) { X *q=(X *)((u8 *)D_80017730+index); s32 a,b,r; if (!q) return; a=q->count; b=q->limit; if(a>=b)return; r=(q->base+a)%b; q->items[r]=D_80017734; q->count=a+1; if (*(s32*)q->p) { s32 v=func_80000F50(q); func_80000F08(&D_80012948,v); } }

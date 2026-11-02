@@ -1,0 +1,2 @@
+extern u8 D_800C7650_ovl_01[];
+void func_80033434_ovl_01(s16*out,s32 flag,u16*rec,s32*tab){u8*base=D_800C7650_ovl_01+0x18000;u8*obj=*(u8**)(base+0x288);u32 i=*(u8*)(obj+0x1e8);u32 word=tab[i];u32 low=word&0xffff;u32 high=word>>16;u32 n;u32*ptr;u16*src;if(flag){n=low-*(u8*)(obj+0x1e9)-1;}else{n=*(u8*)(obj+0x1e9);}ptr=(u32*)(tab+high+n);if(*ptr&0x8000){do{ptr++;}while(*ptr&0x8000);}src=(u16*)((u8*)rec+rec[0]+((rec[2]>>2)*(*ptr&0xfff)*4));out[0]=src[2];out[1]=src[5];out[2]=src[4];}

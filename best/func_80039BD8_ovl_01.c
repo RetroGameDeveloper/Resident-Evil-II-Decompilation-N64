@@ -1,0 +1,3 @@
+extern void *D_800EBB34_ovl_01; s32 func_80039AD0_ovl_01(void*,s32,void**);
+void func_80039BD8_ovl_01(void){volatile u8*p=D_800EBB34_ovl_01;u16 a;u8 b;u16 c,d;u8 i,e,x,y,n;u32 base,q;
+a=*(volatile u16*)(p+0x12);*(volatile u16*)(p+0x18)=a;b=*(volatile u8*)(p+2);*(volatile u8*)(p+0x21)=b;c=*(volatile u16*)(p+0x2a);d=*(volatile u16*)(p+0x14);*(volatile u16*)(p+0x2a)=c|d;i=*(volatile u8*)(p+0x21);base=*(volatile u32*)(p+0x70);e=*(volatile u8*)(base+i*8+2);*(volatile u8*)(p+0x20)=e;x=*(volatile u8*)(p+0x1f);y=*(volatile u8*)(p+0xb);*(volatile u8*)(p+0x1f)=x+y;n=*(volatile u8*)(p+0x1f);q=*(volatile u32*)(p+0x78);func_80039AD0_ovl_01((void*)p,q+n*24,(void**)p);}

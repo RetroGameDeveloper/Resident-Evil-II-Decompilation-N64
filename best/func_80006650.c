@@ -1,0 +1,7 @@
+extern u32 D_800128AC; extern s32 D_800C5278; extern u32 func_80005438(s32);
+u32 func_80005E84(s32 arg0,u32 arg1){ u32 v; if ((arg0 & 0xFFFF)==0xFFFF) return arg1; D_800128AC=D_800C5278+0xAF800; v=func_80005438(arg0&0xFFFF); if(D_800128AC<v) __builtin_trap(); return v; }
+void func_80006650(u8 *a0,s32 a1){ s32 v1; s32 a3; if(a1>=12){v1=-(s32)a0&3; a1-=v1; if(v1){ *(u32*)a0=0; a0+=v1;} a3=a1&~31; a1-=a3; if(a3){u8 *end=a0+a3; do { *(u32*)(a0+0)=0;*(u32*)(a0+4)=0;*(u32*)(a0+8)=0;*(u32*)(a0+12)=0;a0+=32;*(u32*)(a0-16)=0;*(u32*)(a0-12)=0;*(u32*)(a0-8)=0;*(u32*)(a0-4)=0;}while(a0!=end);} a3=a1&~3;a1-=a3;if(a3){u8 *end=a0+a3;do{a0+=4;*(u32*)(a0-4)=0;}while(a0!=end);}} if(a1>0){u8 *end=a0+a1;do{a0++;a0[-1]=0;}while(a0!=end);}}
+extern u8 D_80014F9C; extern u8 D_80014FA0;
+void func_80006778(u16 *arg0){u16 *t1=arg0;u8 *t0=&D_80014FA0; s32 a3=0; if((s32)D_80014F9C>0){u8 *a2=(u8*)arg0+6; do {u32 v0=*(u32*)(t0);u32 v1=*(u32*)(t0+4);u8 b2=((u8*)&v0)[2];u8 b6=((u8*)&v1)[2],b7=((u8*)&v1)[3];u32 temp=(b2&0xC0)>>4; a2[1]=temp; if(!temp){*t1=*(u16*)(t0+4);a2[-1]=b6;a2[0]=b7;} a3++;t0+=8;a2+=6;t1+=3;}while(a3<(s32)D_80014F9C);}}
+extern s32 D_80014FDC;
+void func_80006814(void){u8 *a3=&D_80014FA0; s32 a2=14; u32 *v0=(u32*)(a3+56); s32 count; u8 vals[8]; do{*v0=0;a2--;v0--;}while(a2>=0); count=D_80014F9C; a2=0; D_80014FDC=1; vals[0]=255; vals[1]=1; vals[2]=4; vals[3]=1; vals[4]=255; vals[5]=255; vals[6]=255; vals[7]=255; if(count>0) do{*(u32*)(a3)=*(u32*)vals;*(u32*)(a3+4)=*(u32*)(vals+4);a2++;a3+=8;}while(a2<count);*a3=254;}

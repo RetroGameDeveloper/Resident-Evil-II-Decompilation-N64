@@ -1,0 +1,5 @@
+typedef struct {u8 pad[5];u8 f5;} S5; typedef void(*Fn)(void*,void*,void*); extern Fn D_8016E12C_ovl_11[],D_8016E16C_ovl_11[]; void func_801629E4_ovl_11(S5*p,void*a1,void*a2){D_8016E12C_ovl_11[p->f5](p,a1,a2);D_8016E16C_ovl_11[p->f5](p,a1,a2);}
+typedef void(*Fn0)(void*); extern Fn0 D_8016E0F4_ovl_11[]; void func_801629AC_ovl_11(void*p){D_8016E0F4_ovl_11[(*(u16*)((u8*)p+0x1aa))&0x3f](p);}
+extern void func_80077D48_ovl_01(u32,void*); void func_80162EF8_ovl_11(void*p){u32 x=*(u32*)(*(u32*)((u8*)p+0x214));u32 t=x>>28;if((x&0x08000000)&&t<2)func_80077D48_ovl_01(t,p);}
+extern s32 func_80032EA4_ovl_01(); extern u8 D_800C7650_ovl_01[];
+void func_801652E4_ovl_11(void*p){u8*s=D_800C7650_ovl_01+0x18000;s32 v=*(s32*)((u8*)p+0x28c);func_80032EA4_ovl_01(*(s32*)(s+0x1aa8),*(s32*)(s+0x1ab0),0x400);if((func_80032EA4_ovl_01(p,*(s32*)(s+0x1aa8),*(s32*)(s+0x1ab0),0x200)<<16)==0&&v<0x514&&! (s[0x1cef]&0x80)&&(*(u16*)((u8*)p+0x1f0)&0x800)&&((u8*)p)[0x1a2]==s[0x1c22]){*(u32*)((u8*)p+4)=0x01010000;s[0x1cef]|=0x80;}}

@@ -1,0 +1,2 @@
+s32 func_80008F30(s32 arg0){s32 crc=0; s32 count=15; do {s32 mask=(crc&0x10)!=0; s32 bit=arg0&0x400; crc <<=1; if(bit) crc|=1; crc ^= -mask & 0x15; arg0 <<=1; count--;}while(count>=0);return crc&0x1f;}
+void func_80007B6C(void){extern void *D_80017770;extern s32 D_80017774;extern char D_80012948; struct X{void *p;s32 unk4,unk8,unkC,unk10,unk14;};struct X*q=D_80017770;s32 a,b;if(q){a=q->unk8;b=q->unk10;if(a<b){((s32*)q->unk14)[(q->unkC+a)%b]=D_80017774;q->unk8++;if(*(s32*)q->p)func_80000F08(&D_80012948,func_80000F50(q,q));}}}

@@ -1,0 +1,1 @@
+extern s32 func_80007000(void); extern s32 func_800072E0(void); extern void func_80007300(s32); extern s32 D_80017820,D_80017828,D_8001782C; s32 func_80007030(void){s32 a=func_800072E0();s32 b=func_80007000();s32 x=b-D_80017820;s32 c=D_80017828; s32 d=D_8001782C;func_80007300(a);return c+((u32)(d+x)<(u32)x);}

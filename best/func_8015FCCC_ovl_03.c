@@ -1,0 +1,2 @@
+extern u8 D_80160808_ovl_03[]; extern u8 D_80160B9C_ovl_03[]; extern u8 D_800C7650_ovl_01[]; extern s32 func_80046FC8_ovl_01(s32,void*);
+void func_8015FCCC_ovl_03(void){u8 *s=D_80160808_ovl_03;u8 *t=D_80160B9C_ovl_03;u8 c=t[0x15];s[0x24]=c;s[0x25]=c;s[0x26]=c;s[4]=c;s[5]=c;s[6]=c;if(*(s16*)(t+0x14)>0){s32 *p=(s32*)(D_800C7650_ovl_01+0x18204);s32 a=*p; s32 b=func_80046FC8_ovl_01(a,s);*p=a;a=func_80046FC8_ovl_01(b,s+0x20);*p=b;*p=a;}}

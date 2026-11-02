@@ -1,0 +1,63 @@
+typedef struct { u8 b[0x28]; } E40;
+
+s32 func_800439B8_ovl_01(s32 arg0, void *arg1, s32 arg2, s32 arg3, s32 arg4, void *arg5);
+
+extern E40 D_80160BB8_ovl_03[];
+extern u8 D_800DF650_ovl_01[];
+
+void func_8015F790_ovl_03(void) {
+    E40 *t1;
+    u8 *s5;
+    u32 s2;
+    s32 s0, s1, s3, s6, s7, t0, idx;
+    s32 c;
+    u8 v;
+
+    for (s2 = 0; s2 < 2; s2++) {
+        for (s0 = 0; s0 == 0; s0++) {
+            s0++;
+        }
+    }
+
+    s2 = 0;
+    c = 0x80;
+    t1 = D_80160BB8_ovl_03;
+    s5 = (u8 *)t1 - 0x1C;
+    s7 = 0x618;
+    t0 = 0x27;
+    do {
+        u8 *s4 = D_800DF650_ovl_01;
+
+        s0 = 0;
+        s6 = s2 * 2;
+        s1 = t0;
+        s3 = 0x27;
+        for (; s0 == 0; s0++) {
+            t1[s1].b[2] = c;
+            t1[s1].b[1] = c;
+            t1[s1].b[0] = c;
+            if (s2 == s5[6]) {
+                idx = s4[0x538];
+                if (s0 == 0) {
+                    *(s16 *)(s5 + 0x26 + idx * 20 + s7) = 0;
+                } else {
+                    *(s16 *)(s5 + 0x26 + idx * 20 + (s6 + s3) * 40) = 0;
+                }
+                v = s5[7] + 0x80;
+                t1[s1].b[2] = v;
+                t1[s1].b[1] = v;
+                t1[s1].b[0] = v;
+            } else {
+                idx = s4[0x538];
+                *(s16 *)(s5 + 0x26 + idx * 20 + (s6 + s3) * 40) = 0x100;
+            }
+            *(s32 *)(s4 + 0x204) =
+                func_800439B8_ovl_01(*(s32 *)(s4 + 0x204), &t1[s1], 0, 0, t0, t1);
+            s1++;
+            s3++;
+        }
+        s7 += 0x50;
+        s2++;
+        t0 += 2;
+    } while (s2 < 2);
+}

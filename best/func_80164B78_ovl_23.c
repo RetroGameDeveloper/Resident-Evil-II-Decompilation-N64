@@ -1,0 +1,1 @@
+s32 func_801648EC_ovl_23(void);extern void *D_801665AC_ovl_23[];void func_80164B78_ovl_23(void*a,s32 b,s32 c){s32 v=*(u8*)((u8*)a+5);if(v!=255){*(u8*)((u8*)a+0x2bb)=v;*(u8*)((u8*)a+5)=255;func_801648EC_ovl_23();}((void(*)(void*,s32,s32))D_801665AC_ovl_23[*(u8*)((u8*)a+0x26e)])(a,b,c);}

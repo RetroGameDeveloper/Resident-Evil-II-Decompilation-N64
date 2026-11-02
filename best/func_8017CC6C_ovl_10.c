@@ -1,0 +1,2 @@
+/* trial 0 */
+extern u8 D_8017E860_ovl_10[]; extern u8 D_8017E864_ovl_10[]; void func_8017CC6C_ovl_10(void){s16 t1,fp,s6,s3; s32 t2;u8*s2,*s0;for(t1=0;t1<3;t1++){t2=t1*0x3400+0x7354;for(fp=0;fp<2;fp++){s2=D_8017E860_ovl_10+t2+fp*0x1A00;for(s6=0;s6<16;s6++){s0=s2+10;for(s3=0;s3<8;s3++){*(s16*)(s0+12)=0x95;*(u32*)(s0+0x26)=(u32)D_8017E864_ovl_10;*(s16*)s0=0;*(s32*)s2=2;func_8004790C_ovl_01(s2,s3,s6);s0+=0x34;s2+=0x34;}}}}}

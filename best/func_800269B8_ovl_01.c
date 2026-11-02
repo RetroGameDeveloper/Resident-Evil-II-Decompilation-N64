@@ -1,0 +1,2 @@
+extern s32 D_800C4F20_ovl_01[];extern s32 D_800E90B0_ovl_01,D_80113790_ovl_01,D_80113794_ovl_01;s32 func_80026954_ovl_01(s32,s32,s32,s32,s32,s32);
+void func_800269B8_ovl_01(s32 arg0){s32 index=arg0;s32 *base=D_800C4F20_ovl_01;s32 *p=base+index*10;u32 limit=(u32)D_80113790_ovl_01*(u32)D_80113794_ovl_01;for(;;){u32 w=(p[0]-p[3]-p[2])*(p[1]-p[5]-p[4]);if(w<=limit)break;p-=10;index--;}D_800E90B0_ovl_01=index;func_80026954_ovl_01(p[0],p[1],p[2],p[3],p[4],p[5]);}

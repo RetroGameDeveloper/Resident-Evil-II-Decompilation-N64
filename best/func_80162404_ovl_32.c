@@ -1,0 +1,2 @@
+s32 func_80032EA4_ovl_01(void*,void*,void*,s32); s32 func_80059E30_ovl_01(s32,s32); extern s32 D_800C7650_ovl_01;
+void func_80162404_ovl_32(void*p){u8*b=p;u8*g=(u8*)&D_800C7650_ovl_01+0x18000;u32 n=*(u32*)(b+0x28c);s32 result=func_80032EA4_ovl_01(p,*(void**)(g+0x1aa8),*(void**)(g+0x1ab0),0x80);if(*(s32*)(b+0x28)<0x2329)return;if(n>=0x1770)return;if(result<<16)return;if(g[0x1cef])return;if(*(s16*)(g+0x1c72)>0)return;if(*(u16*)(b+0x2c2)&4)return;*(s32*)(b+4)=0x1040000;func_80059E30_ovl_01(0x1f4,0);g[0x1cef]|=0x80;b[0x2b4]=4;b[0x2b5]=0;*(s32*)(g+0x1a3c)|=0x100;}

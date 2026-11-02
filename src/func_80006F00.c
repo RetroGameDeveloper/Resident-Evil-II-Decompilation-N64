@@ -1,0 +1,1 @@
+void func_80006F00(u32 *p){volatile u32 *q0=(u32*)0xA4100010;volatile u32 *q1=(u32*)0xA4100014;volatile u32 *q2=(u32*)0xA4100018;volatile u32 *q3=(u32*)0xA410001C;*p=*q0;p++;*p=*q1;p++;*p=*q2;p[1]=*q3;}

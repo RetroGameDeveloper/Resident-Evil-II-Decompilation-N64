@@ -1,0 +1,2 @@
+extern s32 D_800E90C0_ovl_01,D_800E90C4_ovl_01,D_8010BF48_ovl_01; extern u8 D_80160B9C_ovl_03; extern void (*D_80160AB8_ovl_03[])(void);
+void func_8015AFD0_ovl_03(void){D_800E90C0_ovl_01=-1;D_800E90C4_ovl_01=-1;D_8010BF48_ovl_01=1;func_80052BEC_ovl_01(0x5000,0xA02);D_80160B9C_ovl_03=0;for(;;){if(D_80160B9C_ovl_03>=2)func_8015FB80_ovl_03();D_80160AB8_ovl_03[D_80160B9C_ovl_03]();func_8004CDB8_ovl_01(1);}}

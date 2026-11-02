@@ -1,0 +1,5 @@
+extern s32 func_80032B8C_ovl_01(void*,s32); extern s32 func_800334F8_ovl_01(void*,s32,s32,s32); extern s32 func_80033634_ovl_01(void); extern s32 func_80089D34_ovl_01(void*,s32,s32,s32); extern s8 D_80167F4A_ovl_20; extern s8 D_80167F4B_ovl_20;
+void func_8016693C_ovl_20(void *arg0,s32 arg1,s32 arg2){u32 x,y;void *q;u8 st=*((u8*)arg0+6);*((u8*)arg0+0x2be)|=0x82;
+switch(st){case 0:q=*(void**)((u8*)arg0+0x234);*(s32*)((u8*)arg0+0x1e8)=0x06000700;*((u8*)arg0+6)=1;*(s16*)((u8*)arg0+0x1f4)=0;*((u8*)arg0+0x25c)&=0xfd;*(u16*)((u8*)arg0+0x66)+=*(u16*)((u8*)q+0x5a);*(u16*)((u8*)q+0x5a)=0;*(u16*)((u8*)arg0+0x2ba)|=0x1000;
+case 1:func_800334F8_ovl_01(arg0,arg1,arg2,0);if(func_80089D34_ovl_01(arg0,arg1,arg2,0x200)){*(s32*)((u8*)arg0+4)=0x01010000;q=*(void**)((u8*)arg0+0x234);*((u8*)arg0+0x2be)&=0x7f;*(s32*)((u8*)q+0x2f0)&=~0xc00;*(s32*)((u8*)q+0x468)&=~0xc00;*(u16*)((u8*)arg0+0x2ba)&=0xefff;}func_80032B8C_ovl_01(arg0,0);break;}
+if(!(*((u8*)arg0+0x1e9)&15)){x=(u32)func_80033634_ovl_01()&255;D_80167F4A_ovl_20=3-(x%6);y=(u32)func_80033634_ovl_01()&255;D_80167F4B_ovl_20=15-(y%30);}}

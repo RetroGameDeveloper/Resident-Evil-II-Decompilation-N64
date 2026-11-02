@@ -1,0 +1,5 @@
+extern s32 func_8017BB4C_ovl_02(void); extern s32 func_8017BB30_ovl_02(s32); extern s32 func_8017BB68_ovl_02(s8); extern s32 D_80185700_ovl_02; extern s8 D_80184AF0_ovl_02[],D_80184B00_ovl_02[],D_80184B9C_ovl_02[],D_80184BB4_ovl_02[],D_80184BC4_ovl_02[]; extern u16 D_80185BDC_ovl_02[],D_80186614_ovl_02[];
+s32 func_8017F2F0_ovl_02(void){ if(func_8017BB4C_ovl_02())return 1; if(func_8017BB4C_ovl_02())return 17; D_80185700_ovl_02=1;return 17;}
+s8 func_8017F334_ovl_02(void){s32 n=func_8017BB30_ovl_02(6);s8 *p;if(n<8){if(n==0){D_80185700_ovl_02=1;return 0;}p=D_80184B00_ovl_02;}else{n>>=3;p=D_80184AF0_ovl_02;}func_8017BB68_ovl_02(p[n*2+1]);return p[n*2];}
+s8 func_8017F53C_ovl_02(void){s32 n=func_8017BB30_ovl_02(9);s8 *p;if(n<64){if(n<16){if(n<8){D_80185700_ovl_02=1;return 0;}p=D_80184BC4_ovl_02;}else{n>>=2;p=D_80184BB4_ovl_02;}}else{n>>=5;p=D_80184B9C_ovl_02;}func_8017BB68_ovl_02(p[n*2+1]);return p[n*2];}
+void func_8017EE08_ovl_02(s32 n){u16 *dst=D_80185BDC_ovl_02+(n<<6);u16 *src=D_80186614_ovl_02+(n<<6);s32 i=0;do{u16 x=*src++;u16 y=*dst;*dst++=y+x;i++;}while(i<64);}

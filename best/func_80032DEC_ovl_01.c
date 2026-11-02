@@ -1,0 +1,5 @@
+s16 func_80032D44_ovl_01(s16,s16,s16,s16);
+s32 func_80033190_ovl_01(void*p,void*q){s16 v=func_80032D44_ovl_01(*(s16*)((u8*)p+0x2a),*(s16*)((u8*)p+0x32),*(s16*)((u8*)q+0x2a),*(s16*)((u8*)q+0x32));return (((*(u16*)((u8*)q+0x66)-v)+0x400)&0xfff)<0x800;}
+void func_80032F24_ovl_01(void*p,u16 a,s16 d){s16 v; s32 x;u16 y,z;v=d;y=a;if(d&0x8000){v=-d;y=(a+0x800)&0xfff;}x=(v+(y-*(u16*)((u8*)p+0x66)))&0xfff;z=*(u16*)((u8*)p+0x66)-v;if(x<((s32)(v<<16)>>15)){*(u16*)((u8*)p+0x66)=y;return;}*(u16*)((u8*)p+0x66)=z;if((u32)x<0x801)*(u16*)((u8*)p+0x66)=z+v*2;}
+s16 func_80032EA4_ovl_01(void*p,s16 a,s16 b,s16 c){s32 x=(c+(func_80032D44_ovl_01(*(s16*)((u8*)p+0x2a),*(s16*)((u8*)p+0x32),a,b)-*(u16*)((u8*)p+0x66)))&0xfff;s16 r=0;if(x>=c*2){r=c;if((u32)x>=0x801)r=-c;}return r;}
+void func_80032DEC_ovl_01(void*p,s16 a,s16 b,s16 d){s16 dir;u16 ang,v; s32 x;dir=d;v=func_80032D44_ovl_01(*(s16*)((u8*)p+0x2a),*(s16*)((u8*)p+0x32),a,b);if(d&0x8000){dir=-d;v=(v+0x800)&0xfff;}ang=*(u16*)((u8*)p+0x66);x=(dir+(v-ang))&0xfff;if(x<((s32)(dir<<16)>>15)){*(u16*)((u8*)p+0x66)=v;return;}ang=ang-dir;*(u16*)((u8*)p+0x66)=ang;if((u32)x<0x801)*(u16*)((u8*)p+0x66)=ang+dir*2;}

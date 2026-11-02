@@ -1,0 +1,2 @@
+typedef struct {u8 pad[0x19A5C];u32 flags;} G; extern G D_800C7650; extern void *D_8011A6B8; extern u32 D_80012884; extern u8 D_80012888,D_8011A22F; extern s32 D_80012878; extern s32 func_800B35E0_ovl_01();
+void func_80004A6C(s32 i){void *p=D_8011A6B8;u16 x; s32 y;if(!p)return;D_800C7650.flags|=0x20;x=((u16*)p)[i];D_80012884=1;y=x&0xffff;if(x&0x8000)y=x&0x7fff;D_80012878=func_800B35E0_ovl_01(0,0,0,0,0,0x3f,0x7f,y);}

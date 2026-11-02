@@ -1,0 +1,7 @@
+s16 func_80032D44_ovl_01(s16,s16,s16,s16); s32 func_80040BE4_ovl_01(s32); extern s32 D_800E10D0_ovl_01;
+s32 func_80161E8C_ovl_22(void *arg0,s32 arg1,u16 arg2,u16 arg3,s32 arg4,s32 arg5){
+u16 oldx,oldz;u8 *p;u8 frame;s32 i,dx,dz,d0,d1,dist,angle0,angle1,span,edge;
+oldx=*(u16*)((u8*)arg0+0x2b8);oldz=*(u16*)((u8*)arg0+0x2ba);i=arg1*3;i=(i<<4)-arg1;i<<=3;p=(u8*)(*(s32*)((u8*)arg0+0x234))+i;frame=*(u8*)((u8*)arg0+0x1e9);*(u16*)((u8*)arg0+0x2b8)=*(u16*)(p+0x4e);*(u16*)((u8*)arg0+0x2ba)=*(u16*)(p+0x56);if(frame<arg2)return 0;if(arg3<frame)return 0;
+dx=*(s32*)((u8*)arg0+0x28)-*(s32*)(p+0x4c);dz=*(s32*)((u8*)arg0+0x30)-*(s32*)(p+0x54);d0=func_80040BE4_ovl_01(dx*dx+dz*dz);
+dx=*(s32*)((u8*)arg0+0x28)-(s16)oldx;dz=*(s32*)((u8*)arg0+0x30)-(s16)oldz;d1=func_80040BE4_ovl_01(dx*dx+dz*dz);dist=(arg5+0x1f4+d0+d1)>>1;if(*(s16*)((u8*)arg0+0x1f4)!=0)return 0;if(*(u32*)((u8*)arg0+0x28c)>=dist)return 0;
+angle0=func_80032D44_ovl_01(*(s16*)((u8*)arg0+0x2a),*(s16*)((u8*)arg0+0x32),(s16)oldx,(s16)oldz);angle1=func_80032D44_ovl_01(*(s16*)((u8*)arg0+0x2a),*(s16*)((u8*)arg0+0x32),*(s16*)(p+0x4e),*(s16*)(p+0x56));if(angle1<angle0){i=angle0;angle0=angle1;angle1=i;}span=(angle1-angle0)&0xfff;if(span>=0x800){angle0=span+angle0-0x1000;span=0x1000-span;}edge=(func_80032D44_ovl_01(*(s16*)((u8*)arg0+0x2a),*(s16*)((u8*)arg0+0x32),*(s16*)((u8*)&D_800E10D0_ovl_01+0x2a),*(s16*)((u8*)&D_800E10D0_ovl_01+0x32))-(angle0-arg4))&0xfff;if(edge>0&&edge<span+arg4*2){*(s16*)((u8*)arg0+0x1f4)=1;return 1;}return 0;}

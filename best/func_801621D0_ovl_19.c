@@ -1,0 +1,4 @@
+extern u8 D_800C7650_ovl_01[]; extern s32 func_80040E88_ovl_01(void*,void*); extern s32 func_8004279C_ovl_01(void*,void*,void*); extern s32 func_80032EA4_ovl_01(s32,s32,s32);
+s32 func_80163D20_ovl_19(void){u8 *p=D_800C7650_ovl_01+0x18000;s32 a=*(s32*)(p+0x268);u16 b=*(u16*)(p+0x1a7a);s32 x;if(b&2)x=3+((a&0x34f)!=0);else x=(a&0x34f)!=0;return x;}
+void func_80164900_ovl_19(void *arg0,s16 arg1,s16 arg2){s16 h[4];s32 tmp[8];h[0]=0;h[1]=arg2;h[2]=0;func_80040E88_ovl_01(h,tmp);h[0]=arg1;h[1]=0;h[2]=0;func_8004279C_ovl_01(tmp,h,h);*(s32*)((u8*)arg0+0x28)=h[0]+*(s32*)(D_800C7650_ovl_01+0x19aa8);*(s32*)((u8*)arg0+0x30)=h[2]+*(s32*)(D_800C7650_ovl_01+0x19ab0);}
+void func_801621D0_ovl_19(void *arg0){u32 cnt=*(u32*)((u8*)arg0+0x28c);s32 ret;ret=func_80032EA4_ovl_01(*(s32*)(D_800C7650_ovl_01+0x19aa8),*(s32*)(D_800C7650_ovl_01+0x19ab0),0x80);if(cnt<0xbb8){if((ret<<16)==0)*(s32*)((u8*)arg0+4)=0x01020000;}}
