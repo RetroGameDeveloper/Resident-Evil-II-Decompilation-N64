@@ -1,5 +1,33 @@
-extern void *D_801806F0_ovl_04; extern u8 D_801801DC_ovl_04; extern u16 D_8018066A_ovl_04; extern u8 D_80180370_ovl_04[]; extern s32 func_8004A7F8_ovl_01(s32,s32,void*,s32); extern s32 func_8017B448_ovl_04(s32); extern s32 func_8004C24C_ovl_01(s16,s32,void*,s32); extern s32 func_8004CDB8_ovl_01(s32); extern s32 func_8017FD3C_ovl_04(s32); extern void func_8017F7C4_ovl_04(void); extern s32 func_8017FF08_ovl_04(s32); extern s32 func_8017FE8C_ovl_04(void);
-void func_8017F0D0_ovl_04(void){if(*(u8*)((u8*)D_801806F0_ovl_04+1)==0){func_8004A7F8_ovl_01(0,0,&D_801801DC_ovl_04,0);}}
-void func_8017F110_ovl_04(u8 *arg0){u32 i=0;u8 *p=D_801806F0_ovl_04;for(i=0;i<15;i++)arg0[i]=15;i=0;while(i<*(u8*)(p+0x176)&&i<15){s32 x=((s32)p[0x3e]-26)*10+p[0x3f];arg0[x]=i;i++;p+=22;}}
-s32 func_8017F33C_ovl_04(void){s32 x=func_8017B448_ovl_04(7);u16 v;void *p;v=D_8018066A_ovl_04;p=D_80180370_ovl_04;func_8004C24C_ovl_01(x,0xc0,(u8*)p+v,0x4002);func_8004CDB8_ovl_01(2);{s32 a=func_8017FD3C_ovl_04(0)&1;s32 b=func_8017FD3C_ovl_04(1)&1;return a|(b<<1);}}
-s32 func_8017FD3C_ovl_04(s32 arg0){s32 a=arg0,s0,s1=8,s2=255,s3=3;func_8017F7C4_ovl_04();do{if(func_8017FF08_ovl_04(a<<4)==0){s1--;goto next;}s0=func_8017FE8C_ovl_04();if(s0==3)return 3;if(s0&1){s2=s0;goto next;}if(s0==s2)return s0;s2=s0;next:s1--;}while(s1);return s0;}
+extern void func_8017F7C4_ovl_04(void);
+extern s32 func_8017FF08_ovl_04(s32);
+extern s32 func_8017FE8C_ovl_04(void);
+s32 func_8017FD3C_ovl_04(s32 arg0)
+{
+    s32 s3;
+    s32 s0;
+    s32 s1 = 8;
+    s32 s2 = 0xFF;
+    func_8017F7C4_ovl_04();
+    s3 = 3;
+loop:
+    if (func_8017FF08_ovl_04(arg0 << 4) == 0)
+    {
+        s1--;
+    }
+    else
+    {
+        s0 = func_8017FE8C_ovl_04();
+        if (s0 == s3)
+            goto ret3;
+        if (!(s0 & 1) && s0 == s2)
+            goto end;
+        s2 = s0;
+        s1--;
+    }
+    if (s1 != 0)
+        goto loop;
+end:
+    return s0;
+ret3:
+    return 3;
+}

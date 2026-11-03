@@ -1,34 +1,26 @@
-void func_8000EFA0(void *, s32);
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
 
-void func_800A5BF0_ovl_01(u8 *arg0, s32 arg1) {
-    u16 *src = (u16 *)arg0;
-    u16 *dst = (u16 *)(arg1 * 2 + (s32)arg0);
+M2C_UNK func_8000EFA0(void *, M2C_UNK);             /* extern */
 
-    dst[0] = src[0];
-    dst[1] = src[1];
-    dst[2] = src[2];
-    dst[3] = src[3];
-    func_8000EFA0(dst, 8);
-}
+void func_800A5BF0_ovl_01(void *arg0, s32 arg1) {
+    void *temp_a0;
 
-extern u8 *D_80143EAC;
-
-s32 func_800A5BA8_ovl_01(s32 arg0) {
-    return *(s32 *)(D_80143EAC + arg0 * 0x68 + 0x14);
-}
-
-extern s32 (*D_80143FA4)(void);
-
-s32 func_800A5C38_ovl_01(s32 arg0) {
-    s32 v = arg0 & 0xFF000000;
-
-    if (v == 0x80000000) {
-        goto end;
-    }
-    if (v == 0xB0000000) {
-        goto end;
-    }
-    arg0 = D_80143FA4();
-end:
-    return arg0;
+    temp_a0 = (arg1 * 2) + arg0;
+    M2C_FIELD(temp_a0, u16 *, 0) = (u16) M2C_FIELD(arg0, u16 *, 0);
+    M2C_FIELD(temp_a0, u16 *, 2) = (u16) M2C_FIELD(arg0, u16 *, 2);
+    M2C_FIELD(temp_a0, u16 *, 4) = (u16) M2C_FIELD(arg0, u16 *, 4);
+    M2C_FIELD(temp_a0, u16 *, 6) = (u16) M2C_FIELD(arg0, u16 *, 6);
+    func_8000EFA0(temp_a0, 8);
 }

@@ -1,5 +1,29 @@
-extern u8 D_800C7650_ovl_01[]; extern s32 func_80031C44_ovl_01(void); extern void func_8004DB8C_ovl_01(void*); extern void func_8004DCE8_ovl_01(void*,s32); extern u32 D_80162FD0_ovl_36[]; extern u32 D_80162FA0_ovl_36[];
-void func_80162004_ovl_36(void *p,s16 a1,s16 a2,s16 a3) { s32 v; *(s16*)((char*)p+0x28A)=0x190; *(s16*)((char*)p+0x64)=a1; *(s16*)((char*)p+0x66)=a2; *(s16*)((char*)p+0x68)=a3; *(s16*)((char*)p+0x134)=0; *((u8*)p+0x2C0)=1; *(u32*)p|=0x0800040C; v=*(s32*)(D_800C7650_ovl_01+0x18000+0x1AAC)-0xE10; if(v<*(s32*)((char*)p+0x2C)) *(u32*)p|=0x04000000; }
-void func_8016207C_ovl_36(void *p) { u8 *q=(u8*)p+0x2B4; u8 v; v=q[4]; if(v){v--;q[4]=v;if(!v) *(u16*)(D_800C7650_ovl_01+0x18000+0x1A78)&=0xFFEF;} v=q[1]; if(v) q[1]=v-1; ((void(*)(void*))D_80162FD0_ovl_36[*((u8*)p+5)])(q); }
-void func_80161C70_ovl_36(void *p) { if(!( *(u32*)(D_800C7650_ovl_01+0x18000+0x1A60)&0x20000000)){u8 v=*((u8*)p+0x26F);if(v&0x7F)*((u8*)p+0x26F)=v-1;((void(*)(void*,s32,s32))D_80162FA0_ovl_36[*((u8*)p+4)])(p,*(s32*)((char*)p+0x1A4),*(s32*)((char*)p+0x218));func_8004DB8C_ovl_01(p);func_8004DCE8_ovl_01(p,0x400);} }
-s32 func_80162EB4_ovl_36(void *p,s16 a1,s32 a2,s32 a3) { u8 *q=(u8*)p+0x2B4; s32 out=0; if(q[2]<q[10]) { void *obj=(void*)0x800040C; if(obj){if(*(u32*)p&0x2000)*(u32*)obj|=0x2000; *(s16*)((char*)obj+0x1AA)=a1; *(s32*)((char*)obj+0x28)=a2; *(s32*)((char*)obj+0x30)=a3; *(s32*)((char*)obj+0x2C)=*(s32*)((char*)p+0x2C); q[2]++; out=0x800040C;}} return out; }
+typedef union { u64 q; struct { u32 lo; u32 hi; } w; } U64;
+typedef void (*Fn)(void *);
+
+extern u8 D_800C7650_ovl_01[];
+extern volatile Fn D_80162FD0_ovl_36[];
+
+void func_8016207C_ovl_36(void *p)
+{
+    volatile u8 *q = (volatile u8 *)p + 0x2B4;
+    U64 b;
+    u8 *base;
+    u8 v;
+
+    v = q[4];
+    if (v) {
+        v--;
+        q[4] = v;
+        if (!v) {
+            b.w.lo = (u32)D_800C7650_ovl_01;
+            base = (u8 *)(b.w.lo + 0x18000);
+            *(u16 *)(base + 0x1A78) &= 0xFFEF;
+        }
+    }
+    v = q[1];
+    if (v) {
+        q[1] = v - 1;
+    }
+    D_80162FD0_ovl_36[((u8 *)p)[5]](p);
+}

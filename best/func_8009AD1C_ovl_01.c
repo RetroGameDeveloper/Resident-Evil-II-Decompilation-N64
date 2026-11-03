@@ -1,4 +1,4 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
 typedef s32 M2C_UNK;
@@ -15,7 +15,6 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_80027180_ovl_01(u8);                   /* extern */
 M2C_UNK func_8002751C_ovl_01(M2C_UNK, M2C_UNK);     /* extern */
 M2C_UNK func_800337F4_ovl_01();                     /* extern */
-M2C_UNK func_8004CD84_ovl_01(M2C_UNK, M2C_UNK *);   /* extern */
 M2C_UNK func_8004CDB8_ovl_01(M2C_UNK);              /* extern */
 M2C_UNK func_80052E24_ovl_01();                     /* extern */
 M2C_UNK func_80055210_ovl_01();                     /* extern */
@@ -24,7 +23,7 @@ M2C_UNK func_80065020_ovl_01(s16, void *);          /* extern */
 M2C_UNK func_80076A38_ovl_01();                     /* extern */
 M2C_UNK func_80083B2C_ovl_01(M2C_UNK);              /* extern */
 M2C_UNK func_80083C44_ovl_01(s16);                  /* extern */
-extern M2C_UNK D_8009B230_ovl_01;
+extern s32 D_8009B230_ovl_01;
 extern M2C_UNK D_800C7650_ovl_01;
 extern s8 D_800E9127_ovl_01;
 extern s16 D_8011A318_ovl_01;

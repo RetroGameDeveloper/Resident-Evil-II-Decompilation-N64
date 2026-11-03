@@ -2,7 +2,7 @@ extern void func_80032B8C_ovl_01(void *,s32);
 extern void func_80032DEC_ovl_01(void *,s16,s16,s32);
 extern s32 func_80033634_ovl_01(s32);
 extern void func_80065400_ovl_01(void *,void *,s32,s32);
-extern s32 func_80032F94_ovl_01(void *,void *,s16,s32);
+extern s32 func_80032F94_ovl_01_48(void *,void *,s16,s32);
 extern void func_80089D34_ovl_01(void *,s32,s32,s32);
 extern void func_80166458_ovl_12(void *);
 extern u8 D_800C7650_ovl_01[];
@@ -24,7 +24,7 @@ state1:
  func_80065400_ovl_01(arg0,p,0,0);
  func_80032DEC_ovl_01(arg0,*(s16 *)(arg0+0x260),*(s16 *)(arg0+0x262),0x10);
  func_80032B8C_ovl_01(arg0,0);
- rv=func_80032F94_ovl_01(arg0+0x28,p,*(s16 *)(arg0+0x66),0x100);
+ rv=func_80032F94_ovl_01_48(arg0+0x28,p,*(s16 *)(arg0+0x66),0x100);
  if(!rv && *(u32 *)(arg0+0x28c)<0x9c4) goto set2;
  if(arg0[0xd]!=0xff) {
 set2: arg0[6]=2;*(s32 *)(arg0+0x1e8)=0xf00;

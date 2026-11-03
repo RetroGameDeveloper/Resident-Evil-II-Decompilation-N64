@@ -1,29 +1,28 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+typedef struct {
+    u8 pad_00[5];
+    u8 unk_05;
+    u8 pad_06[0x2B7];
+    s8 unk_2BD;
+    u8 pad_2BE[8];
+    u16 unk_2C6;
+} S_arg0;
 
-extern M2C_UNK D_800C7650_ovl_01;
+extern u8 D_800C7650_ovl_01[];
 
-void func_80165F9C_ovl_13(void *arg0) {
-    u16 temp_v1;
+void func_80165F9C_ovl_13(S_arg0 *arg0) {
+    u16 v;
 
-    if ((M2C_FIELD(arg0, u16 *, 0x2C6) & 4) && ((u32) (M2C_FIELD(arg0, u8 *, 5) - 0xB) >= 4U)) {
-        M2C_FIELD(&D_800C7650_ovl_01, u16 *, 0x19A78) = (u16) (M2C_FIELD(&D_800C7650_ovl_01, u16 *, 0x19A78) & 0xFFFE);
-        M2C_FIELD(arg0, u16 *, 0x2C6) = (u16) (M2C_FIELD(arg0, u16 *, 0x2C6) & 0xFFFB);
+    if ((arg0->unk_2C6 & 4) && ((u32)(arg0->unk_05 - 0xB) >= 4U)) {
+        u32 off = 0x18000;
+        u64 b = (u64)(u32)D_800C7650_ovl_01;
+        u8 *p = (u8 *)(u32)(b & 0xFFFFFFFF);
+        p = (u8 *)((u32)p + off);
+        *(u16 *)(p + 0x1A78) &= 0xFFFE;
+        arg0->unk_2C6 = arg0->unk_2C6 & 0xFFFB;
     }
-    temp_v1 = M2C_FIELD(arg0, u16 *, 0x2C6);
-    if (temp_v1 & 0x80) {
-        M2C_FIELD(arg0, u16 *, 0x2C6) = (u16) (temp_v1 & 0xFF7F);
-        M2C_FIELD(arg0, s8 *, 0x2BD) = 0x78;
+    v = arg0->unk_2C6;
+    if (v & 0x80) {
+        arg0->unk_2C6 = v & 0xFF7F;
+        arg0->unk_2BD = 0x78;
     }
 }

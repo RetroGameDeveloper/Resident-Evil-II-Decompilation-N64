@@ -1,40 +1,53 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
-
-extern M2C_UNK D_80018B50_ovl_01;
-extern M2C_UNK D_8001B740_ovl_01;
-extern M2C_UNK D_800BB620_ovl_01;
+extern u8 D_800C75DC_ovl_01[];
+extern u8 D_80018B50_ovl_01[];
+extern u8 D_8001B740_ovl_01[];
+extern u8 D_800BB620_ovl_01[];
+extern u8 D_800C6958_ovl_01[];
 extern s32 D_800C4E40_ovl_01;
 extern s32 D_800C5684_ovl_01;
-extern M2C_UNK D_800C6958_ovl_01;
-extern void *D_800C75DC_ovl_01;
-extern M2C_UNK func_80018A80_ovl_01;
+void func_80018A80_ovl_01(void);
 
-void func_8002584C_ovl_01(void *arg0) {
-    D_800C75DC_ovl_01 = arg0;
-    M2C_FIELD(arg0, s32 *, 0) = 1;
-    M2C_FIELD(arg0, s32 *, 0xC) = (s32) (&D_80018B50_ovl_01 - &func_80018A80_ovl_01);
-    M2C_FIELD(arg0, s32 *, 0x14) = 0x1000;
-    M2C_FIELD(arg0, s32 *, 0x1C) = 0x800;
-    M2C_FIELD(arg0, M2C_UNK **, 0x10) = &D_8001B740_ovl_01;
-    M2C_FIELD(arg0, M2C_UNK **, 8) = &func_80018A80_ovl_01;
-    M2C_FIELD(arg0, M2C_UNK **, 0x18) = &D_800BB620_ovl_01;
-    M2C_FIELD(arg0, s32 *, 0x20) = 0;
-    M2C_FIELD(arg0, s32 *, 0x24) = 0;
-    M2C_FIELD(arg0, M2C_UNK **, 0x30) = &D_800C6958_ovl_01;
-    M2C_FIELD(arg0, s32 *, 0x38) = 0;
-    M2C_FIELD(arg0, s32 *, 0x3C) = 0;
-    M2C_FIELD(arg0, s32 *, 0x28) = (s32) D_800C4E40_ovl_01;
-    M2C_FIELD(arg0, s32 *, 0x2C) = (s32) D_800C5684_ovl_01;
+typedef struct {
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
+    u32 unkC;
+    u32 unk10;
+    u32 unk14;
+    u32 unk18;
+    u32 unk1C;
+    u32 unk20;
+    u32 unk24;
+    u32 unk28;
+    u32 unk2C;
+    u32 unk30;
+    u32 unk34;
+    u32 unk38;
+    u32 unk3C;
+} Obj;
+
+void func_8002584C_ovl_01(Obj *arg0) {
+    u32 f = (u32)&func_80018A80_ovl_01;
+    u32 bl = (u32)D_80018B50_ovl_01;
+    u32 *g = (u32 *)D_800C75DC_ovl_01;
+    u32 a;
+    u32 b;
+
+    *g = (u32)arg0;
+    arg0->unk0 = 1;
+    arg0->unkC = bl - f;
+    arg0->unk14 = 0x1000;
+    arg0->unk1C = 0x800;
+    arg0->unk10 = (u32)D_8001B740_ovl_01;
+    arg0->unk8 = f;
+    arg0->unk18 = (u32)D_800BB620_ovl_01;
+    a = D_800C4E40_ovl_01;
+    b = D_800C5684_ovl_01;
+    arg0->unk20 = 0;
+    arg0->unk24 = 0;
+    arg0->unk30 = (u32)D_800C6958_ovl_01;
+    arg0->unk38 = 0;
+    arg0->unk3C = 0;
+    arg0->unk28 = a;
+    arg0->unk2C = b;
 }

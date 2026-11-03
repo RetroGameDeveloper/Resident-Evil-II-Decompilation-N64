@@ -1,8 +1,62 @@
-extern s32 func_80077D48_ovl_01(s32,void*); extern s32 D_80166CB4_ovl_12[];
-void func_801620C0_ovl_12(void *arg0){void *p;((void(*)(void))D_80166CB4_ovl_12[*(u8*)((char*)arg0+5)])();p=*(void**)((char*)arg0+0x214);if(*(u32*)p&0x40000)func_80077D48_ovl_01(8,arg0);}
-extern s32 func_80162120_ovl_12(void); extern s32 func_80166B20_ovl_12(void*,s32,void*); extern u8 D_800C7650_ovl_01[];
-void func_8016234C_ovl_12(void *arg0){s32 ret;u8 *base;ret=func_80162120_ovl_12();base=D_800C7650_ovl_01+0x18000;if(base[0x1c22]!=*((u8*)arg0+0x1a2))goto done;if(*(u32*)((char*)arg0+0x28c)<4000){*(u8*)((char*)arg0+5)=1;*(u16*)((char*)arg0+6)=0;}else if(ret==1){*(u8*)((char*)arg0+5)=1;*(u16*)((char*)arg0+6)=0;}else if(*(u16*)(base+0x1a78)&0x20){*(u8*)((char*)arg0+5)=1;*(u16*)((char*)arg0+6)=0;}else if(*(u16*)(base+0x1a7a)&1){*(u8*)((char*)arg0+5)=2;*(u16*)((char*)arg0+6)=0;}done:func_80166B20_ovl_12(arg0,ret,base);}
-extern void func_80165AB8_ovl_12(void); extern s32 func_80033634_ovl_01(void); extern s32 func_80166900_ovl_12(void*,s32,s32);
-void func_80166100_ovl_12(void *arg0){s32 i;u8 mode;func_80165AB8_ovl_12();mode=*(u8*)((char*)arg0+0x26e);if(mode<3){i=0;do{*(u32*)(*(u8**)((char*)arg0+0x234)+i*0x178+0x60)=0x3f2f;i++;}while(i<17);*(u8*)((char*)arg0+0x2bb)=2;func_80166900_ovl_12(arg0,func_80033634_ovl_01()&7,9);func_80033634_ovl_01();func_80166900_ovl_12(arg0,(func_80033634_ovl_01()&7)|8,10);}}
-extern s32 D_80166EE8_ovl_12[]; extern s32 func_80033634_ovl_01(void); extern s32 func_80166900_ovl_12(void*,s32,s32);
-void func_80166190_ovl_12(void *arg0){u8 n;((void(*)(void))D_80166EE8_ovl_12[*(u8*)((char*)arg0+6)])();n=*(u8*)((char*)arg0+0x207)+1;*(u8*)((char*)arg0+0x207)=n;if(n&1){func_80166900_ovl_12(arg0,func_80033634_ovl_01()&15,11);func_80166900_ovl_12(arg0,func_80033634_ovl_01()&15,11);}}
+typedef struct S_func_8016234C_ovl_12_arg0
+{
+  u8 pad_00[5];
+  s8 unk_05;
+  u16 unk_06;
+  u8 pad_08[0x1A2 - 0x08];
+  u8 unk_1A2;
+  u8 pad_1A3[0x28C - 0x1A3];
+  u32 unk_28C;
+} S_func_8016234C_ovl_12_arg0;
+s32 func_80162120_ovl_12(void);
+void func_80166B20_ovl_12(void *, s32, u8 *);
+extern u8 D_800C7650_ovl_01[];
+void func_8016234C_ovl_12(S_func_8016234C_ovl_12_arg0 *arg0)
+{
+  union 
+  {
+    u64 q;
+    struct 
+    {
+      u32 lo;
+      u32 hi;
+    } w;
+  } b;
+  u8 *base;
+  u32 off;
+  s32 ret;
+  ret = func_80162120_ovl_12();
+  off = 0x18000;
+  b.q = (u64) ((u32) D_800C7650_ovl_01);
+  base = (u8 *) (off + ((u32) b.q));
+  if (base[0x1C22] == arg0->unk_1A2)
+  {
+    if (arg0->unk_28C < 0xFA0)
+    {
+      arg0->unk_05 = 1;
+      arg0->unk_06 = 0;
+    }
+    else
+      if (ret == 1)
+    {
+      arg0->unk_05 = 1;
+      arg0->unk_06 = 0;
+    }
+    else
+      if ((*((u16 *) (base + 0x1A78))) & 0x20)
+    {
+      arg0->unk_05 = 1;
+      arg0->unk_06 = 0;
+    }
+    else
+    {
+      if ((*((u16 *) (base + 0x1A7A))) & 1)
+      {
+        arg0->unk_05 = 2;
+      }
+      arg0->unk_06 = 0;
+    }
+  }
+  func_80166B20_ovl_12(arg0, ret, base);
+}
+

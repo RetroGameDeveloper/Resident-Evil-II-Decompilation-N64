@@ -1,0 +1,1 @@
+typedef struct { u8 pad0[6]; u8 state; u8 pad7[0x1E1]; s32 timer; } O; s32 func_80033634_ovl_01(void); void func_80163248_ovl_31(O *p, void *arg1, void *arg2) { s32 x; switch(p->state) { case 0: x=func_80033634_ovl_01(); x=func_80033634_ovl_01(); p->state=1; break; case 1: case 2: case 3: case 4: break; default: return; } }

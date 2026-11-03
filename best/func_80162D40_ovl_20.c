@@ -1,0 +1,1 @@
+typedef struct {u8 pad[0x2BE]; s8 x; } Obj; s32 func_80162D40_ovl_20(Obj *p,s32 a,s32 b){s32 x=p->x; if(x<3)p->x=x|0x82; if((s8)p->pad[0x2bc]<2)p->pad[0x2bc]=1; p->pad[0x2b9]=15; if(p->pad[6]==0){*(u32*)(p->pad+0x1e8)=0x04003f00;p->pad[6]=1;*(u16*)(p->pad+0x1f4)=0;*(u16*)(p->pad+0x1f6)=0;p->pad[0x25c]|=2;} return a+b;}

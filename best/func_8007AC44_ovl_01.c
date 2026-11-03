@@ -1,0 +1,7 @@
+typedef struct {s32 a,b; void *c; s32 d;} S3281C; typedef struct {u8 pad[0x14];s32 result;u8 rest[0x40];} Buf;
+extern s32 D_8010B698_ovl_01; extern s32 func_80004550(void*,s32,s32); extern s32 func_800045DC(void*,s32,s32,s32); extern s32 func_80004594(void*,s32); extern s32 func_800888CC_ovl_01(s32,s32,s32);
+s32 func_8003281C_ovl_01(S3281C *a,S3281C *b){s32 n=a->b;if(n){if(n!=a->d-(s32)a->c){Buf x;func_80004550(&x,D_8010B698_ovl_01,n);func_800045DC(&x,a->a,(s32)b->c,a->b);n=x.result;func_80004594(&x,2);return n;}func_800888CC_ovl_01(a->a,(s32)a->c,n);}return 0;}
+typedef struct {u8 pad[0x1AA];u16 flags;u8 p[0x86];void *base;} Obj;
+void func_8007AAD8_ovl_01(Obj *o){u16 v=o->flags;if(v&0x100){o->flags=v&0xFEFF;func_8008797C_ovl_01(o,(void*)((s32)o->base+0x11A0),1);func_8008797C_ovl_01(o,(void*)((s32)o->base+0xD38),1);func_8008797C_ovl_01(o,o->base,1);func_8008797C_ovl_01(o,(void*)((s32)o->base+0xBC0),1);}}
+void func_8007AC44_ovl_01(Obj *o){if((*(volatile u8*)((u8*)0x800C7650+0x21962)&0xC)){func_8008797C_ovl_01(o,o->base,1);func_8008797C_ovl_01(o,(void*)((s32)o->base+0xBC0),1);func_8008797C_ovl_01(o,(void*)((s32)o->base+0xD38),1);func_8008797C_ovl_01(o,(void*)((s32)o->base+0xEB0),1);func_8008797C_ovl_01(o,(void*)((s32)o->base+0x11A0),1);func_8008797C_ovl_01(o,(void*)((s32)o->base+0x1318),1);}}
+void func_8007ACF0_ovl_01(Obj *o){u16 v=o->flags;if(v&0x100){o->flags=v&0xFEFF;func_8008797C_ovl_01(o,o->base,1);func_8008797C_ovl_01(o,(void*)((s32)o->base+0xBC0),1);}}

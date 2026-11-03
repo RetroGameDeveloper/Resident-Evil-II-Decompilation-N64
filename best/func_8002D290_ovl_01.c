@@ -1,51 +1,75 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+typedef struct {
+    u8 pad00[0x20];
+    s32 f20;
+    s32 f24;
+    s32 f28;
+    u8 pad2C[0x2C];
+    s32 f58;
+    u8 pad5C[8];
+    s32 f64;
+    u8 pad68[0x48];
+    void *fB0;
+    u8 padB4[0x4C];
+    s32 f100;
+    u8 pad104[8];
+    s32 f10C;
+} Obj;
 
-s32 func_8002D290_ovl_01(void *arg0) {
-    s32 temp_a0;
-    s32 temp_a1;
-    s32 temp_a1_2;
-    s32 temp_a1_3;
-    s32 temp_a1_4;
-    s32 temp_a2;
-    s32 temp_a2_2;
-    s32 temp_v1;
-    void *temp_v1_2;
+typedef struct {
+    u8 pad00[8];
+    s32 f8;
+    s32 fC;
+    u8 pad10[0x14];
+    s32 f24;
+    u8 pad28[0x30];
+    s32 f58;
+    s32 f5C;
+    u8 pad60[0x14];
+    s32 f74;
+    u8 pad78[0x30];
+    s32 fA8;
+    s32 fAC;
+    u8 padB0[0x14];
+    s32 fC4;
+} Obj2;
 
-    if ((M2C_FIELD(arg0, s32 *, 0x58) != 0) || (M2C_FIELD(arg0, s32 *, 0x100) != 0)) {
-        /* Duplicate return node #2. Try simplifying control flow for better match */
-        return 0;
-    }
-    temp_v1 = M2C_FIELD(arg0, s32 *, 0x24);
-    if (temp_v1 == 3) {
-        temp_a1 = M2C_FIELD(arg0, s32 *, 0x20);
-        if (temp_a1 == temp_v1) {
-            temp_a2 = M2C_FIELD(arg0, s32 *, 0x28);
-            if ((temp_a2 == 2) && (M2C_FIELD(arg0, s32 *, 0x64) == temp_a1)) {
-                temp_v1_2 = M2C_FIELD(arg0, void **, 0xB0);
-                if (M2C_FIELD(temp_v1_2, s32 *, 8) == temp_a2) {
-                    temp_a1_2 = M2C_FIELD(temp_v1_2, s32 *, 0x58);
-                    if (temp_a1_2 == 1) {
-                        temp_a2_2 = M2C_FIELD(temp_v1_2, s32 *, 0xA8);
-                        if ((temp_a2_2 == temp_a1_2) && (M2C_FIELD(temp_v1_2, s32 *, 0xC) < 3)) {
-                            temp_a1_3 = M2C_FIELD(temp_v1_2, s32 *, 0x5C);
-                            if ((temp_a1_3 == temp_a2_2) && (M2C_FIELD(temp_v1_2, s32 *, 0xAC) == temp_a1_3)) {
-                                temp_a1_4 = M2C_FIELD(temp_v1_2, s32 *, 0x24);
-                                if (temp_a1_4 == M2C_FIELD(arg0, s32 *, 0x10C)) {
-                                    temp_a0 = M2C_FIELD(temp_v1_2, s32 *, 0x74);
-                                    if ((temp_a0 == temp_a1_4) && (M2C_FIELD(temp_v1_2, s32 *, 0xC4) == temp_a0)) {
-                                        return 1;
+s32 func_8002D290_ovl_01(Obj *a0) {
+    s32 v1;
+    s32 a1;
+    s32 a2;
+    s32 t;
+    Obj2 *p;
+    if (a0->f58 == 0) {
+        if (a0->f100 == 0) {
+            v1 = a0->f24;
+            if (v1 == 3) {
+                a1 = a0->f20;
+                if (a1 == v1) {
+                    a2 = a0->f28;
+                    if (a2 == 2) {
+                        if (a0->f64 == a1) {
+                            p = (Obj2 *)a0->fB0;
+                            if (p->f8 == a2) {
+                                a1 = p->f58;
+                                if (a1 == 1) {
+                                    a2 = p->fA8;
+                                    if (a2 == a1) {
+                                        if (p->fC < 3) {
+                                            a1 = p->f5C;
+                                            if (a1 == a2) {
+                                                if (p->fAC == a1) {
+                                                    a1 = p->f24;
+                                                    if (a1 == a0->f10C) {
+                                                        t = p->f74;
+                                                        if (t == a1) {
+                                                            if (p->fC4 == t) {
+                                                                return 1;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }

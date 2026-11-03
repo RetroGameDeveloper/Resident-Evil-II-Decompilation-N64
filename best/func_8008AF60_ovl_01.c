@@ -1,53 +1,45 @@
-#define G_8010B690 (*(s32 *)0x8010B690)
-#define G_8012BD24 (*(s32 *)0x8012BD24)
-#define G_8012BD20 (*(s32 *)0x8012BD20)
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
 
-s32 func_800072E0(void);
-void func_80007300(s32);
-void func_80089DA8_ovl_01(s32, s32, s32);
-
-void func_8008AF4C_ovl_01(void) {
-    G_8012BD24 = G_8010B690;
-}
-
-void func_8008AF30_ovl_01(s32 arg0) {
-    G_8012BD20 = arg0;
-}
+s32 func_800072E0();                                /* extern */
+M2C_UNK func_80007300(s32, u32, s32 *);             /* extern */
+extern u32 D_8012BD20_ovl_01;
+extern s32 D_8012BD24_ovl_01;
 
 s32 func_8008AF60_ovl_01(s32 arg0) {
-    s32 ie;
-    s32 ret;
+    s32 temp_a0;
+    s32 temp_s0;
+    s32 temp_v1;
+    s32 var_v0;
 
-    ie = func_800072E0();
-    G_8012BD24 -= arg0;
-    switch (G_8012BD20) {
+    temp_a0 = func_800072E0();
+    temp_v1 = D_8012BD24_ovl_01 - arg0;
+    D_8012BD24_ovl_01 = temp_v1;
+    switch (D_8012BD20_ovl_01) {                    /* irregular */
     case 1:
-        G_8012BD24 &= -4;
+        var_v0 = -4;
+block_9:
+        D_8012BD24_ovl_01 = temp_v1 & var_v0;
         break;
     case 2:
-        G_8012BD24 &= -8;
-        break;
+        var_v0 = -8;
+        goto block_9;
     case 3:
-        G_8012BD24 &= -0xF;
-        break;
+        var_v0 = -0xF;
+        goto block_9;
     }
-    ret = G_8012BD24;
-    func_80007300(ie);
-    return ret;
-}
-
-void func_80089D34_ovl_01(u8 *arg0, s32 arg1, s32 arg2, u32 arg3) {
-    u32 v;
-    s32 off;
-    s32 p;
-
-    v = *(u32 *)(arg2 + arg0[0x1E8] * 4);
-    if (arg3 & 0xFFFF0000) {
-        off = (v & 0xFFFF) - arg0[0x1E9] - 1;
-    } else {
-        off = arg0[0x1E9];
-    }
-    p = arg2 + (v >> 16) + off * 4;
-    *(s32 *)(arg0 + 0x214) = p;
-    func_80089DA8_ovl_01(arg1, arg2, p);
+    temp_s0 = D_8012BD24_ovl_01;
+    func_80007300(temp_a0, D_8012BD20_ovl_01, &D_8012BD24_ovl_01);
+    return temp_s0;
 }

@@ -1,34 +1,8 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
-
-s8 *func_80052F1C_ovl_01(M2C_UNK *);                /* extern */
-u32 func_80052F40_ovl_01(M2C_UNK *);                /* extern */
-extern s32 D_800E9098_ovl_01;
-extern s8 *D_8010BF40_ovl_01;
-extern M2C_UNK D_8010BF78_ovl_01;
-
-void func_80052C00_ovl_01(s16 arg0, s16 arg1) {
-    s8 *temp_v0;
-
-    D_800E9098_ovl_01 = 1;
-    if ((func_80052F40_ovl_01(&D_8010BF78_ovl_01) < 0x20U) && (arg0 != 0)) {
-        temp_v0 = func_80052F1C_ovl_01(&D_8010BF78_ovl_01);
-        D_8010BF40_ovl_01 = temp_v0;
-        *temp_v0 = 1;
-        M2C_FIELD(D_8010BF40_ovl_01, s8 *, 1) = (s8) (arg0 != 0);
-        M2C_FIELD(D_8010BF40_ovl_01, s16 *, 4) = arg0;
-        M2C_FIELD(D_8010BF40_ovl_01, s16 *, 2) = arg1;
-        M2C_FIELD(D_8010BF40_ovl_01, s16 *, 6) = 0;
-    }
-}
+extern s32 func_800072E0(void); extern void func_80007300(s32); extern u8 D_80112908_ovl_01[];
+void func_8002686C_ovl_01(s32 i,s8 v){s32 t=func_800072E0();D_80112908_ovl_01[i]=v;func_80007300(t);}
+s8 *func_80052F1C_ovl_01(s32 *); u32 func_80052F40_ovl_01(s32 *);
+extern s32 D_800E9098_ovl_01; extern s8 *D_8010BF40_ovl_01; extern s32 D_8010BF78_ovl_01; extern s32 D_8010C0C4_ovl_01; extern s8 *D_8010BF44_ovl_01;
+void func_80052C00_ovl_01(s16 a,s16 b){s8*p; D_800E9098_ovl_01=1;if(func_80052F40_ovl_01(&D_8010BF78_ovl_01)<32 && a){p=func_80052F1C_ovl_01(&D_8010BF78_ovl_01);D_8010BF40_ovl_01=p;*p=1;p[1]=(a!=0);*(s16*)(p+4)=a;*(s16*)(p+2)=b;*(s16*)(p+6)=0;}}
+void func_80052C9C_ovl_01(s16 a,s8 b,s16 c){s8*p;D_800E9098_ovl_01=1;if(func_80052F40_ovl_01(&D_8010C0C4_ovl_01)<32 && a){p=func_80052F1C_ovl_01(&D_8010C0C4_ovl_01);D_8010BF44_ovl_01=p;*p=1;p[1]=b;*(s16*)(p+4)=a;*(s16*)(p+2)=c;*(s16*)(p+6)=0;}}
+extern s8 *D_8010BF40_ovl_01; extern s32 D_80112914_ovl_01;
+void func_80052E24_ovl_01(void){u32 i; s8 *a=(s8*)&D_8010C0C4_ovl_01,*v=(s8*)&D_8010BF78_ovl_01;for(i=0;i<33;i++){*v=0;*a=0;a+=10;v+=10;}D_8010BF40_ovl_01=(s8*)&D_8010BF78_ovl_01;D_8010BF44_ovl_01=(s8*)&D_8010C0C4_ovl_01;((u8*)&D_80112914_ovl_01)[1]=0;((u8*)&D_80112914_ovl_01)[0]=0;}

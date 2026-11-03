@@ -1,4 +1,35 @@
-extern s32 *func_80001180(s32); extern s32 func_800888CC_ovl_01(s32,s32*,s32); extern s32 *func_8008AF60_ovl_01(s32);
-extern s32 *D_80012860; extern s32 D_80012864,D_80012868; extern s32 *D_8001286C; extern s32 D_80012870; extern s32 *D_80012874; extern s32 D_800128A8; extern u8 D_800C7650_ovl_01[];
-void func_80004954(void){s32 buf[0x40];s32 *p; s32 n,size,a;
-p=func_80001180(0x43);a=*p;D_800128A8=a;func_800888CC_ovl_01(a,buf,0x28);n=buf[0];size=(n<<3)+0x28;D_80012868=n;D_80012864=size;p=func_8008AF60_ovl_01(size);D_80012860=p;func_800888CC_ovl_01(D_800128A8,p,size);D_80012870=0;D_80012874=(s32*)((u8*)p+0x28);D_8001286C=(s32*)((u8*)p+8);*(s32*)(D_800C7650_ovl_01+0x19A5C)&=~0x20;}
+typedef struct {
+    void *f00;
+    s32 f04;
+    s32 f08;
+    u8 *f0C;
+    s32 f10;
+    u8 *f14;
+} G49;
+extern s32 *func_80001180(s32);
+extern s32 func_800888CC_ovl_01(s32, void *, s32);
+extern void *func_8008AF60_ovl_01(s32);
+extern s32 D_800128A8;
+extern G49 D_80012860;
+extern u8 D_800C7650_ovl_01[];
+void func_80004954(void) {
+    s32 buf[0x40];
+    s32 *p;
+    s32 src, n, size;
+    void *ptr;
+    p = func_80001180(0x43);
+    src = *p;
+    D_800128A8 = src;
+    func_800888CC_ovl_01(src, buf, 0x28);
+    n = buf[0];
+    size = n * 8 + 0x28;
+    D_80012860.f08 = n;
+    D_80012860.f04 = size;
+    ptr = func_8008AF60_ovl_01(size);
+    D_80012860.f00 = ptr;
+    func_800888CC_ovl_01(D_800128A8, ptr, size);
+    D_80012860.f10 = 0;
+    D_80012860.f14 = (u8 *)D_80012860.f00 + 0x28;
+    D_80012860.f0C = (u8 *)D_80012860.f00 + 8;
+    *(s32 *)(D_800C7650_ovl_01 + 0x18000 + 0x1A5C) &= ~0x20;
+}

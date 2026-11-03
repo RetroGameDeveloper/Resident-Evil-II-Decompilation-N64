@@ -1,0 +1,1 @@
+typedef struct{u8 pad0[7];u8 state;} A;void func_801647DC_ovl_26(A*p,void*a1,s32 a2){if(p->state==1){}else if(p->state<2){if(!p->state){}else return;}else if(p->state==2){}else if(p->state==3){}else return;}

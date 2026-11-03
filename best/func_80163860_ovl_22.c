@@ -1,5 +1,5 @@
 typedef struct { u8 pad[0x18000]; u8 data[0x1c74]; } BigD; extern BigD D_800C7650_ovl_01;
-s32 func_8016333C_ovl_22(void); s32 func_80162144_ovl_22(void*); s32 func_8006A45C_ovl_01(void*,s32); s32 func_80032F94_ovl_01(void*,s32,s32); s32 func_80032DEC_ovl_01(void*,s32,s32,s32); s32 func_80162B08_ovl_22(void*);
+s32 func_8016333C_ovl_22(void); s32 func_80162144_ovl_22(void*); s32 func_8006A45C_ovl_01(void*,s32); s32 func_80032F94_ovl_01_48(void*,s32,s32); s32 func_80032DEC_ovl_01(void*,s32,s32,s32); s32 func_80162B08_ovl_22(void*);
 void func_80163860_ovl_22(void *p) {
     s32 v;
     func_8016333C_ovl_22();
@@ -19,7 +19,7 @@ void func_80163860_ovl_22(void *p) {
             v = func_8006A45C_ovl_01((u8 *)p + 0x28, 8);
             v = ((v & 0xffff) << 10) + 0x800;
             v = (s16)v;
-            if (func_80032F94_ovl_01(p, v, 80) == 0) (*(u16 *)((u8 *)p + 0x1f4))++;
+            if (func_80032F94_ovl_01_48(p, v, 80) == 0) (*(u16 *)((u8 *)p + 0x1f4))++;
             else if (*(s16 *)((u8 *)p + 0x1f4) < 16) *(u16 *)((u8 *)p + 0x1f4) = 0;
         }
         func_80032DEC_ovl_01(p, *(s16 *)((u8 *)p + 0x260), *(s16 *)((u8 *)p + 0x262), 32);

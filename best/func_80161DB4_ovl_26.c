@@ -1,0 +1,1 @@
+void func_80161DB4_ovl_26(void *arg0, s32 arg1, s32 arg2) { s32 i; for(i=0;i<26;i++){ ((volatile s32 *)arg0)[i] |= 0x8000; } for(i=0;i<12;i++) ((s32 *)arg0)[i+0x2B4/4]=0; for(i=0;i<3;i++) ((s16 *)arg0)[0x264/2+i]=0; }

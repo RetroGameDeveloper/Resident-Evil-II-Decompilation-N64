@@ -1,4 +1,9 @@
-s32 func_80005074(u16*a0,u16*a1){s32 t2=-1,t1=1;s16 c,n;u16 v;u16*t0=a0;do{c=(s16)*a1++;if(c>0){n=c-1;if(n!=-1){do{*a0++=*a1++;n--;}while(n!=-1);}}else if(c<0){v=*a1++;n=c+1;if(n!=1){do{*a0++=v;n++;}while(n!=1);}}}while(c);return(u8*)a0-(u8*)t0;}
-extern s32 D_80012820,D_8010B698; extern s32 func_800013B0(s32),func_800013D4(s32); void *func_800044F0(void*p){s32 x=D_80012820;*(s32*)((u8*)p+32)=0;*(s32*)((u8*)p+36)=0;*(s32*)((u8*)p+40)=0;if(x==0){D_80012820=D_8010B698;}func_800013B0(D_80012820);*(s32*)((u8*)p+76)=func_800013D4(0x8000);return p;}
-s32 func_800042F4(void *a,void *b){u8 *s0=a;u8 *s1=b;u8 *a1=0;while(s0){u8*v=*(u8**)(s0-4);*(u8**)(s0-4)=a1;a1=s0;s0=v;}if(a1){do{u8*t=a1-8;s0=*(u8**)(t+4);((s32(*)(s32,s32))*(s32*)(s1+36))(*(s32*)(s1+40),(s32)t);a1=s0;}while(a1);}return 0;}
-extern s32 D_80013EC0; void*func_800040D4(s32*a,s32 b){s32 x=*a; x-=b; *a=x; return (u8*)&D_80013EC0+x*8;}
+extern s32 D_80013EC0;
+
+s32 func_800040D4(s32 *a, s32 b) {
+    s32 t;
+    s32 *p = &t;
+    *a -= b;
+    (void)p;
+    return (s32)&D_80013EC0 + *a * 8;
+}

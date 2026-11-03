@@ -1,1 +1,29 @@
-extern s32 func_80032EA4_ovl_01(s32,s32,s16);extern s32 D_800C7650_ovl_01[],D_800E10D0_ovl_01[];void func_80166A84_ovl_17(void*p,s16 a){s32 *q;if(((u8*)p)[0x2d3])q=(s32*)((char*)D_800C7650_ovl_01+0x18000+0x1d3c);else q=D_800E10D0_ovl_01; if(((u8*)p)[0x2be]){s32 xx=*(s32*)((char*)p+0x28), yy=*(s32*)((char*)p+0x30);s32 rx=q[10]-xx,ry=q[12]-yy;xx-=rx;yy-=ry;func_80032EA4_ovl_01(xx,yy,a);}else func_80032EA4_ovl_01(q[10],q[12],a);}
+extern s32 D_800C7650_ovl_01[];
+extern s32 D_800E10D0_ovl_01[];
+extern s32 func_80032EA4_ovl_01(void *, s32, s32, s16);
+
+typedef union { u64 q; struct { u32 lo; u32 hi; } w; } U64;
+
+void func_80166A84_ovl_17(void *arg0, s32 arg1)
+{
+    s32 *q;
+    U64 b;
+    u8 *base;
+    s32 x, y;
+
+    if (((u8 *)arg0)[0x2D3]) {
+        b.w.lo = (u32)D_800C7650_ovl_01;
+        base = (u8 *)(b.w.lo + 0x18000);
+        q = *(s32 **)(base + 0x1D3C);
+    } else {
+        q = D_800E10D0_ovl_01;
+    }
+
+    if (((u8 *)arg0)[0x2BE]) {
+        x = q[10] - ((s32 *)arg0)[10];
+        y = q[12] - ((s32 *)arg0)[12];
+        func_80032EA4_ovl_01(arg0, ((s32 *)arg0)[10] - x, ((s32 *)arg0)[12] - y, arg1);
+    } else {
+        func_80032EA4_ovl_01(arg0, q[10], q[12], arg1);
+    }
+}

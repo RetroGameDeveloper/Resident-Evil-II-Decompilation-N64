@@ -1,64 +1,52 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+s32 func_800AF074_ovl_01(void);
+void func_800AC5B4_ovl_01(s32, s32, u8, s32);
 
-M2C_UNK func_800AC5B4_ovl_01(M2C_UNK, s32, u8, s32); /* extern */
-s32 func_800AF074_ovl_01();                         /* extern */
-extern M2C_UNK D_801443E8;
+typedef struct {
+    u8 pad0[0x10];
+    s32 unk10;
+    u8 pad14[0x24 - 0x14];
+    s32 unk24;
+    u8 pad28[0x4B - 0x28];
+    u8 unk4B;
+    u8 pad4C[0x55 - 0x4C];
+    u8 unk55;
+    u8 pad56[0x60 - 0x56];
+    s32 unk60;
+    u8 pad64[0x1A0 - 0x64];
+} T_801443E8;
 
-s32 func_800A7910_ovl_01(s32 arg1) {
-    s32 temp_s0;
-    s32 temp_s0_2;
-    s32 temp_s1;
-    s32 var_a1;
-    s32 var_s0;
-    s32 var_v0;
-    s32 var_v1;
-    u32 temp_s4;
-    u8 var_a2;
-    void *temp_s2;
+extern T_801443E8 D_801443E8[];
 
-    var_s0 = -1;
-    var_v1 = func_800AF074_ovl_01();
-    if (var_v1 != -1) {
-        temp_s4 = (u32) (arg1 & 0xFFFF) >> 7;
-loop_2:
-        temp_s1 = var_v1 & 0xFF;
-        temp_s2 = (temp_s1 * 0x1A0) + &D_801443E8;
-        var_v0 = var_s0;
-        if (M2C_FIELD(temp_s2, s32 *, 0x60) == var_v1) {
-            if (M2C_FIELD(temp_s2, s32 *, 0x24) & 2) {
-                temp_s0 = temp_s1 & 0xFF;
-                func_800AC5B4_ovl_01(0x80, temp_s0, M2C_FIELD(temp_s2, u8 *, 0x55), temp_s4 & 0xFF);
-                var_a2 = M2C_FIELD(temp_s2, u8 *, 0x55);
-                var_a1 = temp_s0;
+s32 func_800A7910_ovl_01(s32 arg0, s32 arg1) {
+    s32 res = -1;
+    s32 id;
+    s32 cur;
+    T_801443E8 *p;
+    u32 hi;
+    u32 lo;
+
+    id = func_800AF074_ovl_01();
+    if (id != -1) {
+        hi = (arg1 & 0xFFFF) >> 7;
+        lo = arg1 & 0x7F;
+        do {
+            cur = id & 0xFF;
+            p = &D_801443E8[cur];
+            if (p->unk60 != id) {
+                return res;
+            }
+            if (p->unk24 & 2) {
+                res = cur;
+                func_800AC5B4_ovl_01(0x80, cur, p->unk55, hi & 0xFF);
+                func_800AC5B4_ovl_01(0x81, cur, p->unk55, lo & 0xFF);
             } else {
-                temp_s0_2 = temp_s1 & 0xFF;
-                func_800AC5B4_ovl_01(0x80, temp_s0_2, M2C_FIELD(temp_s2, u8 *, 0x4B), temp_s4 & 0xFF);
-                var_a1 = temp_s0_2;
-                var_a2 = M2C_FIELD(temp_s2, u8 *, 0x4B);
+                res = cur;
+                func_800AC5B4_ovl_01(0x80, cur, p->unk4B, hi & 0xFF);
+                func_800AC5B4_ovl_01(0x81, cur, p->unk4B, lo & 0xFF);
             }
-            func_800AC5B4_ovl_01(0x81, var_a1, var_a2, arg1 & 0x7F & 0xFF);
-            var_v1 = M2C_FIELD(((temp_s1 * 0x1A0) + &D_801443E8), s32 *, 0x10);
-            var_s0 = 0;
-            if (var_v1 == -1) {
-                goto block_7;
-            }
-            goto loop_2;
-        }
-    } else {
-block_7:
-        var_v0 = var_s0;
+            id = D_801443E8[cur].unk10;
+            res = 0;
+        } while (id != -1);
     }
-    return var_v0;
+    return res;
 }

@@ -1,24 +1,17 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+void func_80164E08_ovl_26(void);
+s32 func_80033634_ovl_01(void);
+void func_80165290_ovl_26(void *arg0, s32 arg1, s32 arg2);
 
-s32 func_80033634_ovl_01();                         /* extern */
-M2C_UNK func_80164E08_ovl_26();                     /* extern */
-M2C_UNK func_80165290_ovl_26(void *, M2C_UNK, M2C_UNK); /* extern */
+typedef struct S_func_8016537C_ovl_26_arg0 {
+    u8 pad_00[0x2C1];
+    u8 unk_2C1;
+    u8 pad_2C2[1];
+    u8 unk_2C3;
+} S_func_8016537C_ovl_26_arg0;
 
-void func_8016537C_ovl_26(void *arg0) {
+void func_8016537C_ovl_26(S_func_8016537C_ovl_26_arg0 *arg0) {
     func_80164E08_ovl_26();
-    M2C_FIELD(arg0, s8 *, 0x2C1) = 0xC5;
-    M2C_FIELD(arg0, s8 *, 0x2C3) = (s8) (func_80033634_ovl_01() & 3);
+    arg0->unk_2C1 = 0xC5;
+    arg0->unk_2C3 = func_80033634_ovl_01() & 3;
     func_80165290_ovl_26(arg0, 7, 2);
 }

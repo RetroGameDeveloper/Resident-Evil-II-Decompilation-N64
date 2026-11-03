@@ -1,4 +1,4 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
 typedef s32 M2C_UNK;
@@ -16,20 +16,20 @@ M2C_UNK func_80182440_ovl_02(s32, s32, s32, s32, s32, s32, s32, s32, u32, s32, s
 extern s32 D_801856DC_ovl_02;
 
 void func_80182264_ovl_02(void *arg0, s32 arg1, void *arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, u32 arg10, s32 arg11, s32 arg12) {
-    s32 var_a0;
-    s32 var_a0_2;
-    s32 var_a0_3;
-    s32 var_a1;
-    s32 var_a1_2;
-    s32 var_a1_3;
-    s32 var_s0;
-    s32 var_s2;
-    s32 var_s3;
-    s32 var_s4;
-    s32 var_s5;
-    s32 var_s6;
-    s32 var_s7;
     u32 var_s1;
+    register long var_a0_2;
+    long var_a0_3;
+    long var_a1_2;
+    unsigned int var_s2;
+    register s32 var_a1_3;
+    s32 var_s0;
+    s32 var_s3;
+    unsigned int var_a0;
+    register s32 var_s4;
+    unsigned var_s5;
+    s32 var_s6;
+    unsigned var_a1;
+    int var_s7;
 
     var_s3 = arg4;
     var_s0 = arg5;
@@ -40,12 +40,12 @@ void func_80182264_ovl_02(void *arg0, s32 arg1, void *arg2, s32 arg3, s32 arg4, 
     var_s1 = arg10;
     var_s2 = arg11;
     var_a0 = M2C_FIELD(arg0, s32 *, 0);
-    if (arg1 != 0) {
+    if (arg1) {
         var_a0 += var_s0 >> 1;
     }
     var_a1 = M2C_FIELD(arg2, s32 *, 0);
-    if (arg3 != 0) {
-        var_a1 += var_s0 >> 1;
+    if (arg3) {
+        var_a1 += (s32)var_s0 >> 1;
     }
     func_80182440_ovl_02(var_a0, var_a1, var_s3, var_s0, var_s4, var_s5, var_s6, var_s7, var_s1, var_s2, arg12);
     if (D_801856DC_ovl_02 != 3) {
@@ -61,20 +61,20 @@ void func_80182264_ovl_02(void *arg0, s32 arg1, void *arg2, s32 arg3, s32 arg4, 
         var_s2 = var_s2 / 2;
     }
     var_a0_2 = M2C_FIELD(arg0, s32 *, 4);
-    if (arg1 != 0) {
+    if (arg1) {
         var_a0_2 += var_s0 >> 1;
     }
     var_a1_2 = M2C_FIELD(arg2, s32 *, 4);
-    if (arg3 != 0) {
+    if (arg3) {
         var_a1_2 += var_s0 >> 1;
     }
     func_80182440_ovl_02(var_a0_2, var_a1_2, var_s3, var_s0, var_s4, var_s5, var_s6, var_s7, var_s1, var_s2, arg12);
     var_a0_3 = M2C_FIELD(arg0, s32 *, 8);
-    if (arg1 != 0) {
+    if (arg1) {
         var_a0_3 += var_s0 >> 1;
     }
     var_a1_3 = M2C_FIELD(arg2, s32 *, 8);
-    if (arg3 != 0) {
+    if (arg3) {
         var_a1_3 += var_s0 >> 1;
     }
     func_80182440_ovl_02(var_a0_3, var_a1_3, var_s3, var_s0, var_s4, var_s5, var_s6, var_s7, var_s1, var_s2, arg12);

@@ -1,41 +1,25 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
-
-s32 func_8004F7A4_ovl_01(void *arg0, void *arg1, s32 arg2, s32 arg3) {
-    s32 temp_a0;
-    s32 temp_v0;
-    s32 temp_v1;
-    s32 var_v0;
-
-    temp_v0 = M2C_FIELD(arg1, u16 *, 0x12C) + arg2;
-    temp_a0 = M2C_FIELD(arg1, u16 *, 0x12E) + arg2;
-    if (((u32) (temp_v0 * 2) >= (u32) ((M2C_FIELD(arg0, s32 *, 0) - M2C_FIELD(arg1, s32 *, 0x120)) + temp_v0)) && ((u32) (temp_a0 * 2) >= (u32) ((M2C_FIELD(arg0, s32 *, 8) - M2C_FIELD(arg1, s32 *, 0x128)) + temp_a0))) {
-        var_v0 = 1;
-        if (arg3 != 0) {
-            temp_v1 = M2C_FIELD(arg1, u16 *, 0x13A) - 1;
-            if (temp_v1 < 0) {
-                /* Duplicate return node #4. Try simplifying control flow for better match */
-                return 0;
-            }
-            var_v0 = 0;
-            if ((u32) ((temp_v1 * 2) + 1) >= (u32) ((M2C_FIELD(arg0, s32 *, 4) - M2C_FIELD(arg1, s32 *, 0x124)) + temp_v1)) {
-                var_v0 = 1;
-            }
-            /* Duplicate return node #7. Try simplifying control flow for better match */
-            return var_v0;
-        }
-        return var_v0;
-    }
-    return 0;
+extern s32 D_800C5680_ovl_01; extern s32 D_800E91F0_ovl_01;
+void func_800269B8_ovl_01(s32); void func_80026948_ovl_01(s32); void func_80026AC0_ovl_01(void);
+void func_80025D80_ovl_01(void){func_800269B8_ovl_01(D_800C5680_ovl_01);func_80026948_ovl_01(D_800E91F0_ovl_01);func_80026AC0_ovl_01();}
+s32 func_8004F57C_ovl_01(void *,void *);
+void func_8004F514_ovl_01(void *a, void *b, s32 c, s32 d) {
+ s32 old=*(s32*)((u8*)a+0x30); u8 *t=(u8*)a+0x120; s32 v=*(s32*)((u8*)b+8)-*(s16*)(t+0x12); s32 y;
+ if(c<0)y=v+d; else y=v-d;
+ *(s32*)((u8*)a+0x30)=y;
+ *(s32*)(t+8)+=y-old;
+ *(s32*)((u8*)a+0x280)=func_8004F57C_ovl_01(a,t);
 }
+s32 func_8004F7A4_ovl_01(void *a,void *b,s32 c,s32 d) {
+ s32 dx=*(s32*)a-*(s32*)((u8*)b+0x120), dy=*(s32*)((u8*)a+8)-*(s32*)((u8*)b+0x128);
+ u32 x=*(u16*)((u8*)b+0x12c)+c, y=*(u16*)((u8*)b+0x12e)+c;
+ s32 z,n;
+ if ((u32)(x*2)<(u32)(dx+x)) return 0;
+ if ((u32)(y*2)<(u32)(dy+y)) return 0;
+ if(d==0)return 1;
+ z=*(s32*)((u8*)a+4)-*(s32*)((u8*)b+0x124);
+ n=*(u16*)((u8*)b+0x13a)-1;
+ if(n<0)return 0;
+ return (u32)(n*2+1)>=(u32)(z+n);
+}
+extern u8 D_800B8B40_ovl_01[];
+void func_8004F9EC_ovl_01(void) { u32 a=*(u32*)D_800B8B40_ovl_01; u32 b=*(u32*)(D_800B8B40_ovl_01+4); volatile u32 x[2]; x[0]=a;x[1]=b; }

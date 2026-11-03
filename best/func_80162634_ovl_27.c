@@ -1,5 +1,31 @@
-extern s32 func_80089D34_ovl_01(void*,s32,s32,s32),func_801636DC_ovl_27(void*,s32),func_80033634_ovl_01(void);
-void func_80162728_ovl_27(void*p){func_80089D34_ovl_01(p,0,0,0x200);*(s16*)((char*)p+0x2c2)=0x400;func_801636DC_ovl_27(p,0);}
-void func_801626D4_ovl_27(void*p){s32 x;((s8*)p)[0x2c6]=1;func_80089D34_ovl_01(p,0,0,0x200);((u8*)p)[0x2bf]&=0x7f;x=((u8*)p)[0x2c7];((s8*)p)[5]=x?8:2;*(u16*)((char*)p+6)=0;}
-void func_80162634_ovl_27(void*p,s32 a,s32 b){if(!((u8*)p)[6]){((u8*)p)[6]=1;*(s32*)((char*)p+0x1e8)=0x05000700+((func_80033634_ovl_01()&7)<<16);*(s16*)((char*)p+0x2c2)=0;*(u16*)((char*)p+0x2bc)=*(u16*)((char*)p+0x2c0);}if(func_80089D34_ovl_01(p,a,b,0x200)){((s8*)p)[5]=2;*(u16*)((char*)p+6)=0;}func_801636DC_ovl_27(p,0);}
-void func_801621A4_ovl_27(void*p,s32 a,s32 b){s32 x;((u8*)p)[6]++;x=(func_80033634_ovl_01()&3)+1;*(s16*)((char*)p+0x1f4)=((u8*)p)[0x2b4]*2+x;func_80089D34_ovl_01(p,a,b,0x200);}
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
+
+s32 func_80033634_ovl_01();                         /* extern */
+s32 func_80089D34_ovl_01(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK func_801636DC_ovl_27(void *, M2C_UNK);      /* extern */
+
+void func_80162634_ovl_27(void *arg0, M2C_UNK arg1, M2C_UNK arg2) {
+    if (M2C_FIELD(arg0, u8 *, 6) == 0) {
+        M2C_FIELD(arg0, u8 *, 6) = 1U;
+        M2C_FIELD(arg0, s32 *, 0x1E8) = (s32) (((func_80033634_ovl_01() & 7) << 0x10) + 0x05000700);
+        M2C_FIELD(arg0, s16 *, 0x2C2) = 0;
+        M2C_FIELD(arg0, u16 *, 0x2BC) = (u16) M2C_FIELD(arg0, u16 *, 0x2C0);
+    }
+    if (func_80089D34_ovl_01(arg0, arg1, arg2, 0x200) != 0) {
+        M2C_FIELD(arg0, s8 *, 5) = 2;
+        M2C_FIELD(arg0, u8 *, 6) = 0;
+    }
+    func_801636DC_ovl_27(arg0, 0);
+}

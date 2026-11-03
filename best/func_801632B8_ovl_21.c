@@ -1,5 +1,8 @@
-typedef struct {u8 bytes[0x235];} Obj; extern void func_801635B8_ovl_21(u8); extern void func_80162FA0_ovl_21(void*); extern u32 D_801638B4_ovl_21[]; extern s32 func_80077D48_ovl_01(s32,void*); extern s32 func_800377B0_ovl_01(s32,s32,void*,void*); extern s32 func_80036764_ovl_01(); extern u8 D_800E8FC8_ovl_01[]; extern u8 D_800C7650_ovl_01[];
-void func_80162FA0_ovl_21(void*p){u32 b=(*(u16*)((u8*)p+0x2ba)&4);*(u8*)((u8*)p+0x26e)=b?1:0;}
-void func_80162FC0_ovl_21(Obj*p,void*a1,void*a2){u8 old=p->bytes[5];u8 sentinel=0xff;if(old!=sentinel){func_801635B8_ovl_21(old);p->bytes[5]=sentinel;func_80162FA0_ovl_21(p);}((void(*)(void*,void*,void*))(D_801638B4_ovl_21[((u8*)p)[0x26e]]))(p,a1,a2);}
-void func_80163200_ovl_21(Obj*p){u8 stage=p->bytes[6];u32*sub=(u32*)(*(u32*)(p->bytes+0x234));u16 args[3];if(stage==0){func_80077D48_ovl_01(2,p);args[0]=*(u16*)(p->bytes+0x2a);args[1]=*(u16*)(p->bytes+0x2e);args[2]=*(u16*)(p->bytes+0x32);sub[0x2f0/4]=1;sub[0x468/4]=1;func_800377B0_ovl_01(0x100c00,0,D_800E8FC8_ovl_01,args);p->bytes[6]++;}if(stage==1)p->bytes[0x1e9]=0;if(stage==0||stage==1)((void(*)(void*,s32,s32,s32))func_80036764_ovl_01)(p,4,0,0);}
-void func_801632B8_ovl_21(void){u32 base=(u32)D_800C7650_ovl_01;u8 v=*(u8*)(base+0x18000+0x1a88);u32 idx=((v^0xf)<1);u32 *table=(u32*)((u32)D_801638B4_ovl_21);((void(*)(void))table[idx])();}
+extern volatile u8 D_800C7650_ovl_01[];
+extern volatile u32 D_80163864_ovl_21[];
+
+void func_801632B8_ovl_21(void) {
+    u32 v = D_800C7650_ovl_01[0x1A88 + 0x18000];
+    u32 idx = (v ^ 0xF) == 0;
+    ((void (*)(void))D_80163864_ovl_21[idx])();
+}

@@ -1,9 +1,25 @@
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
 
-extern u8 D_800E10D0_ovl_01[]; extern s16 D_80167CEC_ovl_30[];
-s32 func_80032F94_ovl_01(void*,void*,s32);
-s32 func_800662B8_ovl_01(void*,void*);
-s32 func_80033634_ovl_01(); s32 func_8016714C_ovl_30(s16);s32 func_8016719C_ovl_30(s16);
-void func_80166FE4_ovl_30(void *a0,void *a1){s32 s1,s0,v0;u8 n;n=*((u8*)a1+0x12);if(n)*((u8*)a1+0x12)=n-1;else{s1=(func_80033634_ovl_01()&7)-3;s0=func_80033634_ovl_01()&3;v0=s0&2;if(s0&1){func_8016714C_ovl_30(s1);v0=s0&2;}if(v0)func_8016719C_ovl_30(s1);*((u8*)a1+0x12)=*((u8*)a1+0x11)*(func_80033634_ovl_01()&7);}}
-s32 func_8016758C_ovl_30(void *a0,s32 a1){s32 off,v;void *base,*entry;u8 *g=D_800E10D0_ovl_01;s16 *t=D_80167CEC_ovl_30; if((g[0x26f]&0x80)||( *((s16*)(g+0x1f2))<0))return 0; off=t[a1]; base=*(void**)((u8*)a0+0x234); entry=(u8*)base+off*0x178; if(!func_80032F94_ovl_01(g+0x28,(u8*)entry+0x4c,t[a1+1]))return 0; v=*((s32*)((u8*)a0+0x2c))-*((s32*)((u8*)entry+0x50));if(v<0)v=-v;return v<0xce4;}
-void func_80166470_ovl_30(void *a0){s32 x;u8 v;if(!*((u8*)a0+6)){*((u8*)a0+6)=1;*((u8*)a0+0x2c4)=1;*((u8*)a0+0x2c5)=1;x=*((s32*)a0);*((s32*)((u8*)a0+0x1e8))=0x10130f00;v=*((u8*)a0+0x25c);*((s16*)((u8*)a0+0x272))=0;x|=0x400;v|=1;*((s32*)a0)=x;*((u8*)a0+0x25c)=v;}if(*((s16*)((u8*)a0+0x270))==1){*((u8*)a0+5)=1;*((u16*)((u8*)a0+6))=0;}}
-void func_80167B58_ovl_30(void *a0,s32 a1,s32 a2,s16 a3){void *p,*q;p=(u8*)*((void**)((u8*)a0+0x234))+a1*0x178;q=(u8*)*((void**)((u8*)p+0x120))+a2*4;*((s16*)((u8*)q+0xc))=a3;func_800662B8_ovl_01(p,q);}
+M2C_UNK func_800662B8_ovl_01(void *, void *);       /* extern */
+
+void func_80167B58_ovl_30(void *arg0, s32 arg1, s32 arg2, s16 arg3) {
+    void *temp_a1;
+    void *temp_a2;
+
+    temp_a1 = M2C_FIELD(arg0, s32 *, 0x234) + (arg1 * 0x178);
+    temp_a2 = (arg2 * 4) + M2C_FIELD(temp_a1, s32 *, 0x120);
+    M2C_FIELD(temp_a2, s16 *, 0xC) = arg3;
+    func_800662B8_ovl_01(temp_a1, temp_a2);
+}

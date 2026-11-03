@@ -1,57 +1,55 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+typedef struct S_80096C6C_src {
+    u8 b0;
+    u8 b1;
+    u8 b2;
+    u8 b3;
+} S_80096C6C_src;
 
-M2C_UNK func_8004789C_ovl_01(s32, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_800478DC_ovl_01(s32, u8, u8);          /* extern */
-M2C_UNK func_800479EC_ovl_01(s32, u8, u8);          /* extern */
-M2C_UNK func_80047B34_ovl_01(s32, M2C_UNK);         /* extern */
-extern s32 D_800C527C_ovl_01;
-extern M2C_UNK D_8012BF38_ovl_01;
-extern M2C_UNK D_8012F4D0_ovl_01;
-extern M2C_UNK D_801311B4_ovl_01;
+extern u32 D_800C527C_ovl_01;
+extern u8 D_8012BF38_ovl_01[];
+extern u8 D_8012F4D0_ovl_01[];
+extern u8 D_801311B4_ovl_01[];
+
+void func_80047B34_ovl_01(void *arg0, s32 arg1);
+void func_8004789C_ovl_01(void *arg0, s32 arg1, s32 arg2, s32 arg3);
+void func_800478DC_ovl_01(void *arg0, u8 arg1, u8 arg2);
+void func_800479EC_ovl_01(void *arg0, u8 arg1, u8 arg2);
 
 void func_80096C6C_ovl_01(void) {
-    s32 temp_a0_2;
-    s32 var_s1;
-    s32 var_s3;
-    u32 temp_a0;
-    u32 var_v1;
-    void *var_s0;
-    void *var_s2;
+    u32 base;
+    u32 lim;
+    u32 other;
+    u8 *p1;
+    u8 *p2;
+    s16 *flagp;
+    u32 cptr;
+    S_80096C6C_src *src;
+    s32 count;
 
-    var_v1 = D_800C527C_ovl_01 + 0x3BB64;
-    temp_a0 = D_800C527C_ovl_01 + 0x3C004;
-    if (var_v1 < temp_a0) {
-        var_v1 = temp_a0;
+    base = D_800C527C_ovl_01;
+    lim = base + 0x3C004;
+    other = base + 0x3BB64;
+    if (other < lim) {
+        other = lim;
     }
-    var_s1 = var_v1 + 0x758;
-    var_s3 = 0x11;
-    var_s2 = var_v1 + 0x762;
-    var_s0 = &D_801311B4_ovl_01 + 0x44;
+    p1 = (u8 *)(other + 0x758);
+    flagp = (s16 *)D_8012BF38_ovl_01;
+    count = 0x11;
+    cptr = (u32)D_8012F4D0_ovl_01;
+    p2 = (u8 *)(other + 0x762);
+    src = (S_80096C6C_src *)(D_801311B4_ovl_01 + 0x44);
     do {
-        var_s0 -= 4;
-        var_s3 -= 1;
-        func_80047B34_ovl_01(var_s1, 0);
-        func_8004789C_ovl_01(var_s1, 0x80, 0x80, 0x80);
-        func_800478DC_ovl_01(var_s1, M2C_FIELD(var_s0, u8 *, 0), M2C_FIELD(var_s0, u8 *, 1));
-        temp_a0_2 = var_s1;
-        var_s1 += 0x14;
-        func_800479EC_ovl_01(temp_a0_2, M2C_FIELD(var_s0, u8 *, 2), M2C_FIELD(var_s0, u8 *, 3));
-        M2C_FIELD(var_s2, M2C_UNK **, 2) = &D_8012F4D0_ovl_01;
-        M2C_FIELD(var_s2, s16 *, 0) = 0;
-        var_s2 += 0x14;
-    } while (var_s3 != 0);
-    M2C_FIELD(&D_8012BF38_ovl_01, s16 *, 0x38) = 7;
-    M2C_FIELD(&D_8012BF38_ovl_01, s16 *, 0x3A) = 0xAA;
+        src--;
+        count -= 1;
+        func_80047B34_ovl_01(p1, 0);
+        func_8004789C_ovl_01(p1, 0x80, 0x80, 0x80);
+        func_800478DC_ovl_01(p1, src->b0, src->b1);
+        func_800479EC_ovl_01(p1, src->b2, src->b3);
+        *(u32 *)(p2 + 2) = cptr;
+        *(s16 *)p2 = 0;
+        p1 += 0x14;
+        p2 += 0x14;
+    } while (count != 0);
+    flagp[0x1C] = 7;
+    flagp[0x1D] = 0xAA;
 }

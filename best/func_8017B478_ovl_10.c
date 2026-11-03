@@ -1,3 +1,7 @@
-extern void (*D_8017E664_ovl_10[])(void);
-extern unsigned short D_8017E682_ovl_10;
-void func_8017B478_ovl_10(void) { D_8017E664_ovl_10[D_8017E682_ovl_10](); }
+extern u8 D_8017E664_ovl_10[];
+extern u16 D_8017E682_ovl_10;
+s32 func_8017B478_ovl_10(void) {
+    u32 i = D_8017E682_ovl_10;
+    u8 *t = D_8017E664_ovl_10;
+    return ((s32 (*)(void))(*(volatile u32 *)(t + i * 4)))();
+}

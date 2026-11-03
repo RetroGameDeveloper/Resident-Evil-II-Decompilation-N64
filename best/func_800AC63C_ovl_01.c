@@ -1,27 +1,3 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
-
-extern M2C_UNK D_80148B80;
-extern M2C_UNK D_80148C00;
-
-void func_800AC63C_ovl_01(s32 arg0, s32 arg1, s8 arg2) {
-    s32 temp_a0;
-
-    temp_a0 = arg1 & 0xFF;
-    if (temp_a0 != 0xFF) {
-        *((arg0 & 0xFF) + (temp_a0 * 0x10) + &D_80148B80) = arg2;
-        return;
-    }
-    *((arg0 & 0xFF) + &D_80148C00) = arg2;
-}
+extern u8 D_80148B80[]; extern u8 D_80148C00[]; void func_800AC63C_ovl_01(s32 arg0,s32 arg1,u8 arg2){s32 t=arg1&255;u8 *p;if(t==255)p=D_80148C00+(arg0&255);else p=D_80148B80+(arg0&255)+t*16;*p=arg2;}
+extern s32 D_80143F08; extern s32 (*D_80143FAC)(s32); s32 func_800A56F0_ovl_01(void); void func_800A5B60_ovl_01(void){s32 x=D_80143F08;if(x){func_800A56F0_ovl_01();D_80143FAC(x);D_80143F08=0;}}
+extern s32 D_80143EAC; void func_800A5AB4_ovl_01(s32 arg0){u8 *p=(u8 *)(D_80143EAC+arg0*104);if(p[0]){*(u16 *)(p+0x28)=20;if(p[1]){p[1]=0;}else{f32 f=*(f32 *)(p+0x4c);p[0x5c]=3;*(s32 *)(p+0x54)=0;*(s32 *)(p+0x50)=0;*(f32 *)(p+0x58)=f;*(u16 *)(p+0x48)=*(u16 *)(p+0x28);}}} 

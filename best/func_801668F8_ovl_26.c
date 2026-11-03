@@ -1,5 +1,24 @@
-extern s32 func_80040E88_ovl_01(void*,void*); extern s32 func_80052C00_ovl_01(s32,s32,s32,s32); extern s32 func_80052C9C_ovl_01(s32,s32,s32);
-s32 func_80166984_ovl_26(void *a){s16 x=*(s16*)((u8*)a+0x1f2);if(*(s16*)((u8*)a+0x2c4)<x&&x>=0&&*(u8*)((u8*)a+0x2b8)==0){*(u8*)((u8*)a+5)=7;*(u16*)((u8*)a+6)=0;return 1;}return 0;}
-void func_801668F8_ovl_26(void*a){u8 *obj=a;if(obj[0x2b8]){u8 *base=*(u8**)(obj+0x234);u16 amount=*(u16*)(obj+0x2ba);s16 neg=-(s16)amount;*(s16*)(base+0x1084)=neg;func_80040E88_ovl_01(base+0x1080,base+0x1030);*(s16*)(base+0x125a)=amount;*(s16*)(base+0x125c)=amount*2;func_80040E88_ovl_01(base+0x11f8,base+0x11a8);*(s16*)(base+0x1372)=neg;*(s16*)(base+0x1374)=amount*2;func_80040E88_ovl_01(base+0x1370,base+0x1320);}}
-void func_80166888_ovl_26(void*a,s32 b){u8*p=a;u8 value=p[0x26f];s32 d=b+2;p[4]=2;p[5]=d;p[6]=0;p[7]=0;value|=0x80;p[0x26f]=value;func_80052C00_ovl_01(3,0,0,0);func_80052C9C_ovl_01(8,0xc8,0);}
-s32 func_80166C4C_ovl_26(void*a,s32 b){u8 *p=(u8*)a+0x2c2;u8 bits=p[0xe];if((bits>>b)&1){p[0xd]=0xc2;p[0xf]=b;p[0xe]=bits&~(1<<b);return 0;}return 1;}
+s32 func_80040E88_ovl_01(void *, void *);
+void func_801668F8_ovl_26(u8 *obj) {
+    u8 *base;
+    u32 amount;
+    s32 neg;
+    s16 *p;
+
+    if (*(u8 *)(obj + 0x2B8) != 0) {
+        base = *(u8 **)(obj + 0x234);
+        amount = *(u16 *)(obj + 0x2BA);
+        neg = -amount;
+        *(s16 *)(base + 0x1084) = neg;
+        func_80040E88_ovl_01(base + 0x1080, base + 0x1030);
+        p = (s16 *)(base + 0x11A0);
+        p[0x2D] = amount;
+        amount = amount * 2;
+        p[0x2E] = amount;
+        func_80040E88_ovl_01(base + 0x11F8, base + 0x11A8);
+        p = (s16 *)(base + 0x1318);
+        p[0x2D] = neg;
+        p[0x2E] = amount;
+        func_80040E88_ovl_01(base + 0x1370, base + 0x1320);
+    }
+}
