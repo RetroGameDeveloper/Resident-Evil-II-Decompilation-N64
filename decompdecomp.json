@@ -1,7 +1,7 @@
 {
  "format": 1,
- "saved_at": 1793707106.5600007,
- "revision": 10053,
+ "saved_at": 1793730841.4828672,
+ "revision": 10060,
  "title": "Resident Evil II",
  "platform": "n64",
  "game": {
@@ -15835,7 +15835,7 @@
    "name": "func_8000CCF0",
    "vram": 2147536112,
    "size": 16,
-   "status": "open"
+   "status": "asm"
   },
   {
    "name": "func_8000CD00",
@@ -53607,6 +53607,41 @@
    "function": "func_80162368_ovl_32",
    "text": "Best 60 (98.4%), only 2 reordered rows left. Working source: typedef void (*Cb)(void*,void*,void*); extern volatile Cb D_80166F10_ovl_32[]; extern volatile Cb D_80166F24_ovl_32[]; ... if ((*(u16*)((u8*)a0+0x2C2)&6)==4){*(u32*)((u8*)a0+4)=0x03000000;return;} i1=*(u8*)((u8*)a0+5); ((void(*)(void*))D_80166F10_ovl_32[i1])(a0); i2=*(u8*)((u8*)a0+5); D_80166F24_ovl_32[i2](a0,a1,a2);\nKEY: the first callback takes only ONE arg in the ROM (a1/a2 are left untouched before the first call). Keeping the table declared as volatile 3-arg Cb[] but calling through a `(void(*)(void*))` cast is what got 385 -> 60 (declaring the table itself as 1-arg makes the address fold to gp-relative %lo and scores 560).\nREMAINING DIFF (first callback only): ROM order is `lui v1,%hi(D_80166F10); lbu v0,5(s0); addiu v1,v1,%lo; ...`; ours emits `lbu v0,5(s0); lui v1,%hi; addiu v1,v1,%lo`. The second callback's order already matches. Tried: index local s32/u8, two index locals, Cb* local (folded, 240), 1-arg local f (60 same). Looks like a pure scheduler ordering choice for the post-branch block; maybe an equivalent expression shape that makes the address %hi ready first would match.",
    "by": "opencode-deepseek-v4.1-flash-low-1"
+  },
+  {
+   "function": "func_80165BF4_ovl_35",
+   "text": "Released because its agent stopped (it failed 5 times in a row, each soon after it started: the session ended without compiling anything (its messages are in its details)); its attempts are kept.",
+   "by": "opencode-deepseek-v4.1-flash-low-1"
+  },
+  {
+   "function": "func_80000F50",
+   "text": "Score 10 (best possible with current compiler/flags). Only register allocation diff: target uses $t9 for second lw, KMC GCC 2.7.2 -O2 -mips3 -G0 uses $v0. Pure C cannot steer allocator to $t9 for this leaf function. search_flags confirms flags aren't the issue (all score 10). try_compiler with IDO 7.1 scores 15. This is a known KMC GCC 2.7.2 register-choice ceiling. Best attempt: void func_80000F50(s32 **arg0) { *arg0 = **arg0; } matches insn count and control flow, only register differs. No further C changes can achieve byte-identical match with current compiler/flags. Releasing as no further progress possible.",
+   "by": "opencode-nemotron-3-ultra-550b-a5-1"
+  },
+  {
+   "function": "func_80004FA0",
+   "text": "This 3-instruction leaf stores arg0 to global D_80012888. The only difference from the ROM is register allocation: target uses $v0 for the %hi base of the absolute store, KMC GCC 2.7.2 uses $at. This matches the documented split-address compiler-build defect (open setup suggestions #1/#2). All C shapes tried (direct store, pointer local, volatile symbol, volatile pointer) return score 10; search_flags all 6 variants and try_compiler IDO 5.3/7.1 cannot match the register choice. Best attempt (score 10) saved. No new prototypes/structs needed (extern s8 D_80012888; suffices).",
+   "by": "opencode-nemotron-3-ultra-550b-a5-1"
+  },
+  {
+   "function": "func_80026948_ovl_01",
+   "text": "This 3-instruction leaf stores arg0 to global D_800E90AC_ovl_01. The only difference from the ROM is register allocation: target uses $v0 for the %hi base of the absolute store, KMC GCC 2.7.2 uses $at. This matches the documented split-address compiler-build defect (open setup suggestions #1/#2). All C shapes tried (direct store, pointer local, volatile symbol, volatile pointer, cast) return score 10; search_flags all 6 variants and try_compiler IDO 5.3/7.1 cannot match the register choice. Best attempt (score 10) saved. No new prototypes/structs needed (extern s32 D_800E90AC_ovl_01; suffices).",
+   "by": "opencode-nemotron-3-ultra-550b-a5-1"
+  },
+  {
+   "function": "func_80004C14",
+   "text": "Fundamental compiler limitation - simple global assignment D_80012884 = 2; compiles to 4 instructions but with wrong scheduling (addiu before lui) and wrong register ($at instead of $v1 for the %hi base). This is the same split-symbol/store ceiling issue as func_80004FA0 and func_80026948_ovl_01 (shared note #23). Tried: direct assignment, local variable, pointer local, -fno-schedule-insns, all 6 flag variants, IDO 7.1/5.3 - all score 70 or worse. The ROM build uses general reg $v1 with lui first; this KMC build uses $at scratch with addiu first. Not solvable from C in this toolchain; requires compiler/flags review.",
+   "by": "opencode-nemotron-3-ultra-550b-a5-1"
+  },
+  {
+   "function": "func_8000CCF0",
+   "text": "Hand-written assembly / no C equivalent. Uses cfc1 $v0,$31 (read FP control register FCR31) and ctc1 $a0,$31 (write FCR31). KMC GCC 2.7.2 has no pure-C way or builtin to emit cfc1/ctc1; no __builtin_set_fpsr or similar exists. Empty C function emits only jr ra/nop (score 200). Three earlier agents confirmed this over 12+ attempts. Must be added as raw assembly if matched. not_c=true.",
+   "by": "opencode-nemotron-3-ultra-550b-a5-1"
+  },
+  {
+   "function": "func_80026AC0_ovl_01",
+   "text": "Same compiler limitation as func_80004C14 (shared note #23 split-symbol/store ceiling). Simple global store D_800E90B4_ovl_01 = 1; compiles with wrong scheduling (addiu before lui) and wrong register ($at instead of $v1 for %hi base). Tried: direct assignment, local temp, volatile, struct member, pointer local \u2014 all score 70. KMC GCC 2.7.2 uses $at scratch and schedules constant first; ROM build uses general reg $v1 with lui first. Not C-fixable with this toolchain. func_80026AD0_ovl_01 at 0x80026AD0 is identical pattern (D_800E90D4_ovl_01 = 1).",
+   "by": "opencode-nemotron-3-ultra-550b-a5-1"
   }
  ],
  "set_aside": [
@@ -53691,6 +53726,28 @@
    "name": "func_80007EF0",
    "vram": 2147516144,
    "asm_code": "uses coprocessor 0 (the system's: mfc0, mtc0, rfe, eret): no C compiler emits it"
+  },
+  {
+   "name": "func_8000CCF0",
+   "vram": 2147536112,
+   "not_c": {
+    "opencode-deepseek-v4.1-flash-low-1": {
+     "model": "opencode-deepseek-v4.1-flash-low",
+     "why": "Hand-written assembly: reads/writes the FP control register with cfc1 $v0,$31 / ctc1 $a0,$31. GCC 2.7.2 has no pure-C way or builtin to emit cfc1/ctc1 (no __builtin_set_fpsr); empty C gives jr ra/nop only (score 200). This is an FPU control-register accessor, not expressible in C here. Second model (codex-gpt-6-luna-1) reached the same conclusion after 8 attempts.",
+     "t": 1793658149.2635105
+    },
+    "opencode-nemotron-3.5-super-vl-fr-1": {
+     "model": "opencode-nemotron-3.5-super-vl-fr",
+     "why": "func_8000CCF0 @ 0x8000CCF0 (main), called by func_800070C0. Target: `cfc1 $v0,$31; ctc1 $a0,$31; jr $ra; nop` \u2014 reads FP control register FCR31 into $v0, writes $a0 into it. This is an FPU control-register accessor with no memory address.\n\nVerdict: not_c=true \u2014 no pure C can produce cfc1/ctc1 with KMC GCC 2.7.2; there is no __builtin or header declaration that emits them. Best C (empty void function) emits only `jr $ra; nop`, score 200 (2 missing instructions: cfc1 $v0,$31 and ctc1 $a0,$31). Confirmed by my compile and by 3 earlier agents over 12 total attempts (empty function, various FP-control expressions all score 200).\n\nThis function is hand-written assembly (or uses an unavailable compiler intrinsic). If the user wants it matched, it must be added to the project as raw assembly rather than C. Recommend renaming once its purpose is confirmed (likely FPU enable/disable or rounding-mode setter around func_800070C0). No context.h changes needed.",
+     "t": 1793698569.7638216
+    },
+    "opencode-nemotron-3-ultra-550b-a5-1": {
+     "model": "opencode-nemotron-3-ultra-550b-a5",
+     "why": "Hand-written assembly / no C equivalent. Uses cfc1 $v0,$31 (read FP control register FCR31) and ctc1 $a0,$31 (write FCR31). KMC GCC 2.7.2 has no pure-C way or builtin to emit cfc1/ctc1; no __builtin_set_fpsr or similar exists. Empty C function emits only jr ra/nop (score 200). Three earlier agents confirmed this over 12+ attempts. Must be added as raw assembly if matched. not_c=true.",
+     "t": 1793730788.9612002
+    }
+   },
+   "asm_code": "3 agents (opencode-deepseek-v4.1-flash-low, opencode-nemotron-3-ultra-550b-a5, opencode-nemotron-3.5-super-vl-fr) found no C makes it: Hand-written assembly / no C equivalent. Uses cfc1 $v0,$31 (read FP control register FCR31) and ctc1 $a0,$31 (write FCR31). KMC GCC 2.7.2 has no pure-C way or builtin to emit cfc1/ctc1; no __builtin_set_fpsr or similar exists. Empty C function emits only jr ra/nop (score 200). Three earlier agents confirmed this over 12+ attempts. Must be added as raw assembly if matched. not_c=true."
   },
   {
    "name": "func_8000CD40",
