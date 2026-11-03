@@ -1,32 +1,25 @@
-extern s32 D_80012920;
-extern u8 D_80017700;
-extern u8 D_80017710;
-extern u8 D_80011BB0;
-extern u8 D_80011BB4;
-extern u8 D_80017730;
-extern s32 func_80006D30(void *, void *, s32);
-extern s32 func_8000CB60(void *, s32, s32);
-extern s32 func_8000C9E0(void *, void *, s32);
-extern s32 func_8000C620(void *, void *, s32);
-extern s32 D_80000308;
-extern s32 D_A0000000;
-extern s32 func_800072E0(void);
-extern s32 func_80007300(s32);
-void func_8000C7D4(void);
-s32 func_8000C940(s32 a0, s32 *a1)
+/* identical to func_8000C920 in Resident Evil II (matched), with its names changed by decompdecomp */
+/* identical to func_80092A80 in V-RALLY (matched), with its names changed by decompdecomp */
+/* identical to func_8008CFF0 in V-RALLY (matched), with its names changed by decompdecomp */
+extern char D_80000308[];
+extern char D_80011B90[];
+extern char D_80011B94[];
+s32 func_8000C620(void *, void *, s32);
+s32 func_8000C940(s32 arg0, s32 *arg1)
 {
-  if (!a1)
+  s32 *var_s0;
+  s32 var_s1;
+  var_s1 = arg0;
+  var_s0 = arg1;
+  if (var_s0 == NULL)
   {
-    func_8000C620(&D_80011BB0, &D_80011BB4, 0x3d);
+    func_8000C620(D_80011B90, D_80011B94, 0x3D);
   }
-  while ((*((volatile u32 *) 0xa4600010)) & 3)
+  while ((*((vu32 *) 0xA4600010)) & 3)
   {
   }
 
-  *a1 = *((volatile s32 *) ((D_80000308 | a0) | ((s32) (&D_A0000000))));
+  *var_s0 = *((s32 *) (((*((u32 *) D_80000308)) | var_s1) | 0xA0000000));
  do { } while (0);
   return 0;
 }
-
-void func_8000CC90(s32 a0, s32 a1, s32 a2);
-void func_8000CCF0(void);

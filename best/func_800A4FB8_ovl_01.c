@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80006D30(M2C_UNK *, M2C_UNK *, M2C_UNK); /* extern */
-M2C_UNK func_80006D60(M2C_UNK *, M2C_UNK, M2C_UNK *, M2C_UNK, s32, s32); /* extern */
+M2C_UNK osCreateThread(M2C_UNK *, M2C_UNK, M2C_UNK *, M2C_UNK, s32, s32); /* extern */
 M2C_UNK func_8000CC90(M2C_UNK, M2C_UNK *, s8 *);    /* extern */
 M2C_UNK func_8000DB90(M2C_UNK *);                   /* extern */
 s32 func_800113E0(s32);                             /* extern */
@@ -46,7 +46,7 @@ s32 func_800A4FB8_ovl_01(s32 *arg0, s32 arg1, s32 arg2, u32 arg3) {
     *arg0 = temp_v0;
     temp_v0_2 = D_80143FA8(0x400, 0x80);
     D_80143DF0 = temp_v0_2;
-    func_80006D60(&D_80143C40, 0, &D_800A2500_ovl_01, 0, temp_v0_2 + 0x400, 0x7A);
+    osCreateThread(&D_80143C40, 0, &D_800A2500_ovl_01, 0, temp_v0_2 + 0x400, 0x7A);
     func_8000DB90(&D_80143C40);
     var_v0 = 2;
     if (!(arg3 & 0x10000)) {

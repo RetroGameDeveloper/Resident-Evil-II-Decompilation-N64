@@ -1,3 +1,4 @@
+/* Partial candidate from function #262894 in project #68; rechecked locally. */
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
@@ -12,8 +13,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8004A824_ovl_01(s32, s32 *);           /* extern */
+s32 func_8004A824_ovl_01();
 
-void func_8004A7F8_ovl_01(s32 arg2, s32 arg3, s32 arg4) {
-    func_8004A824_ovl_01((arg2 * 0x10) | (arg3 | 0x200), &arg4);
+void func_8004A7F8_ovl_01(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+    func_8004A824_ovl_01(arg0, arg1, (arg2 * 0x10) | (arg3 | 0x200), &arg4);
 }

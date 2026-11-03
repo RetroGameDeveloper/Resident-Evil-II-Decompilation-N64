@@ -15,7 +15,7 @@ extern s16 D_80018A68;
 extern s8 D_80018A6A;
 extern s32 D_80018A6C;
 void func_80006D30(void *, void *, s32);
-void func_80006D60(void *, s32, void *, void *, void *, s32);
+void osCreateThread(void *, s32, void *, void *, void *, s32);
 s32 func_80007010(s32);
 s32 func_800072E0(void);
 void func_80007300(s32);
@@ -66,7 +66,7 @@ void func_8000E4C0(s32 arg0)
   D_800129F0 = 0;
   D_800129F4 = 0;
   D_800129F8 = 0;
-  func_80006D60(&D_80017868, 0, (void *) func_8000E658, p, &D_80018A20, arg0);
+  osCreateThread(&D_80017868, 0, (void *) func_8000E658, p, &D_80018A20, arg0);
   func_8000E3B0();
   func_8000DB90(&D_80017868);
   func_80007300(token);

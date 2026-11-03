@@ -1,6 +1,19 @@
-typedef struct S_800EBB34 { u8 unk_00[4]; u16 unk_04; } S_800EBB34;
-extern S_800EBB34 *D_800EBB34_ovl_01;
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
+
+extern void *D_800EBB34_overlay_001;
 
 void func_8003AF28(void) {
-    D_800EBB34_ovl_01->unk_04 += 0x100;
+    M2C_FIELD(D_800EBB34_overlay_001, u16 *, 4) = (u16) (M2C_FIELD(D_800EBB34_overlay_001, u16 *, 4) + 0x100);
 }

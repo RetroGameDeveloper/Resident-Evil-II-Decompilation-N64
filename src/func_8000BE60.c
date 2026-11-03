@@ -11,7 +11,7 @@ extern u8 D_80017660;
 extern int D_80017678;
 extern u8 D_80017710;
 void func_80006D30(void *, void *, s32);
-void func_80006D60(void *, s32, void *, void *, void *, s32);
+void osCreateThread(void *, s32, void *, void *, void *, s32);
 s32 func_80007010(s32);
 s32 func_800072E0(void);
 void func_80007300(s32);
@@ -65,7 +65,7 @@ void func_8000BE60(s32 arg0, void *arg1, void *arg2, s32 arg3)
   D_800128F4 = &D_800164B0;
   D_800128F8 = arg1;
   D_800128FC = new_var;
-  func_80006D60(&D_800164B0, 0, (void *) func_8000C0D0, p, &D_80017660, arg0);
+  osCreateThread(&D_800164B0, 0, (void *) func_8000C0D0, p, &D_80017660, arg0);
   func_8000DB90(&D_800164B0);
   func_80007300(token);
   if (saved != (-1))

@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_80006D60(void *, s32, s32, M2C_UNK, s32, s32); /* extern */
+M2C_UNK osCreateThread(void *, s32, s32, M2C_UNK, s32, s32); /* extern */
 s32 func_80007010(M2C_UNK *);                       /* extern */
 s32 func_800072E0();                                /* extern */
 M2C_UNK func_80007300(s32);                         /* extern */
@@ -61,7 +61,7 @@ loop_1:
             temp_s0 = M2C_FIELD(&D_8010B2C8_ovl_01, M2C_UNK **, 0x390);
             temp_s1 = M2C_FIELD(&D_8010B2C8_ovl_01, M2C_UNK **, 0x390);
             temp_s2 = M2C_FIELD(&D_8010B2C8_ovl_01, M2C_UNK **, 0x390);
-            func_80006D60(M2C_FIELD(&D_8010B2C8_ovl_01, M2C_UNK **, 0x390) + 8, M2C_FIELD(temp_s0, s32 *, 0x1BC), M2C_FIELD(temp_s1, s32 *, 0x1B8), 0, M2C_FIELD(temp_s2, s32 *, 0x1C0), func_80007010(&D_80112B90_ovl_01) + 1);
+            osCreateThread(M2C_FIELD(&D_8010B2C8_ovl_01, M2C_UNK **, 0x390) + 8, M2C_FIELD(temp_s0, s32 *, 0x1BC), M2C_FIELD(temp_s1, s32 *, 0x1B8), 0, M2C_FIELD(temp_s2, s32 *, 0x1C0), func_80007010(&D_80112B90_ovl_01) + 1);
             func_80007300(temp_s3);
 block_10:
             M2C_FIELD(M2C_FIELD(&D_8010B2C8_ovl_01, M2C_UNK **, 0x390), u16 *, 0) = 0x7FU;

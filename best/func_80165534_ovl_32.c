@@ -1,5 +1,39 @@
-extern s32 func_80084514_ovl_01(s32,s32);extern s32 func_80040E88_ovl_01(void*,void*),func_8004251C_ovl_01(void*,void*,void*);extern s32 func_800362C0_ovl_01(void*,void*,void*),func_80036764_ovl_01(void*,void*);extern s32 func_800662B8_ovl_01(void*,void*,s32,s32);extern s32 D_800C7650_ovl_01[],D_8016729C_ovl_32,D_80167308_ovl_32;extern void (*D_80167380_ovl_32[])(void*,void*);
-void func_80166740_ovl_32(s32 a,s32 b){s32 *p=(s32*)((char*)D_800C7650_ovl_01+0x18000+(a+3)*4+0x1d38);s32 *q=*(s32**)p;*(s32*)((char*)q+4)=func_80084514_ovl_01(b,0x18000);}
-void func_801666EC_ovl_32(void){s32 *base=(s32*)((char*)D_800C7650_ovl_01+0x18000);s32 x=func_80084514_ovl_01(0,0);s32 *q; q=*(s32**)((char*)base+0x1d44);*(s32*)((char*)q+4)=x;q=*(s32**)((char*)base+0x1d48);*(s32*)((char*)q+4)=x;q=*(s32**)((char*)base+0x1d4c);*(s32*)((char*)q+4)=x;q=*(s32**)((char*)base+0x1d50);*(s32*)((char*)q+4)=x;}
-void func_801655F0_ovl_32(void*p,void*q){void(**table)(void*,void*)=(void(**)(void*,void*))(0x80167380);table[*(u8*)((char*)p+0x2b4)](p,q);func_800662B8_ovl_01(p,q,*(s32*)((char*)q+0xb4),*(s32*)((char*)q+0x120));}
-void func_80165534_ovl_32(void*p){s32 *s=(s32*)*(s32*)((char*)p+0x234);void*t=(char*)p+0x14;volatile s32 pad[8];func_80040E88_ovl_01((char*)p+0x64,t);func_8004251C_ovl_01(t,(char*)s+8,(char*)s+0x38);func_8004251C_ovl_01((char*)s+0x38,(char*)s+0x180,(char*)s+0x1b0);func_8004251C_ovl_01((char*)s+0x38,(char*)s+0x2f8,(char*)s+0x328);func_8004251C_ovl_01((char*)s+0x38,(char*)s+0x470,(char*)s+0x4a0);func_800362C0_ovl_01(p,s,&D_8016729C_ovl_32);func_800362C0_ovl_01(p,s,&D_80167308_ovl_32);func_80036764_ovl_01(p,s);}
+/* Partial candidate from function #265497 in project #68; rechecked locally. */
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
+
+M2C_UNK func_800362C0_ovl_01(void *, s32, M2C_UNK *); /* extern */
+M2C_UNK func_80036764_ovl_01(void *, s32);     /* extern */
+M2C_UNK func_80040E88_ovl_01(s32, s32);        /* extern */
+M2C_UNK func_8004251C_ovl_01(s32, s32, s32);   /* extern */
+extern M2C_UNK D_8016729C_overlay_032;
+extern M2C_UNK D_80167308_overlay_032;
+
+void func_80165534_ovl_32(void *arg0) {
+    s32 temp_s0;
+    s32 temp_s1;
+    s32 temp_s1_2;
+
+    temp_s1 = arg0 + 0x14;
+    temp_s0 = M2C_FIELD(arg0, s32 *, 0x234);
+    func_80040E88_ovl_01(arg0 + 0x64, temp_s1);
+    temp_s1_2 = temp_s0 + 0x38;
+    func_8004251C_ovl_01(temp_s1, temp_s0 + 8, temp_s1_2);
+    func_8004251C_ovl_01(temp_s1_2, temp_s0 + 0x180, temp_s0 + 0x1B0);
+    func_8004251C_ovl_01(temp_s1_2, temp_s0 + 0x2F8, temp_s0 + 0x328);
+    func_8004251C_ovl_01(temp_s1_2, temp_s0 + 0x470, temp_s0 + 0x4A0);
+    func_800362C0_ovl_01(arg0, temp_s0, &D_8016729C_overlay_032);
+    func_800362C0_ovl_01(arg0, temp_s0, &D_80167308_overlay_032);
+    func_80036764_ovl_01(arg0, temp_s0);
+}
