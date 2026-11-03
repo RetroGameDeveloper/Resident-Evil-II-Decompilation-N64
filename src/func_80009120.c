@@ -1,19 +1,10 @@
-void func_80009120(f32 *p) {
-    s32 i;
-    s32 j;
-    f32 one;
-    f32 *d;
-    i = 0;
-    one = 1.0f;
-    d = p;
-    for (; i < 4; i++) {
-        for (j = 0; j < 4; j++) {
-            if (i == j)
-                *d = one;
-            else
-                ((s32 *)p)[j] = 0;
-        }
-        d += 5;
-        p += 4;
-    }
+/* identical to guMtxIdentF in gex64decomp (matched), with its names changed by decompdecomp */
+void func_80009120(float mf[4][4])
+{
+	int	i, j;
+
+	for (i=0; i<4; i++)
+	for (j=0; j<4; j++)
+		if (i == j) mf[i][j] = 1.0;
+		else mf[i][j] = 0.0;
 }

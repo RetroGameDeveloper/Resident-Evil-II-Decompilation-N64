@@ -1,167 +1,262 @@
-void *func_8000D6A0(s8 *src, s8 *dst, s32 n)
-{
-    s8 *ret = dst;
-    s8 *end;
-    u32 w0, w1, w2, w3, w4, w5, w6, w7;
+/* Partial candidate from function #26231 in project #57; rechecked locally. */
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -g3, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
 
-    if (n == 0) {
-        return ret;
-    }
-    if (src == dst) {
-        return ret;
-    }
+s32 func_8000D6A0(s8 *a, s8 *b, s32 n) {
+    s16 temp_v0_11;
+    s16 temp_v0_3;
+    s16 temp_v1;
+    s16 temp_v1_5;
+    s32 temp_t0;
+    s32 temp_t0_2;
+    s32 temp_t0_3;
+    s32 temp_t0_4;
+    s32 temp_t1;
+    s32 temp_t1_2;
+    s32 temp_t1_3;
+    s32 temp_t1_4;
+    s32 temp_t2;
+    s32 temp_t2_2;
+    s32 temp_t3;
+    s32 temp_t3_2;
+    s32 temp_t4;
+    s32 temp_t4_2;
+    s32 temp_t5;
+    s32 temp_t5_2;
+    s32 temp_v0;
+    s32 temp_v0_13;
+    s32 temp_v0_14;
+    s32 temp_v0_15;
+    s32 temp_v0_5;
+    s32 temp_v0_6;
+    s32 temp_v0_7;
+    s32 temp_v0_9;
+    s32 temp_v1_2;
+    s32 temp_v1_3;
+    s32 temp_v1_4;
+    s32 temp_v1_6;
+    s32 temp_v1_7;
+    s32 var_a2;
+    s8 *temp_a3;
+    s8 *temp_v1_8;
+    s8 *var_a0;
+    s8 *var_a0_2;
+    s8 *var_a0_3;
+    s8 *var_a1;
+    s8 *var_a1_2;
+    s8 *var_a1_3;
+    s8 temp_v0_10;
+    s8 temp_v0_12;
+    s8 temp_v0_16;
+    s8 temp_v0_2;
+    s8 temp_v0_4;
+    s8 temp_v0_8;
 
-    if ((s32)dst < (s32)src || (s32)dst >= (s32)src + n) {
-        if (n >= 0x10) {
-            if (((u32)src & 3) == ((u32)dst & 3)) {
-                switch ((u32)src & 3) {
-                case 1:
-                    *dst = *src;
-                    *(s16 *)(dst + 1) = *(s16 *)(src + 1);
-                    src += 3;
-                    dst += 3;
-                    n -= 3;
+    var_a0 = a;
+    var_a1 = b;
+    var_a2 = n;
+    temp_a3 = var_a1;
+    if (!var_a2) return (s32)temp_a3;
+    if (var_a0 == var_a1) return (s32)temp_a3;
+    {
+        if (((s32) var_a1 >= (s32) var_a0) && ((s32) var_a1 < (s32) &var_a0[var_a2])) {
+            var_a0_2 = &var_a0[var_a2];
+            var_a1_2 = &var_a1[var_a2];
+            if (var_a2 >= 0x10) {
+                temp_v0 = (s32) var_a0_2 & 3;
+                if (temp_v0 == ((s32) var_a1_2 & 3)) {
+                    switch (temp_v0) {              /* switch 2; irregular */
+                    case 0:                         /* switch 2 */
+                        break;
+                    default:                        /* switch 2 */
+                        temp_v0_2 = M2C_FIELD(var_a0_2, s8 *, -1);
+                        var_a0_2 -= 1;
+                        M2C_FIELD(var_a1_2, s8 *, -1) = temp_v0_2;
+                        var_a1_2 -= 1;
+                        var_a2 -= 1;
+                        break;
+                    case 2:                         /* switch 2 */
+                        temp_v0_3 = M2C_FIELD(var_a0_2, s16 *, -2);
+                        var_a0_2 -= 2;
+                        M2C_FIELD(var_a1_2, s16 *, -2) = temp_v0_3;
+                        var_a1_2 -= 2;
+                        var_a2 -= 2;
+                        break;
+                    case 3:                         /* switch 2 */
+                        temp_v0_4 = M2C_FIELD(var_a0_2, s8 *, -1);
+                        temp_v1 = M2C_FIELD(var_a0_2, s16 *, -3);
+                        var_a0_2 -= 3;
+                        M2C_FIELD(var_a1_2, s8 *, -1) = temp_v0_4;
+                        M2C_FIELD(var_a1_2, s16 *, -3) = temp_v1;
+                        var_a1_2 -= 3;
+                        var_a2 -= 3;
+                        break;
+                    }
+loop_35:
+                    if (var_a2 >= 0x20) {
+                        temp_v0_5 = M2C_FIELD(var_a0_2, s32 *, -4);
+                        temp_v1_2 = M2C_FIELD(var_a0_2, s32 *, -8);
+                        temp_t0 = M2C_FIELD(var_a0_2, s32 *, -0xC);
+                        temp_t1 = M2C_FIELD(var_a0_2, s32 *, -0x10);
+                        temp_t2 = M2C_FIELD(var_a0_2, s32 *, -0x14);
+                        temp_t3 = M2C_FIELD(var_a0_2, s32 *, -0x18);
+                        temp_t4 = M2C_FIELD(var_a0_2, s32 *, -0x1C);
+                        temp_t5 = M2C_FIELD(var_a0_2, s32 *, -0x20);
+                        var_a0_2 -= 0x20;
+                        M2C_FIELD(var_a1_2, s32 *, -4) = temp_v0_5;
+                        M2C_FIELD(var_a1_2, s32 *, -8) = temp_v1_2;
+                        M2C_FIELD(var_a1_2, s32 *, -0xC) = temp_t0;
+                        M2C_FIELD(var_a1_2, s32 *, -0x10) = temp_t1;
+                        M2C_FIELD(var_a1_2, s32 *, -0x14) = temp_t2;
+                        M2C_FIELD(var_a1_2, s32 *, -0x18) = temp_t3;
+                        M2C_FIELD(var_a1_2, s32 *, -0x1C) = temp_t4;
+                        M2C_FIELD(var_a1_2, s32 *, -0x20) = temp_t5;
+                        var_a1_2 -= 0x20;
+                        var_a2 -= 0x20;
+                        goto loop_35;
+                    }
+loop_37:
+                    if (var_a2 >= 0x10) {
+                        temp_v0_6 = M2C_FIELD(var_a0_2, s32 *, -4);
+                        temp_v1_3 = M2C_FIELD(var_a0_2, s32 *, -8);
+                        temp_t0_2 = M2C_FIELD(var_a0_2, s32 *, -0xC);
+                        temp_t1_2 = M2C_FIELD(var_a0_2, s32 *, -0x10);
+                        var_a0_2 -= 0x10;
+                        M2C_FIELD(var_a1_2, s32 *, -4) = temp_v0_6;
+                        M2C_FIELD(var_a1_2, s32 *, -8) = temp_v1_3;
+                        M2C_FIELD(var_a1_2, s32 *, -0xC) = temp_t0_2;
+                        M2C_FIELD(var_a1_2, s32 *, -0x10) = temp_t1_2;
+                        var_a1_2 -= 0x10;
+                        var_a2 -= 0x10;
+                        goto loop_37;
+                    }
+loop_39:
+                    if (var_a2 >= 4) {
+                        temp_v0_7 = M2C_FIELD(var_a0_2, s32 *, -4);
+                        var_a0_2 -= 4;
+                        M2C_FIELD(var_a1_2, s32 *, -4) = temp_v0_7;
+                        var_a1_2 -= 4;
+                        var_a2 -= 4;
+                        goto loop_39;
+                    }
+                }
+            }
+            if (var_a2 != 0) {
+                var_a0_3 = var_a0_2 - 1;
+                var_a1_3 = var_a1_2 - 1;
+                temp_v1_4 = var_a0_3 - var_a2;
+                do {
+                    temp_v0_8 = *var_a0_3;
+                    var_a0_3 -= 1;
+                    *var_a1_3 = temp_v0_8;
+                    var_a1_3 -= 1;
+                } while (var_a0_3 != temp_v1_4);
+                return (s32) temp_a3;
+            }
+            /* Duplicate return node #10. Try simplifying control flow for better match */
+            return (s32) temp_a3;
+        }
+        if (var_a2 >= 0x10) {
+            temp_v0_9 = (s32) var_a0 & 3;
+            if (temp_v0_9 == ((s32) var_a1 & 3)) {
+                switch (temp_v0_9) {                /* switch 1; irregular */
+                case 0:                             /* switch 1 */
                     break;
-                case 2:
-                    *(s16 *)dst = *(s16 *)src;
-                    src += 2;
-                    dst += 2;
-                    n -= 2;
+                default:                            /* switch 1 */
+                    temp_v0_10 = M2C_FIELD(var_a0, s8 *, 0);
+                    var_a0 += 1;
+                    M2C_FIELD(var_a1, s8 *, 0) = temp_v0_10;
+                    var_a1 += 1;
+                    var_a2 -= 1;
                     break;
-                default:
-                    *dst = *src;
-                    src += 1;
-                    dst += 1;
-                    n -= 1;
+                case 2:                             /* switch 1 */
+                    temp_v0_11 = M2C_FIELD(var_a0, s16 *, 0);
+                    var_a0 += 2;
+                    M2C_FIELD(var_a1, s16 *, 0) = temp_v0_11;
+                    var_a1 += 2;
+                    var_a2 -= 2;
+                    break;
+                case 1:                             /* switch 1 */
+                    temp_v0_12 = M2C_FIELD(var_a0, s8 *, 0);
+                    temp_v1_5 = M2C_FIELD(var_a0, s16 *, 1);
+                    var_a0 += 3;
+                    M2C_FIELD(var_a1, s8 *, 0) = temp_v0_12;
+                    M2C_FIELD(var_a1, s16 *, 1) = temp_v1_5;
+                    var_a1 += 3;
+                    var_a2 -= 3;
                     break;
                 }
-                while (n >= 0x20) {
-                    w0 = ((u32 *)src)[0];
-                    w1 = ((u32 *)src)[1];
-                    w2 = ((u32 *)src)[2];
-                    w3 = ((u32 *)src)[3];
-                    w4 = ((u32 *)src)[4];
-                    w5 = ((u32 *)src)[5];
-                    w6 = ((u32 *)src)[6];
-                    w7 = ((u32 *)src)[7];
-                    src += 0x20;
-                    ((u32 *)dst)[0] = w0;
-                    ((u32 *)dst)[1] = w1;
-                    ((u32 *)dst)[2] = w2;
-                    ((u32 *)dst)[3] = w3;
-                    ((u32 *)dst)[4] = w4;
-                    ((u32 *)dst)[5] = w5;
-                    ((u32 *)dst)[6] = w6;
-                    ((u32 *)dst)[7] = w7;
-                    dst += 0x20;
-                    n -= 0x20;
+loop_17:
+                if (var_a2 >= 0x20) {
+                    temp_v0_13 = M2C_FIELD(var_a0, s32 *, 0);
+                    temp_v1_6 = M2C_FIELD(var_a0, s32 *, 4);
+                    temp_t0_3 = M2C_FIELD(var_a0, s32 *, 8);
+                    temp_t1_3 = M2C_FIELD(var_a0, s32 *, 0xC);
+                    temp_t2_2 = M2C_FIELD(var_a0, s32 *, 0x10);
+                    temp_t3_2 = M2C_FIELD(var_a0, s32 *, 0x14);
+                    temp_t4_2 = M2C_FIELD(var_a0, s32 *, 0x18);
+                    temp_t5_2 = M2C_FIELD(var_a0, s32 *, 0x1C);
+                    var_a0 += 0x20;
+                    M2C_FIELD(var_a1, s32 *, 0) = temp_v0_13;
+                    M2C_FIELD(var_a1, s32 *, 4) = temp_v1_6;
+                    M2C_FIELD(var_a1, s32 *, 8) = temp_t0_3;
+                    M2C_FIELD(var_a1, s32 *, 0xC) = temp_t1_3;
+                    M2C_FIELD(var_a1, s32 *, 0x10) = temp_t2_2;
+                    M2C_FIELD(var_a1, s32 *, 0x14) = temp_t3_2;
+                    M2C_FIELD(var_a1, s32 *, 0x18) = temp_t4_2;
+                    M2C_FIELD(var_a1, s32 *, 0x1C) = temp_t5_2;
+                    var_a1 += 0x20;
+                    var_a2 -= 0x20;
+                    goto loop_17;
                 }
-                while (n >= 0x10) {
-                    w0 = ((u32 *)src)[0];
-                    w1 = ((u32 *)src)[1];
-                    w2 = ((u32 *)src)[2];
-                    w3 = ((u32 *)src)[3];
-                    src += 0x10;
-                    ((u32 *)dst)[0] = w0;
-                    ((u32 *)dst)[1] = w1;
-                    ((u32 *)dst)[2] = w2;
-                    ((u32 *)dst)[3] = w3;
-                    dst += 0x10;
-                    n -= 0x10;
+loop_19:
+                if (var_a2 >= 0x10) {
+                    temp_v0_14 = M2C_FIELD(var_a0, s32 *, 0);
+                    temp_v1_7 = M2C_FIELD(var_a0, s32 *, 4);
+                    temp_t0_4 = M2C_FIELD(var_a0, s32 *, 8);
+                    temp_t1_4 = M2C_FIELD(var_a0, s32 *, 0xC);
+                    var_a0 += 0x10;
+                    M2C_FIELD(var_a1, s32 *, 0) = temp_v0_14;
+                    M2C_FIELD(var_a1, s32 *, 4) = temp_v1_7;
+                    M2C_FIELD(var_a1, s32 *, 8) = temp_t0_4;
+                    M2C_FIELD(var_a1, s32 *, 0xC) = temp_t1_4;
+                    var_a1 += 0x10;
+                    var_a2 -= 0x10;
+                    goto loop_19;
                 }
-                while (n >= 4) {
-                    w0 = ((u32 *)src)[0];
-                    src += 4;
-                    ((u32 *)dst)[0] = w0;
-                    dst += 4;
-                    n -= 4;
+loop_21:
+                if (var_a2 >= 4) {
+                    temp_v0_15 = *(s32*)var_a0;
+                    var_a0 += 4;
+                    *(s32*)var_a1 = temp_v0_15;
+                    var_a1 += 4;
+                    var_a2 -= 4;
+                    goto loop_21;
                 }
             }
         }
-        if (n != 0) {
-            end = src + n;
+        if (var_a2 != 0) {
+            temp_v1_8 = &var_a0[var_a2];
             do {
-                *dst++ = *src++;
-            } while (src != end);
+                temp_v0_16 = *var_a0;
+                var_a0 += 1;
+                *var_a1 = temp_v0_16;
+                var_a1 += 1;
+            } while (var_a0 != temp_v1_8);
         }
-        return ret;
+        /* Duplicate return node #10. Try simplifying control flow for better match */
+        return (s32) temp_a3;
     }
-
-    src += n;
-    dst += n;
-    if (n >= 0x10) {
-        if (((u32)src & 3) == ((u32)dst & 3)) {
-            switch ((u32)src & 3) {
-            case 3:
-                *(dst - 1) = *(src - 1);
-                *(s16 *)(dst - 3) = *(s16 *)(src - 3);
-                src -= 3;
-                dst -= 3;
-                n -= 3;
-                break;
-            case 2:
-                *(s16 *)(dst - 2) = *(s16 *)(src - 2);
-                src -= 2;
-                dst -= 2;
-                n -= 2;
-                break;
-            default:
-                *(dst - 1) = *(src - 1);
-                src -= 1;
-                dst -= 1;
-                n -= 1;
-                break;
-            }
-            while (n >= 0x20) {
-                w0 = ((u32 *)(src - 0x04))[0];
-                w1 = ((u32 *)(src - 0x08))[0];
-                w2 = ((u32 *)(src - 0x0C))[0];
-                w3 = ((u32 *)(src - 0x10))[0];
-                w4 = ((u32 *)(src - 0x14))[0];
-                w5 = ((u32 *)(src - 0x18))[0];
-                w6 = ((u32 *)(src - 0x1C))[0];
-                w7 = ((u32 *)(src - 0x20))[0];
-                src -= 0x20;
-                ((u32 *)(dst - 0x04))[0] = w0;
-                ((u32 *)(dst - 0x08))[0] = w1;
-                ((u32 *)(dst - 0x0C))[0] = w2;
-                ((u32 *)(dst - 0x10))[0] = w3;
-                ((u32 *)(dst - 0x14))[0] = w4;
-                ((u32 *)(dst - 0x18))[0] = w5;
-                ((u32 *)(dst - 0x1C))[0] = w6;
-                ((u32 *)(dst - 0x20))[0] = w7;
-                dst -= 0x20;
-                n -= 0x20;
-            }
-            while (n >= 0x10) {
-                w0 = ((u32 *)(src - 0x04))[0];
-                w1 = ((u32 *)(src - 0x08))[0];
-                w2 = ((u32 *)(src - 0x0C))[0];
-                w3 = ((u32 *)(src - 0x10))[0];
-                src -= 0x10;
-                ((u32 *)(dst - 0x04))[0] = w0;
-                ((u32 *)(dst - 0x08))[0] = w1;
-                ((u32 *)(dst - 0x0C))[0] = w2;
-                ((u32 *)(dst - 0x10))[0] = w3;
-                dst -= 0x10;
-                n -= 0x10;
-            }
-            while (n >= 4) {
-                w0 = ((u32 *)(src - 0x04))[0];
-                src -= 4;
-                ((u32 *)(dst - 0x04))[0] = w0;
-                dst -= 4;
-                n -= 4;
-            }
-        }
-    }
-    if (n != 0) {
-        src -= 1;
-        dst -= 1;
-        end = src - n;
-        do {
-            *dst-- = *src--;
-        } while (src != end);
-    }
-    return ret;
+    return (s32) temp_a3;
 }

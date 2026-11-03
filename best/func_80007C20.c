@@ -1,1 +1,27 @@
-typedef struct{u8 pad[5];u8 x5,x6,x7,x8,x9;u8 p[2];s32 addr;} Dev;extern Dev*D_80012910[2];extern volatile u32 D_A4600000;s32 func_8000E800(void*,u8,u8);s32 func_80007C20(Dev*arg0,s32 arg1,u32 arg2,u32 arg3,s32 arg4){s32 status; s32 t;Dev*old;u8 a;status=*(volatile u32*)0xA4600010;while(status&3)status=*(volatile u32*)0xA4600010;t=arg0->x9;old=D_80012910[t];if(old!=arg0){if(t==0){a=arg0->x5;if(old->x5!=a)*(volatile u32*)0xA4600014=a;a=arg0->x6;if(old->x6!=a)*(volatile u32*)0xA460001C=a;a=arg0->x7;if(old->x7!=a)*(volatile u32*)0xA4600020=a;if(old->x8!=arg0->x8)*(volatile u32*)0xA4600018=arg0->x8;}else{a=arg0->x5;if(old->x5!=a)*(volatile u32*)0xA4600024=a;a=arg0->x6;if(old->x6!=a)*(volatile u32*)0xA460002C=a;a=arg0->x7;if(old->x7!=a)*(volatile u32*)0xA4600030=a;if(old->x8!=arg0->x8)*(volatile u32*)0xA4600028=arg0->x8;}D_80012910[t]=arg0;}D_A4600000=func_8000E800((void*)arg3,(u8)arg1,(u8)t);*(volatile u32*)0xA4600004=arg0->addr|arg2;switch(arg1){case 0:*(volatile u32*)0xA460000C=arg4-1;break;case 1:*(volatile u32*)0xA4600008=arg4-1;break;default:return -1;}return 0;}
+/* identical to func_800932E0 in V-RALLY-PAL (matched), with its names changed by decompdecomp */
+extern u8 *D_800A2560[]; extern s32 D_A4600000; extern s32 func_8000E800(void*);
+s32 func_80007C20(u8 *s0,s32 s1,s32 s2,void *dram,s32 s3){
+u32 domain;u8 *old;u32 value;volatile u32 *reg;
+if(*(volatile u32*)0xa4600010&3)do{}while(*(volatile u32*)0xa4600010&3);
+domain=s0[9];old=D_800A2560[domain];
+if(old!=s0){
+ if(domain==0){
+ if(old[5]!=s0[5])*(volatile u32*)0xa4600014=s0[5];
+ if(old[6]!=s0[6])*(volatile u32*)0xa460001c=s0[6];
+ if(old[7]!=s0[7])*(volatile u32*)0xa4600020=s0[7]; value=old[8];old=(u8 *)(u32)s0[8];if(value!=(u32)old){reg=(volatile u32*)0xa4600018;goto writeTiming;}
+ }else{
+ if(old[5]!=s0[5])*(volatile u32*)0xa4600024=s0[5];
+ if(old[6]!=s0[6])*(volatile u32*)0xa460002c=s0[6];
+ if(old[7]!=s0[7])*(volatile u32*)0xa4600030=s0[7];
+ value=old[8];old=(u8 *)(u32)s0[8];if(value!=(u32)old){reg=(volatile u32*)0xa4600028;goto writeTiming;}
+ }
+ goto done;
+ writeTiming:*reg=(u32)old;
+ done:D_800A2560[domain]=s0;
+}
+*(volatile u32*)0xa4600000=func_8000E800(dram);
+*(volatile u32*)0xa4600004=(*(u32*)(s0+12)|s2)&0x1fffffff;
+{ volatile u32 *tail;
+switch(s1){case 0:tail=(volatile u32*)0xa460000c;break;case 1:tail=(volatile u32*)0xa4600008;break;default:return -1;}
+*tail=s3-1;return 0; }
+}

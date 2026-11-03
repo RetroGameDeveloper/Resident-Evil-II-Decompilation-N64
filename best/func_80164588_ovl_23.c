@@ -1,7 +1,0 @@
-typedef struct {u8 b[8];} Blob8; typedef struct {u8 pad0[4];s32 unk4;u8 pad[0x1E0];s16 v;u8 tail[8];u16 count;s16 handle;} Obj;
-s32 func_80032DEC_ovl_01(void*,s32,s32,s32); s16 func_80036764_ovl_01_2FC(void*,s32*,s32); s32 func_80036764_ovl_01_510_24(void*,s32,s32,s32); s32 func_80083800_ovl_01(s16,s16*,s16*); extern u8 D_800C7650_ovl_01[]; extern u8 D_800E10D0_ovl_01[]; extern u8 D_800E10F8_ovl_01[]; extern Blob8 D_80165F94_ovl_23;
-void func_80164588_ovl_23(Obj *p){s16 x,y; s32 a,b;u8 mode;u16 count; Blob8 tmp=D_80165F94_ovl_23;x=*(s16*)&tmp.b[0];y=*(s16*)&tmp.b[4]; func_80083800_ovl_01(*(s16*)((u8*)p+0x66),&x,&x);a=*(s32*)((u8*)p+0x28)+x;b=*(s32*)((u8*)p+0x30)+y; mode=((u8*)p)[6];
- if(mode==0){*(u16*)((u8*)p+0x1F4)=0;*(s16*)((u8*)p+0x1F6)=0;*(s32*)p|=10;*(s32*)(D_800C7650_ovl_01+0x19A80)|=10;((u8*)p)[6]++;mode=1;}
- if(mode==1){count=*(u16*)((u8*)p+0x1F4)+1;*(u16*)((u8*)p+0x1F4)=count;if((s16)count==7){*(u16*)((u8*)p+0x1F4)=0;((u8*)p)[6]++;}if(*(s16*)((u8*)p+0x1F6)==0)*(s16*)((u8*)p+0x1F6)=func_80036764_ovl_01_2FC(D_800E10F8_ovl_01,&a,0x190);func_80032DEC_ovl_01(p,*(s32*)(D_800C7650_ovl_01+0x1AA8),*(s32*)(D_800C7650_ovl_01+0x1AB0),0x100);func_80032DEC_ovl_01(D_800E10D0_ovl_01,*(s32*)((u8*)p+0x28),*(s32*)((u8*)p+0x30),0x100);((u8*)p)[0x1E9]=0;func_80036764_ovl_01_510_24(p,2,15,0);}
- else if(mode==2){count=*(u16*)((u8*)p+0x1F4)+1;*(u16*)((u8*)p+0x1F4)=count;if((s16)count==15)*(s32*)((u8*)p+4)=0x01020000;((u8*)p)[0x1E9]=0;func_80036764_ovl_01_510_24(p,2,15,0);}
-}

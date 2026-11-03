@@ -1,45 +1,31 @@
-typedef struct S_func_8016281C_ovl_27_arg0 {
-    u8 pad_00[4];
-    union {
-        s32 unk_04;
-        struct { u16 pad_04h; u8 unk_06; u8 unk_07; } b;
-    } u04;
-    u8 pad_08[0x1F2 - 0x08];
-    s16 unk_1F2;
-    u8 pad_1F4[0x270 - 0x1F4];
-    s16 unk_270;
-    u8 pad_272[0x2C9 - 0x272];
-    u8 unk_2C9;
-    u8 unk_2CA;
-} S_func_8016281C_ovl_27_arg0;
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
 
-void func_801628B0_ovl_27(void);
-void func_80162994_ovl_27(void *);
-extern u8 D_800C7650_ovl_01;
+M2C_UNK func_801628B0_ovl_27();                     /* extern */
+M2C_UNK func_80162994_ovl_27(void *);               /* extern */
+extern M2C_UNK D_800C7650_ovl_01;
 
-void func_8016281C_ovl_27(S_func_8016281C_ovl_27_arg0 *arg0) {
-    u8 v6, v7;
-    s32 flag;
-    if (arg0->u04.b.unk_06 == 0) {
+void func_8016281C_ovl_27(void *arg0) {
+    if (M2C_FIELD(arg0, u8 *, 6) == 0) {
         func_801628B0_ovl_27();
     } else {
         func_80162994_ovl_27(arg0);
     }
-    v6 = arg0->u04.b.unk_06;
-    v7 = arg0->u04.b.unk_07;
-    arg0->unk_2C9 = v6;
-    arg0->unk_2CA = v7;
-    if (arg0->unk_270 == 1) {
-        flag = 1;
-    } else {
-        union { u64 q; struct { u32 lo; u32 hi; } w; } base;
-        u8 *p;
-        base.q = (u64)(u32)&D_800C7650_ovl_01;
-        p = (u8 *)(base.w.lo + 0x18000);
-        flag = *(u16 *)(p + 0x1A78) & 0x10;
-    }
-    if (flag) {
-        arg0->unk_1F2 = -1;
-        arg0->u04.unk_04 = 0x030A0000;
+    M2C_FIELD(arg0, u8 *, 0x2CA) = (u8) M2C_FIELD(arg0, u8 *, 7);
+    M2C_FIELD(arg0, u8 *, 0x2C9) = (u8) M2C_FIELD(arg0, u8 *, 6);
+    if ((M2C_FIELD(arg0, s16 *, 0x270) == 1) || (M2C_FIELD(&D_800C7650_ovl_01, u16 *, 0x19A78) & 0x10)) {
+        M2C_FIELD(arg0, s16 *, 0x1F2) = -1;
+        M2C_FIELD(arg0, s32 *, 4) = 0x030A0000;
     }
 }

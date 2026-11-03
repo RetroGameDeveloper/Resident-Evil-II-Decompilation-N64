@@ -1,35 +1,44 @@
-extern u8 D_80014FE0;
+/* identical to __osPfsRequestOneChannel in Resident Evil II (matched), with its names changed by decompdecomp */
+/* adapted from similar verified C in func_8000AAF0 in V-RALLY-PAL (matched), with its names changed by decompdecomp */
 extern s32 D_800164AC;
+extern s8 D_80014FE0;
 
 typedef struct {
-    u8 b0;
-    u8 b1;
-    u8 b2;
-    s8 b3;
-    s8 b4;
-    s8 b5;
-} Hdr;
+    s8 a;
+    s8 b;
+    s8 c;
+    s8 d;
+    s8 e;
+    s8 f;
+} Pack6;
 
-void func_8000AAF0(s32 n)
-{
-    Hdr h;
+void func_8000AAF0(s32 arg0) {
     s32 i;
-    s32 *base = &D_800164AC;
-    u8 *p = (u8 *)base - 0x3C;
-    u8 ff = 0xFF;
+    Pack6 buf;
+    Pack6 *p;
+    s32 *q;
+    u8 k;
+    s8 pad[8];
 
+    q = &D_800164AC;
+    p = (Pack6 *)((s8 *)q - 0x3C);
     i = 0;
-    *base = 1;
-    h.b0 = 1;
-    h.b1 = 3;
+    *q = 1;
+    buf.a = 1;
+    buf.b = 3;
     D_80014FE0 = 0;
-    h.b2 = 0;
-    h.b3 = ff;
-    h.b4 = ff;
-    h.b5 = ff;
-    for (; i < n; i++) {
-        *p++ = 0;
+    buf.c = 0;
+    k = 0xFF;
+    buf.d = k;
+    buf.e = k;
+    buf.f = k;
+    if (arg0 > 0) {
+        do {
+            *(s8 *)p = 0;
+            i++;
+            p = (Pack6 *)((s8 *)p + 1);
+        } while (i < arg0);
     }
-    *(Hdr *)p = h;
-    p[6] = 0xFE;
+    *p = buf;
+    ((u8 *)p)[6] = 0xFE;
 }
