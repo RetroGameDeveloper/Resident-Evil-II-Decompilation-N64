@@ -1,26 +1,168 @@
-typedef struct {s32 unk_00,unk_04,unk_08;s8 unk_0C;u8 pad[0x58];u8 unk_64,unk_65;} S_D_80129E34;
-s32 func_80007000(void);s32 func_800087A0(s32,s32,s32,u8*);s32 func_80008B70(s32,s32,u16,u8*,s32);s32 func_8000A66C(u8*);
-s32 func_80009CAC(S_D_80129E34 *a,S_func_80009CAC_arg1 *b,S_func_80009CAC_arg2 *c){
-u8 x[32],y[32];s16 q[4];s32 n,i,r;u8 *p;
-if(a->unk_65){a->unk_65=0;r=func_8000A66C((u8*)a);if(r)return r;}
-c->unk_00=-1;r=func_80007000();c->unk_04=r;{s32 z=b->unk_08;c->unk_08=z;z=b->unk_0C;c->unk_0C=z;z=b->unk_10;c->unk_10=z;z=b->unk_14;c->unk_14=z;}n=0;
-do{
-a->unk_65=n;r=func_8000A66C((u8*)a);if(r)return r;
-r=func_800087A0(a->unk_04,a->unk_08,0,x);if(r)return r;
-x[0]=n|0x80;for(i=1;i<32;i++){x[i]=~x[i];}
-r=func_80008B70(a->unk_04,a->unk_08,0,x,0);if(r)return r;
-r=func_800087A0(a->unk_04,a->unk_08,0,y);if(r)return r;
-for(i=0;i<32;i++)if(y[i]!=x[i])break;
-if(i==32){if(n>0){a->unk_65=0;r=func_8000A66C((u8*)a);if(r)return r;r=func_800087A0(a->unk_04,a->unk_08,0,x);if(r)return r;if(x[0]!=0x80)goto done;}n++;if(n<62)continue;}
-break;
-}while(1);
-done:
-a->unk_65=0;r=func_8000A66C((u8*)a);if(r)return r;
-c->unk_1A=n;c->unk_18=(n>0)|(b->unk_18&0xfffe);c->unk_1E=0;c->unk_1C=0;c->unk_1B=b->unk_1B;p=(u8*)c;
-do{u16 v=*(u16*)p;c->unk_1C+=v;c->unk_1E+=~v;p+=2;}while(p<(u8*)c+0x1c);
-q[0]=1;q[1]=3;q[2]=4;q[3]=6;
-for(i=0;i<4;i++){r=func_80008B70(a->unk_04,a->unk_08,q[i],(u8*)c,1);if(r)return r;}
-r=func_800087A0(a->unk_04,a->unk_08,1,x);if(r)return r;
-for(i=0;i<32;i++)if(x[i]!=((u8*)c)[i])return 10;
-return 0;
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
+
+s32 func_80007000();
+s32 func_800087A0();
+s32 func_80008B70();
+s32 func_8000A66C();
+
+s32 func_80009CAC(void *arg0, void *arg1, u8 *arg2) {
+    u8 sp18;
+    u8 sp38;
+    s16 sp58;
+    s16 sp5A;
+    s16 sp5C;
+    s16 sp5E;
+    s32 temp_v0;
+    s32 var_s0;
+    s32 var_s0_2;
+    s32 var_v0;
+    u16 temp_v1;
+    u8 *temp_a1;
+    char *var_a0;
+    char *var_a0_2;
+    char *var_a0_3;
+    char *var_a1;
+    char *var_a2;
+    char *var_s2_2;
+    char *var_v1;
+    u8 var_s2;
+
+    if ((M2C_FIELD(arg0, u8 *, 0x65) == 0) || (M2C_FIELD(arg0, u8 *, 0x65) = 0U, var_v0 = func_8000A66C(), (var_v0 == 0))) {
+        M2C_FIELD(arg2, s32 *, 0) = -1;
+        M2C_FIELD(arg2, s32 *, 4) = func_80007000();
+        var_s2 = 0;
+        M2C_FIELD(arg2, s32 *, 8) = (s32) M2C_FIELD(arg1, s32 *, 8);
+        M2C_FIELD(arg2, s32 *, 0xC) = (s32) M2C_FIELD(arg1, s32 *, 0xC);
+        M2C_FIELD(arg2, s32 *, 0x10) = (s32) M2C_FIELD(arg1, s32 *, 0x10);
+        M2C_FIELD(arg2, s32 *, 0x14) = (s32) M2C_FIELD(arg1, s32 *, 0x14);
+loop_3:
+        M2C_FIELD(arg0, u8 *, 0x65) = var_s2;
+        var_v0 = func_8000A66C(arg0);
+        if (var_v0 == 0) {
+            var_v0 = func_800087A0(M2C_FIELD(arg0, s32 *, 4), M2C_FIELD(arg0, s32 *, 8), 0, &sp18);
+            var_v1 = &sp18 + 1;
+            if (var_v0 == 0) {
+                sp18 = var_s2 | 0x80;
+                do {
+                    *(u8 *)var_v1 = ~*(u8 *)var_v1;
+                    var_v1 += 1;
+                } while ((s32) var_v1 < (s32) (&sp18 + 0x20));
+                var_v0 = func_80008B70(M2C_FIELD(arg0, s32 *, 4), M2C_FIELD(arg0, s32 *, 8), 0U, &sp18, 0);
+                if (var_v0 == 0) {
+                    var_v0 = func_800087A0(M2C_FIELD(arg0, s32 *, 4), M2C_FIELD(arg0, s32 *, 8), 0, &sp38);
+                    var_s0 = 0;
+                    if (var_v0 == 0) {
+                        var_a1 = &sp18;
+                        var_a0 = &sp38;
+loop_10:
+                        if (*(u8 *)var_a0 == *(u8 *)var_a1) {
+                            var_a1 += 1;
+                            var_s0 += 1;
+                            var_a0 += 1;
+                            if (var_s0 >= 0x20) {
+
+                            } else {
+                                goto loop_10;
+                            }
+                        }
+                        if (var_s0 == 0x20) {
+                            if ((s32) var_s2 > 0) {
+                                M2C_FIELD(arg0, u8 *, 0x65) = 0U;
+                                var_v0 = func_8000A66C(arg0, var_a1);
+                                if (var_v0 == 0) {
+                                    var_v0 = func_800087A0(M2C_FIELD(arg0, s32 *, 4), M2C_FIELD(arg0, s32 *, 8), 0, &sp18);
+                                    if (var_v0 == 0) {
+                                        if (sp18 == 0x80) {
+                                            goto block_18;
+                                        }
+                                        goto block_19;
+                                    }
+                                }
+                                /* Duplicate return node #32. Try simplifying control flow for better match */
+                                return var_v0;
+                            }
+block_18:
+                            var_s2 += 1;
+                            if ((s32) var_s2 >= 0x3E) {
+                                goto block_19;
+                            }
+                            goto loop_3;
+                        }
+block_19:
+                        M2C_FIELD(arg0, u8 *, 0x65) = 0U;
+                        var_v0 = func_8000A66C(arg0);
+                        if (var_v0 == 0) {
+                            var_a0_2 = arg2;
+                            M2C_FIELD(arg2, u8 *, 0x1A) = var_s2;
+                            M2C_FIELD(arg2, s16 *, 0x18) = (s16) (((s32) var_s2 > 0) | (M2C_FIELD(arg1, u16 *, 0x18) & 0xFFFE));
+                            M2C_FIELD(arg2, u16 *, 0x1E) = 0U;
+                            M2C_FIELD(arg2, u16 *, 0x1C) = 0U;
+                            M2C_FIELD(arg2, u8 *, 0x1B) = (u8) M2C_FIELD(arg1, u8 *, 0x1B);
+                            do {
+                                temp_v1 = *(u8 *)var_a0_2;
+                                M2C_FIELD(arg2, u16 *, 0x1C) += temp_v1;
+                                var_a0_2 += 2;
+                                M2C_FIELD(arg2, u16 *, 0x1E) += ~temp_v1;
+                                var_s0_2 = 0;
+                            } while ((u32) var_a0_2 < (u32) (arg2 + 0x1C));
+                            var_s2_2 = &sp18;
+                            sp58 = 1;
+                            sp5A = 3;
+                            sp5C = 4;
+                            sp5E = 6;
+loop_23:
+                            var_v0 = func_80008B70(M2C_FIELD(arg0, s32 *, 4), M2C_FIELD(arg0, s32 *, 8), M2C_FIELD(var_s2_2, u16 *, 0x40), arg2, 1);
+                            var_s0_2 += 1;
+                            if (var_v0 == 0) {
+                                var_s2_2 += 2;
+                                if (var_s0_2 >= 4) {
+                                    temp_v0 = func_800087A0(M2C_FIELD(arg0, s32 *, 4), M2C_FIELD(arg0, s32 *, 8), 1, &sp18);
+                                    var_a2 = arg2;
+                                    if (temp_v0 != 0) {
+                                        return temp_v0;
+                                    }
+                                    var_a0_3 = &sp18;
+                                    temp_a1 = var_a2 + 0x20;
+loop_29:
+                                    var_a2 += 1;
+                                    if (*(u8 *)var_a0_3 == *(u8 *)var_a2) {
+                                        var_a0_3 += 1;
+                                        if ((s32) var_a2 >= (s32) temp_a1) {
+                                            var_v0 = 0;
+                                            /* Duplicate return node #32. Try simplifying control flow for better match */
+                                            return var_v0;
+                                        }
+                                        goto loop_29;
+                                    }
+                                    return 0xA;
+                                }
+                                goto loop_23;
+                            }
+                            /* Duplicate return node #32. Try simplifying control flow for better match */
+                            return var_v0;
+                        }
+                        /* Duplicate return node #32. Try simplifying control flow for better match */
+                        return var_v0;
+                    }
+                }
+                /* Duplicate return node #32. Try simplifying control flow for better match */
+                return var_v0;
+            }
+        }
+        /* Duplicate return node #32. Try simplifying control flow for better match */
+        return var_v0;
+    }
+    return var_v0;
 }

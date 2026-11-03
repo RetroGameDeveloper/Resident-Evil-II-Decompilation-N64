@@ -1,5 +1,0 @@
-void func_80161D94_ovl_13(void*p){s32 d,q;if(*(u8*)((u8*)p+4)!=7){d=*(s16*)((u8*)p+0x25e)-*(s32*)((u8*)p+0x2c);if(d>250){q=0x57e40/((d+1550)>>1);*(s32*)(*(u8**)((u8*)p+0x208)+4)=q|(q<<16);}else *(s32*)(*(u8**)((u8*)p+0x208)+4)=0x1900190;}}
-extern s32 func_80033634_ovl_01(); extern s32 func_80165BE8_ovl_13(void*,s32);
-void func_801626A8_ovl_13(void*p){u8 state=*(u8*)((u8*)p+6);u8 *v=(u8*)p+0x2b5;if(state==0){*v=func_80033634_ovl_01()&7;}else if(state!=1)return;*v=*v-1;if(*v==255){s32 mode=2;if(*(u16*)((u8*)p+0x1aa)&0x40)mode=3;func_80165BE8_ovl_13(p,mode);}}
-extern s32 func_800377B0_ovl_01(s32,s32,void*,void*); extern s32 D_800E8FC8_ovl_01;
-void func_80166158_ovl_13(void*p,s32 count){s16 xyz[8];s32 i;for(i=count-1;i!=-1;){i--;xyz[0]=*(u16*)((u8*)p+0x2a)+((func_80033634_ovl_01()<<24)>>22);xyz[1]=*(u16*)((u8*)p+0x2e)+((func_80033634_ovl_01()<<24)>>22);xyz[2]=*(u16*)((u8*)p+0x32)+((func_80033634_ovl_01()<<24)>>22);func_800377B0_ovl_01(0xc000800,(func_80033634_ovl_01()&255)<<4,&D_800E8FC8_ovl_01,xyz);}}

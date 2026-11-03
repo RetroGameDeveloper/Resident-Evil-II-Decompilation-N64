@@ -1,10 +1,15 @@
-extern u32 D_80017820; extern s32 D_80017824,D_80017828; extern u32 D_8001782C; extern u16 D_80017860;
-u32 func_80007000(void); void *func_8000E7F0(void); void func_8000ECB0(void); void func_8000DF64(void); void func_8000C9E0(s32,u16**,s32); void func_8000CB60(s32,s32,s32);
-void func_8000E658(void *arg0) {u16 *p=0;void*q;s32 t;u16 v;u32 old,now,diff,lo;s32 flag;s32 spare;u16 c13=13,c14=14;
- D_80017860=*(u16*)((u8*)func_8000E7F0()+2);if(!D_80017860)D_80017860=1;flag=0;
-loop:func_8000C9E0(*(s32*)((u8*)arg0+12),&p,1);v=*p;
- if(v==c13){func_8000ECB0();v=D_80017860-1;D_80017860=v;if(!(v&65535)){q=func_8000E7F0();t=*(s32*)((u8*)q+16);if(t)func_8000CB60(t,*(s32*)((u8*)q+20),0);D_80017860=*(u16*)((u8*)q+2);}
- D_80017824++;if(flag){now=func_80007000();flag=0;D_80017828=0;D_8001782C=now;}
- old=D_80017820;now=func_80007000();D_80017820=now;diff=now-old;lo=D_8001782C+diff;D_80017828+=lo<diff;D_8001782C=lo;goto loop;}
- if(v==c14){func_8000DF64();goto loop;}goto loop;
-}
+/* identical to viMgrMain in V-RALLY-PAL (matched), with its names changed by decompdecomp */
+extern u16 D_800ACCB0; extern u32 D_800B0D78,D_800AE854; extern u64 D_800B6168;
+void *func_8000E7F0(void); void func_8000ECB0(void); u32 func_80007000(void); void func_8000DF64(void); void func_8000C9E0(s32,void*,s32);void func_8000CB60(s32,s32,s32);
+#define F(p,t,o) (*(t*)((u8*)(p)+(o)))
+void func_8000E658(void *arg0){
+ u16 *msg=NULL; s32 first=0; u32 count; void *ctx; void *q;
+ ctx=arg0;
+ D_800ACCB0=F(func_8000E7F0(),u16,2); if(!D_800ACCB0)D_800ACCB0=1;
+ first=0;
+ q=ctx;
+ for(;;){func_8000C9E0(F(q,s32,12),&msg,1);switch(*msg){case 13:
+ func_8000ECB0(); if(--D_800ACCB0==0){ctx=func_8000E7F0();if(F(ctx,s32,16))func_8000CB60(F(ctx,s32,16),F(ctx,s32,20),0);D_800ACCB0=F(ctx,u16,2);}
+ D_800B0D78++;if(first){first=0;count=func_80007000();D_800B6168=count;}
+ count=D_800AE854;D_800AE854=func_80007000();count=D_800AE854-count;D_800B6168+=count;break;
+ case 14:func_8000DF64();break;}}}

@@ -1,4 +1,4 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
 typedef s32 M2C_UNK;
@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern M2C_UNK D_80011F00;
+extern char D_80011F00[];
 
 s32 func_800106C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 temp_a1;
@@ -117,7 +117,7 @@ s32 func_800106C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
                     var_t0 = 0x10;
                 }
             }
-            temp_a2 = 0x20 - (*(&D_80011F00 + ((u32) var_a3 >> var_t0)) + var_t0);
+            temp_a2 = 0x20 - (*(D_80011F00 + ((u32) var_a3 >> var_t0)) + var_t0);
             if (temp_a2 != 0) {
                 var_t1 <<= temp_a2;
                 var_a0 = (var_a0 << temp_a2) | ((u32) var_t3 >> (0x20 - temp_a2));
@@ -163,7 +163,7 @@ s32 func_800106C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
                 var_v1_2 = 0x10;
             }
         }
-        temp_a2_3 = 0x20 - (*(&D_80011F00 + ((u32) var_t1 >> var_v1_2)) + var_v1_2);
+        temp_a2_3 = 0x20 - (*(D_80011F00 + ((u32) var_t1 >> var_v1_2)) + var_v1_2);
         temp_a1 = 0x20 - temp_a2_3;
         if (temp_a2_3 == 0) {
             var_a0_3 = var_a0 - var_t1;
@@ -248,7 +248,7 @@ block_37:
             var_v1_6 = 0x10;
         }
     }
-    temp_a2_6 = 0x20 - (*(&D_80011F00 + ((u32) var_a2 >> var_v1_6)) + var_v1_6);
+    temp_a2_6 = 0x20 - (*(D_80011F00 + ((u32) var_a2 >> var_v1_6)) + var_v1_6);
     if (temp_a2_6 != 0) {
         temp_a1_3 = 0x20 - temp_a2_6;
         temp_t0_3 = (var_a2 << temp_a2_6) | ((u32) var_t1 >> temp_a1_3);

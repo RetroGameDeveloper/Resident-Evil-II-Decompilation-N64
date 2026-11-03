@@ -21,7 +21,7 @@ typedef struct S_func_801622B8_arg0 {
 } S_func_801622B8_arg0;
 
 u16 func_80032D44_ovl_01(s32 arg0, s32 arg1, s16 arg2, s16 arg3);
-s32 func_80032F94_ovl_01_48(void *arg0, s16 arg1, s32 arg2);
+s32 func_80032F94_ovl_01(void *arg0, s16 arg1, s32 arg2);
 s32 func_80033634_ovl_01(void);
 s32 func_800408F0_ovl_01(s16 arg0);
 s32 func_80040998_ovl_01(s16 arg0);
@@ -74,7 +74,7 @@ void func_801622B8_ovl_21(S_func_801622B8_arg0 *arg0) {
         buf[2] = arg0->unk_1E0.u;
         buf[0] = 0;
         buf[1] = 0;
-        ret = func_80032F94_ovl_01_48(arg0, arg0->unk_2B8, 0x20);
+        ret = func_80032F94_ovl_01(arg0, arg0->unk_2B8, 0x20);
         pbuf = buf;
         if ((s16)ret == 0) {
             arg0->u04.unk_04b.unk_06 = 1;

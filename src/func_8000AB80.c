@@ -1,26 +1,22 @@
-typedef struct {
-    s8 b0;
-    s8 b1;
-    s8 b2;
-    s8 b3;
-    s8 b4;
-    s8 b5;
-} S6;
+/* identical to __osPfsGetOneChannelData in Resident Evil II (matched), with its names changed by decompdecomp */
+/* adapted from similar verified C in func_8000AB80 in V-RALLY-PAL (matched), with its names changed by decompdecomp */
+extern u8 D_8000E5EE[];
 
-extern s8 D_80016470;
-
-void func_8000AB80(s32 n, u8 *out) {
-    S6 s;
-    s8 *p = &D_80016470;
+void func_8000AB80(s32 arg0, u8 *arg1) {
+    struct { u8 b[6]; } sp;
+    u8 *src;
     s32 i;
+    u8 flag;
 
-    for (i = 0; i < n; i++) {
-        p++;
+    src = D_8000E5EE + 0x7E82;
+    for (i = 0; i < arg0; i++) {
+        src++;
     }
-    s = *(S6 *)p;
-    out[3] = (((u8 *)&s)[1] & 0xC0) >> 4;
-    if (out[3] == 0) {
-        *(u16 *)out = ((u8 *)&s)[3] | (((u8 *)&s)[4] << 8);
-        out[2] = ((u8 *)&s)[5];
+    sp = *(typeof(sp) *)src;
+    flag = (sp.b[1] & 0xC0) >> 4;
+    arg1[3] = flag;
+    if (flag == 0) {
+        *(s16 *)arg1 = (s16)(sp.b[3] | (sp.b[4] << 8));
+        arg1[2] = sp.b[5];
     }
 }

@@ -1,2 +1,0 @@
-s32 func_80033634_ovl_01();s32 func_800377B0_ovl_01(s32,s16,s32,s16*);s32 func_80077D48_ovl_01(s32,void*);extern u8 D_80162FA0_ovl_25[];
-void func_80162BDC_ovl_25(void*p){s16 a[3];s32 x,t; a[0]=0;a[1]=0;a[2]=0;x=*(u16*)((u8*)p+0x1aa)&1;t=D_80162FA0_ovl_25[x*7];func_800377B0_ovl_01(0x21000,*(s16*)((u8*)p+0x66),*(s32*)((u8*)p+0x234)+(t*0x178+0x38),a);*(s16*)((u8*)p+0x1f2)=250;*(s32*)((u8*)p+4)=0x01050000;*((u8*)p+0x26f)|=0x80;x=func_80033634_ovl_01();if(x&1)func_80077D48_ovl_01(2,p);else func_80077D48_ovl_01(3,p);}

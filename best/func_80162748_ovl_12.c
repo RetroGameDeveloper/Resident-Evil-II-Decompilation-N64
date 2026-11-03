@@ -1,3 +1,0 @@
-extern s32 func_80033634_ovl_01(void); extern s32 func_80162EB4_ovl_36(void *,s32,s32,s32); extern s32 func_80162CE0_ovl_15(void *); extern u16 D_80166D28_ovl_12[];
-typedef struct {u8 pre[0x14];u8 f14;u8 f15;u8 f16;u8 rest[0x18];} Sub;
-void func_80162748_ovl_12(void*v){u8*p=v;Sub*q=(Sub*)(p+0x2b4);u32 z;s32 i;p[6]=1;*(u32*)(p+0x1e8)=0x2000f00;q->f14=0;q->f15=0;((u8*)q)[0x15]=0;p[0x26f]&=0x7f;z=*(u32*)p;z&=0xefffffff;p[0x25c]&=0xfd;*(u32*)p=z|0xc000000;*(u16*)(q->pre+0xc)=0x60;if(func_80162EB4_ovl_36(v,0,0x20,0)){i=func_80033634_ovl_01()&7;*(u16*)(q->pre+0xc)=D_80166D28_ovl_12[i];}if(q->f16){*(u16*)(p+6)=0x300;p[0x2b4]=func_80162CE0_ovl_15(v);q->f14=1;((u8*)q)[0x18]=0;*(u16*)(p+0x1f6)=0;}}

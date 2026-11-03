@@ -1,3 +1,4 @@
+/* identical to func_80165014_ovl_30 (matched), with its names changed by decompdecomp */
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
@@ -13,14 +14,14 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80164350_ovl_12();                     /* extern */
-M2C_UNK func_801644B0_ovl_12(void *);               /* extern */
-M2C_UNK func_80166458_ovl_12(void *);               /* extern */
+M2C_UNK func_801644B0_overlay_015(void *);               /* extern */
+M2C_UNK jtbl_80166458_overlay_013(void *);               /* extern */
 
 void func_80164304_ovl_12(void *arg0) {
     if (M2C_FIELD(arg0, u8 *, 6) == 0) {
         func_80164350_ovl_12();
     } else {
-        func_801644B0_ovl_12(arg0);
+        func_801644B0_overlay_015(arg0);
     }
-    func_80166458_ovl_12(arg0);
+    jtbl_80166458_overlay_013(arg0);
 }
