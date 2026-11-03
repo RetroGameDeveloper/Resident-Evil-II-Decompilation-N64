@@ -1,75 +1,82 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 pad2[0x20];
+    u16 unk22;
+    f32 unk24;
+    u16 unk28;
+    u8 pad2A[0x1E];
+    u16 unk48;
+    u8 pad4A[2];
+    f32 unk4C;
+    union { u32 w; u16 h; } u50;
+    f32 unk54;
+    f32 unk58;
+    u8 unk5C;
+} S_A2EA8;
 
 extern f32 D_800BA5B0_ovl_01;
 extern f64 D_800BA5B8_ovl_01;
 extern f32 D_800BA5C0_ovl_01;
 extern f32 D_800BA5C4_ovl_01;
-extern u32 D_80143EA4;
+extern u32 D_80143EA4_ovl_01;
 
-void func_800A2EA8_ovl_01(void *arg0, s32 arg1, s8 *arg2) {
-    f32 temp_fv0;
-    f32 temp_fv1;
-    f32 var_ft0_2;
-    f64 var_ft0;
-    s32 temp_v0;
-    u8 temp_v1;
+void func_800A2EA8_ovl_01(S_A2EA8 *a0, u32 arg1, s8 *arg2)
+{
+    u32 step;
+    f32 ratio;
+    f32 tmp;
+    f32 v24;
+    u32 cnt;
+    f64 d;
+    s32 one;
 
-    if ((M2C_FIELD(arg0, u8 *, 1) == 0) && (M2C_FIELD(arg0, u8 *, 0x5C) != 3)) {
-        M2C_FIELD(arg0, u8 *, 0x5C) = 3U;
-        M2C_FIELD(arg0, f32 *, 0x54) = 0.0f;
-        M2C_FIELD(arg0, s32 *, 0x50) = 0;
-        M2C_FIELD(arg0, f32 *, 0x58) = (f32) M2C_FIELD(arg0, f32 *, 0x4C);
-        M2C_FIELD(arg0, u16 *, 0x48) = (u16) M2C_FIELD(arg0, u16 *, 0x28);
-        goto block_15;
-    }
-    if ((u16) M2C_FIELD(arg0, s32 *, 0x50) >= (u16) M2C_FIELD(arg0, u16 *, 0x48)) {
-        temp_v1 = M2C_FIELD(arg0, u8 *, 0x5C);
-        switch (temp_v1) {                          /* irregular */
+    step = ((arg1 & 0xFFFF) * 0x7D00 / D_80143EA4_ovl_01) << 11;
+
+    if (a0->unk1 == 0 && a0->unk5C != 3) {
+        a0->unk5C = 3;
+        a0->unk54 = 0.0f;
+        a0->u50.w = 0;
+        a0->unk58 = a0->unk4C;
+        a0->unk48 = a0->unk28;
+    } else {
+        if ((u32)a0->u50.h < (u32)a0->unk48) {
+            goto common;
+        }
+        one = 1;
+        switch (a0->unk5C) {
+        case 0:
+            a0->unk5C = one;
+            a0->u50.w = 0;
+            a0->unk58 = D_800BA5B0_ovl_01;
+            a0->unk54 = a0->unk24;
+            a0->unk48 = a0->unk22;
+            break;
+        case 1:
+            v24 = a0->unk24;
+            a0->unk5C = 2;
+            a0->unk58 = v24;
+            a0->unk54 = v24;
+            a0->unk4C = v24;
+            return;
         case 3:
             *arg2 = 0;
-            M2C_FIELD(arg0, f32 *, 0x4C) = 0.0f;
-            return;
-        case 0:
-            M2C_FIELD(arg0, u8 *, 0x5C) = 1U;
-            M2C_FIELD(arg0, s32 *, 0x50) = 0;
-            M2C_FIELD(arg0, f32 *, 0x58) = (f32) D_800BA5B0_ovl_01;
-            M2C_FIELD(arg0, f32 *, 0x54) = (f32) M2C_FIELD(arg0, f32 *, 0x24);
-            M2C_FIELD(arg0, u16 *, 0x48) = (u16) M2C_FIELD(arg0, u16 *, 0x22);
-            goto block_15;
-        case 1:
-            temp_fv0 = M2C_FIELD(arg0, f32 *, 0x24);
-            M2C_FIELD(arg0, u8 *, 0x5C) = 2U;
-            M2C_FIELD(arg0, f32 *, 0x58) = temp_fv0;
-            M2C_FIELD(arg0, f32 *, 0x54) = temp_fv0;
-            M2C_FIELD(arg0, f32 *, 0x4C) = temp_fv0;
+            a0->unk4C = 0.0f;
             return;
         }
-    } else {
-block_15:
-        if (M2C_FIELD(arg0, u16 *, 0x48) != 0) {
-            temp_v0 = M2C_FIELD(arg0, s32 *, 0x50);
-            var_ft0 = (f64) temp_v0;
-            if (temp_v0 < 0) {
-                var_ft0 += D_800BA5B8_ovl_01;
-            }
-            var_ft0_2 = (f32) var_ft0 / ((f32) M2C_FIELD(arg0, u16 *, 0x48) * D_800BA5C0_ovl_01);
-        } else {
-            var_ft0_2 = D_800BA5C4_ovl_01;
-        }
-        temp_fv1 = M2C_FIELD(arg0, f32 *, 0x58);
-        M2C_FIELD(arg0, s32 *, 0x50) = (s32) (M2C_FIELD(arg0, s32 *, 0x50) + (((u32) ((arg1 & 0xFFFF) * 0x7D00) / (u32) D_80143EA4) << 0xB));
-        M2C_FIELD(arg0, f32 *, 0x4C) = (f32) (((M2C_FIELD(arg0, f32 *, 0x54) - temp_fv1) * var_ft0_2) + temp_fv1);
     }
+common:
+    if (a0->unk48 != 0) {
+        cnt = a0->u50.w;
+        d = (f64)(s32)cnt;
+        if ((s32)cnt < 0) {
+            d += D_800BA5B8_ovl_01;
+        }
+        ratio = (f32)d / ((f32)a0->unk48 * D_800BA5C0_ovl_01);
+    } else {
+        ratio = D_800BA5C4_ovl_01;
+    }
+    tmp = a0->unk58;
+    a0->u50.w += step;
+    a0->unk4C = (a0->unk54 - tmp) * ratio + tmp;
 }

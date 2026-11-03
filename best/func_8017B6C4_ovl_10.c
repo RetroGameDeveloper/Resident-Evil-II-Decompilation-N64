@@ -1,0 +1,1 @@
+void func_8017B6C4_ovl_10(void) { u16 *p=(u16 *)0x8017E680; if(p[3]<0x7fff){p[2]=(u16)(p[2]+p[0]); if(*(volatile u32*)0x800e1a3c&0x100)p[0]+=24;else p[0]+=2; *((u8*)p+0x34)=(u8)(*((u8*)p+0x34)+1); } else { *((u8*)p+0x34)=0; func_8017E0D0_ovl_10(); } }

@@ -1,34 +1,46 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+extern volatile u8 D_8012FF48_ovl_01[];
+extern u8 D_800E8D18_ovl_01[];
+extern u8 D_800C7650_ovl_01[];
+s32 func_800837DC_ovl_01(void *bits, s32 n);
+s32 func_8004BF9C_ovl_01(s32, s32, s32, s32);
 
-M2C_UNK func_8004BF9C_ovl_01(s32, M2C_UNK, s32, u32); /* extern */
-s32 func_800837DC_ovl_01(M2C_UNK *, s32);           /* extern */
-extern M2C_UNK D_800E8D18_ovl_01;
-extern M2C_UNK D_8012FF48_ovl_01;
+void func_8008C23C_ovl_01(s32 arg0, s32 arg1, s32 arg2, u32 arg3)
+{
+    s32 s0;
 
-void func_8008C23C_ovl_01(s32 arg0, M2C_UNK arg1, s32 arg2, u32 arg3) {
-    s32 var_s0;
-    u32 var_a3;
+    s0 = 0;
+    if (arg3 < 0x64) {
+        volatile u8 *base = D_8012FF48_ovl_01;
 
-    var_s0 = 0;
-    if (arg3 < 0x64U) {
-        var_s0 = M2C_FIELD(((arg3 * 8) + &D_8012FF48_ovl_01), u8 *, 1) & 0xF;
+        s0 = *(base + arg3 * 8 + 1) & 0xF;
     }
-    if ((var_s0 != 0) && (func_800837DC_ovl_01(&D_800E8D18_ovl_01, var_s0) != 0)) {
-        var_a3 = var_s0 + 0x91;
+    arg2 |= 0x4000;
+    if (s0 != 0 && func_800837DC_ovl_01(D_800E8D18_ovl_01, s0) != 0) {
+        func_8004BF9C_ovl_01(arg0, arg1, arg2, s0 + 0x91);
     } else {
-        var_a3 = arg3;
+        func_8004BF9C_ovl_01(arg0, arg1, arg2, arg3);
     }
-    func_8004BF9C_ovl_01(arg0, arg1, arg2 | 0x4000, var_a3);
+}
+
+void func_8008C2F4_ovl_01(s32 arg0, s8 arg1, s8 arg2, s8 arg3)
+{
+    u32 a = (u32)D_800C7650_ovl_01 + arg0 * 4 + 0x20000;
+    u8 *q = (u8 *)a;
+
+    q[0x1818] = arg1;
+    q[0x1819] = arg2;
+    q[0x181A] = arg3;
+}
+
+void func_8008C31C_ovl_01(s32 arg0, s8 arg1)
+{
+    u8 *p = D_800C7650_ovl_01;
+
+    if (p[arg0 * 4 + 0x2181A] == 1) {
+        p[(arg0 + 1) * 4 + 0x21819] = arg1;
+    }
+    if (p[arg0 * 4 + 0x2181A] == 2) {
+        p[(arg0 - 1) * 4 + 0x21819] = arg1;
+    }
+    p[arg0 * 4 + 0x21819] = arg1;
 }

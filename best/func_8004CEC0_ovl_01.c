@@ -1,22 +1,5 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
-
-extern M2C_UNK D_8010B2C8_ovl_01;
-
-void func_8004CEC0_ovl_01(s32 arg0) {
-    u16 *temp_v0;
-
-    temp_v0 = (arg0 * 0x1C8) + &D_8010B2C8_ovl_01;
-    *temp_v0 |= 0x40;
-}
+typedef struct {u32 a; void *(*fn)(void*,s32,s32);} Obj284; void func_80028420_ovl_01(Obj284 *p){void *r; r=p->fn(p,0,0x84); *(s32*)((u8*)r+0x80)=0;}
+extern u8 D_8010B2C8_ovl_01[]; void func_8004CE44_ovl_01(s32 i){u8 *base; u8 *p; base=D_8010B2C8_ovl_01; p=base+i*0x1C8; *(u16*)p=0;}
+extern s32 func_80007450(void*,s32,s32); extern s32 func_8000DCB0(s32); extern u8 D_80139AD0[]; typedef struct {u8 pad[0x390]; s32 *sub;} ObjCE; typedef struct{u8 pad[0x1B8]; s32 value;} Sub;
+void func_8004CE70_ovl_01(s32 x){Sub *p; ObjCE *o; o=(ObjCE*)D_8010B2C8_ovl_01; p=(Sub*)o->sub; if(p){p->value=x; *(s16*)p=2; func_80007450(D_80139AD0,0,0); func_8000DCB0(0);}}
+void func_8004CEC0_ovl_01(s32 i){u8 *base; u16 *p; base=D_8010B2C8_ovl_01; p=(u16*)(base+i*0x1C8); *p |= 0x40;}

@@ -1,0 +1,1 @@
+typedef struct {u8 pad[6];u8 state;} O; void func_80164D90_ovl_23(O *p) { switch(p->state) {case 0: p->state=1;break;case 1:p->state=2;break;case 2:p->state=3;break;case 3:p->state=4;break;case 4:p->state=5;break;case 5:p->state=6;break;case 6:p->state=7;break;case 7:p->state=8;break;case 8:p->state=9;break;case 9:break;default:break;} }

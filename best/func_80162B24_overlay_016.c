@@ -1,0 +1,5 @@
+extern s32 D_801671D4_ovl_16[];
+s32 func_80033634_ovl_01(void);s32 func_800377B0_ovl_01(s32,s32,s32,s32);s32 func_80162C84_ovl_16(void*);s32 func_80162E88_ovl_16(void*,s32,s32,s32);
+s32 func_80162B24_overlay_016(void*arg0,u8*arg1,s32 arg2){u8*p=arg1;u8 n=p[0];s32 base=*(s32*)((u8*)arg0+0x234);u8 v=p[3];u8 idx;if(arg2)idx=p[2];else idx=p[1];
+if(n){s32 mask=v-1;u8*table=(u8*)D_801671D4_ovl_16;do{s32 q=func_80033634_ovl_01();u8*e=table+((idx+(q&mask))&0xff)*8;s32 a=((s32)p[4]<<24)|((s32)p[5]<<16)|*(u16*)(p+6);s32 y=*(s16*)(e+6);func_800377B0_ovl_01(a,0,base+(((y*3<<4)-y)<<3)+0x38,0);n--;}while(n);}
+switch(((u8*)arg0)[0x2cb]){case 0x49:case 0x4a:case 0x4b:case 0x4c:case 0x4d:case 0x4e:case 0x4f:case 0x50:case 0x51:case 0x52:case 0x53:case 0x54:case 0x55:case 0x56:case 0x57:case 0x58:case 0x59:case 0x5a:case 0x5b:break;default:((u8*)arg0)[0x2cf]=0;if(*(u8*)(base+0x63)!=0x48){s32 x=0x58;if(*(u8*)(base+0x63)==0x58)func_80162C84_ovl_16(arg0);func_80162E88_ovl_16(arg0,0x16,x,x);}break;}return 0;}

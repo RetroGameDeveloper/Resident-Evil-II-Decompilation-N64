@@ -1,37 +1,52 @@
-extern s32 D_800C7650_ovl_01[];
-s32 func_80052C9C_ovl_01(s32,s32,s32,void*);
-s32 func_80052D40_ovl_01(s32,s32,s32,s32);
-void func_80166D80_ovl_33(void *arg0) {
- u8 x;
- void *p;
- p=*(void **)((u8 *)D_800C7650_ovl_01+0x18000+0x1D40);
- *(u8 *)((u8 *)p+0x2BF) &= ~(2 << *((u8*)arg0+0x2B4));
- x=*((u8*)arg0+0x2BE);
- if (x != 0) {
-  *((u8*)arg0+0x2BE)=x-1;
-  p=*(void **)((u8 *)D_800C7650_ovl_01+0x18000+0x1D40);
-  *((u8 *)p+0x2BF) |= 2 << *((u8*)arg0+0x2B4);
-  func_80052C9C_ovl_01(3,0x82,0,p);
-  func_80052D40_ovl_01(0x19,0x82,0,3);
- }
+typedef struct S_80166D80_arg0
+{
+  u8 pad[0x2B4];
+  u8 unk_2B4;
+  u8 pad2[0x2BE - 0x2B5];
+  u8 unk_2BE;
+} S_80166D80_arg0;
+typedef struct S_80166D80_g
+{
+  u8 pad[0x2BF];
+  u8 unk_2BF;
+} S_80166D80_g;
+extern u8 D_800C7650_ovl_01[];
+extern s32 func_80052C9C_ovl_01(s32, s32, s32, void *);
+extern s32 func_80052D40_ovl_01(s32, s32, s32, s32);
+void func_80166D80_ovl_33(S_80166D80_arg0 *arg0)
+{
+  S_80166D80_g *new_var;
+  u32 off;
+  union 
+  {
+    u64 q;
+    struct 
+    {
+      u32 lo;
+      u32 hi;
+    } w;
+  } b;
+  S_80166D80_g *new_var2;
+  u8 *base;
+  S_80166D80_g *p;
+  short new_var3;
+  u8 t;
+  off = 0x18000;
+  b.w.lo = (u32) D_800C7650_ovl_01;
+  base = (u8 *) (off + b.w.lo);
+  new_var2 = *((S_80166D80_g **) (base + 0x1D40));
+  new_var = new_var2;
+  p = new_var;
+  p->unk_2BF &= ~(2 << arg0->unk_2B4);
+  t = arg0->unk_2BE;
+  if (t != 0)
+  {
+    arg0->unk_2BE = (u8) (t - 1);
+    p = *((S_80166D80_g **) (base + 0x1D40));
+    new_var3 = 2 << arg0->unk_2B4;
+    p->unk_2BF |= new_var3;
+    func_80052C9C_ovl_01(3, 0x82, 0, p);
+    func_80052D40_ovl_01(0x19, 0x82, 0, 3);
+  }
 }
-void func_80166E18_ovl_33(void *arg0) {
- u8 state=*((u8*)arg0+0x2BF); void *p; u16 timer;
- if(state==1) {
-  p=*(void **)((u8*)arg0+0x234);
-  *(s32*)((u8*)p+0x5E0)=(*(s32*)((u8*)p+0x5E0)&~0x4000)|0x40;
-  *((u8*)arg0+0x2BF)=2;
-  *((u16*)((u8*)arg0+0x2C0))=0x96;
- }
- if(state==1 || state==2) {
-  timer=*((u16*)((u8*)arg0+0x2C0))-1;
-  *((u16*)((u8*)arg0+0x2C0))=timer;
-  if(timer==0xFFFF) *((u8*)arg0+0x2BF)=3;
-  return;
- }
- if(state==3) {
-  p=*(void **)((u8*)arg0+0x234);
-  *(s32*)((u8*)p+0x5E0)=(*(s32*)((u8*)p+0x5E0)|0x4000)&~0x40;
-  *((u8*)arg0+0x2BF)=0;
- }
-}
+

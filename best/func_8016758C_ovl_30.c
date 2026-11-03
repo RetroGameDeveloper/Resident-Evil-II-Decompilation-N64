@@ -22,12 +22,12 @@ s32 func_80166FE4_ovl_30(void *a0, void *p) {
 }
 extern u8 D_800E10D0_ovl_01[];
 extern s16 D_80167CEC_ovl_30[];
-s32 func_80032F94_ovl_01(void*,void*,s32);
+s32 func_80032F94_ovl_01_48(void*,void*,s32);
 s32 func_8016758C_ovl_30(void *p, s32 i) {
  s32 n, d; u8 *g=D_800E10D0_ovl_01; s16 *t=D_80167CEC_ovl_30; void *base,*e;
  n=t[i]; base=*(void**)((u8*)p+0x234); e=(u8*)base+n*0x178;
  if ((g[0x26f]&0x80) || *(s16*)(g+0x1f2)<0) return 0;
- if (!func_80032F94_ovl_01(g+0x28,(u8*)e+0x4c,t[i+1])) return 0;
+ if (!func_80032F94_ovl_01_48(g+0x28,(u8*)e+0x4c,t[i+1])) return 0;
  d=*(s32*)((u8*)p+0x2c)-*(s32*)((u8*)e+0x50);
  if(d<0)d=-d;
  return d<0xce4;

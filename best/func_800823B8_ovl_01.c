@@ -1,31 +1,5 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
-
-s32 func_800823B8_ovl_01(u8 *arg0) {
-    s32 var_v1;
-    u8 *var_a0;
-
-    var_a0 = arg0;
-    var_v1 = 0;
-    if (var_a0 == NULL) {
-        return 0;
-    }
-loop_3:
-    var_a0 += 1;
-    if (*var_a0 != 0) {
-        var_v1 += 1;
-        goto loop_3;
-    }
-    return var_v1;
-}
+s32 func_80082338_ovl_01(u8 *a,u8*b){u8 x=*a;u8 y=*b;s32 d=x-y;if(d)return d;if(!x)return 0;for(;;){y=*b;if(!y)break;b++;x=*a;d=x-y;if(d)return d;a++;if(!*a)break;}if(d)return d;if(*a)return *a;y=*b;if(y)return -(s32)y;return 0;}
+s32 func_800823B8_ovl_01(u8 *a,u8 *b){s32 n=0;if(a==0)return 0;while(*a){n++;a++;}while(*b){*a++=*b++;}*a=0;return n;}
+typedef struct{u8 pad[0x48];s32 out;void*list;} O;typedef struct{s32 x;s32 n;u8*data;}E;typedef struct{u32 p;s32 count;E*e;}L;
+s32 func_80031BB0_ovl_01(O*o,s32 a){s32 sum=0,acc=0,k;L*l=o->list;s32 n=l->count;E*e=l->e;do{n--;if(n==-1)break;if(e->data==0){e++;continue;}k=e->x-1;if(k!=-1){u8*p=e->data+14;do{s16 v=*(s16*)p;*(s16*)(p-2)=acc;p+=16;k--;sum+=v;acc+=v;}while(k!=-1);}e++;}while(1);if(sum>0){a=(a+7)&~7;o->out=a;a+=sum<<4;}else o->out=0;return a;}
+void func_80082410_ovl_01(void){extern s32*D_8010B688_ovl_01;extern s32*D_8010B68C_ovl_01;extern s32 D_80113790_ovl_01,D_80113794_ovl_01;s32 n=((u32)(D_80113790_ovl_01*D_80113794_ovl_01)>>1)-1;s32*p=D_8010B688_ovl_01;if(n!=-1)do{*p=0;n--;p++;}while(n!=-1);p=D_8010B68C_ovl_01;if(p){n=((u32)(D_80113790_ovl_01*D_80113794_ovl_01)>>1)-1;if(n!=-1)do{*p=0;n--;p++;}while(n!=-1);}}

@@ -1,71 +1,58 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+typedef struct {
+    u8 pad0[0xC];
+    u8 fC;
+    u8 fD;
+    u8 pad1[0xE];
+    s8 f1C;
+    s8 f1D;
+    u8 pad2[2];
+    s8 f20;
+    s8 f21;
+} S_2BF38;
 
-extern M2C_UNK D_800C7650_ovl_01;
-extern M2C_UNK D_8012BF38_ovl_01;
+extern S_2BF38 D_8012BF38_ovl_01;
+extern u8 D_800C7650_ovl_01[];
 
-void func_8008D140_ovl_01(s32 arg0) {
-    u8 temp_v1;
-    u8 temp_v1_2;
+void func_8008D140_ovl_01(s32 arg0)
+{
+    S_2BF38 *p = &D_8012BF38_ovl_01;
+    u8 v;
 
     if (arg0 != 0) {
-        temp_v1 = M2C_FIELD(((M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xD) * 4) + &D_800C7650_ovl_01), u8 *, 0x2181A);
-        if (M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xC) & 1) {
-            if (temp_v1 != 0) {
-                M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x1C) = -2;
-            } else if (!(M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xD) & 1)) {
-                M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x1C) = -4;
+        v = *(u8 *)(D_800C7650_ovl_01 + (p->fD << 2) + 0x2181A);
+        if (p->fC & 1) {
+            if (v != 0) {
+                p->f1C = -2;
+            } else if (p->fD & 1) {
+                p->f1C = 0;
             } else {
-                goto block_10;
+                p->f1C = -4;
             }
-        } else if (temp_v1 != 0) {
-            M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x1C) = 2;
-        } else if (M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xD) & 1) {
-            M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x1C) = 4;
         } else {
-block_10:
-            M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x1C) = 0;
-        }
-        M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x1D) = (s8) ((((u8) M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xD) >> 1) - ((u8) M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xC) >> 1)) * 3);
-        return;
-    }
-    temp_v1_2 = M2C_FIELD(((M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xC) * 4) + &D_800C7650_ovl_01), u8 *, 0x2181A);
-    if (M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xC) & 1) {
-        if (temp_v1_2 != 0) {
-            if (!(M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xD) & 1)) {
-                goto block_22;
+            if (v != 0) {
+                p->f1C = 2;
+            } else if (p->fD & 1) {
+                p->f1C = 4;
+            } else {
+                p->f1C = 0;
             }
-            goto block_20;
         }
-        if (!(M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xD) & 1)) {
-            M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x20) = 4;
-        } else {
-            goto block_25;
-        }
-    } else if (temp_v1_2 != 0) {
-        if (M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xD) & 1) {
-block_20:
-            M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x20) = -2;
-        } else {
-block_22:
-            M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x20) = 2;
-        }
-    } else if (M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xD) & 1) {
-        M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x20) = -4;
+        p->f1D = ((p->fD >> 1) - (p->fC >> 1)) * 3;
     } else {
-block_25:
-        M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x20) = 0;
+        v = *(u8 *)(D_800C7650_ovl_01 + (p->fC << 2) + 0x2181A);
+        if (p->fC & 1) {
+            if (v != 0) {
+                if (p->fD & 1) p->f20 = -2; else p->f20 = 2;
+            } else {
+                if (p->fD & 1) p->f20 = 0; else p->f20 = 4;
+            }
+        } else {
+            if (v != 0) {
+                if (p->fD & 1) p->f20 = -2; else p->f20 = 2;
+            } else {
+                if (p->fD & 1) p->f20 = -4; else p->f20 = 0;
+            }
+        }
+        p->f21 = ((p->fC >> 1) - (p->fD >> 1)) * 3;
     }
-    M2C_FIELD(&D_8012BF38_ovl_01, s8 *, 0x21) = (s8) ((((u8) M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xC) >> 1) - ((u8) M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xD) >> 1)) * 3);
 }

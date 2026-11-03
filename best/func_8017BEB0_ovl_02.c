@@ -1,0 +1,1 @@
+void func_8017BEB0_ovl_02(s32 arg0, void *arg1) { volatile s32 *p=arg1; s32 n; if(arg0<4){n=p[0]+func_8017F8CC_ovl_02();p[0]=n;}else if(arg0==4){n=p[1]+func_8017F96C_ovl_02();p[1]=n;}else{n=p[2]+func_8017F96C_ovl_02();p[2]=n;} }

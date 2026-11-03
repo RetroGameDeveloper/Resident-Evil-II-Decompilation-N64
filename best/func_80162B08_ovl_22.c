@@ -1,37 +1,46 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
-
-s32 func_80032D44_ovl_01(s16, s16, s16, s16);       /* extern */
-
-s32 func_80162B08_ovl_22(void *arg0) {
-    s32 temp_a0;
-    s32 var_v0;
-    s32 var_v1;
-    void *temp_v1;
-
-    temp_v1 = M2C_FIELD(arg0, void **, 0x1B0);
-    var_v0 = 1;
-    if (temp_v1 != NULL) {
-        temp_a0 = (func_80032D44_ovl_01(M2C_FIELD(arg0, s16 *, 0x2A), M2C_FIELD(arg0, s16 *, 0x32), (s16) (M2C_FIELD(temp_v1, u16 *, 0) + ((u16) M2C_FIELD(temp_v1, u16 *, 4) >> 1)), (s16) (M2C_FIELD(temp_v1, u16 *, 2) + ((u16) M2C_FIELD(temp_v1, u16 *, 6) >> 1))) - M2C_FIELD(arg0, u16 *, 0x66)) & 0xFFF;
-        var_v1 = temp_a0;
-        if (temp_a0 >= 0x801) {
-            var_v1 = temp_a0 | 0xF000;
-        }
-        var_v0 = -1;
-        if ((var_v1 << 0x10) <= 0) {
-            var_v0 = 1;
-        }
-    }
-    return var_v0;
+typedef struct S_func_80162B08_ovl_22_arg0
+{
+  u8 pad_00[0x2A];
+  s16 unk_2A;
+  u8 pad_2C[0x32 - 0x2C];
+  s16 unk_32;
+  u8 pad_34[0x66 - 0x34];
+  u16 unk_66;
+  u8 pad_68[0x1B0 - 0x68];
+  struct S_func_80162B08_ovl_22_p *unk_1B0;
+} S_func_80162B08_ovl_22_arg0;
+typedef struct S_func_80162B08_ovl_22_p
+{
+  u16 unk_00;
+  u16 unk_02;
+  u16 unk_04;
+  u16 unk_06;
+} S_func_80162B08_ovl_22_p;
+s32 func_80032D44_ovl_01(s16, s16, s16, s16);
+s32 func_80162B08_ovl_22(S_func_80162B08_ovl_22_arg0 *arg0)
+{
+  S_func_80162B08_ovl_22_p *p = arg0->unk_1B0;
+  s32 a;
+  s16 b;
+  u16 new_var3;
+  u16 new_var;
+  if (p == NULL)
+  {
+    return 1;
+  }
+  new_var = p->unk_06;
+  new_var3 = p->unk_00;
+  b = arg0->unk_32;
+  a = (func_80032D44_ovl_01(arg0->unk_2A, b, (s16) (new_var3 + (p->unk_04 >> 1)), (s16) (p->unk_02 + (new_var >> 1))) - arg0->unk_66) & 0xFFF;
+  b = a;
+  if (a >= 0x801)
+  {
+    b = a | 0xF000;
+  }
+  if ((b << 16) > 0)
+  {
+    return -1;
+  }
+  return 1;
 }
+

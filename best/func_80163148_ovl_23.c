@@ -1,5 +1,44 @@
-s32 func_80089D34_ovl_01(s32); s32 func_80040E88_ovl_01(s16*,s32*); s32 func_8004279C_ovl_01(s32*,s32,s16*); s32 func_80083800_ovl_01(s16,u16*,u16*); s32 func_80032D44_ovl_01(s16,s16,s16,s16); extern s32 D_800C7650_ovl_01; extern s32 D_800E10D0_ovl_01;
-void func_80163620_ovl_23(void*p){if(((u8*)p)[6]==0){*(s32*)((u8*)p+0x1e8)=0x050a0000;func_80089D34_ovl_01(0x1000);}}
-void func_80163148_ovl_23(void*p){s16 id; s32 *dst; s32 v; id=*(s16*)((u8*)&D_800C7650_ovl_01+0x215fc);dst=*(s32**)((u8*)&D_800C7650_ovl_01+0x1827c);dst=*(s32**)((u8*)dst+0x2c);dst=(s32*)((u8*)dst+id*40);if(*((u8*)&D_800C7650_ovl_01+0x18538)){((u8*)dst)[10]=0xc8;((u8*)dst)[11]=0x5f;v=0x2710;}else{((u8*)dst)[10]=0xaa;((u8*)dst)[11]=0x46;v=0x1b58;}((u8*)dst)[12]=0;*(s16*)((u8*)dst+0x26)=v;((u8*)dst)[3]=0;*(u16*)((u8*)dst+0x1c)=*(u16*)((u8*)p+0x2a);*(u16*)((u8*)dst+0x1e)=*(u16*)((u8*)p+0x2e)-0x1194;*(u16*)((u8*)dst+0x20)=*(u16*)((u8*)p+0x32);}
-void func_801630D4_ovl_23(void*p,s16 a){s16 dx,dy; s32 temp; dx=0;dy=0;temp=a;func_80040E88_ovl_01(&dx,(s32*)&temp);func_8004279C_ovl_01((s32*)&temp,(s32)((u8*)p+0x1e0),&dx);*(s32*)((u8*)p+0x28)+=dx;*(s32*)((u8*)p+0x30)+=dy;}
-void func_80163030_ovl_23(void*p,u16 a){u16 x,y; s16 temp; s32 out; x=a;y=0;func_80083800_ovl_01(*(s16*)((u8*)p+0x66),&x,&x);x+=*(u16*)((u8*)p+0x2a);*(s32*)((u8*)&D_800E10D0_ovl_01+0x28)=(s16)x;y+=*(u16*)((u8*)p+0x32);*(s32*)((u8*)&D_800E10D0_ovl_01+0x30)=(s16)y;out=func_80032D44_ovl_01(*(s16*)((u8*)&D_800E10D0_ovl_01+0x2a),*(s16*)((u8*)&D_800E10D0_ovl_01+0x32),*(s16*)((u8*)p+0x2a),*(s16*)((u8*)p+0x32));*(s16*)((u8*)&D_800E10D0_ovl_01+0x66)=out-0x32;}
+typedef union {
+    u64 q;
+    struct {
+        u32 lo;
+        u32 hi;
+    } w;
+} U64;
+
+extern u8 D_800C7650_ovl_01[];
+
+void func_80163148_ovl_23(void *arg0) {
+    u8 *p = arg0;
+    U64 b;
+    u32 off;
+    u32 base;
+    u8 *gp;
+    s16 id;
+    u8 *dst;
+    s32 v;
+
+    off = 0x18000;
+    b.w.lo = (u32)D_800C7650_ovl_01;
+    gp = (u8 *)(u32)(b.w.lo + 0x20000);
+    id = *(s16 *)(gp + 0x15FC);
+    base = off + b.w.lo;
+    dst = *(u8 **)(base + 0x27C);
+    dst = *(u8 **)(dst + 0x2C);
+    dst += id * 40;
+    if (*(u8 *)(base + 0x538)) {
+        dst[10] = 0xC8;
+        dst[11] = 0x5F;
+        v = 0x2710;
+    } else {
+        dst[10] = 0xAA;
+        dst[11] = 0x46;
+        v = 0x1B58;
+    }
+    dst[12] = 0;
+    *(s16 *)(dst + 0x26) = v;
+    dst[3] = 0;
+    *(u16 *)(dst + 0x1C) = *(u16 *)(p + 0x2A);
+    *(u16 *)(dst + 0x1E) = *(u16 *)(p + 0x2E) - 0x1194;
+    *(u16 *)(dst + 0x20) = *(u16 *)(p + 0x32);
+}

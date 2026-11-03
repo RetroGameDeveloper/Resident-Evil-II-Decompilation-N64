@@ -1,1 +1,0 @@
-s32 func_80033634_ovl_01();s32 func_801672F4_ovl_30(void*,u32,u32,u32);extern u8 D_80167D18_ovl_30[],D_80167D30_ovl_30[];void func_801653A4_ovl_30(void*p){u8 n;u32 rem;u8 *q;u8 *r;s32 v;n=*(u8*)((u8*)p+0x26e);v=func_80033634_ovl_01();rem=n%3;q=D_80167D30_ovl_30+rem*4+(v&3);r=D_80167D18_ovl_30+*(u8*)((u8*)p+5)-1;func_801672F4_ovl_30(p,*q,*r,0);}

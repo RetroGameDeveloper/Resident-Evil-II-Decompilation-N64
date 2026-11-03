@@ -1,1 +1,26 @@
-typedef struct{ s32 off,len;} E; extern s32 D_80012874,D_800128A8; extern s32 func_800888CC_ovl_01(s32,void*,s32); s32 func_80004EE0(register s32 a0,s32 a2,s32 a3){register s32 t0=a0; register s32 s0; E*p=(E*)(D_80012874+t0*8); s32 off; if(a0==0xffff)return 0; if(a0==-1)return 0; off=p->off;s0=p->len;if(off<0||s0==0) *(volatile s32*)0=0; off=D_800128A8+off+a2;if(s0&1)s0++;func_800888CC_ovl_01(off,(void*)a3,a3);return s0;} s32 func_80005074(u16 *dst,u16 *src){s32 t2=-1,t1=1; s16 count,run; u16 value; u16 *begin=dst; for(;;){count=(s16)*src++;if(count>0){run=count-1;while(run!=-1){value=*src++;*dst++=value;run--;}}else if(count<0){value=*src++;run=count+1;while(run!=1){*dst++=value;run++;}}else break;}return (u8*)dst-(u8*)begin;}
+s32 func_80005074(u8 *arg0, u8 *arg1)
+{
+    u8 *start = arg0;
+    s16 n;
+    u16 v;
+
+    do {
+        n = *(u16 *)arg1;
+        arg1 += 2;
+        if (n > 0) {
+            while (--n != -1) {
+                *(u16 *)arg0 = *(u16 *)arg1;
+                arg1 += 2;
+                arg0 += 2;
+            }
+        } else if (n < 0) {
+            v = *(u16 *)arg1;
+            arg1 += 2;
+            while (++n != 1) {
+                *(u16 *)arg0 = v;
+                arg0 += 2;
+            }
+        }
+    } while (n != 0);
+    return arg0 - start;
+}

@@ -1,20 +1,4 @@
-/* Partial candidate from function #262893 in project #68; rechecked locally. */
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
-
-s32 func_8004A824_ovl_01();
-
-void func_8004A7D0_ovl_01(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    func_8004A824_ovl_01(arg0, arg1, (arg2 * 0x10) | arg3, &arg4);
-}
+extern volatile s32 D_800E90B4_ovl_01; void func_80026AC0_ovl_01(void){D_800E90B4_ovl_01=1;}
+extern s32 func_8004A358_ovl_01(s32,u8,s32,s32*); extern s32 func_8004A4C0_ovl_01(void*); extern s32 func_80088970_ovl_01(void*,s32,s32,void*); extern u8 D_800C7650_ovl_01[]; extern s32 D_801247D0_ovl_01; void func_8004A410_ovl_01(void *arg0){u8 *base=D_800C7650_ovl_01; u8 *obj=base+0x18000; s32 x=*(s16*)(base+0x215FC); u8 mode=obj[0x1A41]; if(mode==2 || (func_8004A358_ovl_01(*(s32*)(obj+0x27C)+(*(s32*)(obj+0x24)+(x<<5)),mode,(s32)((u8*)arg0+0x28),(s32*)base)&0xff)){func_8004A4C0_ovl_01(arg0);D_801247D0_ovl_01|=1;func_80088970_ovl_01(arg0,*(s32*)((u8*)arg0+0x234),*(s32*)arg0,(u8*)arg0+0x28);D_801247D0_ovl_01&=~1;}}
+extern s32 func_8004A26C_ovl_01(s32,s32*,u8,s16); extern s32 func_80082D7C_ovl_01(s32*,s32*); extern u8 D_800C7650_ovl_01[]; void func_8004A584_ovl_01(void){s32 a[4]; u8 *base=D_800C7650_ovl_01; u8 *p=base+0x18000; func_8004A26C_ovl_01(*(s32*)(p+0x27c)+(*(s16*)(base+0x215fc)<<5),&a[0],p[0x1a41],*(s16*)(p+0x1a42));func_80082D7C_ovl_01(&a[1],&a[3]);}
+extern s32 func_8004A824_ovl_01(s32,s32,s32,s32*); void func_8004A7D0_ovl_01(s32 a0,s32 a1,s32 a2,s32 a3,s32 a4){func_8004A824_ovl_01(a0,a1,(a2<<4)|a3,&a4);}

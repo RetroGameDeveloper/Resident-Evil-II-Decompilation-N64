@@ -1,35 +1,54 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+extern volatile u8 D_80119E9C_ovl_01[];
+extern s32 D_800E90B4_ovl_01;
+s32 func_80040A44_ovl_01(s32 arg0);
 
-extern M2C_UNK D_80119E9C_ovl_01;
+s32 func_8007880C_ovl_01(s32 arg0, s32 arg1)
+{
+    u8 v = D_80119E9C_ovl_01[(arg0 & 0xFF) * 2];
+    u32 a = arg1 & 7;
+    s32 r;
 
-s32 func_8007880C_ovl_01(s32 arg0, s32 arg1) {
-    s32 var_v0;
-    u32 temp_a0;
-    u8 temp_a2;
-
-    temp_a2 = *(((arg0 & 0xFF) * 2) + &D_80119E9C_ovl_01);
-    temp_a0 = arg1 & 7;
-    var_v0 = 1;
-    if (temp_a0 >= temp_a2) {
-        var_v0 = 0;
-        if (temp_a2 == temp_a0) {
-            var_v0 = 1;
-            if (!(arg1 & 8)) {
-                var_v0 = 0;
-            }
-        }
+    if (a < v) {
+        r = 1;
+        goto done;
     }
-    return var_v0;
+    if (v != a) {
+        r = 0;
+        goto done;
+    }
+    r = 1;
+    if (!(arg1 & 8)) {
+        r = 0;
+    }
+done:
+    return r;
+}
+
+s32 func_80078854_ovl_01(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
+{
+    s32 d = arg2 - arg0;
+    s32 n = arg3 - arg1;
+    s32 v;
+
+    if (d != 0) {
+        s32 r = func_80040A44_ovl_01((n << 12) / d);
+        s32 b = 0x1000;
+
+        if (d < 0) {
+            b = 0x800;
+        }
+        v = (b - r) & 0xFFF;
+        goto done;
+    }
+    v = 0x400;
+    if (n > 0) {
+        v += 0x800;
+    }
+done:
+    return v;
+}
+
+void func_80026AC0_ovl_01(void)
+{
+    D_800E90B4_ovl_01 = 1;
 }

@@ -1,36 +1,16 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+s32 func_80001510(s32, void *, void *);
 
-M2C_UNK func_80001510(s32, void *, M2C_UNK *);      /* extern */
-
-s32 func_80002F80(void *arg0) {
-    M2C_UNK sp10;
-    s32 var_v1;
-    void *temp_a1;
-
-    if ((arg0 == NULL) || (M2C_FIELD(arg0, void **, 0x1C) == NULL)) {
-        return -2;
-    }
-    temp_a1 = M2C_FIELD(arg0, void **, 0x1C);
-    M2C_FIELD(arg0, s32 *, 0x14) = 0;
-    M2C_FIELD(arg0, s32 *, 8) = 0;
-    M2C_FIELD(arg0, s32 *, 0x18) = 0;
-    var_v1 = 0;
-    if (M2C_FIELD(temp_a1, s32 *, 0xC) != 0) {
-        var_v1 = 7;
-    }
-    M2C_FIELD(temp_a1, s32 *, 0) = var_v1;
-    func_80001510(M2C_FIELD(M2C_FIELD(arg0, void **, 0x1C), s32 *, 0x14), arg0, &sp10);
+s32 func_80002F80(s32 *arg0) {
+    s32 *t;
+    s32 sp10;
+    if (arg0 == 0) return -2;
+    if (arg0[7] == 0) return -2;
+    t = &arg0[7];
+    arg0[5] = 0;
+    arg0[2] = 0;
+    arg0[6] = 0;
+    t[0] = 0;
+    if (t[3] != 0) t[0] = 7;
+    func_80001510(t[5], arg0, &sp10);
     return 0;
 }

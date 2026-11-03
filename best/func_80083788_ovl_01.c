@@ -1,4 +1,4 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
 typedef s32 M2C_UNK;
@@ -12,9 +12,9 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-void func_80083788_ovl_01(s32 arg0, u32 arg1) {
+void func_80083788_ovl_01(s32 *bits, u32 n) {
     s32 *temp_a2;
 
-    temp_a2 = ((arg1 >> 5) * 4) + arg0;
-    *temp_a2 |= 0x80000000U >> (arg1 & 0x1F);
+    temp_a2 = &bits[n >> 5];
+    *temp_a2 |= 0x80000000U >> (n & 0x1F);
 }

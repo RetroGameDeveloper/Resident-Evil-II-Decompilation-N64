@@ -1,8 +1,14 @@
-extern s32 func_80027530_ovl_01(s32,s32,s32,s32); extern s32 func_800276B4_ovl_01(s32); extern s32 func_8006C0A0_ovl_01(s32,s8*,u8*); extern u8 D_8017E53F_ovl_05; extern s8 D_8017E549_ovl_05;
-void func_8017B4F4_ovl_05(void){volatile s32 pad[2]; if(func_800276B4_ovl_01(0)){func_80027530_ovl_01(0x200,0,7,1);D_8017E549_ovl_05=1;D_8017E53F_ovl_05 &= 0xF7;func_8006C0A0_ovl_01(1,&D_8017E549_ovl_05,&D_8017E53F_ovl_05);}}
-extern u8 D_8017E54C_ovl_05; extern u8 D_8017E544_ovl_05[]; extern s16 D_8017E274_ovl_05[];
-void func_8017B390_ovl_05(void){s16 *p=D_8017E274_ovl_05; p[0x212/2]=0;p[0x186/2]=0;p[0xFA/2]=0;p[0x6E/2]=0;p[0x226/2]=0;p[0x19A/2]=0;p[0x10E/2]=0;p[0x82/2]=0; if(D_8017E544_ovl_05[D_8017E54C_ovl_05]==4){p[0x1AE/2]=0;p[0x122/2]=0;p[0x96/2]=0;p[0xA/2]=0;p[0x1FE/2]=32;p[0x172/2]=32;p[0xE6/2]=32;p[0x5A/2]=32;}else{p[0x1AE/2]=32;p[0x122/2]=32;p[0x96/2]=32;p[0xA/2]=32;p[0x1FE/2]=0;p[0x172/2]=0;p[0xE6/2]=0;p[0x5A/2]=0;}}
-extern u8 D_8017E53F_ovl_05; extern u8 D_8017E54C_ovl_05; extern u8 D_800C7650_ovl_01[]; extern s32 D_8017E4C8_ovl_05[]; extern s32 func_80077B0C_ovl_01(s32,s32);
-void func_8017BB18_ovl_05(void){if(!(D_8017E53F_ovl_05&12)){if(*(u16*)(D_800C7650_ovl_01+0x18000+0x25E)&0x100){func_80077B0C_ovl_01(0x04050000,0);D_8017E549_ovl_05=2;}else ((void(*)(void))D_8017E4C8_ovl_05[D_8017E54C_ovl_05])();}}
-extern s32 func_800439B8_ovl_01(s32,void*,s32,s32); extern u8 D_8017E53D_ovl_05; extern u8 D_800DF650_ovl_01[];
-void func_8017BF1C_ovl_05(void){s32 i; s16 *q=D_8017E274_ovl_05; s32 *g=(s32*)(D_800DF650_ovl_01+0x204); void *p; i=7;p=(u8*)q+D_8017E53D_ovl_05*0x8C;do{*g=func_800439B8_ovl_01(*g,p,0,0);p=(u8*)p+0x14;}while(--i);}
+s32 func_800276B4_ovl_01(s32);
+void func_80027530_ovl_01(s32, s32, s32, s32);
+void func_8006C0A0_ovl_01(s32);
+extern u8 D_8017E53F_ovl_05;
+extern u8 D_8017E549_ovl_05;
+
+void func_8017B4F4_ovl_05(void) {
+    if (func_800276B4_ovl_01(0)) {
+        func_80027530_ovl_01(0x200, 0, 7, 1);
+        D_8017E549_ovl_05 = 1;
+        D_8017E53F_ovl_05 &= 0xF7;
+        func_8006C0A0_ovl_01(1);
+    }
+}

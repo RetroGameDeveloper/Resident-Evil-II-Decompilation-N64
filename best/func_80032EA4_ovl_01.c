@@ -1,4 +1,10 @@
-s16 func_80032D44_ovl_01(s16,s16,s16,s16);
-void func_80032F24_ovl_01(void*p,u16 a,s16 d){s32 v;u16 angle,old; s32 diff;v=d;angle=a;if(d&0x8000){v=-d;angle=(a+0x800)&0xfff;}old=*(u16*)((u8*)p+0x66);diff=(v+(angle-old))&0xfff;if(diff<(v<0?v*2:-v*2)){*(u16*)((u8*)p+0x66)=angle;return;}old-=v;*(u16*)((u8*)p+0x66)=old;if(diff<0x801)*(u16*)((u8*)p+0x66)=old+v*2;}
-s16 func_80032EA4_ovl_01(void*p,s16 a,s16 b,s16 c){s32 d; s32 r; d=func_80032D44_ovl_01(*(s16*)((u8*)p+0x2a),*(s16*)((u8*)p+0x32),a,b)-*(u16*)((u8*)p+0x66);d+=c;d&=0xfff;r=0;if(d<((s32)c*2))r=0;else if((u32)d<0x801)r=c;else r=-c;return r;}
-void func_80032DEC_ovl_01(void*p,s16 a,s16 b,s16 delta){s16 m; s32 raw,dir;u16 target,ang;u32 d;raw=func_80032D44_ovl_01(*(s16*)((u8*)p+0x2a),*(s16*)((u8*)p+0x32),a,b);dir=delta;target=raw;if(delta&0x8000){dir=-delta;target=(raw+0x800)&0xfff;}m=dir;ang=*(u16*)((u8*)p+0x66);d=(m+(target-ang))&0xfff;if(d<((s32)(m<<16)>>15)){*(u16*)((u8*)p+0x66)=target;return;}ang-=m;*(u16*)((u8*)p+0x66)=ang;if(d<0x801)*(u16*)((u8*)p+0x66)=ang+m*2;}
+s32 func_80032D44_ovl_01(s16, s16, s16, s16);
+s32 func_80032EA4_ovl_01(u8 *p, s16 a, s16 b, s16 c) {
+    s32 diff;
+    s32 d;
+    diff = func_80032D44_ovl_01(*(s16 *)(p + 0x2A), *(s16 *)(p + 0x32), a, b) - *(u16 *)(p + 0x66);
+    d = (c + diff) & 0xFFF;
+    if (d < c * 2) return 0;
+    if ((u32)d < 0x801) return c;
+    return -c;
+}

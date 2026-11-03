@@ -1,46 +1,43 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+typedef struct E_80181394 {
+    u8 unk_00[4];
+    u16 f4;
+    u16 f6;
+    u16 f8;
+    u8 pad_0A[0x112 - 0x0A];
+} E_80181394;
 
-extern s32 D_80134450_ovl_01;
-extern M2C_UNK D_801344B0_ovl_01;
+extern E_80181394 D_801344B0_ovl_01[];
+extern volatile s32 D_80134450_ovl_01;
 
 void func_80181394_ovl_02(s32 *arg0) {
-    s32 *var_a2;
-    s32 *var_t0;
-    s32 temp_a3;
-    s32 temp_v1;
-    u32 var_a0;
-    u32 var_t2;
+    E_80181394 *e;
+    E_80181394 *e2;
+    s32 *p;
+    s32 half;
+    u32 i;
+    u32 j;
+    s32 tmp;
 
-    var_t0 = arg0;
-    var_t2 = 0;
-    temp_a3 = (s32) (M2C_FIELD(((D_80134450_ovl_01 * 0x112) + &D_801344B0_ovl_01), u16 *, 8) - M2C_FIELD(((D_80134450_ovl_01 * 0x112) + &D_801344B0_ovl_01), u16 *, 4)) >> 1;
-loop_1:
-    if (var_t2 < (u16) M2C_FIELD(((D_80134450_ovl_01 * 0x112) + &D_801344B0_ovl_01), u16 *, 6)) {
-        var_a0 = 0;
-        if (temp_a3 != 0) {
-            var_a2 = var_t0;
+    p = arg0;
+    e = &D_801344B0_ovl_01[D_80134450_ovl_01];
+    e2 = &D_801344B0_ovl_01[D_80134450_ovl_01];
+    half = ((s32)e->f8 - (s32)e2->f4) >> 1;
+
+    i = 0;
+    while (1) {
+        if (!(i < D_801344B0_ovl_01[D_80134450_ovl_01].f6)) break;
+        j = 0;
+        if (half != 0) {
+            s32 *q = p;
             do {
-                *var_a2 = 0;
-                var_a2 += 4;
-                temp_v1 = var_a0 + temp_a3;
-                var_a0 += 1;
-                *(((temp_v1 + M2C_FIELD(((D_80134450_ovl_01 * 0x112) + &D_801344B0_ovl_01), u16 *, 4)) * 4) + var_t0) = 0;
-            } while (var_a0 < (u32) temp_a3);
+                *q = 0;
+                q += 1;
+                tmp = j + half;
+                j += 1;
+                p[tmp + D_801344B0_ovl_01[D_80134450_ovl_01].f4] = 0;
+            } while (j < (u32)half);
         }
-        var_t2 += 1;
-        var_t0 += M2C_FIELD(((D_80134450_ovl_01 * 0x112) + &D_801344B0_ovl_01), u16 *, 8) * 4;
-        goto loop_1;
+        i += 1;
+        p += D_801344B0_ovl_01[D_80134450_ovl_01].f8;
     }
 }

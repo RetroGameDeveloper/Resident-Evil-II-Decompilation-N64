@@ -1,27 +1,5 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
-
-s32 func_80033634_ovl_01();                         /* extern */
-extern M2C_UNK D_8016723C_overlay_026;
-
-void func_80163950_overlay_026(void *arg0) {
-    u8 temp_v1;
-
-    temp_v1 = *((func_80033634_ovl_01() & 7) + &D_8016723C_overlay_026);
-    M2C_FIELD(arg0, s8 *, 5) = 1;
-    M2C_FIELD(arg0, s16 *, 6) = 0;
-    M2C_FIELD(arg0, s16 *, 0x1E4) = 0;
-    M2C_FIELD(arg0, s16 *, 0x1E0) = 0;
-    M2C_FIELD(arg0, s8 *, 0x2BE) = (s8) (temp_v1 + 0x3C);
-}
+extern u8 D_80167244_ovl_26;extern u8 D_8016723C_ovl_26;extern u8 D_80167218_ovl_26;s32 func_80033634_ovl_01(void);void func_80166984_ovl_26(void*);
+void func_801639A4_ovl_26(void*a){((void(**)(void))(&D_80167244_ovl_26+*((u8*)a+6)*4))[0]();*((u8*)a+0x2d6)=1;*((u8*)a+0x2d7)=1;}
+void func_80163950_overlay_026(void*a){u8 v=*((u8*)(&D_8016723C_ovl_26)+(func_80033634_ovl_01()&7));*((u8*)a+5)=1;*((u16*)((u8*)a+6))=0;*((u16*)((u8*)a+0x1e4))=0;*((u16*)((u8*)a+0x1e0))=0;*((u8*)a+0x2be)=v+0x3c;}
+void func_8016369C_ovl_26(void*a){u8*p=(u8*)a+0x2b4;u8 v=p[0x26];if(*((u8*)a+8)!=0x2e)v+=8;p[0xc]=v;p[0xb]=0x5a;*(u32*)a &=~4;p[2]=0;*((u16*)((u8*)a+6))=0x100;v=*((u8*)a+0x2cd);*(u32*)((u8*)a+0x1e8)=((v*13)<<24)+0x3f00;if(p[4]==0){*((u16*)((u8*)a+6))=0x200;p[0x12]=1;p[0x13]=0;p[0x14]=0x20;}}
+void func_801634E4_ovl_26(void*a){u8*p=(u8*)a+0x2b4;u32 v=func_80033634_ovl_01()&7;p[8]=*((u8*)&D_80167218_ovl_26+v);v=func_80033634_ovl_01()&7;p[0xa]=*((u8*)&D_80167218_ovl_26+v)+0x1e;p[9]=*((s8*)a+0x206)?15:0;*((s16*)((u8*)a+0x130))=*((u8*)a+0x2cd)?-0x320:0x320;*((u8*)a+5)=1;*((u16*)((u8*)a+6))=0;func_80166984_ovl_26(a);}

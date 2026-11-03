@@ -1,1 +1,0 @@
-extern s32 func_800342B0_ovl_01(void*,s32); void func_80166458_ovl_12(void*p){s16 n=*(s16*)((char*)p+0x66);u8 mode=2;((u8*)p)[0x25d]=mode;func_800342B0_ovl_01(p,n);((u8*)p)[0x25d]=3;func_800342B0_ovl_01(p,*(s16*)((char*)p+0x66));((u8*)p)[0x25d]=mode;}

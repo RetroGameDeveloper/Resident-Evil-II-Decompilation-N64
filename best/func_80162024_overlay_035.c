@@ -1,0 +1,2 @@
+void func_80165EC4_ovl_35(void); typedef void (*Callback)(void*,void*,void*); extern volatile Callback D_801665F0_ovl_35[]; extern u8 D_800C7650_ovl_01[];
+void func_80162024_overlay_035(void *p,void *a1,void *a2){u8*b=p;u8*q=b+0x2b4;u8 v;func_80165EC4_ovl_35();v=q[0x14];if(v)q[0x14]=v-1;D_801665F0_ovl_35[b[5]](p,a1,a2);q[0xc]=b[5];q[0xd]=b[6];q[0xe]=b[7];*(u16*)(q+0x1c)=*(u16*)(b+0x1e0);*(u16*)(q+0x1e)=*(u16*)(b+0x1e2);*(u16*)(q+0x20)=*(u16*)(b+0x1e4);if(*(u16*)(D_800C7650_ovl_01+0x19800)&0x20)q[0x14]=0x3c;}

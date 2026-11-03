@@ -1,5 +1,40 @@
-extern void (*D_80166700_ovl_35[])(void); extern void (*D_801667B0_ovl_35[])(void*,s32,s32); extern u8 D_800C7650_ovl_01[]; extern void func_80077D48_ovl_01(s32,void*); extern void func_801661F0_ovl_35(s32,s32); extern void func_80166520_ovl_35(void*,s32); extern void func_8016472C_ovl_35(void*,s32,s32); extern void func_80165248_ovl_35(void*,s32,s32); extern void func_80165140_ovl_35(void*,s32,s32); extern void func_80165874_ovl_35(void*); extern void func_8003420C_ovl_01(void*,u32);
-void func_80165140_ovl_35(void*p,s32 a,s32 b){s32 n=((u8*)p)[5]; func_801661F0_ovl_35(0,((u8*)D_80166700_ovl_35)[n-1]);func_80077D48_ovl_01(6,p);if(!((u8*)p)[0x2bc]){*(s16*)((u8*)p+6)=0x200;func_80165248_ovl_35(p,a,b);}else{if(((u8*)p)[0x2c5]){*(s16*)((u8*)p+0x68)=0;func_80166520_ovl_35(p,0);}*(s16*)((u8*)p+6)=0x100;func_8016472C_ovl_35(p,a,b);}}
-void func_80165750_ovl_35(void*p,s32 a,s32 b){s32 i; s32 off; u32 *q; if(!((u8*)p)[6]){func_801661F0_ovl_35(2,11);((u8*)p)[0x2cf]=45;q=*(u32**)((u8*)p+0x234);for(i=0,off=0;i<13;i++,off+=0x178)*(u32*)((u8*)q+off+0x60)=0x3f3f4f;func_80165140_ovl_35(p,a,b);}else{((void(*)(void*,s32,s32))D_801667B0_ovl_35[((u8*)p)[6]])(p,a,b);}}
-void func_80165818_ovl_35(void*p){void *q=p; if(!((u8*)q)[5]){((u8*)q)[5]=1;*(u32*)q|=0x42;*(u16*)(D_800C7650_ovl_01+0x18000+0x1a78)&=0xffdf;}func_80165874_ovl_35(q);}
-void func_80165874_ovl_35(void*p){u8 st=((u8*)p)[0x2cd];u8 *q=*(u8**)((u8*)p+0x208);u8 n;if(st==1 || st==0){if(st==0){((u8*)p)[0x2cd]=1;func_8003420C_ovl_01(q,0xaf4faf00);((u8*)p)[0x207]=90;} *(u16*)(q+4)+=10;*(u16*)(q+6)+=14;n=((u8*)p)[0x207]-1;((u8*)p)[0x207]=n;if(n==0)((u8*)p)[0x2cd]=2;}}
+typedef struct S_80165874_q {
+    u8 pad[4];
+    u16 unk_4;
+    u16 unk_6;
+} S_80165874_q;
+typedef struct S_80165874_arg0 {
+    u8 pad0[0x207];
+    u8 unk_207;
+    S_80165874_q *unk_208;
+    u8 pad2[0x2CD - 0x20C];
+    u8 unk_2CD;
+} S_80165874_arg0;
+
+extern void func_8003420C_ovl_01(void *, u32);
+
+void func_80165874_ovl_35(S_80165874_arg0 *p) {
+    u8 one = 1;
+    u8 temp;
+    S_80165874_q *q;
+    s32 state;
+
+    state = p->unk_2CD;
+    q = p->unk_208;
+    if (state == one)
+        goto active;
+    if (state >= 2)
+        return;
+    if (state != 0)
+        return;
+    p->unk_2CD = one;
+    func_8003420C_ovl_01(q, 0xAF4FAF00);
+    p->unk_207 = 90;
+active:
+    q->unk_4 += 10;
+    q->unk_6 += 14;
+    temp = p->unk_207 - 1;
+    p->unk_207 = temp;
+    if ((temp << 24) == 0)
+        p->unk_2CD = 2;
+}

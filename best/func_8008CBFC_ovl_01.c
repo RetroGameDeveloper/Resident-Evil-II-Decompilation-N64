@@ -1,32 +1,68 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+extern s32 D_8013146C_ovl_01;
+extern s32 D_80134460_ovl_01;
+extern u8 D_800C7650_ovl_01[];
+extern u8 D_800E7650_ovl_01[];
+extern u8 D_8012F4D0_ovl_01[];
+s32 func_80047BA4_ovl_01(void *dst, s16 *src, s32 a2, s32 a3);
+s32 func_80047CF8_ovl_01(void *dst, s16 *src, s32 a2, s32 a3);
 
-M2C_UNK func_80047CF8_ovl_01(M2C_UNK *, s16 *, s32, s32); /* extern */
-extern M2C_UNK D_800C7650_ovl_01;
-extern M2C_UNK D_8012F4D0_ovl_01;
+void func_80025D60_ovl_01(void)
+{
+    if (D_8013146C_ovl_01 != 0) {
+        D_80134460_ovl_01 = 1;
+    }
+}
 
-void func_8008CBFC_ovl_01(s32 arg0) {
-    s16 sp10;
-    s16 sp12;
-    s16 sp14;
-    s16 sp16;
+s32 func_8008C4FC_ovl_01(u32 arg0)
+{
+    u32 base = (u32)D_800C7650_ovl_01;
+    u32 cnt = (u32)D_800E7650_ovl_01;
+    u32 hi = 0x20000;
+    u32 p = base;
+    s32 i = 0;
 
-    if (M2C_FIELD(&D_800C7650_ovl_01, s32 *, 0x19A5C) & 0x8000) {
-        sp10 = 0x50;
-        sp14 = 0x28;
-        sp12 = 0;
-        sp16 = 0x1E;
-        func_80047CF8_ovl_01(&D_8012F4D0_ovl_01, &sp10, ((arg0 % 3) * 0x28) & 0xFFF8, ((arg0 / 3) * 0x1E) & 0xFFFE);
+    for (;;) {
+        if (*(u8 *)(p + hi + 0x1818) == arg0) {
+            return i;
+        }
+        i++;
+        if (!(i < *(u8 *)(cnt + 0x1488))) {
+            return -1;
+        }
+        p += 4;
+    }
+}
+
+void func_8008C950_ovl_01(u32 arg0, s32 arg1)
+{
+    u32 base = (u32)D_800C7650_ovl_01;
+    s16 sp[4];
+    u32 q;
+
+    if (*(s32 *)(base + 0x18000 + 0x1A5C) & 0x8000) {
+        sp[2] = 0x28;
+        sp[3] = 0x1E;
+        q = arg0 / 3;
+        sp[0] = (arg0 - q * 3) * 0x28;
+        sp[1] = q * 0x1E;
+        func_80047BA4_ovl_01(D_8012F4D0_ovl_01, sp, arg1, arg0);
+    }
+}
+
+void func_8008CBFC_ovl_01(u32 arg0)
+{
+    u32 base = (u32)D_800C7650_ovl_01;
+    s16 sp[4];
+    u32 q;
+
+    if (*(s32 *)(base + 0x18000 + 0x1A5C) & 0x8000) {
+        sp[0] = 0x50;
+        sp[2] = 0x28;
+        sp[1] = 0;
+        sp[3] = 0x1E;
+        q = arg0 / 3;
+        func_80047CF8_ovl_01(D_8012F4D0_ovl_01, sp,
+                             ((arg0 - q * 3) * 0x28) & 0xFFF8,
+                             (q * 0x1E) & 0xFFFE);
     }
 }

@@ -1,34 +1,28 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
+extern u8 D_800C7650_ovl_01[];
+extern u8 D_800E7650_ovl_01[];
+extern s32 D_8013146C_ovl_01;
+extern s32 D_80134460_ovl_01;
 
-extern M2C_UNK D_800C7650_ovl_01;
-extern M2C_UNK D_800E7650_ovl_01;
+s32 func_8008C4FC_ovl_01(u32 arg0)
+{
+    u32 i = 0;
+    u32 hi = 0x20000;
+    u32 cnt = (u32)D_800E7650_ovl_01;
+    u32 p = (u32)D_800C7650_ovl_01;
 
-u32 func_8008C4FC_ovl_01(s32 arg0) {
-    M2C_UNK *var_a1;
-    u32 var_v1;
-
-    var_v1 = 0;
-    var_a1 = &D_800C7650_ovl_01;
-loop_1:
-    if (M2C_FIELD(var_a1, u8 *, 0x21818) != arg0) {
-        var_v1 += 1;
-        var_a1 += 4;
-        if (var_v1 >= (u8) M2C_FIELD(&D_800E7650_ovl_01, u8 *, 0x1488)) {
-            return -1U;
+    do {
+        if (*(u8 *)(p + hi + 0x1818) == arg0) {
+            return i;
         }
-        goto loop_1;
+        i += 1;
+        p += 4;
+    } while (i < *(u8 *)(cnt + 0x1488));
+    return -1;
+}
+
+void func_80025D60_ovl_01(void)
+{
+    if (D_8013146C_ovl_01 != 0) {
+        D_80134460_ovl_01 = 1;
     }
-    return var_v1;
 }
