@@ -1,3 +1,0 @@
-/* identical to func_80165D08_ovl_26 (matched), with its names changed by decompdecomp */
-s32 func_80033634_ovl_01(void);s32 func_801721D0_overlay_054(void*);s32 func_80172280_overlay_054(void*,s32,s32);void func_80172490_overlay_054(void);s32 func_801736A8_overlay_054(void*,s32,s32);
-void func_80172898_overlay_054(void*arg0){u8*p=arg0;if(p[6]==0){func_80172490_overlay_054();p[0x2c1]=70;p[0x2c3]=3;if(func_80033634_ovl_01()&1){func_80172280_overlay_054(arg0,14,20);func_801736A8_overlay_054(arg0,14,0);}else{func_80172280_overlay_054(arg0,20,26);func_801736A8_overlay_054(arg0,20,0);}}else{func_801721D0_overlay_054(arg0);}}

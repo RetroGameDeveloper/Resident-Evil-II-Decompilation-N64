@@ -1,5 +1,40 @@
-typedef struct {u8 pad[6];u8 state;} S6; typedef void(*Fn)(void*); extern Fn D_80166D48_ovl_12[]; void func_80163374_ovl_12(S6*p){D_80166D48_ovl_12[p->state](p);}
-void func_801634F0_ovl_12(void*p){u16 v;v=*(u16*)((u8*)p+0x1f4)-1;*(u16*)((u8*)p+0x1f4)=v;if((s32)((s16)v)==0){((u8*)p)[6]=2;*(u32*)((u8*)p+0x1e8)=0x08000f00;}func_80089D34_ovl_01(p,*(s32*)((u8*)p+0x1a4),*(s32*)((u8*)p+0x218),0x100);}
-void func_80163534_ovl_12(void*p){s32 v;v=func_80089D34_ovl_01(p,0,0,0x100);if(v){*(s16*)((u8*)p+6)=0x300;*(u32*)p|=0x08000000;*(u16*)((u8*)p+0x1aa)&=0xdfff;}}
-extern s32 func_80033634_ovl_01(); extern u8 D_80166C08_ovl_12[]; extern void func_80166458_ovl_12(void*);
-void func_80163584_ovl_12(void*p,s32 a1,s32 a2){s16 v;u8 b;if(((u8*)p)[7]==0){((u8*)p)[7]=1;b=D_80166C08_ovl_12[func_80033634_ovl_01()&7];*(s32*)((u8*)p+0x1e8)=0x1f00;*(u16*)((u8*)p+0x1f4)=b;}v=*(u16*)((u8*)p+0x1f4)-1;*(u16*)((u8*)p+0x1f4)=v;if(v==0){*(u32*)((u8*)p+0x1e8)=0x01000f00;((u8*)p)[5]=1;*(u16*)((u8*)p+6)=0;}func_80089D34_ovl_01(p,a1,a2,0x80);func_80166458_ovl_12(p);}
+typedef struct S_func_80163584_ovl_12_arg0 {
+    u8 unk_00[0x5];
+    u8 unk_05;
+    union { s16 w; struct { u8 lo; u8 hi; } b; } unk_06;
+    u8 unk_08[0x1E0];
+    s32 unk_1E8;
+    u8 unk_1EC[0x8];
+    u16 unk_1F4;
+} S_func_80163584_ovl_12_arg0;
+
+extern u8 D_80166C08_ovl_12[];
+void func_80089D34_ovl_01(void *arg0, s32 arg1, s32 arg2, u32 arg3);
+void func_80166458_ovl_12(void *arg0);
+
+void func_80163584_ovl_12(S_func_80163584_ovl_12_arg0 *arg0, s32 arg1, s32 arg2) {
+    u32 ret;
+    u32 b;
+    u8 idx;
+    volatile u8 *base;
+    s16 v;
+
+    if (arg0->unk_06.b.hi == 0) {
+        arg0->unk_06.b.hi = 1;
+        ret = func_80033634_ovl_01();
+        base = D_80166C08_ovl_12;
+        idx = ret & 7;
+        b = base[idx];
+        arg0->unk_1E8 = 0x1F00;
+        arg0->unk_1F4 = b;
+    }
+    v = arg0->unk_1F4 - 1;
+    arg0->unk_1F4 = v;
+    if (v == 0) {
+        arg0->unk_1E8 = 0x01000F00;
+        arg0->unk_05 = 1;
+        arg0->unk_06.w = 0;
+    }
+    func_80089D34_ovl_01(arg0, arg1, arg2, 0x80);
+    func_80166458_ovl_12(arg0);
+}

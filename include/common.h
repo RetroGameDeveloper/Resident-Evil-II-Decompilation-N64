@@ -22,13 +22,35 @@ typedef int s32_bool;
 #define FALSE 0
 #define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))
 
+/* ovl_01 allocator entry at 0x80032020: physically the second function inside
+ * the old func_80031C44_ovl_01 blob (split out). Takes an id in a0, returns an
+ * object or NULL; called as func(0x3B) by func_80162EB4_ovl_36. */
+s32 func_80032020_ovl_01(s32 arg0);
+
 s32 func_80036764_ovl_01_510(void *arg0, s32 arg1);
+/* ovl_28 state machine: (actor, some pointer computed as *(s32*)(actor+0x234)+0x1A70) */
+void func_80168ABC_ovl_28(void *arg0, s32 arg1);
 s32 func_80036764_ovl_01_510_24(void *arg0, s32 arg1, s32 arg2, s32 arg3);
+/* main-segment 3-arg helper called as D_80036F94(actor, actor->2C4 + 0x28, 0x40)
+ * by func_80166834_ovl_14; return value unused there. */
+void D_80036F94(void *arg0, s32 arg1, s32 arg2);
 s32 func_80162CE0_ovl_15(void *arg0);
 s32 func_8016352C_ovl_15(s32 arg0, s16 arg1, s32 arg2);
 s32 func_801635F4_ovl_15(s32 arg0, s16 arg1, s32 arg2);
 void func_80162F38_ovl_15(void *arg0);
 s32 func_80162BAC_ovl_17(void *arg0, void *arg1, void *arg2);
+
+/* ovl_15 actor state machine helpers (func_801644B0_ovl_15):
+ * func_8016528C_ovl_15 is called after setting +0x26F bit 0x80; return unused. */
+void func_8016528C_ovl_15(void *arg0);
+s32 func_80036C98_ovl_01(void *arg0, s32 arg1, s32 arg2, s32 arg3);
+
+/* ovl_14 actor helper func_80161F80: first call compares a 16-byte stack
+ * descriptor (s32[4], only [0]/[2] filled from +0x2D0/+0x2D4) against
+ * arg0+0x28; second call is really 3 args (a3 is left untouched), hence the
+ * 3-arg function-pointer cast at the call site. */
+s32 func_80036764_ovl_01_2FC(void *arg0, void *arg1, s32 arg2);
+void D_800371D4(void *arg0, s32 arg1, s32 arg2);
 
 /* ovl_01: 2-arg getter used by the func_800AC828/848/868/888 wrappers
  * (called as f(p, p + 0xC4/0xD6/0xE8/0xFA), result & 0xFFFF). */
@@ -183,3 +205,118 @@ void func_80083788_ovl_01(s32 *bits, u32 n);   /* set   */
 void func_800837B0_ovl_01(s32 *bits, u32 n);   /* clear */
 
 typedef struct S_D_80129E34 { s32 unk_00; s32 unk_04; s32 unk_08; s8 unk_0C; u8 unk_0D[0x3F]; s32 unk_4C; s32 unk_50; s32 unk_54; s32 unk_58; s32 unk_5C; s32 unk_60; u8 unk_64; u8 unk_65; } S_D_80129E34;
+
+/* ovl_01 helper at 0x80065658, split out of func_80065400_ovl_01:
+ * returns (func_80033634_ovl_01() % count) or 0xFF when count == 0. */
+s32 func_80065658_ovl_01(void);
+
+/* ovl_26 actor helper (func_80165460): 3-arg callees, arg0 is the actor. */
+void func_80164E08_ovl_26(void *arg0, s32 arg1, s32 arg2);
+void func_80165290_ovl_26(void *arg0, s32 arg1, s32 arg2);
+/* ovl_26 actor helper called at the end of func_801634E4 (sets state 0). */
+void func_80166984_ovl_26(void *arg0);
+
+/* ovl_17 state dispatcher (func_80165658): table at ROM 0x80167E9C
+ * (func_80167E3C_ovl_11+0x60); volatile keeps KMC 2.7.2 from folding the
+ * (idx-1)*4 offset into the %lo of the load address. */
+typedef void (*S_fn_ovl_17_dispatch)(void *, s32, s32);
+extern volatile S_fn_ovl_17_dispatch D_80167E9C_ovl_17[];
+void func_80035AAC_ovl_01_108(void *);
+
+/* ovl_17: func_80166E50 walks the D_800E1008 singly linked list (head stored
+ * in that global, next pointer is the word at the node itself, entries are
+ * compared by their address against actor+0x2C4, and node+0xC is a u32 rank).
+ * The actor's +0x2C field is negated and divided by 1800 (0x91A2B3C5 magic,
+ * shift 10) to get the threshold. func_80066804_ovl_01(s32 base, s16 arg1,
+ * s32 mask, s32 flags) is the state helper called with arg0+0x28. */
+s32 func_80066804_ovl_01(s32 arg0, s16 arg1, s32 arg2, s32 arg3);
+
+/* ovl_17 helper at 0x80165FB8 and callees; this range matches only with -mcpu=r4600
+ * (r4600 scheduler prologue: sw s1, addu s1, sw ra, sw s2). */
+s32 func_80033634_ovl_01(void);
+void func_80164E94_ovl_12(void *, s32, s32);
+s32 func_80166FBC_ovl_17(void *arg0, s32 arg1, s32 arg2);
+s32 func_801661C8_ovl_17(void *arg0);
+s32 func_80167608_ovl_17(void *arg0, s32 arg1, s32 arg2);
+/* ovl_17 actor dispatch helpers used by func_80164890/80164AD8 (3-arg, actor first). */
+void func_801620C8_ovl_17(void *arg0, s32 arg1, s32 arg2);
+void func_8016477C_ovl_17(void *arg0, s32 arg1, s32 arg2);
+s32 func_8016587C_ovl_17(void *arg0, s32 arg1, s32 arg2);
+
+/* ovl_35 (0x80165D20): needs -mcpu=r4600; see the 0x80165D20-0x80165D78 range suggestion. */
+s32 func_80165B50_ovl_35(s32 arg0, s32 arg1, s16 arg2, s32 arg3);
+s32 func_80165E20_ovl_35(s32 arg0, void *arg1);
+
+/* ovl_12 actor per-frame update helper (func_801655BC and neighbours). */
+void func_80164FB0_ovl_12(void *arg0, s32 arg1, s32 arg2);
+
+/* ovl_12 helpers called by func_801657D8 (which matches only with -mcpu=r4600). */
+void func_80166900_ovl_12(void *arg0, s32 arg1, s32 arg2);
+void func_80164CDC_ovl_12(void *arg0, s32 arg1, s32 arg2);
+/* ovl_12 actor table at *(actor+0x234): stride 0x178, +0x60 is a state word. */
+typedef struct S_func_801657D8_ovl_12_entry { u8 pad[0x60]; s32 unk_60; u8 rest[0x114]; } S_func_801657D8_ovl_12_entry;
+
+/* ovl_33 actor state machine func_80166E18: +0x234 pointer to a status object
+ * (its +0x5E0 is a 32-bit flag word), +0x2BF state byte, +0x2C0 16-bit timer. */
+typedef struct S_func_80166E18_ovl_33_arg0 {
+    u8 unk_00[0x234];
+    s32 *unk_234;
+    u8 unk_238[0x2BF - 0x238];
+    u8 unk_2BF;
+    u16 unk_2C0;
+} S_func_80166E18_ovl_33_arg0;
+
+/* ---- ovl_23 func_80163030 (global camera/actor sync) ----
+ * func_80032D44_ovl_01: angle helper, called here as
+ *   (g->2A, g->32, p->2A, p->32) with s16 args/return.
+ * D_800E10D0_ovl_01: the words at +0x28/+0x30 are stored as full s32 but the
+ *   high half (+0x2A/+0x32) is later read back signed, so model them as
+ *   unions (overlapping w / h.hi). +0x66 is s16. (The ROM keeps this base in
+ *   a callee-saved reg and addresses it as offset(base); see func_80163030.) */
+s32 func_80032D44_ovl_01(s16 arg0, s16 arg1, s16 arg2, s16 arg3);
+
+typedef struct S_D_800E10D0_ovl_01 {
+    u8 unk_00[0x28];
+    union { s32 w; struct { u16 lo; s16 hi; } h; } unk_28;
+    u8 unk_2C[4];
+    union { s32 w; struct { u16 lo; s16 hi; } h; } unk_30;
+    u8 unk_34[0x32];
+    s16 unk_66;
+} S_D_800E10D0_ovl_01;
+
+/* ovl_21 motion/command dispatcher: builds (arg1<<24)|(arg2<<16)|arg3 and
+ * hands it to the actor's +0x234 object (func_80163664_ovl_21). */
+void func_80163664_ovl_21(void *arg0, s32 arg1, s32 arg2, s32 arg3);
+
+/* ovl_26 func_80165640: the target at 0x80033678 is its own actor-update routine
+ * (reads actor+0x214 -> word, tests 0x08000000, calls func_80077D48), shown by
+ * the disassembler as "jal D_80033678" and wrongly lumped into
+ * func_80033634_ovl_01. func_800334F8 takes (actor, a, b, 0) here. */
+void D_80033678(void *arg0);
+
+/* ovl_17 dispatcher helper (0x80164BB4): called with 3 args by func_80164F0C
+ * though its body only uses arg0. func_80164F0C needs -mcpu=r4600. */
+void func_80164BB4_ovl_17(void *arg0, s32 arg1, s32 arg2);
+
+/* 8-byte table at 0x80166690 (func_80166684_ovl_33+0xC), indexed by
+ * (func_80033634_ovl_01() & 7) in func_801634F0/func_80163584. */
+extern u8 D_80166690_ovl_35[];
+
+/* ovl_12 func_80163584 actor: +0x6 is an s16 timer/state word whose high byte
+ * (+0x7) is also read/written as the "initialized" flag byte, so they overlap. */
+typedef struct S_func_80163584_ovl_12_arg0 {
+    u8 unk_00[0x5];
+    u8 unk_05;
+    union { s16 w; struct { u8 lo; u8 hi; } b; } unk_06;
+    u8 unk_08[0x1E0];
+    s32 unk_1E8;
+    u8 unk_1EC[0x8];
+    u16 unk_1F4;
+} S_func_80163584_ovl_12_arg0;
+/* 8-byte random table, indexed by func_80033634_ovl_01() & 7 in func_80163584. */
+extern u8 D_80166C08_ovl_12[];
+
+/* ovl_01 helper split out of the old func_8006A81C blob at 0x8006A8B0:
+ * takes (index, pointer) and returns a signed 16-bit coordinate sum.
+ * Called by func_80166CD8/80166D98/80162144/801650FC. */
+s32 func_8006A8B0_ovl_01(s32 idx, void *p);

@@ -1,5 +1,23 @@
-extern u8 D_80167244_ovl_26,D_8016723C_ovl_26,D_80167218_ovl_26;s32 func_80033634_ovl_01(void);void func_80166984_ovl_26(void*);
-void func_801639A4_ovl_26(void*a){u32 i=*((u8*)a+6);void(*f)(void)=(void(*)(void))(*(u32*)(&D_80167244_ovl_26+i*4));f();*((u8*)a+0x2d6)=1;*((u8*)a+0x2d7)=1;}
-void func_80163950_ovl_26(void*a){u32 i=func_80033634_ovl_01();u8 v=*((u8*)&D_8016723C_ovl_26+(i&7));*((u8*)a+5)=1;*((u16*)((u8*)a+6))=0;*((u16*)((u8*)a+0x1e4))=0;*((u16*)((u8*)a+0x1e0))=0;*((u8*)a+0x2be)=v+0x3c;}
-void func_8016369C_ovl_26(void*a){u8*p=(u8*)a+0x2b4;u8 v;u32 n; n=p[0x26];if(*((u8*)a+8)!=0x2e)n+=8;p[0xc]=n;p[0xb]=0x5a;*(u32*)a=*(u32*)a&0xfffffffb;p[2]=0;*((u16*)((u8*)a+6))=0x100;v=*((u8*)a+0x2cd);n=v*13;*(u32*)((u8*)a+0x1e8)=(n<<24)+0x3f00;if(p[4]==0){*((u16*)((u8*)a+6))=0x200;p[0x12]=1;p[0x13]=0;p[0x14]=32;}}
-void func_801634E4_ovl_26(void*a){u8*p=(u8*)a+0x2b4;u32 i=func_80033634_ovl_01();p[8]=*((u8*)&D_80167218_ovl_26+(i&7));i=func_80033634_ovl_01();p[0xa]=*((u8*)&D_80167218_ovl_26+(i&7))+0x1e;p[9]=*((s8*)a+0x206)?15:0;*((s16*)((u8*)a+0x130))=*((u8*)a+0x2cd)?-800:800;*((u8*)a+5)=1;*((u16*)((u8*)a+6))=0;func_80166984_ovl_26(a);}
+extern u8 D_80167218_ovl_26[];
+void func_80166984_ovl_26(void *);
+
+typedef union { u64 q; struct { u32 lo; u32 hi; } w; } U64;
+
+void func_801634E4_ovl_26(u8 *a) {
+    U64 b;
+    u8 *p = a;
+    volatile u8 *t = D_80167218_ovl_26;
+    u32 i;
+
+    b.w.lo = (u32)p;
+    p = (u8 *)(b.w.lo + 0x2B4);
+    i = func_80033634_ovl_01();
+    p[8] = t[i & 7];
+    i = func_80033634_ovl_01();
+    p[0xA] = t[i & 7] + 0x1E;
+    p[9] = (*(s8 *)(a + 0x206)) ? 0xF : 0;
+    *(s16 *)(a + 0x130) = (*(u8 *)(a + 0x2CD)) ? -0x320 : 0x320;
+    *(u8 *)(a + 5) = 1;
+    *(u16 *)(a + 6) = 0;
+    func_80166984_ovl_26(a);
+}

@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern s32 D_800E90D4_overlay_001;
+extern s32 D_800E90D4_ovl_01;
 
 void func_80026AD0_ovl_01(void) {
-    D_800E90D4_overlay_001 = 1;
+    D_800E90D4_ovl_01 = 1;
 }

@@ -1,4 +1,0 @@
-s32 func_80065400_ovl_01(void*,s32,s32); s32 func_8004DA70_ovl_01(void*,void*); s32 func_8004DCE8_ovl_01(void*,s32); typedef void(*Fn)(void*,s32,s32); extern volatile Fn D_80165420_ovl_19[]; extern s32 D_800C7650_ovl_01; extern s32 D_800E10F8_ovl_01; s32 func_80033644_ovl_01(void*);
-void func_80161C70_overlay_019(void *arg0){s32 force[2];u8 t; s8 *b=(s8*)arg0;
-func_80065400_ovl_01(&D_800E10F8_ovl_01,0,0);
-if(!(*(u32*)((s8*)&D_800C7650_ovl_01+0x18000+0x1a60)&0x20000000)){t=*(u8*)(b+0x26f);if(t&0x7f)*(u8*)(b+0x26f)=t-1;D_80165420_ovl_19[*(u8*)(b+4)](arg0,*(s32*)(b+0x1a4),*(s32*)(b+0x218));*(u16*)(b+0x2b4)=*(u16*)(b+0x2b6);*(u16*)(b+0x2b6)=*(u16*)(b+0x2b8);*(u16*)(b+0x2b8)=*(u16*)(b+0x2ba);*(u16*)(b+0x2ba)=*(u16*)(b+0x2bc);*(u16*)(b+0x2ba)=*(u16*)(b+0x2c0);*(u16*)(b+0x2c0)=*(u16*)(b+0x2c2);*(u16*)(b+0x2c2)=*(u16*)(b+0x66);func_80033644_ovl_01(arg0);func_8004DA70_ovl_01(arg0,b+0x28);func_8004DCE8_ovl_01(arg0,0x400);}}

@@ -1,5 +1,29 @@
-extern s32 D_800E10D0_ovl_01; extern s32 D_800C7650_ovl_01[];
-void func_801679E0_ovl_17(void*p){u8 n=((u8*)p)[0x2d7],i=0,ix,a;u32 val;u32*arr;if(n){n--;((u8*)p)[0x2d7]=n;if(n&1){arr=(u32*)*(u8**)((u8*)p+0x234);do{ix=func_80033634_ovl_01()&7;a=((u8*)0x80167fbc)[ix];val=arr[a*0x178/4];if((val&0x4b)==1)func_80166FBC_ovl_17(p,a,9);i++;}while(i<3);}}}
-void func_80167A9C_ovl_17(void*p){s32 a1=*(s32*)p&0xe3ffffff;u8 t=((u8*)p)[0x2be];*(s32*)p=a1;if(t==1)goto one;if(t<2){if(t==0)goto zero;return;}if(t>=4)return;{s32 d=*(s32*)((u8*)&D_800E10D0_ovl_01+0x2c)-*(s32*)((u8*)p+0x2c);if(d>=0x1069){*(s32*)p|=0x10000000;return;}*(s32*)p|=0x18000000;if(d<0x834)*(s32*)p|=0x04000000;return;}zero:*(s32*)p=a1|0x0c000000;return;one:*(s32*)p=a1|0x10000000;}
-s32* func_80167848_ovl_17(void*p){s32 *r=&D_800E10D0_ovl_01;u32 v;u8*base=(u8*)D_800C7650_ovl_01+0x18000;((u8*)p)[0x2d3]=0;if(*(u32*)(base+0x1a5c)&0x10000000){v=*(u32*)((u8*)p+0x290);if((v&0xc0000000)==0x40000000&&(v&0x3fffffff)<*(u32*)((u8*)p+0x28c)){r=*(s32**)(base+0x1d3c);((u8*)p)[0x2d3]=1;}}return r;}
-s32 func_80166F04_ovl_17(void*p,s32 arg){s32*base; s16 x=*(u16*)((u8*)p+0x64),y=*(u16*)((u8*)p+0x66),z=*(u16*)((u8*)p+0x68);u32 t;if(((u8*)p)[0x2d3])base=*(s32**)((u8*)D_800C7650_ovl_01+0x19d3c);else base=&D_800E10D0_ovl_01;*(u16*)((u8*)p+0x64)=0;*(u16*)((u8*)p+0x68)=0;*(u16*)((u8*)p+0x66)=(((u8*)p)[0x2cc]<<10)&0xfff;t=func_80032EA4_ovl_01(p,base[0x28/4],base[0x30/4],(s16)arg);*(u16*)((u8*)p+0x64)=x;*(u16*)((u8*)p+0x66)=y;*(u16*)((u8*)p+0x68)=z;return (s16)(t>>16);}
+extern u8 D_800E10D0_ovl_01[];
+
+void func_80167A9C_ovl_17(u8 *p) {
+    u8 *g = D_800E10D0_ovl_01;
+    s32 t = p[0x2BE];
+    s32 m = *(s32 *)p & 0xE3FFFFFF;
+    s32 d;
+
+    *(s32 *)p = m;
+    switch (t) {
+    case 0:
+        *(s32 *)p = m | 0x0C000000;
+        break;
+    case 1:
+        *(s32 *)p = m | 0x10000000;
+        break;
+    case 2:
+    case 3:
+        d = *(s32 *)(g + 0x2C) - *(s32 *)(p + 0x2C);
+        if (d >= 0x1069) {
+            *(s32 *)p |= 0x10000000;
+        } else {
+            *(s32 *)p |= 0x18000000;
+            if (d < 0x834)
+                *(s32 *)p |= 0x04000000;
+        }
+        break;
+    }
+}

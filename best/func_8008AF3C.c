@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern s32 D_8012BD20_overlay_001;
+extern s32 D_8012BD20_ovl_01;
 
 s32 func_8008AF3C(void) {
-    return D_8012BD20_overlay_001;
+    return D_8012BD20_ovl_01;
 }

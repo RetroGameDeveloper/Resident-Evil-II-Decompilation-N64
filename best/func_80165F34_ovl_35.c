@@ -1,5 +1,40 @@
-extern s32 func_80032EA4_ovl_01(void*,s32,s32,s16); extern s32 D_800C7650_ovl_01[]; extern u8 D_800E10D0_ovl_01[];
-void func_80166520_ovl_35(void*a,s32 b){if(b){*(s16*)((u8*)a+0x13a)=0x7d0;*(s16*)((u8*)a+0x134)=0;*(s16*)((u8*)a+0x12c)=4;*(s16*)((u8*)a+0x12e)=4;return;}*(s16*)((u8*)a+0x134)=-0x320;*(s16*)((u8*)a+0x13a)=0x3e8;*(s16*)((u8*)a+0x12c)=0x320;*(s16*)((u8*)a+0x12e)=0x578;}
-s32 func_80165F34_ovl_35(void*a,s32 b,s32 c,s16 d){u8*base; s32 s1,r;if(b){base=(u8*)D_800C7650_ovl_01+0x18000;s1=*(s32*)((u8*)a+0x290)&0x3fffffff;}else{base=D_800E10D0_ovl_01;s1=*(s32*)((u8*)a+0x28c);}r=func_80032EA4_ovl_01(a,*(s32*)(base+0x28),*(s32*)(base+0x30),d);if(s1<c)return 0;if(r)return 0;if(*(s16*)(base+0x1f2)<0)return 0;if(!(*(u8*)(base+0x26f)&0x80))return 1;return 0;}
-s32 func_80165EC4_ovl_35(void*a){u8*base=D_800E10D0_ovl_01;u32 x;*(u8*)((u8*)a+0x2b4)=0;base=(u8*)D_800C7650_ovl_01+0x18000;if(*(u32*)(base+0x1a5c)&0x10000000){x=*(u32*)((u8*)a+0x290);if((x&0xc0000000)==0x40000000&&(x&0x3fffffff)<*(u32*)((u8*)a+0x28c)){*(u8*)((u8*)a+0x2b4)=1;return *(s32*)(base+0x1d3c);}}return (s32)D_800E10D0_ovl_01;}
-s32 func_80165E20_ovl_35(u8*arg){u8 state=arg[7];s32 v;if(state==0){arg[7]=1;*(s16*)(arg+2)=-0x100;*(s16*)(arg+4)=-0x100;}else if(state>2){goto done;}else if(state==2)goto down;v=(s16)*(u16*)(arg+2)+0x200;*(s16*)(arg+2)=v;if(v<0x300)goto done;arg[7]=2;*(s16*)(arg+2)=0x300;goto done;down:v=(s16)*(u16*)(arg+2)-0x200;*(s16*)(arg+2)=v;if(v< -0xff){arg[7]=1;*(s16*)(arg+2)=-0x100;}done:v=*(u16*)(arg+2);*(s16*)(arg+4)=v;return v;}
+extern s32 func_80032EA4_ovl_01(void *, s32, s32, s16);
+extern s32 D_800C7650_ovl_01[];
+extern u8 D_800E10D0_ovl_01[];
+
+typedef union { u64 q; struct { u32 hi; u32 lo; } w; } U64;
+
+s32 func_80165F34_ovl_35(void *arg0, s32 arg1, s32 arg2, s16 arg3)
+{
+    U64 b;
+    u8 *base;
+    u32 mask;
+    u32 x;
+    u32 y;
+    s32 s1;
+    s32 r;
+
+    if (arg1) {
+        b.w.hi = 0x18000;
+        mask = 0x3FFFFFFF;
+        b.w.lo = (u32)D_800C7650_ovl_01;
+        x = b.w.lo;
+        y = b.w.hi;
+        base = *(u8 **)(x + y + 0x1D3C);
+        s1 = *(s32 *)((u8 *)arg0 + 0x290) & mask;
+    } else {
+        base = D_800E10D0_ovl_01;
+        s1 = *(s32 *)((u8 *)arg0 + 0x28C);
+    }
+    r = func_80032EA4_ovl_01(arg0, *(s32 *)(base + 0x28), *(s32 *)(base + 0x30), arg3);
+    if (s1 < arg2) {
+        if (r == 0) {
+            if (*(s16 *)(base + 0x1F2) >= 0) {
+                if (*(u8 *)(base + 0x26F) & 0x80)
+                    return 0;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}

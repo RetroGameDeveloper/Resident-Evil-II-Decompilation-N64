@@ -1,4 +1,3 @@
-/* Partial candidate from function #265451 in project #68; rechecked locally. */
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
@@ -13,12 +12,12 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern M2C_UNK D_80166ED4_overlay_032;
+extern M2C_UNK D_80166ED4_ovl_32;
 
 void func_8016690C_ovl_32(s32 arg0, s8 arg1, s8 arg2) {
     void *temp_v1;
 
-    temp_v1 = ((arg0 & 0xFF) * 0x1C) + &D_80166ED4_overlay_032;
+    temp_v1 = ((arg0 & 0xFF) * 0x1C) + &D_80166ED4_ovl_32;
     M2C_FIELD(temp_v1, s8 *, 2) = arg1;
     M2C_FIELD(temp_v1, s8 *, 3) = arg2;
 }

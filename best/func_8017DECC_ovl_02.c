@@ -1,4 +1,3 @@
-/* Partial candidate from function #263956 in project #68; rechecked locally. */
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
@@ -13,9 +12,9 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8017B568_ovl_02(M2C_UNK *);       /* extern */
-extern M2C_UNK D_80185690_overlay_002;
+M2C_UNK func_8017B568_ovl_02(M2C_UNK *);            /* extern */
+extern M2C_UNK D_80185690_ovl_02;
 
 void func_8017DECC_ovl_02(void) {
-    func_8017B568_ovl_02(&D_80185690_overlay_002);
+    func_8017B568_ovl_02(&D_80185690_ovl_02);
 }

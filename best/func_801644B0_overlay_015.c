@@ -1,2 +1,0 @@
-typedef struct{u8 x[0x300];} Obj; extern void func_80077D48_ovl_01(s32,void*); extern void func_8016528C_ovl_15(void*); extern s32 func_80036764_ovl_01(void*,s32,s32,s32);
-void func_801644B0_overlay_015(Obj*a){u8 st=a->x[6]; if(st==0) goto first; if(st==1) goto check; goto end; first: if(a->x[0x2ce]==0)func_80077D48_ovl_01(0,a); a->x[0x26f]|=128;func_8016528C_ovl_15(a);a->x[6]++; check: if(func_80036764_ovl_01(a,10,3,0)){*(s32*)(a->x+4)=0x1010000;a->x[0x26f]&=127;} end:;}
