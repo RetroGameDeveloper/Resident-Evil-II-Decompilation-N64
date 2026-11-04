@@ -14,12 +14,12 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80163834_ovl_12();                     /* extern */
-M2C_UNK func_80163BC4_ovl_27();                     /* extern */
+M2C_UNK func_80163BC4_overlay_027();                     /* extern */
 
 void func_801637FC_ovl_12(void *arg0) {
     if (M2C_FIELD(arg0, u8 *, 6) == 0) {
         func_80163834_ovl_12();
         return;
     }
-    func_80163BC4_ovl_27();
+    func_80163BC4_overlay_027();
 }

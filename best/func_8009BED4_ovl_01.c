@@ -21,6 +21,8 @@ typedef struct {
 s32 func_8009BED4_ovl_01(void *arg0) {
     S s;
     s32 temp;
+s32 __repair_phase_temp;
+    s32 __repair_temp_1;
     func_8009C1B0_ovl_01(&D_801320FC_ovl_01);
     temp = func_8000CD40(1);
     func_80007320(arg0, 0x8000);
@@ -35,9 +37,9 @@ s32 func_8009BED4_ovl_01(void *arg0) {
     if (*(s32 *)arg0 == 0x42494F32) return 0;
     func_80006650(arg0, 0x8000);
     *(s32 *)arg0 = 0x42494F32;
-    temp = func_8000CD40(1);
+    __repair_temp_1 = func_8000CD40(1);
     func_80007320(arg0, 0x8000);
-    func_8000CD40(temp);
+    func_8000CD40(__repair_temp_1);
     s.unk2 = 0;
     s.unk4 = &D_801320E0_ovl_01;
     s.unk8 = arg0;
@@ -46,9 +48,9 @@ s32 func_8009BED4_ovl_01(void *arg0) {
     func_80006F60(&D_801320FC_ovl_01, &s, 1);
     func_8000C9E0(&D_801320E0_ovl_01, &D_801320F8_ovl_01, 1);
     func_80006650(arg0, 0x8000);
-    temp = func_8000CD40(1);
+    __repair_phase_temp = func_8000CD40(1);
     func_80007320(arg0, 0x8000);
-    func_8000CD40(temp);
+    func_8000CD40(__repair_phase_temp);
     s.unk2 = 0;
     s.unk4 = &D_801320E0_ovl_01;
     s.unk8 = arg0;

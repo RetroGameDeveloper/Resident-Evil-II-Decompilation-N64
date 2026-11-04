@@ -1,30 +1,5 @@
-extern s32 func_80089D34_ovl_01(void *, s32, s32, s32);
-extern void func_80166458_ovl_12(void *);
-extern s32 func_80077D48_ovl_01(s32, void *);
-
-void func_80163638_ovl_12(void *arg0, s32 b, s32 c) {
-    u8 *p = arg0;
-    u32 v;
-    if (p[6] == 0) {
-        v = 1;
-        p[6] = v;
-        v = p[0x25C];
-        *(u32 *)(p + 0x1E8) = 0x03000300;
-        p[0x2BB] = 0x20;
-        p[0x25C] = v & 0xFD;
-    }
-    if (func_80089D34_ovl_01(p, b, c, 0x400)) {
-        v = p[0x1E8];
-        if (v != 4) {
-            v = v + 1;
-            *(u32 *)(p + 0x1E8) = (v << 24) + 0x300;
-            if (p[0x1E8] == 4) {
-                func_80077D48_ovl_01(4, p);
-            }
-        } else {
-            *(u32 *)(p + 4) = 0x01020000;
-        }
-    }
-    func_80166458_ovl_12(p);
-    func_80166900_ovl_12(p, 4, 6);
-}
+extern s32 func_80032C08_ovl_01(s32,s32); extern s32 func_80089D34_ovl_01(void*,s32,s32,s32); extern s32 func_8016687C_ovl_12(void*); extern void func_80166458_ovl_12(void*); extern void func_80166900_ovl_12(void*,s32,s32); extern s32 func_80077D48_ovl_01(s32,void*); extern void *D_80166D38_ovl_26[];
+void func_80162ED4_ovl_12(void*a,s16 b,s16 c){u32 x=*(u32*)a;*(u16*)((u8*)a+0x1f4)=8;*(s16*)((u8*)a+0x1e0)=b;*(s16*)((u8*)a+0x1e2)=c;*(u32*)((u8*)a+0x1e8)=0x14000700;*(u8*)((u8*)a+0x2ba)=0;*(u8*)((u8*)a+0x2bb)=0;*(u32*)a=(x&0xefffffff)|0x04000000;}
+s32 func_80162FE0_ovl_12(void*a,s32 b,s32 c){s32 result;func_80032C08_ovl_01(0,0);*(u16*)((u8*)a+0x1e2)+=0x28;result=func_8016687C_ovl_12(a);if((*(s16*)((u8*)a+0x1e2)<0)||(result==1))result=-1;else if(*(u8*)((u8*)a+0x1e9))func_80089D34_ovl_01(a,b,c,0x200);return result;}
+void func_80162D54_ovl_12(void*a){((void(*)(void))D_80166D38_ovl_26[*(u8*)((u8*)a+6)])();func_80166458_ovl_12(a);func_80166900_ovl_12(a,4,0);}
+void func_80163638_ovl_12(void*a){u8 v;if(!*(u8*)((u8*)a+6)){*(u8*)((u8*)a+6)=1;v=*(u8*)((u8*)a+0x25c);*(u32*)((u8*)a+0x1e8)=0x03000300;*(u8*)((u8*)a+0x2bb)=0x20;*(u8*)((u8*)a+0x25c)=v&0xfd;}if(func_80089D34_ovl_01(a,0,0,0x400)){v=*(u8*)((u8*)a+0x1e8);if(v!=4){v++;*(u32*)((u8*)a+0x1e8)=((u32)v<<24)+0x300;if(*(u8*)((u8*)a+0x1e8)==4)func_80077D48_ovl_01(4,a);}else *(u32*)((u8*)a+4)=0x01020000;}func_80166458_ovl_12(a);func_80166900_ovl_12(a,4,6);}

@@ -16,11 +16,15 @@ extern M2C_UNK D_8014DFE0;
 extern M2C_UNK D_8014E060;
 
 u8 func_800AC71C_ovl_01(s32 arg0, s32 arg1) {
+int __repair_literal;
+
     s32 temp_a0;
 
     temp_a0 = arg1 & 0xFF;
     if (temp_a0 == 0xFF) {
         return *((arg0 & 0xFF) + &D_8014E060);
     }
-    return *((arg0 & 0xFF) + (temp_a0 * 0x10) + &D_8014DFE0);
+__repair_literal = 0x10;
+
+    return *((arg0 & 0xFF) + (temp_a0 * __repair_literal) + &D_8014DFE0);
 }

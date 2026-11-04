@@ -1,4 +1,5 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
+/* Partial candidate from function #263044 in project #68; rechecked locally. */
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
 typedef s32 M2C_UNK;
@@ -12,9 +13,9 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80040BE4_ovl_01(s32, s32);                 /* extern */
+s32 func_80040BE4_ovl_01();
 
-s32 func_80069EEC_ovl_01(void *arg0, s32 arg1, void *arg3) {
+s32 func_80069EEC_ovl_01(void *arg0, s32 arg1, s32 arg2, void *arg3) {
     s32 temp_lo;
     s32 temp_v0;
     u32 temp_s0;

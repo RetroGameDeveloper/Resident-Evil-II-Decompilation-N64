@@ -21,7 +21,7 @@ void func_800B4D60_ovl_01(void *arg0, void *arg1, M2C_UNK arg2, M2C_UNK arg3) {
 
     temp_t0 = arg0 + ((M2C_FIELD(arg0, s16 *, 0x188) * 0x10) + 0x168);
     temp_v0 = (M2C_FIELD(arg1, s16 *, 0) - 0x20) * 0xCC00;
-    M2C_FIELD(temp_t0, s16 *, 0) = (s16) (((s32) (temp_v0 + (temp_v0 << 8) + 0x4000) >> 0xF) * 2);
+    M2C_FIELD(temp_t0, s16 *, 0) = (s16) (((s32) (temp_v0 + ((temp_v0 <<= 8)) + 0x4000) >> 0xF) * 2);
     temp_v1 = (M2C_FIELD(arg1, s16 *, 2) - 0x20) * 0xCC00;
     M2C_FIELD(temp_t0, s16 *, 2) = (s16) (((s32) (temp_v1 + (temp_v1 << 8) + 0x4000) >> 0xF) * 2);
     M2C_FIELD(temp_t0, s16 *, 4) = (s16) (((s32) ((((M2C_FIELD(arg1, s16 *, 4) << 0xA) - 0x5000) * 0x3333) + 0x4000) >> 0xF) * 2);

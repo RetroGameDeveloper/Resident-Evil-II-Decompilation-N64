@@ -1,0 +1,143 @@
+{
+  "snapshot_saved_at_utc": "2026-11-04T09:35:42.088445+00:00",
+  "upstream_commit": "17ad36792abbd0b2acae95176d36c47b526c6d17",
+  "summary": {
+    "matched": 902,
+    "best_drafts": 2404,
+    "function_layout_entries": 4891,
+    "previous_snapshot_matches": 901,
+    "upstream_snapshot_matches": 641,
+    "missing_sources": 0,
+    "verification_blob_hashes_valid": true
+  },
+  "verification_note": "The live app save is exported without changing the selected sources, layout, compiler profiles or active helper work. Two source files have historical bundles predating a symbol rename; fresh live linked-byte/data scratch checks returned score zero for those exact saved source files. The historical bundles remain unchanged. No full ROM rebuild was performed.",
+  "historical_bundle_name_mismatches": [
+    "func_8000BE60",
+    "__osDevMgrMain"
+  ],
+  "fresh_selected_source_checks": [
+    {
+      "function": "func_8000BE60",
+      "score": 0,
+      "matched_scratch": false,
+      "text": "(scratch \u2014 func_8000BE60 was already matched) score 0\nMismatch categories (advisory): no rendered differences; 0 rendered instruction positions differ.\nmarkers: r=regalloc s=stack-offset i=operand |=different insn <=missing (target only) >=extra (yours only) o=reordered\n   TARGET                               | YOURS\n   ...\nC-line mapping unavailable (no supported debug line information; flags unchanged).\n\nMove-on count: no better in 1/6 compiles (move on at 6).",
+      "checks": {
+        "linked_bytes": {
+          "exact": true
+        },
+        "link": null,
+        "export": {
+          "state": "layout_checked",
+          "ready": true,
+          "message": "Standalone layout checked; a complete byte-identical rebuild is still required."
+        },
+        "instructions": {
+          "exact": true
+        },
+        "data": [],
+        "address_mismatches": [],
+        "message": "Linked bytes verified identical. Symbolic relocation labels or displayed diff annotations do not override this verdict; do not repair those annotations.\nStandalone layout checked; a complete byte-identical rebuild is still required."
+      }
+    },
+    {
+      "function": "__osDevMgrMain",
+      "score": 0,
+      "matched_scratch": false,
+      "text": "(scratch \u2014 __osDevMgrMain was already matched) score 0\nMismatch categories (advisory): no rendered differences; 0 rendered instruction positions differ.\nmarkers: r=regalloc s=stack-offset i=operand |=different insn <=missing (target only) >=extra (yours only) o=reordered\n   TARGET                        | YOURS\n   ...\nC-line mapping unavailable (no supported debug line information; flags unchanged).\n\nMove-on count: no better in 0/8 compiles (move on at 8).",
+      "checks": {
+        "linked_bytes": {
+          "exact": true
+        },
+        "link": null,
+        "export": {
+          "state": "layout_checked",
+          "ready": true,
+          "message": "Standalone layout checked; a complete byte-identical rebuild is still required."
+        },
+        "instructions": {
+          "exact": true
+        },
+        "data": [],
+        "address_mismatches": [],
+        "message": "Linked bytes verified identical. Symbolic relocation labels or displayed diff annotations do not override this verdict; do not repair those annotations.\nStandalone layout checked; a complete byte-identical rebuild is still required."
+      }
+    }
+  ],
+  "upstream_matches_not_marked_matched_in_live_snapshot": [
+    "func_8002686C_ovl_01",
+    "func_80027688_ovl_01",
+    "func_8003420C_ovl_01",
+    "func_8003421C",
+    "func_80077AB0_ovl_01",
+    "func_80079374_ovl_01",
+    "func_80087D04_ovl_01",
+    "func_800888F0_ovl_01",
+    "func_8008C23C_ovl_01",
+    "func_8008C2F4_ovl_01",
+    "func_800A1EE0_ovl_01",
+    "func_800A1F24_ovl_01",
+    "func_800A93CC_ovl_01",
+    "func_800B1FCC_ovl_01",
+    "func_800B2038_ovl_01",
+    "func_800B2238_ovl_01",
+    "func_80161D6C_ovl_38",
+    "func_80161F04_ovl_38",
+    "func_80161FD4_ovl_34",
+    "func_801620FC_ovl_36",
+    "func_801621CC_ovl_17",
+    "func_8016271C_ovl_15",
+    "func_80162804_ovl_18",
+    "func_8016280C_ovl_20",
+    "func_8016296C_ovl_25",
+    "func_80162994_ovl_27",
+    "func_80162FAC_ovl_13",
+    "func_8016314C_ovl_20",
+    "func_80163208_ovl_20",
+    "func_80163308_ovl_21",
+    "func_801633AC_ovl_14",
+    "func_801633AC_ovl_16",
+    "func_801633D4_ovl_21",
+    "func_80163448_ovl_21",
+    "func_80163588_ovl_26",
+    "func_801635B8_ovl_21",
+    "func_80163604_ovl_13",
+    "func_80163698_ovl_20",
+    "func_80163E14_ovl_12",
+    "func_80164088_ovl_12",
+    "func_801644B0_ovl_15",
+    "func_80164600_ovl_17",
+    "func_80164D08_ovl_23",
+    "func_80164D9C_ovl_17",
+    "func_80164DA0_ovl_20",
+    "func_80164F0C_ovl_17",
+    "func_801652E4_ovl_11",
+    "func_80165320_ovl_26",
+    "func_80165460_ovl_26",
+    "func_80165640_ovl_26",
+    "func_801657D8_ovl_12",
+    "func_801657FC_ovl_31",
+    "func_8016592C_ovl_31",
+    "func_80165A60_ovl_22",
+    "func_80165C90_ovl_35",
+    "func_80165D20_ovl_35",
+    "func_80165D78_ovl_35",
+    "func_80165F00_ovl_13",
+    "func_80165F70_ovl_13",
+    "func_80165FB8_ovl_17",
+    "func_80166394_ovl_12",
+    "func_801667CC_ovl_28",
+    "func_80166C54_ovl_16",
+    "func_80166DD8_ovl_20",
+    "func_80168158_ovl_14",
+    "func_80168308_ovl_14",
+    "func_801683FC_ovl_14",
+    "func_80168758_ovl_31",
+    "func_8016A840_ovl_31",
+    "func_8016A8F8_ovl_31",
+    "func_8016B514_ovl_11",
+    "func_801711DC_ovl_07",
+    "func_8017D0D8_ovl_02",
+    "func_8017D194_ovl_02"
+  ],
+  "upstream_comparison_note": "The upstream and live snapshots use different function layouts. Historical upstream match labels are not imported as live verdicts. Earlier compiler-profile and boundary limitations are recorded in merge-review.json; this PR exports the live project rather than re-running the upstream reconciliation."
+}

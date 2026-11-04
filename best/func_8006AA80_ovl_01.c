@@ -27,9 +27,6 @@ void func_8006AA80_ovl_01(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
         var_a0 = 1;
     }
     switch (var_a0) {                               /* irregular */
-    case 0:
-        *arg6 = arg2 + arg4;
-        return;
     case 3:
         *arg7 = arg3 + arg5;
         return;
@@ -38,6 +35,9 @@ void func_8006AA80_ovl_01(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
         return;
     case 2:
         *arg6 = arg2;
+        return;
+    case 0:
+        *arg6 = arg2 + arg4;
         return;
     }
 }

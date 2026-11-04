@@ -31,8 +31,8 @@ void func_800A0CBC_ovl_01(s32 arg0) {
     void *var_s0;
     void *var_s0_2;
 
-    var_v1 = 0;
     var_a1 = &D_8013BC30;
+    var_v1 = 0;
 loop_1:
     if ((M2C_FIELD(var_a1, u8 *, 0xFC1) != 0) || (M2C_FIELD(var_a1, s32 *, 0) != (arg0 & 0x7FFFFFFF))) {
         var_v1 += 1;
@@ -47,7 +47,7 @@ loop_1:
     }
     if (var_a0 != -1) {
         if (var_a0 >= 0) {
-            temp_v1 = (var_a0 * 0xFF8) + &D_8013BC30;
+            temp_v1 = (char *)((var_a0 * 0xFF8)); temp_v1 += (s32)(&D_8013BC30);
             if ((M2C_FIELD(temp_v1, u8 *, 0xFC0) != 0) && (M2C_FIELD(temp_v1, u8 *, 0xFC1) == 0)) {
                 M2C_FIELD(temp_v1, u8 *, 0xFC0) = 0U;
                 var_s0 = M2C_FIELD(temp_v1, void **, 0xF78);
@@ -66,7 +66,7 @@ loop_1:
                         var_v1_2 = var_a0 << 9;
                     } while (var_s0_2 != NULL);
                 }
-                temp_v1_2 = ((var_v1_2 - var_a0) * 8) + &D_8013BC30;
+                temp_v1_2 = (char *)(((var_v1_2 - var_a0) * 8)); temp_v1_2 += (s32)(&D_8013BC30);
                 var_a0_2 = M2C_FIELD(temp_v1_2, M2C_UNK **, 0xF78);
                 if (var_a0_2 != NULL) {
                     if (*var_a0_2 != NULL) {

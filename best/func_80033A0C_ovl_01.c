@@ -1,6 +1,6 @@
 extern volatile u8 D_800DFBB4_ovl_01[];
 
-void func_80033A0C_ovl_01(void **arg0, u32 arg1, u32 arg2, s32 arg3, s32 arg4) {
+void func_80033A0C_ovl_01(void **arg0, u16 arg1, u32 arg2, s32 arg3, s32 arg4) {
     volatile u8 *p = D_800DFBB4_ovl_01;
     s32 i = 0x32;
 

@@ -1,4 +1,4 @@
-s32 func_80033634_ovl_01(void);
+unsigned char func_80033634_ovl_01(void);
 s32 func_800377B0_ovl_01(s32 arg0, s32 arg1, void *arg2, void *arg3);
 
 typedef struct {
@@ -25,6 +25,7 @@ void func_80166480_ovl_32(S_a *p, S_b *arg1)
     u8 *s2;
     s32 s4;
     s32 s0;
+s32 __repair_result_s0;
     s32 s1;
     u8 *v;
 
@@ -71,9 +72,9 @@ void func_80166480_ovl_32(S_a *p, S_b *arg1)
             sp10[0] = 0x80 - (func_80033634_ovl_01() & 0xFF);
             sp10[1] = 0x80 - (func_80033634_ovl_01() & 0xFF);
             sp10[2] = 0x80 - (func_80033634_ovl_01() & 0xFF);
-            s0 = func_80033634_ovl_01();
-            s1 = func_80033634_ovl_01();
-            s0 = ((s0 & 1) + (s1 & 0x10)) << 16 | (s4 + (s1 & 0xFF) * 4);
+            __repair_result_s0 = func_80033634_ovl_01();
+            __repair_result_s0 = func_80033634_ovl_01();
+            s0 = ((s0 & 1) + (__repair_result_s0 & 0x10)) << 16 | (s4 + (__repair_result_s0 & 0xFF) * 4);
             func_800377B0_ovl_01(s0, p->unk_66, s2 + 0x618, sp10);
         }
         break;

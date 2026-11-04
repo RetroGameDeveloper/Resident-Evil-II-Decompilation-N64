@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80043650_ovl_01();                     /* extern */
-s32 func_800439B8_ovl_01(s32, s32, M2C_UNK, M2C_UNK); /* extern */
+s32 func_800439B8_ovl_01(s32,  s32); /* extern */
 M2C_UNK func_8004789C_ovl_01(s32, u8, u8, u8);      /* extern */
 M2C_UNK func_800478E8_ovl_01(s32, s32, s32);        /* extern */
 extern s32 D_800C527C_ovl_01;
@@ -73,6 +73,6 @@ void func_800962DC_ovl_01(s32 arg0) {
         func_80043650_ovl_01();
         temp_a1 = var_s1;
         var_s1 += 0x14;
-        M2C_FIELD(&D_800DF650_ovl_01, s32 *, 0x204) = func_800439B8_ovl_01(M2C_FIELD(&D_800DF650_ovl_01, s32 *, 0x204), temp_a1, 0, 0);
+        M2C_FIELD(&D_800DF650_ovl_01, s32 *, 0x204) = func_800439B8_ovl_01(M2C_FIELD(&D_800DF650_ovl_01, s32 *, 0x204),  temp_a1);
     } while (var_s2 != 0);
 }

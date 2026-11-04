@@ -1,27 +1,5 @@
-typedef void (*Fn)(void *, s32, s32);
-typedef struct { u8 pad[6]; unsigned int b : 8; } Obj;
-extern volatile Fn D_801667B0_ovl_35[];
-extern void func_80165140_ovl_35(void *, s32, s32);
-extern void func_801661F0_ovl_35(void *, s32, s32);
-
-void func_80165750_ovl_35(void *p, s32 a, s32 b)
-{
-    u32 i;
-    u32 off;
-    u32 val;
-    s32 ff;
-
-    if (((u8 *)p)[6] == 0) {
-        func_801661F0_ovl_35(p, 2, 11);
-        ((u8 *)p)[0x2CF] = 0x2D;
-        i = 0;
-        val = 0x3F3F4F;
-        off = i;
-        for (; i < 13; i++, off += 0x178)
-            *(u32 *)(*(u32 *)((u8 *)p + 0x234) + off + 0x60) = val;
-        func_80165140_ovl_35(p, a, b);
-    } else {
-        ff = ((Obj *)p)->b;
-        D_801667B0_ovl_35[ff](p, a, b);
-    }
-}
+extern void (*D_80166728_ovl_35[])(void*,s32,s32); extern void (*D_80166700_ovl_35[])(void); extern void (*D_801667B0_ovl_35[])(void*,s32,s32); extern u8 D_800C7650_ovl_01[]; extern void func_80089D34_ovl_01(void*,s32,s32,s32); extern void func_80164604_ovl_35(void); extern void func_80165140_ovl_35(void*,s32,s32); extern void func_801661F0_ovl_35(s32,s32); extern void func_80166520_ovl_35(void*,s32); extern void func_8016472C_ovl_35(void*,s32,s32); extern void func_80165248_ovl_35(void*,s32,s32); extern void func_80077D48_ovl_01(s32,void*); extern void func_80165874_ovl_35(void*);
+void func_80164E04_ovl_35(void*p,s32 a,s32 b){if(!((u8*)p)[6]){func_80164604_ovl_35();((u8*)p)[0x2cf]=20;}else{((void(*)(void*,s32,s32))D_80166728_ovl_35[((u8*)p)[6]])(p,a,b);func_80089D34_ovl_01(p,a,b,0x100);}}
+void func_80165140_ovl_35(void*p,s32 a,s32 b){u8 n=((u8*)p)[5]; func_801661F0_ovl_35(0,((u8*)D_80166700_ovl_35)[n-1]);func_80077D48_ovl_01(6,p);if(!((u8*)p)[0x2bc]){*(s16*)((u8*)p+6)=0x200;func_80165248_ovl_35(p,a,b);}else{if(((u8*)p)[0x2c5]){*(s16*)((u8*)p+0x68)=0;func_80166520_ovl_35(p,0);}*(s16*)((u8*)p+6)=0x100;func_8016472C_ovl_35(p,a,b);}}
+void func_80165750_ovl_35(void*p,s32 a,s32 b){s32 i; s32 off; u32 *q; if(!((u8*)p)[6]){func_801661F0_ovl_35(2,11);((u8*)p)[0x2cf]=45;q=*(u32**)((u8*)p+0x234);for(i=0,off=0;i<13;i++,off+=0x178)*(u32*)((u8*)q+off+0x60)=0x3f3f4f;func_80165140_ovl_35(p,a,b);}else{((void(*)(void*,s32,s32))D_801667B0_ovl_35[((u8*)p)[6]])(p,a,b);}}
+void func_80165818_ovl_35(void*p){if(!((u8*)p)[5]){((u8*)p)[5]=1;*(u32*)p|=0x42;*(u16*)(D_800C7650_ovl_01+0x1a78)&=0xffdf;}func_80165874_ovl_35(p);}

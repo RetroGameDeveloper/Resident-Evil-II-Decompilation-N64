@@ -20,7 +20,8 @@ void func_80033434_ovl_01(s16 *out, s32 flag, u16 *rec, s32 *tab)
     word = tab[idx];
     if (flag) {
         p = (u8 *)tab + (word >> 16);
-        n = (word & 0xFFFF) - *(u8 *)(obj + 0x1E9) - 1;
+        idx = word & 0xFFFF;
+    n = (idx) - *(u8 *)(obj + 0x1E9) - 1;
     } else {
         p = (u8 *)tab + (word >> 16);
         n = *(u8 *)(obj + 0x1E9);

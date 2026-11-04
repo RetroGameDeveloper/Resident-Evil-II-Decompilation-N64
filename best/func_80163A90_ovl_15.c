@@ -60,7 +60,7 @@ void func_80164C30_ovl_15(void *, s32);
 void func_80077B0C_ovl_01(u32, void *);
 s32 func_800837DC_ovl_01(void *, s32);
 void func_80032B8C_ovl_01(void *, s32);
-void func_80032F24_ovl_01(void *, s16, s32);
+void func_80032F24_ovl_01(void *);
 
 void func_80163A90_ovl_15(S_obj_80163A90 *arg0)
 {
@@ -102,6 +102,7 @@ void func_80163A90_ovl_15(S_obj_80163A90 *arg0)
         arg0->unk2C6 = 0;
         arg0->unk2C4 = 0;
         arg0->unk2C0 = 0;
+arg0->unk2C3 = 1;
         arg0->unk2B4 |= 2;
         arg0->unk0 |= 0x80A;
         arg0->unk26F |= 0x80;
@@ -181,7 +182,7 @@ void func_80163A90_ovl_15(S_obj_80163A90 *arg0)
                 func_80036764_ovl_01_510_24(&arg0->unk30, 0x258, 0xC8, 0);
             }
         }
-        func_80032F24_ovl_01(arg0, D_80166272_ovl_15, 0x4B);
+        func_80032F24_ovl_01(arg0);
         if ((s16)arg0->unk212 < 0xD97) {
             arg0->unk212 = 0xD96;
         } else {

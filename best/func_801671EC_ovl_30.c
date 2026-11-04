@@ -23,10 +23,6 @@ void func_801671EC_ovl_30(void *arg0, void *arg1) {
     if (M2C_FIELD(arg1, u8 *, 0x15) == 0) {
         temp_v1 = M2C_FIELD(arg1, u8 *, 0x14);
         switch (temp_v1) {                          /* irregular */
-        case 0:
-            M2C_FIELD(arg1, u8 *, 0x14) = 1U;
-            M2C_FIELD(arg1, u16 *, 0x16) = 0U;
-            break;
         case 1:
             temp_v0 = M2C_FIELD(arg1, u16 *, 0x16) + 0x200;
             M2C_FIELD(arg1, u16 *, 0x16) = temp_v0;
@@ -42,6 +38,10 @@ void func_801671EC_ovl_30(void *arg0, void *arg1) {
                 M2C_FIELD(arg1, u16 *, 0x16) = 0U;
                 M2C_FIELD(arg1, u8 *, 0x14) = 1U;
             }
+            break;
+        case 0:
+            M2C_FIELD(arg1, u8 *, 0x14) = 1U;
+            M2C_FIELD(arg1, u16 *, 0x16) = 0U;
             break;
         }
         temp_a1 = M2C_FIELD(arg0, s32 *, 0x234) + 0x2F0;

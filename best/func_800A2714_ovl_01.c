@@ -32,7 +32,7 @@ void func_800A2714_ovl_01(void *arg0) {
     void *temp_v0;
     void *temp_v1;
     void *var_a0;
-    void *var_a0_2;
+    
     void *var_a2;
     void *var_a2_2;
     void *var_a3;
@@ -55,8 +55,8 @@ void func_800A2714_ovl_01(void *arg0) {
             do {
                 temp_hi = MULTU_HI((D_80143EA4 * M2C_FIELD(var_a2, u16 *, 2)), 0x10624DD3);
                 var_a2 += 2;
-                temp_v1 = arg0 + var_a1;
-                var_a1 += 1;
+                temp_v1 = arg0 + var_a1;/*__repair_loop_weight*/do {
+                var_a1 += 1;} while (0);
                 M2C_FIELD(var_a0, s32 *, 0xC) = (s32) (((temp_hi >> 6) + 3) & 0xFFFC);
                 var_a0 += 4;
                 M2C_FIELD(var_a3, s16 *, 0x2C) = (s16) (M2C_FIELD(temp_v1, u8 *, 0x12) << 8);
@@ -65,11 +65,11 @@ void func_800A2714_ovl_01(void *arg0) {
         }
         if (M2C_FIELD(arg0, u8 *, 0x1C) == 1) {
             var_a1_2 = 0;
-            var_a0_2 = arg0;
+            temp_v1 = arg0;
             var_a2_2 = temp_v0;
             do {
-                temp_v0_2 = M2C_FIELD(var_a0_2, u16 *, 0x1E);
-                var_a0_2 += 2;
+                temp_v0_2 = M2C_FIELD(temp_v1, u16 *, 0x1E);
+                temp_v1 += 2;
                 var_a1_2 += 1;
                 M2C_FIELD(var_a2_2, u16 *, 0x40) = temp_v0_2;
                 var_a2_2 += 2;

@@ -69,6 +69,7 @@ void func_801639B8_ovl_22(S_arg_801639B8 *arg0) {
     S_s3_801639B8 *s3;
     s16 vec[8];
     s16 r;
+s16 __repair_result_r;
     s32 ret;
 
     s3 = &D_800E10D0_ovl_01;
@@ -81,9 +82,9 @@ void func_801639B8_ovl_22(S_arg_801639B8 *arg0) {
         arg0->unk_1F4 = 0;
         /* fall through */
     case 1:
-        r = func_80162144_ovl_22(arg0);
+        __repair_result_r = func_80162144_ovl_22(arg0);
         if ((u8)(arg0->unk_1E9 - 1) < 0x33) {
-            if (r < 0) {
+            if (__repair_result_r < 0) {
                 r = -r;
             }
             if (r < 0x353) {
@@ -102,7 +103,11 @@ void func_801639B8_ovl_22(S_arg_801639B8 *arg0) {
         }
 block20:
         arg0->u4.b.state += func_80036764_ovl_01_510_24(arg0, 2, 0xF, 0);
-        func_80032DEC_ovl_01(arg0, s2->unk_1AA8, s2->unk_1AB0, 4);
+        /*__repair_pointer_balance*/if ((unsigned long)s3 & 0x100) {
+func_80032DEC_ovl_01(arg0, s2->unk_1AA8, s2->unk_1AB0, 4);
+} else {
+func_80032DEC_ovl_01(arg0, s2->unk_1AA8, s2->unk_1AB0, 4);
+}
         vec[0] = arg0->unk_2B8;
         vec[2] = arg0->unk_2BA;
         ret = func_80161D90_ovl_22(arg0, 0xC, 0x38, 0x3B, 0x352);

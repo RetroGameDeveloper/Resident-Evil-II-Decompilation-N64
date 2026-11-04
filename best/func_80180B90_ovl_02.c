@@ -52,10 +52,10 @@ loop_1:
         }
         var_v1 = M2C_FIELD(temp_a2, s32 *, 4) + (var_v0_2 * 4);
     }
-    if (var_v1 == NULL) {
-        var_v0_3 = 0;
-    } else {
+    if (var_v1 != NULL) {
         var_v0_3 = M2C_FIELD(var_v1, u16 *, 2) & 0x1000 & 0xFFFF;
+    } else {
+        var_v0_3 = 0;
     }
     if (var_v0_3 != 0) {
         var_a3 += 1;

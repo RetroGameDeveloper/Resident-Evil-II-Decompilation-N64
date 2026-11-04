@@ -57,6 +57,7 @@ void func_801691AC_ovl_11(S_ent_691AC *arg0, s32 arg1, s32 arg2) {
     s32 sp18[8];
     s32 sp38[12];
     s32 v;
+s32 __repair_phase_v;
     s32 obj;
     s32 st;
     u16 t;
@@ -68,7 +69,7 @@ void func_801691AC_ovl_11(S_ent_691AC *arg0, s32 arg1, s32 arg2) {
     case 0:
         arg0->u4.b.unk06 = 1;
         arg0->unk1F4 = 0;
-        arg0->unk1F6 = 1;
+        { int repair_store_value = 1; arg0->unk1F6 = repair_store_value; }
         arg0->unk206 = 0;
         if (arg0->unk26C & 0x20)
             arg0->unk1F6 = -1;
@@ -140,8 +141,8 @@ void func_801691AC_ovl_11(S_ent_691AC *arg0, s32 arg1, s32 arg2) {
     case 2:
         if (func_80089D34_ovl_01(arg0, arg1, arg2, 0x100) == 0) {
             obj = (s32)arg0->unk234;
-            v = (s16)arg0->unk1F4 * (s8)arg0->unk207;
-            sp10[2] = -v * (s16)arg0->unk1F6;
+            __repair_phase_v = (s16)arg0->unk1F4 * (s8)arg0->unk207;
+            sp10[2] = -__repair_phase_v * (s16)arg0->unk1F6;
             func_80040E88_ovl_01((s32 *)sp10, sp18);
             func_80042010_ovl_01(obj + 8, sp18);
             obj += 0x178;

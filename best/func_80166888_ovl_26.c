@@ -1,7 +1,7 @@
-s32 func_80052C00_ovl_01(s32, s32, s32, s32);
-s32 func_80052C9C_ovl_01(s32, s32, s32);
-
-void func_80166888_ovl_26(u8 *p, s32 arg1) {
+extern s32 func_80052C00_ovl_01(s32, s32, u8, s32);
+extern s32 func_80052C9C_ovl_01(s32, s32, s32);
+void func_80166888_ovl_26(void *arg0, s32 arg1) {
+    u8 *p = arg0;
     p[4] = 2;
     p[5] = arg1 + 2;
     p[6] = 0;

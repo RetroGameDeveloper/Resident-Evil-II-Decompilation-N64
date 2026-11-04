@@ -20,7 +20,7 @@ extern M2C_UNK D_800E1898_ovl_01;
 void func_80074C18_ovl_01(void) {
     M2C_UNK **var_s1;
     M2C_UNK *temp_s0;
-    M2C_UNK *var_s0;
+    
     void *temp_s1;
 
     if (M2C_FIELD(&D_800C7650_ovl_01, s16 *, 0x19C72) >= 0) {
@@ -40,16 +40,16 @@ void func_80074C18_ovl_01(void) {
                 var_s1 += 4;
             } while (var_s1 != M2C_FIELD(&D_800C7650_ovl_01, s32 *, 0x1828C));
         }
-        var_s0 = &D_800E1898_ovl_01;
+        temp_s0 = &D_800E1898_ovl_01;
         temp_s1 = (M2C_FIELD(M2C_FIELD(&D_800C7650_ovl_01, void **, 0x1827C), u8 *, 2) * 0x368) + &D_800E1898_ovl_01;
         if ((u32) &D_800E1898_ovl_01 < (u32) temp_s1) {
             do {
-                if (M2C_FIELD(var_s0, s32 *, 0) & 1) {
-                    M2C_FIELD(var_s0, s16 *, 0x1A8) = 0;
-                    func_800736E0_ovl_01(var_s0, 4, 0);
+                if (M2C_FIELD(temp_s0, s32 *, 0) & 1) {
+                    M2C_FIELD(temp_s0, s16 *, 0x1A8) = 0;
+                    func_800736E0_ovl_01(temp_s0, 4, 0);
                 }
-                var_s0 += 0x368;
-            } while ((u32) var_s0 < (u32) temp_s1);
+                temp_s0 += 0x368;
+            } while ((u32) temp_s0 < (u32) temp_s1);
         }
         if (M2C_FIELD(M2C_FIELD(&D_800C7650_ovl_01, M2C_UNK **, 0x19D3C), s32 *, 0) & 1) {
             M2C_FIELD(M2C_FIELD(&D_800C7650_ovl_01, M2C_UNK **, 0x19D3C), s16 *, 0x1A8) = 0;

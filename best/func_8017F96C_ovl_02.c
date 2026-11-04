@@ -1,34 +1,26 @@
-extern s8 D_80184E4C_ovl_02[];
-extern s8 D_80184E8C_ovl_02[];
-s32 func_8017BB30_ovl_02(s32);
-void func_8017BB68_ovl_02(s32);
-s32 func_8017BE48_ovl_02(s32);
+extern s32 D_80184E4C_ovl_02;
+extern s32 D_80184E8C_ovl_02;
 
 s32 func_8017F96C_ovl_02(void) {
-    s32 a;
-    s32 b;
-    s32 v;
-    s32 idx;
-    s8 *p;
+    s32 var_a0 = func_8017BB30_ovl_02(5);
+    s32 var_v1;
+    s8 *var_v1_2;
+    s8 temp_s0;
 
-    idx = func_8017BB30_ovl_02(5);
-    if (idx < 0x1F) {
-        p = D_80184E4C_ovl_02;
+    if (var_a0 < 0x1F) {
+        var_v1_2 = (s8 *)&D_80184E4C_ovl_02;
     } else {
-        idx = func_8017BB30_ovl_02(0xA) - 0x3E0;
-        p = D_80184E8C_ovl_02;
+        var_a0 = func_8017BB30_ovl_02(0xA) - 0x3E0;
+        var_v1_2 = (s8 *)&D_80184E8C_ovl_02;
     }
-    p += idx * 2;
-    a = p[1];
-    b = p[0];
-    func_8017BB68_ovl_02(a);
-    v = 0;
-    if (b != 0) {
-        v = func_8017BE48_ovl_02(b);
-        if (!((v >> (b - 1)) & 1)) {
-            v = v + 1;
-            v = v - (1 << b);
+    temp_s0 = var_v1_2[var_a0 * 2];
+    func_8017BB68_ovl_02(temp_s0);
+    var_v1 = 0;
+    if (temp_s0 != 0) {
+        var_v1 = func_8017BE48_ovl_02(temp_s0);
+        if (!((var_v1 >> (temp_s0 - 1)) & 1)) {
+            var_v1 = (var_v1 + 1) - (1 << temp_s0);
         }
     }
-    return v;
+    return var_v1;
 }

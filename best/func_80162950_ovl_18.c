@@ -3,6 +3,7 @@ extern void func_800324AC_ovl_01(void *);
 
 void func_80162950_ovl_18(void *arg0, s32 arg1, s32 arg2) {
     u8 *p = (u8 *)arg0;
+
     *(u32 *)p |= 2;
     *(s32 *)(p + 0x2C) += 0x1E;
     *(u16 *)(p + 0x66) += 0x20;

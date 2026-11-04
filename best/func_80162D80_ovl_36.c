@@ -26,7 +26,7 @@ void func_80162D80_ovl_36(void *arg0, s32 arg1, s32 arg2) {
     void *temp_a3;
     void *temp_s0;
 
-    temp_s0 = ((arg2 & 0xFF) * 6) + &D_80163030_ovl_36;
+    temp_s0 = (char *)(((arg2 & 0xFF) * 6)); temp_s0 += (s32)(&D_80163030_ovl_36);
     temp_a1 = func_80032D44_ovl_01(M2C_FIELD(arg0, s16 *, 0x2A), M2C_FIELD(arg0, s16 *, 0x32), M2C_FIELD(&D_800E10D0_ovl_01, s16 *, 0x2A), M2C_FIELD(&D_800E10D0_ovl_01, s16 *, 0x32));
     temp_a3 = M2C_FIELD(arg0, s32 *, 0x234) + ((arg1 & 0xFF) * 0x178);
     sp10 = M2C_FIELD(temp_a3, u16 *, 0x4E);

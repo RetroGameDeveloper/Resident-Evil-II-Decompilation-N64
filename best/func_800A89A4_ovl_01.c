@@ -27,10 +27,10 @@ s32 func_800A89A4_ovl_01(void) {
     s32 var_v0;
     u16 *temp_s1_2;
     u16 *var_s0;
-    u16 *var_s0_2;
+    
     u16 *var_s0_3;
-    u16 *var_s0_4;
-    u16 *var_s0_5;
+    
+    
     u16 *var_s0_6;
     u16 temp_a0_2;
     u16 temp_a0_3;
@@ -59,13 +59,13 @@ s32 func_800A89A4_ovl_01(void) {
         }
         temp_s1 = M2C_FIELD(temp_s2, s32 *, 0xC) + temp_s2;
         temp_s1_2 = temp_s1 + 8;
-        var_s0_2 = temp_s1_2;
+        var_s0 = temp_s1_2;
         if (M2C_FIELD(temp_s1, u16 *, 8) != 0xFFFF) {
             do {
-                var_s0_2 += 2;
-            } while (*var_s0_2 != 0xFFFF);
+                var_s0 += 2;
+            } while (*var_s0 != 0xFFFF);
         }
-        var_s0_3 = var_s0_2 - 2;
+        var_s0_3 = var_s0 - 2;
         if ((u32) var_s0_3 >= (u32) temp_s1_2) {
             do {
                 temp_a0_3 = *var_s0_3;
@@ -74,22 +74,22 @@ s32 func_800A89A4_ovl_01(void) {
             } while ((u32) var_s0_3 >= (u32) temp_s1_2);
         }
         temp_v0_2 = M2C_FIELD(temp_s2, s32 *, 0x10) + temp_s2;
-        var_s0_4 = temp_v0_2 + 8;
+        temp_s1_2 = temp_v0_2 + 8;
         if (M2C_FIELD(temp_v0_2, u16 *, 8) != 0xFFFF) {
             do {
-                temp_a0_4 = *var_s0_4;
-                var_s0_4 += 2;
+                temp_a0_4 = *temp_s1_2;
+                temp_s1_2 += 2;
                 func_800AD1D0_ovl_01(temp_a0_4);
-            } while (*var_s0_4 != 0xFFFF);
+            } while (*temp_s1_2 != 0xFFFF);
         }
         temp_v0_3 = M2C_FIELD(temp_s2, s32 *, 0x14) + temp_s2;
-        var_s0_5 = temp_v0_3 + 8;
+        temp_s1_2 = temp_v0_3 + 8;
         if (M2C_FIELD(temp_v0_3, u16 *, 8) != 0xFFFF) {
             do {
-                temp_a0_5 = *var_s0_5;
-                var_s0_5 += 2;
+                temp_a0_5 = *temp_s1_2;
+                temp_s1_2 += 2;
                 func_800ACCBC_ovl_01(temp_a0_5);
-            } while (*var_s0_5 != 0xFFFF);
+            } while (*temp_s1_2 != 0xFFFF);
         }
         temp_v0_4 = M2C_FIELD(temp_s2, s32 *, 0x18) + temp_s2;
         var_s0_6 = temp_v0_4 + 8;

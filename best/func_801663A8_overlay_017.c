@@ -1,0 +1,6 @@
+typedef struct {u8 p[0x2d8];} O; typedef struct {u8 p[0x1962];u8 f;} G; extern G D_800E7650_ovl_01; extern s32 func_80033634_ovl_01(void); extern void func_80166FBC_ovl_17(void*,s32,s32); extern void func_80167948_ovl_17(void*,s32); extern void func_801656FC_ovl_17(void*,s32,s32);
+void func_801663A8_overlay_017(O *o,s32 x,s32 y){
+char *__repair_addr;
+ s32 a; s32 i; s32 k; if(!o->p[6]&&!o->p[0x2c0]) {k=4; if(*(s16*)(o->p+0x1a8))k=5;func_80166FBC_ovl_17(o,0,k); for(i=0;i<4;i++){a=(func_80033634_ovl_01()&15)+3;
+__repair_addr = (char *)(*(u32**)(o->p+0x234)+a*0x178);
+ if((*(u32*)(__repair_addr)&1)&&(!(D_800E7650_ovl_01.f&8)||!(*(u32*)(*(u32**)(o->p+0x234)+a*0x178)&0x4a))){func_80166FBC_ovl_17(o,a&255,k&255);func_80166FBC_ovl_17(o,a&255,5);}}func_80167948_ovl_17(o,0x202f2f);}func_801656FC_ovl_17(o,x,y);}

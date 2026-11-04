@@ -32,7 +32,7 @@ void func_80096774_ovl_01(void) {
     s8 var_v0;
     void *var_s0;
     void *var_s0_2;
-    void *var_s2;
+    
     void *var_s2_2;
 
     var_s3 = 0xD;
@@ -64,8 +64,8 @@ block_6:
         M2C_FIELD(&D_801310FC_ovl_01, s8 *, 5) = 0xD6;
         M2C_FIELD(&D_801310FC_ovl_01, s8 *, 9) = 0xEB;
     }
-    var_s2 = var_s1 + 0xA;
-    var_s0 = (0xD * 4) + &D_801310FC_ovl_01;
+    var_s0_2 = var_s1 + 0xA;
+    var_s0 = (char *)((0xD * 4)); var_s0 += (s32)(&D_801310FC_ovl_01);
     do {
         var_s0 -= 4;
         var_s3 -= 1;
@@ -75,9 +75,9 @@ block_6:
         temp_a0 = var_s1;
         var_s1 += 0x14;
         func_800479EC_ovl_01(temp_a0, M2C_FIELD(var_s0, u8 *, 2), M2C_FIELD(var_s0, u8 *, 3));
-        M2C_FIELD(var_s2, M2C_UNK **, 2) = &D_8012F4D0_ovl_01;
-        M2C_FIELD(var_s2, s16 *, 0) = 0;
-        var_s2 += 0x14;
+        M2C_FIELD(var_s0_2, M2C_UNK **, 2) = &D_8012F4D0_ovl_01;
+        M2C_FIELD(var_s0_2, s16 *, 0) = 0;
+        var_s0_2 += 0x14;
     } while (var_s3 != 0);
     var_s3_2 = 0xA;
     var_s0_2 = &D_80131130_ovl_01 + 0x28;

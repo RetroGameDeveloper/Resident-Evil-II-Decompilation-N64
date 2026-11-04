@@ -20,12 +20,16 @@ extern u8 D_8012BF40_ovl_01;
 extern M2C_UNK D_8012FF48_ovl_01;
 
 void func_8008D070_ovl_01(void) {
+char *__repair_addr;
+
     u8 temp_v1;
     u8 var_s2;
     void *temp_v0;
     void *temp_v0_2;
+__repair_addr = (char *)(((D_8012BF40_ovl_01 * 4) + &D_800C7650_ovl_01));
 
-    temp_v0 = (M2C_FIELD(((D_8012BF40_ovl_01 * 4) + &D_800C7650_ovl_01), u8 *, 0x21818) * 8) + &D_8012FF48_ovl_01;
+
+    temp_v0 = (M2C_FIELD(__repair_addr, u8 *, 0x21818) * 8) + &D_8012FF48_ovl_01;
     var_s2 = M2C_FIELD(temp_v0, u8 *, 0);
     temp_v0_2 = (func_8008C4FC_ovl_01(*M2C_FIELD(temp_v0, u8 **, 4)) * 4) + &D_800C7650_ovl_01;
     temp_v1 = M2C_FIELD(temp_v0_2, u8 *, 0x21819);
@@ -36,5 +40,5 @@ void func_8008D070_ovl_01(void) {
         M2C_FIELD(temp_v0_2, s8 *, 0x21818) = 0;
         func_8008C548_ovl_01(temp_v0_2 + 0x20000);
     }
-    func_8008C31C_ovl_01(D_8012BF40_ovl_01, M2C_FIELD(((D_8012BF40_ovl_01 * 4) + &D_800C7650_ovl_01), u8 *, 0x21819) + var_s2);
+    func_8008C31C_ovl_01(D_8012BF40_ovl_01, M2C_FIELD(((D_8012BF40_ovl_01 * 4) + &D_800C7650_ovl_01), u8 *, 0x21819) + temp_v1);
 }

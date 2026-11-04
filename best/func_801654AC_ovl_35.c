@@ -20,7 +20,7 @@ void func_801654AC_ovl_35(void *arg0, M2C_UNK arg1, M2C_UNK arg2) {
     s32 var_v1;
     u32 var_s0;
     u32 var_s0_2;
-    u32 var_s0_3;
+    
 
     if (M2C_FIELD(arg0, u8 *, 0x2BD) & 1) {
         var_s0 = 0;
@@ -35,12 +35,12 @@ void func_801654AC_ovl_35(void *arg0, M2C_UNK arg1, M2C_UNK arg2) {
         func_80166324_ovl_35(arg0, 4, var_s0_2 + 0xC);
         var_s0_2 += 1;
     } while (var_s0_2 < 4U);
-    var_s0_3 = 0;
+    var_s0 = 0;
     var_v1 = 0;
     do {
-        var_s0_3 += 1;
+        var_s0 += 1;
         M2C_FIELD((M2C_FIELD(arg0, s32 *, 0x234) + var_v1), s32 *, 0x60) = 0x3F3F3F;
         var_v1 += 0x178;
-    } while (var_s0_3 < 0xDU);
+    } while (var_s0 < 0xDU);
     func_80165140_ovl_35(arg0, arg1, arg2);
 }

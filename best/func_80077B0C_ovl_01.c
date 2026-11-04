@@ -83,8 +83,8 @@ void func_80077B0C_ovl_01(u32 arg0, void *arg1) {
                     do {
                         var_s1 -= 1;
                         var_a2 += 0x24;
-                        var_v1 += 2;
-                        var_s0 += 1;
+                        var_v1 += 2;/*__repair_loop_weight*/do {
+                        var_s0 += 1;} while (0);
                         M2C_FIELD(var_v1, s8 *, 0) = (s8) (temp_s3 & 7);
                         M2C_FIELD(var_v1, s8 *, 1) = var_s0;
                         M2C_FIELD(var_a2, s8 *, 1) = temp_s6;

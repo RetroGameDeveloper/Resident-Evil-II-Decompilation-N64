@@ -9,7 +9,7 @@ void func_80035118_ovl_01(u8 *a) {
     u8 *s1;
     u8 *s2;
     u32 sum;
-    s32 val;
+    short val;
 
     s1 = *(u8 **)(a + 0x234);
     s2 = s1 + 0xBC0;

@@ -7,7 +7,7 @@ void func_80165CD8_ovl_22(Obj22 *p) {
    p->unk1E2=0;p->unk1E4=0;
    p->b26F |= 0x80; p->b25C |= 0x12;
    if(!*((u8*)p+0x1EA)) p->state=2;
-   func_80032B8C_ovl_01(p,0);
+   func_80032B8C_ovl_01(p);
    func_80089D34_ovl_01(p,p->x224,p->y228,0x400);
    p->timer+=0x70; break;
  case 1:

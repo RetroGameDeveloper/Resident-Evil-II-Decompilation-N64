@@ -1,6 +1,7 @@
+static __inline__ u8 __repair_inline(u8 a) { return a; }
 s32 func_80165140_ovl_35(void*,s32,s32); s32 func_801661F0_ovl_35(void*,s32,s32); s32 func_80166324_ovl_35(void*,s32,u32); extern s32 D_800C7650_ovl_01; extern s32 D_801667B0_ovl_35;
 void func_801652A8_ovl_35(void *arg0,s32 arg1,s32 arg2){s32 counter;u8 temp_s0;u32 var_s0; s32 var_v1;u8 *temp_a0,*temp_a1; s32 **tab;
-temp_s0=*((u8*)arg0+5);
+temp_s0=__repair_inline(*((u8*)arg0+5));
 if(*((u8*)arg0+6)==0){
 if(temp_s0==9)func_801661F0_ovl_35(arg0,0,4);
 func_801661F0_ovl_35(arg0,2,1);

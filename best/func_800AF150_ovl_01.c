@@ -57,7 +57,10 @@ block_10:
             sp10 = (u32) (func_800AB36C_ovl_01() & 0xFFFF) % sp10;
         }
         var_v0_3 = -1U;
-        if (sp10 != 0xFFFF) {
+        if (sp10 == 0xFFFF) {
+block_20:
+            M2C_FIELD(arg0, u32 *, 0x9C) = var_v0_3;
+        } else {
             temp_v0_2 = ((u32) M2C_FIELD(arg1, u16 *, 4) >> 8) & 1;
             if (temp_v0_2 & 0xFF) {
                 func_800AB4A4_ovl_01(&sp10);
@@ -76,9 +79,6 @@ block_10:
                 M2C_FIELD(arg0, u32 *, 0xA0) = temp_a0;
                 M2C_FIELD(arg0, u32 *, 0x9C) = 0U;
             }
-        } else {
-block_20:
-            M2C_FIELD(arg0, u32 *, 0x9C) = var_v0_3;
         }
         return M2C_FIELD(arg0, u32 *, 0x9C) != 0;
     }

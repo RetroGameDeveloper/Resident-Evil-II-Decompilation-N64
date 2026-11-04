@@ -29,7 +29,7 @@ void func_801653F8_ovl_15(s32 arg0, s32 arg1, M2C_UNK arg2, M2C_UNK arg3, s32 ar
             } else {
                 var_v0 = func_80033634_ovl_01() & 7;
             }
-            temp_s0 = (var_v0 * 0xC) + &D_80166054_ovl_15;
+            temp_s0 = (char *)((var_v0 * 0xC)); temp_s0 += (s32)(&D_80166054_ovl_15);
             var_s1 -= 1;
             func_80165D3C_ovl_15(arg0, arg2, arg3, arg4, M2C_FIELD(temp_s0, s16 *, 6) + ((s32) (func_80033634_ovl_01() << 0x18) >> 0x14), M2C_FIELD(temp_s0, s32 *, 8), temp_s0);
         } while (var_s1 != -1);

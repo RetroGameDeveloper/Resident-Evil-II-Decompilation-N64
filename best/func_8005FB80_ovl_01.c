@@ -29,7 +29,7 @@ void *func_8005FB80_ovl_01(void *arg0, s16 arg1, u32 arg2, s16 arg3) {
     void **var_s1;
     void *temp_s0;
     void *var_s5;
-    void *var_v0;
+    
 
     var_s5 = NULL;
     if (M2C_FIELD(&D_800C7650_ovl_01, u8 *, 0x19A76) == 0) {
@@ -53,9 +53,9 @@ void *func_8005FB80_ovl_01(void *arg0, s16 arg1, u32 arg2, s16 arg3) {
         }
         var_s1 += 4;
     } while (var_s1 != M2C_FIELD(&D_800C7650_ovl_01, s32 *, 0x1828C));
-    var_v0 = var_s5;
+    temp_s0 = var_s5;
     if (var_s5 == NULL) {
-        var_v0 = M2C_FIELD(&D_800C7650_ovl_01, void **, 0x18288);
+        temp_s0 = M2C_FIELD(&D_800C7650_ovl_01, void **, 0x18288);
     }
-    return var_v0;
+    return temp_s0;
 }

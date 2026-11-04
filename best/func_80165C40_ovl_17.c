@@ -1,5 +1,5 @@
 extern s32 func_80077D48_ovl_01(s32, void *);
-extern s32 func_80089D34_ovl_01(void *, s32, s32, s32);
+extern s32 func_80089D34_ovl_01(void *,  s32);
 extern s32 func_80165A08_ovl_17(void *);
 extern s32 func_80166C3C_ovl_17(void *, s16, s16, s32);
 extern s32 func_80166FBC_ovl_17(void *, s32, s32);
@@ -21,7 +21,7 @@ void func_80165C40_ovl_17(void *arg0, s32 arg1, s32 arg2) {
   v=*(s32*)arg0; t=0x0C090000;
   *(s32*)((u8*)arg0+0x1E8)=t;
   v|=0x42;
-  func_80089D34_ovl_01(arg0,a,b,0x200);
+  func_80089D34_ovl_01(arg0, a);
   *(s32*)arg0=v;
   v=(s32)D_80167C90_ovl_17;
   t=*(s32*)(v+0); q=*(s32*)(v+4); *(s32*)((u8*)arg0+0x120)=t; *(s32*)((u8*)arg0+0x124)=q;

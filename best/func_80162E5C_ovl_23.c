@@ -1,39 +1,40 @@
-typedef struct S_entry_801664AC {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s32 unk8;
-} S_entry_801664AC;
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
 
-extern S_entry_801664AC D_801664AC_ovl_23[];
-void func_800385D4_ovl_01(s32, s32, s32, void *);
+M2C_UNK func_800385D4_ovl_01(s32, s32, s32, M2C_UNK *); /* extern */
+extern M2C_UNK D_801664AC_ovl_23;
 
 void func_80162E5C_ovl_23(void *arg0) {
-    u32 i;
-    s32 base;
-    s32 flag;
-    S_entry_801664AC *e;
-    S_entry_801664AC *p;
-    s32 v;
-    s32 h;
-    s16 a1v;
-    s32 t;
+    M2C_UNK *var_a3;
+    M2C_UNK *var_s0;
+    s16 temp_a0;
+    s32 temp_s3;
+    s32 temp_v0;
+    s32 temp_v1;
+    u32 var_s1;
 
-    i = 0;
-    flag = 0x05030000;
-    e = D_801664AC_ovl_23;
-    p = e;
-    base = *(s32 *)((u8 *)arg0 + 0x234);
+    var_s1 = 0;
+    var_s0 = &D_801664AC_ovl_23;
+    temp_s3 = M2C_FIELD(arg0, s32 *, 0x234);
+    var_a3 = &D_801664AC_ovl_23;
     do {
-        h = e->unk6;
-        v = e->unk8;
-        e++;
-        t = i + 0x90;
-        a1v = *(s16 *)((u8 *)arg0 + 0x66);
-        i++;
-        func_800385D4_ovl_01(h | flag, (a1v << 16) | t,
-                             base + v * 0x178 + 0x38, p);
-        p = e;
-    } while (i < 0xE);
+        temp_a0 = M2C_FIELD(var_s0, s16 *, 6);
+        temp_v0 = M2C_FIELD(var_s0, s32 *, 8);
+        var_s0 += 0xC;
+        temp_v1 = var_s1 + 0x90;
+        var_s1 += 1;
+        func_800385D4_ovl_01(temp_a0 | 0x05030000, (M2C_FIELD(arg0, s16 *, 0x66) << 0x10) | temp_v1, temp_s3 + (temp_v0 * 0x178) + 0x38, var_a3);
+        var_a3 = var_s0;
+    } while (var_s1 < 0xEU);
 }

@@ -1,19 +1,2 @@
-extern void func_80077D48_ovl_01(s32,void*);
-extern void func_80162B24_ovl_14(void*,void*,s32);
-extern u8 D_80168B74_ovl_14[],D_80168C34_ovl_14[];
-void func_80166C9C_ovl_14(void*a,s32 b,s32 c){
- u8*p=a; s32 (*fn)(void*,s32,s32); volatile u8 *vt;
- if(*(s16*)(p+0x1f2)<0)goto neg;
- *(s32*)(p+4)=*(s32*)(p+0x298);
- func_80077D48_ovl_01(7,a);
- func_80162B24_ovl_14(a,D_80168B74_ovl_14+p[0x2cb]*8,0);
- if(p[5]!=0xff){
-  *(u16*)(p+0x2c8)|=1;
-  vt=D_80168C34_ovl_14;
-  fn=*(s32(*volatile*)(void*,s32,s32))(vt+p[5]*4);
-  fn(a,b,c);
-  *(u16*)(p+0x2c8)&=0xfffe;
- }
- return;
-neg:*(s32*)(p+4)=0x03000000;
-}
+extern void func_80077D48_ovl_01(s32,void*);extern void func_80162B24_ovl_14(void*,void*,s32);extern u8 D_80168B74_ovl_14[],D_80168C34_ovl_14[];
+void func_80166C9C_ovl_14(void*a,s32 b,s32 c){u8*p=a; s32 (*fn)(void*,s32,s32);if(*(s16*)(p+0x1f2)<0)goto neg;*(s32*)(p+4)=*(s32*)(p+0x298);func_80077D48_ovl_01(7,a);func_80162B24_ovl_14(a,D_80168B74_ovl_14+p[0x2cb]*8,0);if(p[5]!=0xff){*(u16*)(p+0x2c8)|=1;fn=((s32(**)(void*,s32,s32))D_80168C34_ovl_14)[p[5]];fn(a,b,c);*(u16*)(p+0x2c8)&=0xfffe;}return;neg:*(s32*)(p+4)=0x03000000;}

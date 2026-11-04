@@ -1,12 +1,25 @@
-s16 func_800358A4_ovl_01(s16, s16);
-s16 func_8003593C_ovl_01(s16, s16);
-s32 func_80040998_ovl_01(s32);
-void func_80041048_ovl_01(s32 *, s32 *);
-void func_80041484_ovl_01(s16, s32 *);
-void func_800415B8_ovl_01(s32, s32 *);
-void func_8004251C_ovl_01(s32 *, s32, s32 *);
-void func_80042854_ovl_01(s32 *, s32 *, s32 *);
-void func_8004A028_ovl_01(s32, s32 *, s32 *, s32);
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
+static __inline__ int __repair_inline(s32 a, s32 b) { return a > b; }
+s16 func_800358A4_ovl_01();
+s16 func_8003593C_ovl_01();
+s32 func_80040998_ovl_01();
+void func_80041048_ovl_01();
+void func_80041484_ovl_01();
+void func_800415B8_ovl_01();
+void func_8004251C_ovl_01();
+void func_80042854_ovl_01();
+void func_8004A028_ovl_01();
 extern u8 D_800C7650_ovl_01[];
 extern u32 D_800E8FC8_ovl_01[8];
 extern u8 D_800E10E4_ovl_01[];
@@ -17,9 +30,7 @@ extern u8 D_800E10E4_ovl_01[];
 #define SL(o) (*(s16 *)(arg0 + (o)))
 #define L(o) (*(s32 *)(arg0 + (o)))
 
-void func_800352F4_ovl_01(u8 *arg0, u8 *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5,
-                          s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 arg10,
-                          s32 arg11, s32 arg12) {
+void func_800352F4_ovl_01(u8 *arg0, u8 *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 arg10, s32 arg11, s32 arg12) {
     u8 stk[0x80];
     u8 *fp;
     s32 s0, s5, s6, s1, s2;
@@ -56,7 +67,7 @@ void func_800352F4_ovl_01(u8 *arg0, u8 *arg1, s32 arg2, s32 arg3, s32 arg4, s32 
     R(0x40) = v1 + ((s1 * S(0xE)) >> 12);
     func_8004251C_ovl_01((s32 *)D_800E10E4_ovl_01, s0 + 8, (s32 *)(stk + 0x58));
     func_8004251C_ovl_01((s32 *)(stk + 0x58), s0 + 0xBC8, (s32 *)(s0 + 0xBF8));
-    for (i = 0; i < 8; i++)
+    for (i = 0; __repair_inline(8, i); i++)
         R(0x58 + i * 4) = D_800E8FC8_ovl_01[i];
     R(0x6C) = R(0x28);
     R(0x70) = R(0x2C);
@@ -69,7 +80,7 @@ void func_800352F4_ovl_01(u8 *arg0, u8 *arg1, s32 arg2, s32 arg3, s32 arg4, s32 
     L(0x4C) = (R(0x48) >> 4) + L(0x14);
     L(0x50) = (R(0x4C) >> 4) + L(0x18);
     L(0x54) = (R(0x50) >> 4) + L(0x1C);
-    for (i = 0; i < 8; i++)
+    for (i = 0; __repair_inline(8, i); i++)
         R(i * 4) = D_800E8FC8_ovl_01[i];
     func_80041484_ovl_01(-SL(0x5A), (s32 *)stk);
     S(0x20) = (s16)((SL(0x4E) - S(0x2A)) * 4);
@@ -96,7 +107,7 @@ void func_800352F4_ovl_01(u8 *arg0, u8 *arg1, s32 arg2, s32 arg3, s32 arg4, s32 
         SL(0x132) = (s16)((v0 & 0xFFF) - 0x1000);
     SL(0x5C) = (s16)tv0;
     R(0x58) = tv0_2 << 16;
-    for (i = 0; i < 8; i++)
+    for (i = 0; __repair_inline(8, i); i++)
         R(i * 4) = D_800E8FC8_ovl_01[i];
     func_80041048_ovl_01((s32 *)(arg0 + 0x58), (s32 *)fp);
     SL(0x5A) = S(0xAE);

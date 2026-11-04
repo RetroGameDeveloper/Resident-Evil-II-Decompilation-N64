@@ -45,8 +45,8 @@ void func_80182BA8_ovl_02(u8 *arg0, s8 *arg1, s32 arg2, s32 arg3) {
             temp_t0_3 = M2C_FIELD(var_t1, u8 *, -3);
             var_a0 += arg2;
             M2C_FIELD(var_t2, s8 *, -3) = (s8) ((u32) (temp_v1_2 + temp_t0_3 + 1) >> 1);
-            temp_v1_3 = M2C_FIELD(var_t1, u8 *, -2);
-            var_t3 += 1;
+            temp_v1_3 = M2C_FIELD(var_t1, u8 *, -2);/*__repair_loop_weight*/do {
+            var_t3 += 1;} while (0);
             M2C_FIELD(var_t2, s8 *, -2) = (s8) ((u32) (temp_t0_3 + temp_v1_3 + 1) >> 1);
             temp_t0_4 = M2C_FIELD(var_t1, u8 *, -1);
             var_a1 += arg2;

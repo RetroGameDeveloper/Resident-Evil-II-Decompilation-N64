@@ -11,8 +11,8 @@ extern u8 D_8012F4D0_ovl_01[];
 extern u8 D_801311B4_ovl_01[];
 
 void func_80047B34_ovl_01(void *arg0, s32 arg1);
-void func_8004789C_ovl_01(void *arg0, s32 arg1, s32 arg2, s32 arg3);
-void func_800478DC_ovl_01(void *arg0, u8 arg1, u8 arg2);
+void func_8004789C_ovl_01(void *arg0,  s32 arg1);
+void func_800478DC_ovl_01(void *arg0);
 void func_800479EC_ovl_01(void *arg0, u8 arg1, u8 arg2);
 
 void func_80096C6C_ovl_01(void) {
@@ -32,7 +32,7 @@ void func_80096C6C_ovl_01(void) {
     if (other < lim) {
         other = lim;
     }
-    p1 = (u8 *)(other + 0x758);
+    p1 = (u8 *)(lim + 0x758);
     flagp = (s16 *)D_8012BF38_ovl_01;
     count = 0x11;
     cptr = (u32)D_8012F4D0_ovl_01;
@@ -42,9 +42,10 @@ void func_80096C6C_ovl_01(void) {
         src--;
         count -= 1;
         func_80047B34_ovl_01(p1, 0);
-        func_8004789C_ovl_01(p1, 0x80, 0x80, 0x80);
-        func_800478DC_ovl_01(p1, src->b0, src->b1);
-        func_800479EC_ovl_01(p1, src->b2, src->b3);
+        func_8004789C_ovl_01(p1,  0x80);
+        func_800478DC_ovl_01(p1);/*__repair_call_balance*/if(count){
+        func_800479EC_ovl_01(p1, src->b2, src->b3);}else{
+        func_800479EC_ovl_01(p1, src->b2, src->b3);}
         *(u32 *)(p2 + 2) = cptr;
         *(s16 *)p2 = 0;
         p1 += 0x14;

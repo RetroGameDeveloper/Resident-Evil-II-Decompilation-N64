@@ -36,7 +36,7 @@ void func_8016616C_ovl_32(Obj *a, Arg1 *b) {
    break;
  case 3:
    b->inner->y -= a->speed;
-   if(b->inner->y < a->target) { a->state=2; a->speed=((func_80033634_ovl_01()&255)<<2)+0x800; }
+   if(b->inner->y < a->target) { { int repair_store_value = 2; a->state=repair_store_value; } a->speed=((func_80033634_ovl_01()&255)<<2)+0x800; }
    a->speed += (s8)a->delta;
  }
 }

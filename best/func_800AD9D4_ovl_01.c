@@ -21,6 +21,8 @@ extern s32 D_8014E10C;
 extern M2C_UNK D_8014E110;
 
 s32 func_800AD9D4_ovl_01(s16 arg0, void *arg1) {
+int __repair_literal;
+
     M2C_UNK *var_s0;
     s32 var_s1;
     void *temp_v0;
@@ -28,7 +30,9 @@ s32 func_800AD9D4_ovl_01(s16 arg0, void *arg1) {
 
     var_s1 = 0;
     D_8014E0A0 = arg0;
-    if (D_8014E10C > 0) {
+__repair_literal = 0;
+
+    if (D_8014E10C > __repair_literal) {
         var_s0 = &D_8014E110;
 loop_2:
         temp_v0 = func_800AB3DC_ovl_01(&D_8014E0A0, M2C_FIELD(var_s0, s32 *, 0), M2C_FIELD(var_s0, u16 *, 8), 0x1C, &D_800AE0F4_ovl_01);

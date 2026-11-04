@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 u32 func_80009640(void *, u16, s32, s32, s32, s32, void *); /* extern */
 u32 func_8000B7C0(void *, s32, u8, s32, s32, s32);  /* extern */
-u32 func_8000BBF0(void *, u16, s32, s32, s32, void *); /* extern */
+u32 func_8000BBF0(void *,  u16,  s32,  s32); /* extern */
 M2C_UNK func_8000CB60(s32, M2C_UNK, M2C_UNK);       /* extern */
 extern M2C_UNK D_80129E34_ovl_01;
 
@@ -28,7 +28,7 @@ void func_80087F08_ovl_01(void *arg0) {
     temp_s3 = arg0 + 0x22;
     temp_s1 = arg0 + 0x1E;
     temp_s2 = arg0 + 0x10;
-    *M2C_FIELD(arg0, u32 **, 4) = func_8000BBF0((M2C_FIELD(arg0, s32 *, 0) * 0x68) + &D_80129E34_ovl_01, M2C_FIELD(arg0, u16 *, 0x1C), M2C_FIELD(arg0, s32 *, 0x18), temp_s3, temp_s1, temp_s2);
+    *M2C_FIELD(arg0, u32 **, 4) = func_8000BBF0((M2C_FIELD(arg0, s32 *, 0) * 0x68) + &D_80129E34_ovl_01,  M2C_FIELD(arg0, u16 *, 0x1C),  M2C_FIELD(arg0, s32 *, 0x18),  temp_s3);
     temp_v1 = *M2C_FIELD(arg0, u32 **, 4);
     switch (temp_v1) {                              /* irregular */
     case 5:

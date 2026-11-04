@@ -39,7 +39,7 @@ loop_2:
         }
     }
     if (var_a1 == D_80148650) {
-        temp_v0 = (var_a1 * 0xC) + &D_801484D0;
+        temp_v0 = (char *)((var_a1 * 0xC)); temp_v0 += (s32)(&D_801484D0);
         M2C_FIELD(temp_v0, s32 *, 4) = 0;
         M2C_FIELD(temp_v0, s32 *, 8) = 0;
         D_80148650 = var_a1 + 1;

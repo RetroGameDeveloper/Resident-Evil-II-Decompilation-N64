@@ -1,93 +1,52 @@
-typedef struct { u8 b[5]; } S5;
-typedef union { u64 q; struct { u32 lo; u32 hi; } w; } U64;
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
 
-extern u8 D_800C7650_ovl_01[];
-extern s32 D_800F9DD0_ovl_01;
-extern u8 D_80171750_ovl_07[];
-extern f64 D_80171758_ovl_07;
-extern f64 D_80171760_ovl_07;
-extern f64 D_80171768_ovl_07;
-extern f64 D_80171770_ovl_07;
-extern f64 D_80171778_ovl_07;
-extern f64 D_80171780_ovl_07;
-extern f64 D_80171788_ovl_07;
-extern f64 D_80171790_ovl_07;
+s32 func_80033634_ovl_01();                         /* extern */
+M2C_UNK func_800377B0_ovl_01(s32, s16, s32, s16 *); /* extern */
 
-s32 func_80007000(void);
-void func_80170F70_ovl_07(void);
+void func_801709A8_overlay_060(void *arg0) {
+    s16 sp10;
+    s16 sp12;
+    s16 sp14;
+    s32 temp_s2;
+    s32 temp_s2_2;
+    s32 temp_s2_3;
 
-#define RANDVAL(dst, rem, cdiv, cmul, cone) \
-    do { (dst) = (f32)((f64)(rem) / (cdiv) * (cmul) + (cone)); } while (0)
-
-#define ROUND(res, xv, cone, chalf) \
-    do { \
-        f32 a_ = (xv); \
-        f32 f_; \
-        s32 i_; \
-        if (a_ < 0.0f) a_ = -a_; \
-        i_ = (s32)a_; \
-        f_ = a_ - (f32)i_; \
-        if ((f64)f_ > (chalf)) { \
-            if ((f64)(xv) > 0.0) { f32 y_ = (f32)((f64)(xv) + ((cone) - (f64)f_)); (res) = (s32)y_; } \
-            else { f32 y_ = (f32)((f64)(xv) - (f64)f_); (res) = (s32)y_; } \
-        } else { \
-            if ((f64)(xv) >= 0.0) { f32 y_ = (f32)((f64)(xv) - (f64)f_); (res) = (s32)y_; } \
-            else { f32 y_ = (f32)((f64)(xv) - ((cone) - (f64)f_)); (res) = (s32)y_; } \
-        } \
-    } while (0)
-
-void func_801709A8_overlay_060(void) {
-    U64 bb;
-    u32 off1, off2;
-    u8 *base;
-    u8 *p;
-    u8 *q;
-    s32 seed;
-    s32 rem;
-    s32 val;
-    f32 x;
-    u8 ni;
-    S5 loc;
-
-    off1 = 0x18000;
-    off2 = 0x20000;
-    bb.w.lo = (u32)D_800C7650_ovl_01;
-    base = (u8 *)(u32)bb.w.lo;
-    p = (u8 *)(off1 + (u32)bb.w.lo);
-    q = (u8 *)(off2 + (u32)bb.w.lo);
-    loc = *(S5 *)D_80171750_ovl_07;
-
-    if (*(s32 *)(p + 0x1A3C) & 8) {
-        *(u8 *)(p + 0x1A4A) = 4;
-    } else {
-        s32 v1 = *(s32 *)(p + 0x1A5C);
-        if (v1 & 0x40000000) {
-            if (v1 >= 0) *(u8 *)(p + 0x1A4A) = 1;
-            else *(u8 *)(p + 0x1A4A) = 3;
-        } else {
-            if (v1 >= 0) *(u8 *)(p + 0x1A4A) = 0;
-            else *(u8 *)(p + 0x1A4A) = 2;
-        }
-    }
-
-    if (*(u8 *)(q + 0x1962) & 0xF0) {
-        seed = func_80007000();
-        D_800F9DD0_ovl_01 = seed;
-        seed = seed * 0x41C64E6D + 0x3039;
-        D_800F9DD0_ovl_01 = seed;
-        rem = (((seed >> 16) & 0x7FFF)) % 32767;
-        RANDVAL(x, rem, D_80171758_ovl_07, D_80171760_ovl_07, D_80171768_ovl_07);
-        ROUND(val, x, D_80171768_ovl_07, D_80171770_ovl_07);
-        ni = (*(u8 *)(q + 0x1962) >> 4) & 0xFF;
-        while ((val & 0xFF) == ni) {
-            seed = D_800F9DD0_ovl_01;
-            seed = seed * 0x41C64E6D + 0x3039;
-            D_800F9DD0_ovl_01 = seed;
-            rem = (((seed >> 16) & 0x7FFF)) % 32767;
-            RANDVAL(x, rem, D_80171778_ovl_07, D_80171780_ovl_07, D_80171788_ovl_07);
-            ROUND(val, x, D_80171788_ovl_07, D_80171790_ovl_07);
-        }
-        *(u8 *)(q + 0x1962) = (*(u8 *)(q + 0x1962) & 0xF) | (val << 4);
-    }
-    func_80170F70_ovl_07();
+    temp_s2 = M2C_FIELD(arg0, s32 *, 0x234);
+    sp10 = 0x1091 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    sp12 = 0x934 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    sp14 = 0x100 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    temp_s2_2 = temp_s2 + 0x38;
+    func_800377B0_ovl_01((((func_80033634_ovl_01() & 0xFF) * 4) + 0x2838) | 0x06000000, M2C_FIELD(arg0, s16 *, 0x66), temp_s2_2, &sp10);
+    func_800377B0_ovl_01((((func_80033634_ovl_01() & 0xFF) * 4) + 0x1770) | 0x040F0000, M2C_FIELD(arg0, s16 *, 0x66), temp_s2_2, &sp10);
+    sp10 = 0x1091 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    sp12 = 0xEAC - ((func_80033634_ovl_01() & 0xFF) * 2);
+    sp14 = 0x510 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    func_800377B0_ovl_01((((func_80033634_ovl_01() & 0xFF) * 4) + 0x2838) | 0x06000000, M2C_FIELD(arg0, s16 *, 0x66), temp_s2_2, &sp10);
+    sp10 = 0xD71 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    sp12 = 0xB28 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    sp14 = -0x450 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    func_800377B0_ovl_01((((func_80033634_ovl_01() & 0xFF) * 4) + 0x2838) | 0x06000000, M2C_FIELD(arg0, s16 *, 0x66), temp_s2_2, &sp10);
+    func_800377B0_ovl_01((((func_80033634_ovl_01() & 0xFF) * 4) + 0x1770) | 0x040F0000, M2C_FIELD(arg0, s16 *, 0x66), temp_s2_2, &sp10);
+    sp10 = 0x6CD - ((func_80033634_ovl_01() & 0xFF) * 2);
+    sp12 = 0x2F4 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    sp14 = 0xC4 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    func_800377B0_ovl_01((((func_80033634_ovl_01() & 0xFF) * 4) + 0x2838) | 0x06000000, M2C_FIELD(arg0, s16 *, 0x66), temp_s2_2, &sp10);
+    temp_s2_3 = M2C_FIELD(arg0, s32 *, 0x234) + 0x1B0;
+    sp10 = 0x6B8 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    sp12 = 0x2F4 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    sp14 = 0xC4 - ((func_80033634_ovl_01() & 0xFF) * 2);
+    func_800377B0_ovl_01((((func_80033634_ovl_01() & 0xFF) * 4) + 0x1A28) | 0x06000000, M2C_FIELD(arg0, s16 *, 0x66), temp_s2_3, &sp10);
+    func_800377B0_ovl_01((((func_80033634_ovl_01() & 0xFF) * 4) + 0xFA0) | 0x040F0000, M2C_FIELD(arg0, s16 *, 0x66), temp_s2_3, &sp10);
 }

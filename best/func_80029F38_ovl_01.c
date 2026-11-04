@@ -18,7 +18,7 @@ s32 func_80029F38_ovl_01(void *arg0) {
     s32 var_v1_2;
     void *temp_a0;
     void *temp_s1;
-    void *var_a0;
+    
 
     temp_s1 = M2C_FIELD(arg0, void **, 0x178);
     var_v1 = M2C_FIELD(temp_s1, s32 *, 0xC);
@@ -32,11 +32,11 @@ s32 func_80029F38_ovl_01(void *arg0) {
     if (M2C_FIELD(M2C_FIELD(arg0, void **, 0x174), s32 (**)(void *), 8)(arg0) != 0) {
         var_v1_2 = 0;
         if (M2C_FIELD(arg0, s32 *, 0x118) > 0) {
-            var_a0 = temp_s1;
+            temp_a0 = temp_s1;
             do {
-                M2C_FIELD(var_a0, s32 *, 0x10) = 0;
+                M2C_FIELD(temp_a0, s32 *, 0x10) = 0;
                 var_v1_2 += 1;
-                var_a0 += 4;
+                temp_a0 += 4;
             } while (var_v1_2 < M2C_FIELD(arg0, s32 *, 0x118));
         }
         var_v0 = 1;

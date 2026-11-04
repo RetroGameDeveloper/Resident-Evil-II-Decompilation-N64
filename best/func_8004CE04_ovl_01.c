@@ -1,4 +1,3 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
 typedef s32 M2C_UNK;
@@ -11,14 +10,15 @@ typedef s32 M2C_UNK32;
 #define M2C_CARRY 0
 #define M2C_OVERFLOW(a) (0)
 #endif
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
 
-M2C_UNK func_80007450(M2C_UNK *, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_8000DCB0(M2C_UNK);                     /* extern */
-extern M2C_UNK D_8010B2C8_ovl_01;
-extern M2C_UNK D_80139AD0;
+s32 func_80007450();
+s32 func_8000DCB0();
+extern char D_8010B2C8_ovl_01[];
+extern char D_80139AD0[];
 
 void func_8004CE04_ovl_01(void) {
-    *M2C_FIELD(&D_8010B2C8_ovl_01, s16 **, 0x390) = 0;
-    func_80007450(&D_80139AD0, 0, 0);
+    **(s16 * *)(D_8010B2C8_ovl_01 + 0x390) = 0;
+    func_80007450(&D_80139AD0, 0);
     func_8000DCB0(0);
 }

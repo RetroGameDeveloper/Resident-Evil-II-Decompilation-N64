@@ -20,7 +20,8 @@ s32 func_8004E2FC_ovl_01(void *arg0, void *arg1) {
     s32 temp_a0;
     s32 temp_a1;
     s32 var_a0;
-    s32 var_a1;
+    
+s32 __repair_result_var_a1;
     s32 var_a2;
     s32 var_a3;
     s32 var_v0;
@@ -46,15 +47,15 @@ s32 func_8004E2FC_ovl_01(void *arg0, void *arg1) {
             var_v0_2 = -temp_a0;
         }
         if (var_v0_2 < var_v1) {
-            var_a1 = (s16) sp10 - M2C_FIELD(arg1, s32 *, 0x120);
+            temp_a0 = (s16) sp10 - M2C_FIELD(arg1, s32 *, 0x120);
             var_a0 = M2C_FIELD(arg0, s32 *, 0x30) - M2C_FIELD(arg1, s32 *, 0x128);
             var_a3 += M2C_FIELD(arg0, u16 *, 0x12C);
         } else {
-            var_a1 = M2C_FIELD(arg0, s32 *, 0x28) - M2C_FIELD(arg1, s32 *, 0x120);
+            temp_a1 = M2C_FIELD(arg0, s32 *, 0x28) - M2C_FIELD(arg1, s32 *, 0x120);
             var_a0 = (s16) sp14 - M2C_FIELD(arg1, s32 *, 0x128);
             var_a2 += M2C_FIELD(arg0, u16 *, 0x12C);
         }
-        if ((u32) (var_a2 * 2) < (u32) (var_a1 + var_a2)) {
+        if ((u32) (var_a2 * 2) < (u32) (temp_a1 + var_a2)) {
             return 0;
         }
         var_v0 = (u32) (var_a3 * 2) >= (u32) (var_a0 + var_a3);

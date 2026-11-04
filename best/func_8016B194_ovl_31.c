@@ -5,8 +5,8 @@ void func_8016B194_ovl_31(Obj*p,Ctx*ctx){
  switch(state){
  case 0:p->state=1;p->timer=8;
  case 1:
-  v=ctx->values+p->ix0;*v-=p->timer;
-  v=ctx->values+p->ix1;*v-=p->timer;
+  v = (char *)(ctx->values); v += (s32)(p->ix0);*v-=p->timer;
+  v = (char *)(ctx->values); v += (s32)(p->ix1);*v-=p->timer;
   v=ctx->values+p->ix1;if(*v<0)*v=0;
   p->timer=(s16)p->timer*2;
   v=ctx->values;v[8]=(u16)((u32)(u16)v[8]<<16)>>17;
@@ -14,7 +14,7 @@ void func_8016B194_ovl_31(Obj*p,Ctx*ctx){
   if(ctx->values[p->ix0]==-0x338&&ctx->values[p->ix1]==0){p->state=2;p->timer=0;}
   break;
  case 2:
-  v=ctx->values+p->ix0;*v+=p->timer;p->timer++;
+  v = (char *)(ctx->values); v += (s32)(p->ix0);*v+=p->timer;p->timer++;
   v=ctx->values+p->ix0;if(*v<=0)break;
   *v=0;p->state=3;break;
  case 3:p->f2C4=0;p->state=0;break;

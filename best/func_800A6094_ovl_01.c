@@ -28,7 +28,7 @@ s32 func_800A6094_ovl_01(s32 arg0, u32 arg1) {
     f64 var_fv1_3;
     s32 temp_v0;
     s32 temp_v0_2;
-    s32 var_v1;
+    
     u32 temp_a0;
     u32 temp_v1;
     u32 var_a1;
@@ -45,14 +45,14 @@ s32 func_800A6094_ovl_01(s32 arg0, u32 arg1) {
         if (temp_v0 < 0) {
             var_fv1 += D_800BA6F0_ovl_01;
         }
-        if (temp_v1 < temp_a0) {
-            var_v0 = &D_80135CA0_ovl_01;
-            var_v1 = temp_a0 - temp_v1;
-        } else {
+        if (temp_v1 >= temp_a0) {
             var_v0 = &D_80135EA0_ovl_01;
-            var_v1 = temp_v1 - temp_a0;
+            temp_v0 = temp_v1 - temp_a0;
+        } else {
+            var_v0 = &D_80135CA0_ovl_01;
+            temp_v0 = temp_a0 - temp_v1;
         }
-        var_fv1_2 = (f32) var_fv1 * *((var_v1 * 4) + var_v0);
+        var_fv1_2 = (f32) var_fv1 * *((temp_v0 * 4) + var_v0);
     } else {
         temp_v0_2 = var_a1 & 0xFFFFFF;
         var_fv1_3 = (f64) temp_v0_2;

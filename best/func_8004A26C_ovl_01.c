@@ -16,7 +16,7 @@ void func_8004A26C_ovl_01(void *arg0, void *arg1, s32 arg2, s16 arg3) {
     s32 temp_a0;
     s32 temp_a0_2;
     s32 temp_a0_3;
-    s32 temp_a2;
+    
     s32 temp_v0;
     s32 temp_v0_2;
     s32 temp_v0_3;
@@ -28,16 +28,16 @@ void func_8004A26C_ovl_01(void *arg0, void *arg1, s32 arg2, s16 arg3) {
     M2C_FIELD(arg1, s32 *, 0x10) = (s32) M2C_FIELD(arg0, s32 *, 0x10);
     M2C_FIELD(arg1, s32 *, 0x14) = (s32) M2C_FIELD(arg0, s32 *, 0x14);
     M2C_FIELD(arg1, s32 *, 0x18) = (s32) M2C_FIELD(arg0, s32 *, 0x18);
-    temp_a2 = arg2 & 0xFF;
+    temp_a0 = arg2 & 0xFF;
     M2C_FIELD(arg1, s32 *, 0x1C) = (s32) M2C_FIELD(arg0, s32 *, 0x1C);
-    if (temp_a2 == 1) {
+    if (temp_a0 == 1) {
         temp_a0 = M2C_FIELD(arg0, s32 *, 4);
         M2C_FIELD(arg1, s32 *, 4) = (s32) (temp_a0 + ((arg3 - temp_a0) * 2));
         temp_v0 = M2C_FIELD(arg0, s32 *, 0x10);
         M2C_FIELD(arg1, s32 *, 0x10) = (s32) (temp_v0 + ((arg3 - temp_v0) * 2));
         return;
     }
-    if (temp_a2 == 0) {
+    if (temp_a0 == 0) {
         temp_a0_2 = M2C_FIELD(arg0, s32 *, 0xC);
         M2C_FIELD(arg1, s32 *, 0xC) = (s32) (temp_a0_2 + ((arg3 - temp_a0_2) * 2));
         temp_v0_2 = M2C_FIELD(arg0, s32 *, 0x18);

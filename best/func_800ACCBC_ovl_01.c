@@ -1,3 +1,4 @@
+static __inline__ int __repair_inline(s32 a, s32 b) { return a > b; }
 typedef struct { s32 unk0; u16 unk4; u16 unk6; } Entry;
 extern Entry D_80152190[];
 extern s32 D_80152180;
@@ -11,7 +12,7 @@ s32 func_800ACCBC_ovl_01(u32 id) {
     func_800A5618_ovl_01();
     i = 0;
     count = D_80152180;
-    if (count > 0) {
+    if (__repair_inline(count, 0)) {
         e = D_80152190;
         while (i < count && e->unk4 != (id & 0xFFFF)) {
             i++;

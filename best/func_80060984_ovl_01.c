@@ -16,20 +16,21 @@ s32 func_80040A44_ovl_01(s32);                      /* extern */
 
 s32 func_80060984_ovl_01(s32 arg0, s32 arg1) {
     s32 temp_v1;
+s32 __repair_result_temp_v1;
     s32 var_v0;
-    s32 var_v1;
+    
 
-    var_v1 = 0x400;
+    temp_v1 = 0x400;
     if (arg1 > 0) {
-        var_v1 = 0xC00;
+        temp_v1 = 0xC00;
     }
     if (arg0 != 0) {
-        temp_v1 = func_80040A44_ovl_01((s32) (arg1 << 0xC) / arg0);
+        __repair_result_temp_v1 = func_80040A44_ovl_01((s32) (arg1 << 0xC) / arg0);
         var_v0 = 0x1000;
         if (arg0 < 0) {
             var_v0 = 0x800;
         }
-        return (var_v0 - temp_v1) & 0xFFF;
+        return (var_v0 - __repair_result_temp_v1) & 0xFFF;
     }
-    return var_v1;
+    return __repair_result_temp_v1;
 }

@@ -20,6 +20,7 @@ void func_800AB1EC_ovl_01(void *arg0) {
     f32 temp_fv0;
     f32 temp_fv1;
     f32 var_fv0;
+f32 __repair_var_fv0_1;
 
     temp_ft0 = M2C_FIELD(arg0, f32 *, 0);
     temp_fv1 = M2C_FIELD(arg0, f32 *, 4);
@@ -27,9 +28,9 @@ void func_800AB1EC_ovl_01(void *arg0) {
     temp_fa0 = (temp_ft0 * temp_ft0) + (temp_fv1 * temp_fv1) + (temp_fv0 * temp_fv0);
     var_fv0 = sqrtf(temp_fa0);
     if (var_fv0 != var_fv0) {
-        var_fv0 = func_8000DB80(temp_fa0);
+        __repair_var_fv0_1 = func_8000DB80(temp_fa0);
     }
-    M2C_FIELD(arg0, f32 *, 0) = (f32) (M2C_FIELD(arg0, f32 *, 0) / var_fv0);
-    M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 8) / var_fv0);
-    M2C_FIELD(arg0, f32 *, 4) = (f32) (M2C_FIELD(arg0, f32 *, 4) / var_fv0);
+    M2C_FIELD(arg0, f32 *, 0) = (f32) (M2C_FIELD(arg0, f32 *, 0) / __repair_var_fv0_1);
+    M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 8) / __repair_var_fv0_1);
+    M2C_FIELD(arg0, f32 *, 4) = (f32) (M2C_FIELD(arg0, f32 *, 4) / __repair_var_fv0_1);
 }

@@ -1,34 +1,37 @@
-extern u8 D_80160B9C_ovl_03[];
-void func_8002751C_ovl_01(s32, s32);
-void func_8015FCCC_ovl_03(void);
-typedef union { u64 q; struct { u32 lo; u32 hi; } w; } U64;
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
+
+M2C_UNK func_8002751C_ovl_01(M2C_UNK, M2C_UNK);     /* extern */
+M2C_UNK func_8015FCCC_ovl_03();                     /* extern */
+extern M2C_UNK D_80160B9C_ovl_03;
 
 void func_8015B568_ovl_03(void) {
-    U64 b;
-    U64 c;
-    u8 *p;
-    u8 *q;
-    s32 one = 1;
-
-    b.q = (u64)(u32)D_80160B9C_ovl_03;
-    p = (u8 *)(u32)b.q;
-
-    switch (p[2]) {
+    switch (M2C_FIELD(&D_80160B9C_ovl_03, u8 *, 2)) { /* irregular */
+    case 2:
+        M2C_FIELD(&D_80160B9C_ovl_03, s8 *, 1) = 1;
+        M2C_FIELD(&D_80160B9C_ovl_03, u8 *, 2) = 0U;
+        break;
     case 0:
         func_8002751C_ovl_01(0, 0);
-        *(s16 *)(p + 0x14) = 0x36;
-        *(s32 *)(p + 0x18) = 0x16;
-        *(s16 *)(p + 0x16) = 0;
-        p[2] = one;
+        M2C_FIELD(&D_80160B9C_ovl_03, s16 *, 0x14) = 0x36;
+        M2C_FIELD(&D_80160B9C_ovl_03, s32 *, 0x18) = 0x16;
+        M2C_FIELD(&D_80160B9C_ovl_03, s16 *, 0x16) = 0;
+        M2C_FIELD(&D_80160B9C_ovl_03, u8 *, 2) = 1U;
+        /* fallthrough */
     case 1:
-        c.q = (u64)(u32)D_80160B9C_ovl_03;
-        q = (u8 *)(u32)c.q;
-        q[1] = 1;
-        q[2] = 0;
-        break;
-    case 2:
-        p[1] = one;
-        p[2] = 0;
+        M2C_FIELD(&D_80160B9C_ovl_03, s8 *, 1) = 1;
+        M2C_FIELD(&D_80160B9C_ovl_03, u8 *, 2) = 0U;
         break;
     }
     func_8015FCCC_ovl_03();

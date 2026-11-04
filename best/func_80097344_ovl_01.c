@@ -33,7 +33,7 @@ void func_80097344_ovl_01(s32 arg0, s32 arg1) {
     u32 var_s3;
     u32 var_v1;
     void *var_s0;
-    void *var_s0_2;
+    
     void *var_s2;
     void *var_s2_2;
 
@@ -69,16 +69,17 @@ void func_80097344_ovl_01(s32 arg0, s32 arg1) {
         func_8004789C_ovl_01(var_s1, 0x80, 0x80, 0x80);
         func_800478DC_ovl_01(var_s1, M2C_FIELD(var_s0, u8 *, 0), M2C_FIELD(var_s0, u8 *, 1));
         temp_a0_2 = var_s1;
-        var_s1 += 0x14;
-        func_800479EC_ovl_01(temp_a0_2, M2C_FIELD(var_s0, u8 *, 2), M2C_FIELD(var_s0, u8 *, 3));
+        var_s1 += 0x14;/*__repair_call_balance*/if(var_s3){
+        func_800479EC_ovl_01(temp_a0_2, M2C_FIELD(var_s0, u8 *, 2), M2C_FIELD(var_s0, u8 *, 3));}else{
+        func_800479EC_ovl_01(temp_a0_2, M2C_FIELD(var_s0, u8 *, 2), M2C_FIELD(var_s0, u8 *, 3));}
         M2C_FIELD(var_s2, M2C_UNK **, 2) = &D_8012F4D0_ovl_01;
         M2C_FIELD(var_s2, s16 *, 0) = 0;
         var_s2 += 0x14;
     } while (var_s3 >= 5U);
     var_s2_2 = var_s1 + 0xA;
-    var_s0_2 = (var_s3 * 4) + &D_80131304_ovl_01;
+    var_s0 = (var_s3 * 4) + &D_80131304_ovl_01;
     do {
-        var_s0_2 -= 4;
+        var_s0 -= 4;
         func_80047B34_ovl_01(var_s1, 0);
         var_s3 -= 1;
         if (var_s3 == M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 0xF)) {
@@ -87,10 +88,10 @@ void func_80097344_ovl_01(s32 arg0, s32 arg1) {
             var_a1 = 0x80;
         }
         func_8004789C_ovl_01(var_s1, var_a1, var_a1, 0x80);
-        func_800478DC_ovl_01(var_s1, M2C_FIELD(var_s0_2, u8 *, 0), M2C_FIELD(var_s0_2, u8 *, 1));
+        func_800478DC_ovl_01(var_s1, M2C_FIELD(var_s0, u8 *, 0), M2C_FIELD(var_s0, u8 *, 1));
         temp_a0_3 = var_s1;
         var_s1 += 0x14;
-        func_800479EC_ovl_01(temp_a0_3, M2C_FIELD(var_s0_2, u8 *, 2), M2C_FIELD(var_s0_2, u8 *, 3));
+        func_800479EC_ovl_01(temp_a0_3, M2C_FIELD(var_s0, u8 *, 2), M2C_FIELD(var_s0, u8 *, 3));
         M2C_FIELD(var_s2_2, M2C_UNK **, 2) = &D_8012F524_ovl_01;
         M2C_FIELD(var_s2_2, s16 *, 0) = 0;
         var_s2_2 += 0x14;

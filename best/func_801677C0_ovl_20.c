@@ -32,7 +32,7 @@ void func_801677C0_ovl_20(void *arg0, M2C_UNK arg1, M2C_UNK arg2) {
         M2C_FIELD(arg0, u8 *, 0x26F) = (u8) (M2C_FIELD(arg0, u8 *, 0x26F) | 0x80);
         var_a0 = 0x04010000;
         if (M2C_FIELD(arg0, u8 *, 5) == 0) {
-            var_a0 = 0x04000000;
+            var_a0 = 0x4000001;
         }
         func_80077B0C_ovl_01(var_a0 | 1, arg0 + 0x28);
         /* fallthrough */

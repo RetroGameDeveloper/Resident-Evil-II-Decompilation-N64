@@ -19,7 +19,7 @@ void func_8000C780(void);
 void func_8000CC90(s32, void *, u32);
 void func_8000CDF0(s32, s32);
 void func_8000DB90(void *);
-void func_8000C0D0(void);
+void __osDevMgrMain(void);
 void func_8000C870(void);
 void func_80007C20(void);
 void func_8000BE60(s32 arg0, void *arg1, void *arg2, s32 arg3)
@@ -65,7 +65,7 @@ void func_8000BE60(s32 arg0, void *arg1, void *arg2, s32 arg3)
   D_800128F4 = &D_800164B0;
   D_800128F8 = arg1;
   D_800128FC = new_var;
-  osCreateThread(&D_800164B0, 0, (void *) func_8000C0D0, p, &D_80017660, arg0);
+  osCreateThread(&D_800164B0, 0, (void *) __osDevMgrMain, p, &D_80017660, arg0);
   func_8000DB90(&D_800164B0);
   func_80007300(token);
   if (saved != (-1))

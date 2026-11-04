@@ -1,34 +1,5 @@
-typedef union { u64 q; struct { u32 lo; u32 hi; } w; } U64;
-extern u8 D_800E10D0_ovl_01[];
-extern u8 D_800C7650_ovl_01[];
-
-void func_8016559C_ovl_26(void *arg0)
-{
-    u8 *p = (u8 *)arg0;
-    U64 gb;
-    u8 *g;
-    u8 *base;
-    u8 t;
-    u32 w;
-
-    gb.q = (u64)(u32)D_800E10D0_ovl_01;
-    g = (u8 *)(u32)gb.q;
-    if (p[0x2DC]) {
-        g[5] = 2;
-        g[6] = 0;
-        g[7] = 0;
-        p[0x2DC] = 0;
-    }
-    if (p[0x2D9]) {
-        *(u32 *)(p + 4) = 0x07000000;
-        return;
-    }
-    p[6] = 1;
-    *(u32 *)(p + 0x1E8) = ((p[0x2CD] * 13 + 12) << 24) + 0x3F00;
-    base = (u8 *)(D_800C7650_ovl_01 + 0x18000);
-    *(u16 *)(base + 0x1A78) &= 0xFFBF;
-    t = p[0x25C];
-    w = *(u32 *)p;
-    p[0x25C] = t | 2;
-    *(u32 *)p = w | 4;
-}
+extern u8 D_800E10D0_ovl_01[]; extern u8 D_800C7650_ovl_01[]; extern u32 D_801672C4_ovl_26[]; extern u8 D_801671B0_ovl_26[]; extern void func_8016559C_ovl_26(); extern void func_80165640_ovl_26(void*,s32,s32); extern void func_80166B18_ovl_26(void*,s32,s32); extern void func_800342B0_ovl_01_530(s32); extern void func_80035AAC_ovl_01_108(void*); extern s32 func_80033634_ovl_01(void);
+void func_8016559C_ovl_26(void*p){u8 *v;u8 *g;v=p;g=D_800E10D0_ovl_01;if(v[0x2dc]){g[5]=2;g[6]=0;g[7]=0;v[0x2dc]=0;}if(v[0x2d9]){*(u32*)(v+4)=0x07000000;return;}v[6]=1;*(u32*)(v+0x1e8)=((((v[0x2cd]*3+v[0x2cd])*4+v[0x2cd]+12)<<24)+0x3f00);*(u16*)(D_800C7650_ovl_01+0x18000+0x1a78)&=0xffbf;v[0x25c]|=2;*(u32*)v|=4;}
+void func_8016553C_ovl_26(void*p){if(!((u8*)p)[6]){func_8016559C_ovl_26(p);if(((u8*)p)[5]!=1)func_80166B18_ovl_26(p,10,1);}else func_80165640_ovl_26(p,0,0);}
+void func_801654D0_ovl_26(void*p){((void(*)(void*))D_801672C4_ovl_26[((u8*)p)[5]-1])(p);func_800342B0_ovl_01_530(*(s16*)((u8*)p+0x66)+(((u8*)p)[0x2cd]<<11));func_80035AAC_ovl_01_108(p);}
+void func_80165290_ovl_26(void*p,s32 value,u32 n){s32 i; s32 r; s32 phase; i=0;r=func_80033634_ovl_01()&7;if(n){for(;i<n;i++)func_80166B18_ovl_26(p,D_801671B0_ovl_26[r+i],value&255);}}

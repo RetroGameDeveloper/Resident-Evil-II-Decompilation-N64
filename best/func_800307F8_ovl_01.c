@@ -11,6 +11,8 @@ typedef struct S_func_800307F8_ovl_01_arg1 {
 } S_func_800307F8_ovl_01_arg1;
 
 void func_800307F8_ovl_01(s32 arg0, void *arg1, s32 arg2) {
+int __repair_literal;
+
     S_func_800307F8_ovl_01_arg1 *a1 = arg1;
     s32 p0 = arg0;
     s32 p2 = arg2;
@@ -20,8 +22,10 @@ void func_800307F8_ovl_01(s32 arg0, void *arg1, s32 arg2) {
     s32 s2;
 
     i = 0;
+__repair_literal = 0;
 
-    if (a1->unk10 > 0) {
+
+    if (a1->unk10 > __repair_literal) {
         do {
             s32 m = a1->unk10 - i;
 
@@ -40,10 +44,10 @@ void func_800307F8_ovl_01(s32 arg0, void *arg1, s32 arg2) {
                 }
             }
 
-            if (p2 != 0) {
-                a1->unk2C(p0, (void *)&a1->unk28, a1->unk0[i], s3);
-            } else {
+            if (p2 == 0) {
                 a1->unk28(p0, (void *)&a1->unk28, a1->unk0[i], s3);
+            } else {
+                a1->unk2C(p0, (void *)&a1->unk28, a1->unk0[i], s3);
             }
 
             i += a1->unk14;

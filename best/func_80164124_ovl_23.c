@@ -140,10 +140,10 @@ void func_80164124_ovl_23(S_obj *arg0, void *arg1, void *arg2) {
                 arg0->u4.unk4 = 0x01010000;
             }
         }
-        if ((u32)arg0->unk1E9 < 0xC) {
-            func_80162530_ovl_29(arg0, 0);
-        } else {
+        if ((u32)arg0->unk1E9 >= 0xC) {
             func_8003334C_ovl_01(arg0, arg1, arg2, 0);
+        } else {
+            func_80162530_ovl_29(arg0, 0);
         }
         break;
     }

@@ -1,3 +1,21 @@
-extern u8 D_80148B80[]; extern u8 D_80148C00[]; void func_800AC63C_ovl_01(s32 arg0,s32 arg1,u8 arg2){s32 t=arg1&255;u8 *p;if(t==255)p=D_80148C00+(arg0&255);else p=D_80148B80+(arg0&255)+t*16;*p=arg2;}
-extern s32 D_80143F08; extern s32 (*D_80143FAC)(s32); s32 func_800A56F0_ovl_01(void); void func_800A5B60_ovl_01(void){s32 x=D_80143F08;if(x){func_800A56F0_ovl_01();D_80143FAC(x);D_80143F08=0;}}
-extern s32 D_80143EAC; void func_800A5AB4_ovl_01(s32 arg0){u8 *p=(u8 *)(D_80143EAC+arg0*104);if(p[0]){*(u16 *)(p+0x28)=20;if(p[1]){p[1]=0;}else{f32 f=*(f32 *)(p+0x4c);p[0x5c]=3;*(s32 *)(p+0x54)=0;*(s32 *)(p+0x50)=0;*(f32 *)(p+0x58)=f;*(u16 *)(p+0x48)=*(u16 *)(p+0x28);}}} 
+extern u8 D_80148B80[];
+extern u8 D_80148C00[];
+void func_800AC63C_ovl_01(s32 arg0, s32 arg1, u8 arg2);
+extern s32 D_80143F08;
+extern s32 (*D_80143FAC)(s32);
+s32 func_800A56F0_ovl_01(void);
+void func_800A5B60_ovl_01(void)
+{
+  s32 x = D_80143F08;
+  volatile long new_var;
+  if (x)
+  {
+    func_800A56F0_ovl_01();
+    new_var = x;
+    D_80143FAC(new_var);
+    D_80143F08 = 0;
+  }
+}
+
+extern s32 D_80143EAC;
+void func_800A5AB4_ovl_01(s32 arg0);

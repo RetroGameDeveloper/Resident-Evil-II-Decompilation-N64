@@ -1,9 +1,18 @@
-extern s32 func_80036038_ovl_01(void *, void *, void *, s32);
-extern u8 D_8016729C_ovl_32[];
-extern u8 D_80167308_ovl_32[];
-typedef struct { u8 pad[0x234]; void *unk234; } T;
-void func_801654E8_ovl_32(T *arg0, s32 arg1)
+s32 func_80036038_ovl_01();
+extern char D_8016729C_overlay_032[];
+extern char D_80167308_overlay_032[];
+void func_801654E8_ovl_32(s32 *arg0, s32 *arg1)
 {
-  s32 r = func_80036038_ovl_01(arg0->unk234, D_8016729C_ovl_32, 0, arg1);
-  func_80036038_ovl_01(arg0, arg0->unk234, D_80167308_ovl_32, r);
+  char *new_var;
+  if (new_var)
+  {
+    new_var = ((char *) arg0) + 0x234;
+    func_80036038_ovl_01(arg0, *((s32 **) new_var), &D_80167308_overlay_032, func_80036038_ovl_01(*((s32 **) new_var), &D_8016729C_overlay_032, arg1));
+  }
+  else
+  {
+    new_var = ((char *) arg0) + 0x234;
+    func_80036038_ovl_01(arg0, *((s32 **) new_var), &D_80167308_overlay_032, func_80036038_ovl_01(*((s32 **) new_var), &D_8016729C_overlay_032, arg1));
+  }
 }
+

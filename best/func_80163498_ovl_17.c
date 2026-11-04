@@ -55,6 +55,7 @@ void func_801678B8_ovl_17(void *arg0);
 void func_80163498_ovl_17(S_func_80163498_ovl_17_arg0 *s0, s32 arg1, s32 arg2) {
     u16 a0;
     s32 v0;
+s32 __repair_phase_v0;
     u8 *p;
 
     switch (s0->unk_04.b[2]) {
@@ -97,9 +98,9 @@ void func_80163498_ovl_17(S_func_80163498_ovl_17_arg0 *s0, s32 arg1, s32 arg2) {
             s0->unk_1E0 = 0x1C2;
             func_80032B8C_ovl_01(s0, s0->unk_2B6);
             s0->unk_2D2 = 0;
-            v0 = s0->unk_2C + 0x4E2;
-            s0->unk_2C = v0;
-            s0->unk_2C8 = v0;
+            __repair_phase_v0 = s0->unk_2C + 0x4E2;
+            s0->unk_2C = __repair_phase_v0;
+            s0->unk_2C8 = __repair_phase_v0;
             p = D_800C7650_ovl_01 + 0x18000;
             *(u16 *)(p + 0x1A78) &= 0xFFDF;
             func_80163888_ovl_17(s0, arg1, arg2);

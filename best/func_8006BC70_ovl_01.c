@@ -1,32 +1,32 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-#ifndef M2C_DEFINES
-#define M2C_DEFINES
-typedef s32 M2C_UNK;
-typedef s8 M2C_UNK8;
-typedef s16 M2C_UNK16;
-typedef s32 M2C_UNK32;
-#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
-#define M2C_BITWISE(type, expr) ((type)(expr))
-#define M2C_ERROR(desc) (0)
-#define M2C_CARRY 0
-#define M2C_OVERFLOW(a) (0)
-#endif
-
-M2C_UNK func_8000C9E0(M2C_UNK *, s32 *, M2C_UNK);   /* extern */
+s32 func_8000C9E0();
 extern s32 D_80112780_ovl_01;
 extern s32 D_80112788_ovl_01;
-extern M2C_UNK D_80139F30;
-
-s32 func_8006BC70_ovl_01(s32 arg0) {
-    if (arg0 != 0) {
-        return 0;
+extern char D_80139F30[];
+s32 func_8006BC70_ovl_01(s32 arg0)
+{
+  char (**new_var3)[];
+  s32 new_var2;
+  char (*new_var)[];
+  s32 new_var4;
+  if (arg0 != 0)
+  {
+    return 0;
+  }
+  new_var4 = D_80112780_ovl_01;
+  if (D_80112788_ovl_01 != D_80112780_ovl_01)
+  {
+    if (D_80112788_ovl_01 != D_80112780_ovl_01)
+    {
+      new_var = &D_80139F30;
+      new_var2 = D_80112788_ovl_01;
+      new_var3 = &new_var;
+      do
+      {
+        func_8000C9E0(*new_var3);
+      }
+      while (new_var2 != new_var4);
     }
-    if (D_80112788_ovl_01 != D_80112780_ovl_01) {
-        if (D_80112788_ovl_01 != D_80112780_ovl_01) {
-            do {
-                func_8000C9E0(&D_80139F30, &D_80112788_ovl_01, 1);
-            } while (D_80112788_ovl_01 != D_80112780_ovl_01);
-        }
-    }
-    return 1;
+  }
+  return 1;
 }
+

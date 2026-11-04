@@ -39,6 +39,7 @@ void func_80050394_ovl_01(void) {
     s16 var_a2_3;
     s16 var_t0_2;
     s16 var_t1;
+s16 __repair_result_var_t1;
     s16 var_v1_2;
     s32 temp_lo;
     s32 temp_s4;
@@ -164,7 +165,7 @@ block_22:
                     if (M2C_FIELD(temp_s1, void **, 0xC4) != NULL) {
                         temp_v0_2 = M2C_FIELD(temp_s1, void **, 0x364);
                         temp_v1_3 = M2C_FIELD(temp_v0_2, s16 *, 2);
-                        var_t1 = M2C_FIELD(temp_v0_2, s16 *, 0);
+                        __repair_result_var_t1 = M2C_FIELD(temp_v0_2, s16 *, 0);
                         if (temp_v1_3 & 4) {
                             var_v0_2 = temp_v1_3 & 2;
                             if (var_s5 >= 2U) {

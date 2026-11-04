@@ -1,2 +1,42 @@
-extern void func_8016559C_ovl_26(void); extern void func_80165640_ovl_26(void *); extern void func_801656F0_ovl_26(void *,s32,s32); extern void func_80166B18_ovl_26(void *,s32,s32,s32);
-void func_80165790_ovl_26(void *a){u8 x=*((u8*)a+5);s32 v,w;if(!*((u8*)a+6)){func_8016559C_ovl_26();*((u8*)a+0x25c)|=1;v=12;if(*((u8*)a+0x26e)%3==0){if(*((u8*)a+0x2d9)==0){v=6;w=9;}else w=14;}else w=14;func_80166B18_ovl_26(a,(v-1)&255,0,0);if(*((u8*)a+0x26e)<3||x==6||x==8)func_801656F0_ovl_26(a,v,w);}else func_80165640_ovl_26(a);}
+extern void func_8016559C_ovl_26(void);
+extern void func_80165640_ovl_26(void *);
+extern void func_801656F0_ovl_26(void *, s32, s32);
+extern void func_80166B18_ovl_26(void *, s32);
+void func_80165790_ovl_26(void *a)
+{
+  volatile unsigned short x = *(((u8 *) a) + 5);
+  s32 v;
+  s32 w;
+  u8 *new_var;
+  if (!(*(((u8 *) a) + 6)))
+  {
+    func_8016559C_ovl_26();
+    *(((u8 *) a) + 0x25c) |= 1;
+    v = 12;
+    new_var = (u8 *) a;
+    if (((*(new_var + 0x26e)) % 3) != 0)
+    {
+      w = 14;
+    }
+    else
+      if ((*(((u8 *) a) + 0x2d9)) != 0)
+    {
+      w = 14;
+    }
+    else
+    {
+      v = 6;
+      w = 9;
+    }
+    func_80166B18_ovl_26(a, (v - 1) & 255);
+    if ((((*(new_var + 0x26e)) < 3) || (x == 6)) || (x == 8))
+    {
+      func_801656F0_ovl_26(a, v, w);
+    }
+  }
+  else
+  {
+    func_80165640_ovl_26(a);
+  }
+}
+

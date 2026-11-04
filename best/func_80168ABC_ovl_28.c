@@ -13,7 +13,7 @@ void func_80168ABC_ovl_28(u8 *arg0, u8 *arg1) {
         *(u16*)(obj+0xc)=*(u16*)(obj+0xc)-val;
         obj=*(u8**)(arg1+0x120);
         val=*(u16*)(actor+0x1f4);
-        *(u16*)(obj+0x10)=*(u16*)(obj+0x10)+val;
+        *(u16*)(obj+0x10)=*(u16*)obj + (val + 0x10);
         obj=*(u8**)(arg1+0x120);
         if (*(s16*)(obj+0x10)>=0x625) {
             val=*(u16*)(actor+0x1f4)-0x40;

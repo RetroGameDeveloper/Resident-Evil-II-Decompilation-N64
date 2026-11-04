@@ -55,8 +55,8 @@ loop_2:
     } while (var_s1 < 3U);
     var_s0_2 = 0;
     var_t1 = 0x4B0;
-    var_t0 = 0x3C0;
     var_a3 = 0x370;
+    var_t0 = 0x3C0;
     do {
         if (arg0 == 0) {
             switch (D_8016148C_ovl_03) {            /* irregular */
@@ -70,10 +70,10 @@ loop_2:
                 break;
             case 1:
                 M2C_FIELD(((M2C_FIELD(&D_800DF650_ovl_01, u8 *, 0x538) * 0x14) + var_a3 + &D_80160B9C_ovl_03), s16 *, 0x26) = 0x100;
-                if (var_s0_2 == 0) {
-                    M2C_FIELD(((M2C_FIELD(&D_800DF650_ovl_01, u8 *, 0x538) * 0x14) + &D_80160B9C_ovl_03), s16 *, 0x3E6) = 0;
-                } else {
+                if (var_s0_2 != 0) {
                     M2C_FIELD(((M2C_FIELD(&D_800DF650_ovl_01, u8 *, 0x538) * 0x14) + var_t0 + &D_80160B9C_ovl_03), s16 *, 0x26) = 0;
+                } else {
+                    M2C_FIELD(((M2C_FIELD(&D_800DF650_ovl_01, u8 *, 0x538) * 0x14) + &D_80160B9C_ovl_03), s16 *, 0x3E6) = 0;
                 }
                 break;
             }
@@ -81,10 +81,10 @@ loop_2:
         } else {
             M2C_FIELD(((M2C_FIELD(&D_800DF650_ovl_01, u8 *, 0x538) * 0x14) + var_a3 + &D_80160B9C_ovl_03), s16 *, 0x26) = 0x100;
             M2C_FIELD(((M2C_FIELD(&D_800DF650_ovl_01, u8 *, 0x538) * 0x14) + var_t0 + &D_80160B9C_ovl_03), s16 *, 0x26) = 0x100;
-            if (var_s0_2 == 0) {
-                M2C_FIELD(((M2C_FIELD(&D_800DF650_ovl_01, u8 *, 0x538) * 0x14) + &D_80160B9C_ovl_03), s16 *, 0x4D6) = 0;
-            } else {
+            if (var_s0_2 != 0) {
                 M2C_FIELD(((M2C_FIELD(&D_800DF650_ovl_01, u8 *, 0x538) * 0x14) + var_t1 + &D_80160B9C_ovl_03), s16 *, 0x26) = 0x100;
+            } else {
+                M2C_FIELD(((M2C_FIELD(&D_800DF650_ovl_01, u8 *, 0x538) * 0x14) + &D_80160B9C_ovl_03), s16 *, 0x4D6) = 0;
             }
         }
         var_t1 += 0x28;

@@ -34,7 +34,7 @@ void func_8009BB44_ovl_01(void *arg0, s32 arg1) {
     u16 *temp_a0;
     void *temp_s4;
     void *temp_v1;
-    void *temp_v1_2;
+    
     void *temp_v1_3;
     void *var_s0;
 
@@ -65,10 +65,10 @@ loop_1:
             M2C_FIELD(temp_v1, s8 *, 0xC) = (s8) ((u16) *temp_a0 >> 4);
             var_a2 += 6;
         } while (var_a1 < 3);
-        temp_v1_2 = var_s1 + &D_800E8FFC_ovl_01;
-        temp_fs1 = (f32) M2C_FIELD(temp_v1_2, s16 *, 0);
-        temp_fs0 = (f32) M2C_FIELD(temp_v1_2, s16 *, 6);
-        temp_fs2 = (f32) M2C_FIELD(temp_v1_2, s16 *, 0xC);
+        temp_v1 = var_s1 + &D_800E8FFC_ovl_01;
+        temp_fs1 = (f32) M2C_FIELD(temp_v1, s16 *, 0);
+        temp_fs0 = (f32) M2C_FIELD(temp_v1, s16 *, 6);
+        temp_fs2 = (f32) M2C_FIELD(temp_v1, s16 *, 0xC);
         temp_fa0 = (temp_fs1 * temp_fs1) + (temp_fs0 * temp_fs0) + (temp_fs2 * temp_fs2);
         var_fv1 = sqrtf(temp_fa0);
         if (var_fv1 != var_fv1) {

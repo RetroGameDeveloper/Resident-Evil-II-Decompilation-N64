@@ -45,11 +45,11 @@ u8 func_8009FE58_ovl_01(void) {
     u8 var_v0;
     void **temp_v1_8;
     void *temp_t0;
-    void *temp_t1;
+    
     void *temp_v0;
     void *temp_v0_3;
     void *temp_v0_4;
-    void *temp_v1_2;
+    
     void *temp_v1_4;
     void *temp_v1_5;
     void *temp_v1_6;
@@ -82,8 +82,8 @@ loop_3:
                             if (temp_a1_2 != 9) {
                                 temp_v1 = M2C_FIELD((temp_v0_2 + D_80143BF8), u8 *, 8);
                                 if (temp_v1 != 0xFF) {
-                                    temp_v1_2 = (temp_v1 * 8) + M2C_FIELD(D_80143BF8, s32 *, 4);
-                                    M2C_FIELD((D_80143BF8 + (temp_a1_2 * 4)), s32 *, 0xF80) = (s32) ((M2C_FIELD(temp_v1_2, u16 *, 0) << 0x10) | (M2C_FIELD(temp_v1_2, u8 *, 2) << 8) | M2C_FIELD(temp_v1_2, u8 *, 3));
+                                    temp_t0 = (temp_v1 * 8) + M2C_FIELD(D_80143BF8, s32 *, 4);
+                                    M2C_FIELD((D_80143BF8 + (temp_a1_2 * 4)), s32 *, 0xF80) = (s32) ((M2C_FIELD(temp_t0, u16 *, 0) << 0x10) | (M2C_FIELD(temp_t0, u8 *, 2) << 8) | M2C_FIELD(temp_t0, u8 *, 3));
                                 }
                             } else {
                                 temp_v1_3 = M2C_FIELD((temp_v0_2 + D_80143BF8), u8 *, 0x8C);
@@ -115,17 +115,17 @@ block_20:
                     } else {
 block_21:
                         if ((temp_a3 != 0) || (temp_a2 != 0)) {
-                            temp_t1 = D_80143BF8 + var_s3;
-                            temp_t2 = M2C_FIELD(temp_t1, u8 *, 0x58F);
+                            temp_t0 = D_80143BF8 + var_s3;
+                            temp_v1_3 = M2C_FIELD(temp_t0, u8 *, 0x58F);
                             var_s5 = 6;
-                            var_v0 = temp_t2;
-                            if ((s32) temp_t2 < 0) {
-                                var_v0 = temp_t2 + 0x1F;
+                            var_v0 = temp_v1_3;
+                            if ((s32) temp_v1_3 < 0) {
+                                var_v0 = temp_v1_3 + 0x1F;
                             }
-                            if (M2C_FIELD((D_80143BF8 + (((s32) var_v0 >> 5) * 4)), s32 *, 0x110) & (1 << (temp_t2 & 0x1F))) {
+                            if (M2C_FIELD((D_80143BF8 + (((s32) var_v0 >> 5) * 4)), s32 *, 0x110) & (1 << (temp_v1_3 & 0x1F))) {
                                 temp_t0_2 = M2C_FIELD((D_80143BF8 + ((temp_a1 & 0xFF) * 4)), s32 *, 0xF80);
                                 if (temp_t0_2 != -1) {
-                                    temp_a3_2 = temp_a3 + M2C_FIELD(temp_t1, s8 *, 0x58E);
+                                    temp_a3_2 = temp_a3 + M2C_FIELD(temp_t0, s8 *, 0x58E);
                                     var_v1 = 0x7F;
                                     if (temp_a3_2 < 0x80) {
                                         var_v1 = temp_a3_2;

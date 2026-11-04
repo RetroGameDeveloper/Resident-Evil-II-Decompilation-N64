@@ -6,6 +6,6 @@ func_800334F8_ovl_01(arg0,arg1,arg2,0); if(func_80089D34_ovl_01(arg0,arg1,arg2,0
 func_80032B8C_ovl_01(arg0,0);func_80033678_ovl_01(arg0);
 if((*(u32*)*(u32**)(p+0x214)&0x10000)&&p[7]==0){p[7]=1;func_80077D48_ovl_01(3,arg0);p[0x207]=15;}
 temp_s1=D_80167CEC_ovl_30;
-if(*(s8*)(p+0x207)!=0){func_801672F4_ovl_30(arg0,(temp_s1+1)&0xff,1);func_801672F4_ovl_30(arg0,(temp_s1+3)&0xff,1);p[0x207]=(u8)(p[0x207]-1);}
+if(*(s8*)(p+0x207)!=0){func_801672F4_ovl_30(arg0,(unsigned char)(temp_s1 + 1),1);func_801672F4_ovl_30(arg0,(temp_s1+3)&0xff,1);p[0x207]=(u8)(p[0x207]-1);}
 func_80167B9C_ovl_30(arg0);
 }

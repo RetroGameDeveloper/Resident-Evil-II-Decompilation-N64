@@ -1,4 +1,4 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
 typedef s32 M2C_UNK;
@@ -12,6 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
+s32 func_80033634_ovl_01(M2C_UNK);                  /* extern */
 s32 func_80089D34_ovl_01(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_80166C3C_ovl_17(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 s32 func_80166CD8_ovl_17(void *, s16);              /* extern */
@@ -27,7 +28,7 @@ void func_80164230_ovl_17(void *arg0, M2C_UNK arg1, M2C_UNK arg2) {
     switch (temp_v1) {                              /* irregular */
     case 0:
         M2C_FIELD(arg0, u8 *, 6) = 1U;
-        M2C_FIELD(arg0, s16 *, 0x1F4) = (s16) ((func_80033634_ovl_01() & 0xF) + 0x1E);
+        M2C_FIELD(arg0, s16 *, 0x1F4) = (s16) ((func_80033634_ovl_01(1) & 0xF) + 0x1E);
         M2C_FIELD(arg0, s16 *, 0x1E0) = 0x12C;
         M2C_FIELD(arg0, s16 *, 0x1E2) = 0;
         M2C_FIELD(arg0, s16 *, 0x1E4) = 0;

@@ -24,10 +24,11 @@ s32 func_800A7644_ovl_01(s32 arg0, u32 arg1) {
         }
         if (*(s32 *)(p + 0x24) & 2) {
             a2 = p[0x55];
-        } else {
+        
+        func_800AC5B4_ovl_01(0xA, idx, a2, arg1 & 0xFF);} else {
             a2 = p[0x4B];
-        }
-        func_800AC5B4_ovl_01(0xA, idx, a2, arg1 & 0xFF);
+        
+        func_800AC5B4_ovl_01(0xA, idx, a2, arg1 & 0xFF);}
         id = *(s32 *)(base + idx * 0x1A0 + 0x10);
         ret = 0;
         if (id == end) {

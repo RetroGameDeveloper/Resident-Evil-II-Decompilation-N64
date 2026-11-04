@@ -24,7 +24,7 @@ s32 func_8004EBA4_ovl_01(void *arg0, void *arg1) {
     s32 temp_a3;
     s32 var_a0;
     s32 var_v0;
-    s32 var_v0_2;
+    
     s32 var_v1;
 
     sp14 = 0;
@@ -41,11 +41,11 @@ s32 func_8004EBA4_ovl_01(void *arg0, void *arg1) {
         if (temp_a1 < 0) {
             var_v1 = -temp_a1;
         }
-        var_v0_2 = temp_a0;
+        var_a0 = temp_a0;
         if (temp_a0 < 0) {
-            var_v0_2 = -temp_a0;
+            var_a0 = -temp_a0;
         }
-        if (var_v0_2 < var_v1) {
+        if (var_a0 < var_v1) {
             var_a1 = (s16) sp10;
             var_a0 = M2C_FIELD(arg0, s32 *, 0x30);
         } else {

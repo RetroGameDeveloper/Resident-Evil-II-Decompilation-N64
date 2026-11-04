@@ -50,8 +50,9 @@ void func_80097744_ovl_01(void) {
     var_s0 = (7 * 4) + &D_8013134C_ovl_01;
     do {
         var_s0 -= 4;
-        var_s3 -= 1;
-        func_80047B34_ovl_01(var_s2, 0);
+        var_s3 -= 1;/*__repair_call_balance*/if(var_s3){
+        func_80047B34_ovl_01(var_s2, 0);}else{
+        func_80047B34_ovl_01(var_s2, 0);}
         func_8004789C_ovl_01(var_s2, 0x80, 0x80, 0x80);
         func_800478DC_ovl_01(var_s2, M2C_FIELD(var_s0, u8 *, 0), M2C_FIELD(var_s0, u8 *, 1));
         temp_a0_2 = var_s2;

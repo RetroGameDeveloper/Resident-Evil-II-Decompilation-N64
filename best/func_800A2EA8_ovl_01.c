@@ -34,7 +34,7 @@ void func_800A2EA8_ovl_01(S_A2EA8 *a0, u32 arg1, s8 *arg2)
     step = ((arg1 & 0xFFFF) * 0x7D00 / D_80143EA4_ovl_01) << 11;
 
     if (a0->unk1 == 0 && a0->unk5C != 3) {
-        a0->unk5C = 3;
+        { int repair_store_value = 3; a0->unk5C = repair_store_value; }
         a0->unk54 = 0.0f;
         a0->u50.w = 0;
         a0->unk58 = a0->unk4C;
@@ -78,5 +78,5 @@ common:
     }
     tmp = a0->unk58;
     a0->u50.w += step;
-    a0->unk4C = (a0->unk54 - tmp) * ratio + tmp;
+    a0->unk4C = (tmp) + ((a0->unk54 - tmp) * ratio);
 }

@@ -1,26 +1,35 @@
-extern u8 D_800C7650_ovl_01;
-void func_800377B0_ovl_01(s32, s16, void *, s16 *);
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2 -mcpu=r4600, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
 
-typedef union { u64 q; struct { u32 lo; u32 hi; } w; } U64x;
+s32 func_80033634_ovl_01();                         /* extern */
+M2C_UNK func_800377B0_ovl_01(s32, s16, s32, s16 *); /* extern */
+extern M2C_UNK D_800C7650_ovl_01;
 
 void func_80163D5C_ovl_32(void *arg0) {
-    s16 sp[3];
-    s32 s0;
-    u16 *a2;
-    u8 *base;
-    U64x b;
+    s16 sp10;
+    s16 sp12;
+    s16 sp14;
+    s32 temp_s0;
+    s32 temp_s0_2;
+    void *temp_a2;
 
-    b.w.lo = 0x18000;
-    b.w.hi = (u32)&D_800C7650_ovl_01;
-    base = (u8 *)(b.w.lo + b.w.hi);
-
-    s0 = *(s32 *)((u8 *)arg0 + 0x234);
-    a2 = (u16 *)(s0 + 0x2F0);
-    s0 += 0x328;
-    sp[0] = *(u16 *)(base + 0x1A4E) - a2[0x27];
-    sp[1] = *(u16 *)(base + 0x1A52) - a2[0x29];
-    sp[2] = *(u16 *)(base + 0x1A56) - a2[0x2B];
-    func_800377B0_ovl_01(0x05042710, *(s16 *)((u8 *)arg0 + 0x66), (void *)s0, sp);
-    func_800377B0_ovl_01(((func_80033634_ovl_01() & 0xFF) << 2) | 0x040F1000,
-                         *(s16 *)((u8 *)arg0 + 0x66), (void *)s0, sp);
+    temp_s0 = M2C_FIELD(arg0, s32 *, 0x234);
+    temp_a2 = temp_s0 + 0x2F0;
+    sp10 = M2C_FIELD(&D_800C7650_ovl_01, u16 *, 0x19A4E) - M2C_FIELD(temp_a2, u16 *, 0x4E);
+    sp12 = M2C_FIELD(&D_800C7650_ovl_01, u16 *, 0x19A52) - M2C_FIELD(temp_a2, u16 *, 0x52);
+    temp_s0_2 = temp_s0 + 0x328;
+    sp14 = M2C_FIELD(&D_800C7650_ovl_01, u16 *, 0x19A56) - M2C_FIELD(temp_a2, u16 *, 0x56);
+    func_800377B0_ovl_01(0x05042710, M2C_FIELD(arg0, s16 *, 0x66), temp_s0_2, &sp10);
+    func_800377B0_ovl_01(((func_80033634_ovl_01() & 0xFF) * 4) | 0x040F1000, M2C_FIELD(arg0, s16 *, 0x66), temp_s0_2, &sp10);
 }

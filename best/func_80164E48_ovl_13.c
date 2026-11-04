@@ -29,7 +29,7 @@ void func_80166214_ovl_13(S_64E48 *, s32);
 void func_80166080_ovl_13(S_64E48 *);
 s32 func_80033634_ovl_01(void);
 void func_80166158_ovl_13(S_64E48 *, s32);
-s32 func_80089D34_ovl_01(S_64E48 *, s32, s32, s32);
+s32 func_80089D34_ovl_01(S_64E48 *,  s32);
 void func_80032B8C_ovl_01(S_64E48 *, s32);
 void func_80165BD8_ovl_13(S_64E48 *, s32, s32);
 
@@ -52,7 +52,7 @@ void func_80164E48_ovl_13(S_64E48 *arg0, s32 arg1, s32 arg2) {
         arg0->unk_1E8 = 0x09000700;
         arg0->unk_06 = 1;
         arg0->unk_66 = *(u16 *)(base + 0x1AE6);
-        if (func_80089D34_ovl_01(arg0, arg1, arg2, 0x200)) {
+        if (func_80089D34_ovl_01(arg0,  arg1)) {
             arg0->unk_06 = 2;
         }
         /* fall through */

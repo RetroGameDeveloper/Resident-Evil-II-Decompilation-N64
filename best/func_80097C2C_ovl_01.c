@@ -35,7 +35,7 @@ void func_80097C2C_ovl_01(void) {
     u8 var_s6;
     void *temp_a0;
     void *temp_s2;
-    void *var_s0;
+    
     void *var_s0_2;
     void *var_s2;
 
@@ -56,13 +56,13 @@ void func_80097C2C_ovl_01(void) {
         var_s2 = var_a1 + 0x654;
     }
     temp_s3 = var_s1;
-    var_s0 = ((var_s1 * 4) + &D_801313A0_ovl_01) - 4;
+    temp_s2 = ((var_s1 * 4) + &D_801313A0_ovl_01) - 4;
     do {
         var_s1 -= 1;
         temp_a0 = var_s2;
         var_s2 += 0x14;
-        func_800478E8_ovl_01(temp_a0, (M2C_FIELD(var_s0, u16 *, 0) + var_s4) & 0xFFFF, (M2C_FIELD(var_s0, u16 *, 2) + temp_s5) & 0xFFFF);
-        var_s0 -= 4;
+        func_800478E8_ovl_01(temp_a0, (M2C_FIELD(temp_s2, u16 *, 0) + var_s4) & 0xFFFF, (M2C_FIELD(temp_s2, u16 *, 2) + temp_s5) & 0xFFFF);
+        temp_s2 -= 4;
     } while (var_s1 >= 3U);
     var_s0_2 = var_s2;
     var_s3 = temp_s3 - 1;

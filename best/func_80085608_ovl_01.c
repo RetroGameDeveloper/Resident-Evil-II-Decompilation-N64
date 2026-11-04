@@ -22,7 +22,7 @@ void func_80085608_ovl_01(u8 *arg0) {
         if (id >= 0) {
             s32 *tbl = *(s32 **)(arg0 + 0x44);
             if (tbl != 0) {
-                list = b + ((tbl[id] & 0x7F) << 4) + 0x24;
+                list = (((tbl[id] & 0x7F) << 4) + 0x24) + (b);
             }
         }
         n = *(s32 *)(b + 8);

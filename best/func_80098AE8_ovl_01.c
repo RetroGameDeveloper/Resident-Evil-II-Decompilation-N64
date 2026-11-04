@@ -42,10 +42,11 @@ void func_80098AE8_ovl_01(void) {
         var_s2 -= 0x10;
         if (M2C_FIELD(&D_8012BF38_ovl_01, u8 *, 2) == (var_s1 + 4)) {
             var_a1 = var_s2 & 0xFFFF;
-        } else {
+        
+        func_800478DC_ovl_01(var_s0, var_a1, 8);} else {
             var_a1 = var_s3 & 0xFFFF;
-        }
-        func_800478DC_ovl_01(var_s0, var_a1, 8);
+        
+        func_800478DC_ovl_01(var_s0, var_a1, 8);}
         func_800478E8_ovl_01(var_s0, ((M2C_FIELD(&D_8012BF38_ovl_01, u16 *, 0x4C) + var_s4) - 0xA) & 0xFFFF, (M2C_FIELD(&D_8012BF38_ovl_01, u16 *, 0x4E) + 0x36) & 0xFFFF);
         temp_a1 = var_s0;
         var_s0 += 0x28;

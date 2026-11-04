@@ -14,14 +14,14 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80164350_ovl_12();                     /* extern */
-M2C_UNK func_801644B0_ovl_15(void *);               /* extern */
-M2C_UNK func_80166458_ovl_31(void *);               /* extern */
+M2C_UNK func_801644B0_overlay_015(void *);               /* extern */
+M2C_UNK jtbl_80166458_overlay_013(void *);               /* extern */
 
 void func_80164304_ovl_12(void *arg0) {
     if (M2C_FIELD(arg0, u8 *, 6) == 0) {
         func_80164350_ovl_12();
     } else {
-        func_801644B0_ovl_15(arg0);
+        func_801644B0_overlay_015(arg0);
     }
-    func_80166458_ovl_31(arg0);
+    jtbl_80166458_overlay_013(arg0);
 }

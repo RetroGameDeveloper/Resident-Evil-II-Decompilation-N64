@@ -19,7 +19,7 @@ void func_800A5A6C_ovl_01(s32 arg0) {
     u8 *temp_v1;
 
     temp_a0 = arg0 * 0x68;
-    temp_v1 = temp_a0 + D_80143EAC;
+    temp_v1 = (char *)((D_80143EAC)); temp_v1 += (s32)((temp_a0));
     if (*temp_v1 != 0) {
         *temp_v1 = 0;
         M2C_FIELD((temp_a0 + D_80143EAC), s8 *, 0x61) = 1;

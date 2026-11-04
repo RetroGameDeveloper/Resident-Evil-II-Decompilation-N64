@@ -43,8 +43,8 @@ void func_800A90B0_ovl_01(void) {
                             goto block_9;
                         }
                     } else if (M2C_FIELD(var_s0, s32 (**)(s32, s32, s32, u32, s32), 4)(M2C_FIELD(var_s0, s32 *, 8) + (temp_t0 * 2), M2C_FIELD(var_s0, s32 *, 0xC) - temp_t0, M2C_FIELD(var_s0, s32 *, 8), temp_v0, M2C_FIELD(var_s0, s32 *, 0x14)) & 0xFF) {
-                        temp_v1 = M2C_FIELD(var_s0, u32 *, 0x10);
-                        func_800A5BD4_ovl_01(M2C_FIELD(var_s0, s32 *, 8) + (temp_v1 * 2), M2C_FIELD(var_s0, s32 *, 0xC) - temp_v1);
+                        temp_a1 = M2C_FIELD(var_s0, u32 *, 0x10);
+                        func_800A5BD4_ovl_01(M2C_FIELD(var_s0, s32 *, 8) + (temp_a1 * 2), M2C_FIELD(var_s0, s32 *, 0xC) - temp_a1);
                         var_a0 = M2C_FIELD(var_s0, s32 *, 8);
                         var_a1 = temp_v0;
 block_9:

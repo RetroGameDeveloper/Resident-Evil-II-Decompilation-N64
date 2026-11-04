@@ -14,10 +14,10 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80033634_ovl_01();                         /* extern */
-M2C_UNK func_801635A0_ovl_35();                     /* extern */
+M2C_UNK func_801635A0_overlay_035();                     /* extern */
 M2C_UNK func_80166324_ovl_35(s32, M2C_UNK, s32);    /* extern */
 
 void func_80164D00_ovl_35(s32 arg0) {
-    func_801635A0_ovl_35();
+    func_801635A0_overlay_035();
     func_80166324_ovl_35(arg0, 3, func_80033634_ovl_01() & 7);
 }

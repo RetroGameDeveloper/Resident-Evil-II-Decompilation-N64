@@ -16,6 +16,7 @@ M2C_UNK func_80032B8C_ovl_01(void *, M2C_UNK);      /* extern */
 M2C_UNK func_80032DEC_ovl_01(void *, s16, s16, M2C_UNK); /* extern */
 s32 func_80032EA4_ovl_01(void *, s16, s16, M2C_UNK); /* extern */
 M2C_UNK func_800334F8_ovl_01(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+s32 func_80033634_ovl_01(void *);                   /* extern */
 M2C_UNK func_80077D48_ovl_01(M2C_UNK, void *);      /* extern */
 s32 func_80083D5C_ovl_01(void *, s32);              /* extern */
 s32 func_80089D34_ovl_01(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
@@ -45,7 +46,7 @@ void func_80162BC4_ovl_28(void *arg0, M2C_UNK arg1, M2C_UNK arg2) {
         if (func_80083D5C_ovl_01(arg0 + 0x28, M2C_FIELD(&D_800C7650_ovl_01, s32 *, 0x18290)) == 0) {
             M2C_FIELD(arg0, u16 *, 0x1E0) = (u16) (M2C_FIELD(arg0, u16 *, 0x1E0) + 0x28);
         }
-        if ((func_80089D34_ovl_01(arg0, arg1, arg2, 0x80) != 0) && !(func_80033634_ovl_01() & 3)) {
+        if ((func_80089D34_ovl_01(arg0, arg1, arg2, 0x80) != 0) && !(func_80033634_ovl_01(arg0) & 3)) {
             func_80077D48_ovl_01(7, arg0);
         }
         func_80032B8C_ovl_01(arg0, 0);

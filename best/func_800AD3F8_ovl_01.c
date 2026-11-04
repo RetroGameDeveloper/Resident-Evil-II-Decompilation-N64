@@ -1,3 +1,4 @@
+static __inline__ u16 __repair_inline(u16 a) { return a; }
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
@@ -32,22 +33,23 @@ s32 func_800AD3F8_ovl_01(s32 arg0) {
     u16 *var_s1;
     u16 temp_v0;
     u16 var_v1;
+u16 __repair_result_var_v1;
     u32 var_s3;
     void *temp_v0_3;
     void *var_a1_2;
 
-    var_a1 = 0;
     var_s3 = 0;
+    var_a1 = 0;
     if (D_8014E10C != 0) {
         var_s2 = &D_8014E110;
 loop_2:
         var_s1 = *var_s2;
-        var_v1 = *var_s1;
+        __repair_result_var_v1 = __repair_inline(*var_s1);
         var_s4 = 0;
-        if (var_v1 != 0xFFFF) {
+        if (__repair_result_var_v1 != 0xFFFF) {
             var_s0 = var_s1 + 2;
             do {
-                if (var_v1 == (arg0 & 0xFFFF)) {
+                if (__repair_result_var_v1 == (arg0 & 0xFFFF)) {
                     temp_v0 = M2C_FIELD(var_s0, u16 *, 0) - 1;
                     M2C_FIELD(var_s0, u16 *, 0) = temp_v0;
                     var_a1 = 1;
@@ -81,8 +83,7 @@ loop_14:
                 }
                 var_v0 = 1;
                 if (var_s0_2 != D_8014E10C) {
-                    func_800A5618_ovl_01();
-                    var_v1_3 = var_s0_2 + 1;
+                    func_800A5618_ovl_01();{ s32 __repair_value; __repair_value = var_s0_2 + 1; var_v1_3 = __repair_value; }
                     if (var_v1_3 < D_8014E10C) {
                         temp_v0_2 = var_v1_3 * 0xC;
                         var_a1_2 = temp_v0_2 + &D_8014E110;

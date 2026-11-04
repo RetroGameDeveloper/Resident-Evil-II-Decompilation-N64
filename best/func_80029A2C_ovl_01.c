@@ -24,7 +24,7 @@ void func_80029A2C_ovl_01(S_arg0_29A2C *arg0, u8 *arg1, S_out_29A2C **arg2) {
     s32 j;
     s32 a0;
     s32 a1;
-    s32 a2;
+    
     s32 a3;
     s32 *p118;
     u8 *p10;
@@ -51,22 +51,22 @@ void func_80029A2C_ovl_01(S_arg0_29A2C *arg0, u8 *arg1, S_out_29A2C **arg2) {
     p10 = sp10;
     p10[i] = 0;
     a1 = 0;
-    a2 = p10[0];
-    if (a2 != 0) {
+    a0 = p10[0];
+    if (a0 != 0) {
         p118 = sp118;
         i = a1;
         do {
-            if (p10[i] == a2) {
+            if (p10[i] == a0) {
                 s32 *q;
                 q = &p118[i];
                 do {
                     *q++ = a1;
                     i++;
                     a1++;
-                } while (p10[i] == a2);
+                } while (p10[i] == a0);
             }
             a1 <<= 1;
-            a2++;
+            a0++;
         } while (p10[i] != 0);
     }
     i = 0;
@@ -107,8 +107,8 @@ void func_80029A2C_ovl_01(S_arg0_29A2C *arg0, u8 *arg1, S_out_29A2C **arg2) {
                             a0++;
                             a1--;
                         } while (a1 > 0);
-                    }
-                    a3++;
+                    }/*__repair_loop_weight*/do {
+                    a3++;} while (0);
                     i++;
                     t2++;
                 } while (arg1[j] >= a3);

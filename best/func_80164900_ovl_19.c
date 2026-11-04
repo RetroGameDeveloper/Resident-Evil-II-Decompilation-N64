@@ -1,34 +1,4 @@
-extern u8 D_800C7650_ovl_01[];
-extern s32 func_80040E88_ovl_01(void *, void *);
-extern s32 func_8004279C_ovl_01(void *, void *, void *);
-typedef union 
-{
-  u64 q;
-  struct 
-  {
-    u32 lo;
-    u32 hi;
-  } w;
-} U64;
-void func_80164900_ovl_19(void *arg0, unsigned int arg1, s16 arg2)
-{
-  s16 h[4];
-  s32 tmp[8];
-  U64 b;
-  u32 off;
-  u8 *p;
-  h[0] = 0;
-  h[1] = arg2;
-  h[2] = 0;
-  func_80040E88_ovl_01(h, tmp);
-  h[0] = arg1;
-  h[1] = 0;
-  h[2] = 0;
-  func_8004279C_ovl_01(tmp, h, h);
-  off = 0x18000;
-  b.q = (u64) ((u32) D_800C7650_ovl_01);
-  p = (u8 *) (off + ((u32) b.q));
-  *((s32 *) (((u8 *) arg0) + 0x28)) = h[0] + (*((s32 *) (p + 0x1AA8)));
-  *((s32 *) (((u8 *) arg0) + 0x30)) = h[2] + (*((s32 *) (p + 0x1AB0)));
-}
-
+extern u8 D_800C7650_ovl_01[]; extern s32 func_80040E88_ovl_01(void*,void*); extern s32 func_8004279C_ovl_01(void*,void*,void*); extern s32 func_80032EA4_ovl_01(s32,s32,s32);
+s32 func_80163D20_ovl_19(void){u8 *p=D_800C7650_ovl_01+0x18000;u32 x=*(u32*)(p+0x268)&0x34f;u16 y=*(u16*)(p+0x1a7a)&2;if(y==0)return x!=0;return (x!=0)+3;}
+void func_80164900_ovl_19(void *arg0,s16 arg1,s16 arg2){s16 h[4];s32 tmp[8];h[0]=0;h[1]=arg2;h[2]=0;func_80040E88_ovl_01(h,tmp);h[0]=arg1;h[1]=0;h[2]=0;func_8004279C_ovl_01(tmp,h,h);*(s32*)((u8*)arg0+0x28)=h[0]+*(s32*)(D_800C7650_ovl_01+0x19aa8);*(s32*)((u8*)arg0+0x30)=h[2]+*(s32*)(D_800C7650_ovl_01+0x19ab0);}
+void func_801621D0_ovl_19(void *arg0){s32 n=*(s32*)((u8*)arg0+0x28c);s32 result=func_80032EA4_ovl_01(*(s32*)(D_800C7650_ovl_01+0x19aa8),*(s32*)(D_800C7650_ovl_01+0x19ab0),0x80);if((u32)n<0xbb8U&&(s16)(result<<16)==0)*(s32*)((u8*)arg0+4)=0x01020000;}
